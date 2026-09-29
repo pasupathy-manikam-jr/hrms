@@ -1,0 +1,361 @@
+{
+    "section_order": [
+        "hero",
+        "features",
+        "screenshots",
+        "why_choose_us",
+        "about",
+        "team",
+        "testimonials",
+        "faq",
+        "newsletter",
+        "contact"
+    ],
+    "section_visibility": {
+        "hero": true,
+        "features": true,
+        "screenshots": true,
+        "why_choose_us": true,
+        "about": true,
+        "team": true,
+        "testimonials": true,
+        "faq": true,
+        "newsletter": true,
+        "contact": true,
+        "footer": true
+    },
+    "sections": {
+        "hero": {
+            "announcement_text": "New: Smart Leave & Attendance Tracking Launched!",
+            "title": "Simplify HR Management Effortlessly",
+            "subtitle": "Manage employees, payroll, attendance, and more in one powerful platform.",
+            "stats": [
+                {
+                    "value": "10K+",
+                    "label": "Active Users"
+                },
+                {
+                    "value": "13",
+                    "label": "States"
+                },
+                {
+                    "value": "99%",
+                    "label": "Satisfaction"
+                }
+            ]
+        },
+        "features": {
+            "title": "Empowering Businesses with Smart HR Solutions",
+            "description": "All-in-one platform to manage employees, payroll, attendance, and performance with ease.",
+            "features_list": [
+                {
+                    "icon": "users",
+                    "title": "Employee Management",
+                    "description": "Centralized profiles with personal, job, and document details."
+                },
+                {
+                    "icon": "dollar-sign",
+                    "title": "Payroll Automation",
+                    "description": "Generate accurate payslips with tax, allowances, and deductions."
+                },
+                {
+                    "icon": "clock",
+                    "title": "Leave & Attendance",
+                    "description": "Smart tracking of leaves, shifts, and attendance logs."
+                },
+                {
+                    "icon": "user-plus",
+                    "title": "Recruitment & Onboarding",
+                    "description": "Streamline hiring with applicant tracking and digital onboarding."
+                },
+                {
+                    "icon": "award",
+                    "title": "Performance Management",
+                    "description": "Set goals, run evaluations, and track employee growth."
+                },
+                {
+                    "icon": "bar-chart-2",
+                    "title": "Reports & Analytics",
+                    "description": "Get actionable insights on workforce productivity and HR metrics."
+                }
+            ]
+        },
+        "screenshots": {
+            "title": "See HRM in Action",
+            "subtitle": "Discover how our modern HRM platform helps you manage employees, payroll, attendance, and performance — all in one place.",
+            "screenshots_list": [
+                {
+                    "icon": "layout-dashboard",
+                    "title": "Dashboard Overview",
+                    "description": "Get a complete overview of employee data, payroll, and HR activities in one unified dashboard."
+                },
+                {
+                    "icon": "users",
+                    "title": "Employee Management",
+                    "description": "Centralized employee profiles with personal details, documents, and job history."
+                },
+                {
+                    "icon": "file-text",
+                    "title": "Payroll & Payslips",
+                    "description": "Automated payroll processing with tax calculations, allowances, and downloadable payslips."
+                },
+                {
+                    "icon": "calendar-days",
+                    "title": "Leave Management",
+                    "description": "Easily apply, approve, and track employee leave requests with proper workflows and policies."
+                },
+                {
+                    "icon": "clock",
+                    "title": "Attendance Tracking",
+                    "description": "Monitor employee check-ins, check-outs, and shifts with automated attendance logs."
+                },
+                {
+                    "icon": "user-plus",
+                    "title": "Recruitment & Onboarding",
+                    "description": "Streamline hiring with applicant tracking and digital onboarding."
+                }
+            ]
+        },
+        "why_choose_us": {
+            "title": "Why Choose HRM?",
+            "subtitle": "Smart, simple, and powerful HR solutions for every business.",
+            "reasons": [
+                {
+                    "icon": "layers",
+                    "title": "All-in-One HR Solution",
+                    "description": "Manage employees, payroll, attendance, recruitment, and performance from a single platform."
+                },
+                {
+                    "icon": "clock",
+                    "title": "Time-Saving Automation",
+                    "description": "Automate repetitive HR tasks to focus on strategic decision-making."
+                },
+                {
+                    "icon": "bar-chart-2",
+                    "title": "Data-Driven Insights",
+                    "description": "Make informed decisions with advanced analytics and reports."
+                },
+                {
+                    "icon": "shield",
+                    "title": "Secure & Reliable",
+                    "description": "Keep sensitive HR data safe with enterprise-grade security."
+                }
+            ],
+            "stats": [
+                {
+                    "value": "500+",
+                    "label": "Companies Using HRM"
+                },
+                {
+                    "value": "20K+",
+                    "label": "Employees Managed"
+                },
+                {
+                    "value": "98%",
+                    "label": "Customer Satisfaction"
+                }
+            ]
+        },
+        "about": {
+            "title": "About HRM",
+            "description": "We are passionate about simplifying HR management for businesses of all sizes.",
+            "story_title": "We are passionate about simplifying HR management for businesses of all sizes.",
+            "story_content": "Founded by HR and tech enthusiasts, HRM was created to replace cumbersome spreadsheets and manual processes with a modern, all-in-one HR platform.",
+            "stats": [
+                {
+                    "value": "3+ Years",
+                    "label": "Experience"
+                },
+                {
+                    "value": "500+",
+                    "label": "Companies Served"
+                },
+                {
+                    "value": "20K+",
+                    "label": "Employees Managed"
+                }
+            ],
+            "values": [
+                {
+                    "icon": "target",
+                    "title": "Our Mission",
+                    "description": "To empower businesses with smart HR solutions that simplify employee management, payroll, attendance, and performance tracking."
+                },
+                {
+                    "icon": "heart",
+                    "title": "Our Values",
+                    "description": "We prioritize innovation, efficiency, and creating a workplace ecosystem that nurtures growth and collaboration."
+                },
+                {
+                    "icon": "award",
+                    "title": "Our Commitment",
+                    "description": "Providing reliable, intuitive HR tools backed by exceptional support to help organizations optimize their workforce."
+                },
+                {
+                    "icon": "lightbulb",
+                    "title": "Our Vision",
+                    "description": "A future where HR management is fully automated, transparent, and enables organizations to focus on people, not paperwork."
+                }
+            ]
+        },
+        "team": {
+            "title": "Meet Our Team",
+            "subtitle": "We're a dedicated team of HR and technology experts.",
+            "members": [
+                {
+                    "name": "Dato' Lim Chee Keong",
+                    "role": "CEO & Founder",
+                    "bio": "Experienced HR tech entrepreneur passionate about building intuitive HR solutions.",
+                    "email": "cheekeong@hrm.com.my"
+                },
+                {
+                    "name": "Nurul Aisyah binti Rahman",
+                    "role": "CTO",
+                    "bio": "Leads the tech team to create scalable and secure HR platforms.",
+                    "email": "aisyah@hrm.com.my"
+                },
+                {
+                    "name": "Arjun a/l Suppiah",
+                    "role": "Head of Product",
+                    "bio": "Designs user-centric features to simplify HR processes.",
+                    "email": "arjun@hrm.com.my"
+                },
+                {
+                    "name": "Chong Mei Ling",
+                    "role": "HR Manager",
+                    "bio": "Oversees employee engagement, recruitment, and HR operations.",
+                    "email": "meiling@hrm.com.my"
+                }
+            ],
+            "cta_title": "Want to Join Our Team?",
+            "cta_description": "We're always looking for talented individuals to shape the future of HR management.",
+            "cta_button_text": "View Open Positions"
+        },
+        "testimonials": {
+            "title": "What Our Clients Say",
+            "subtitle": "Hear from HR leaders who trust our platform.",
+            "testimonials": [
+                {
+                    "name": "Farah binti Zulkifli",
+                    "role": "HR Manager",
+                    "company": "Bumi Teknologi Sdn Bhd",
+                    "content": "HRM has made managing employee records and attendance effortless. Our HR team saves hours every week!"
+                },
+                {
+                    "name": "Tan Boon Huat",
+                    "role": "Operations Head",
+                    "company": "Selatan Logistik Sdn Bhd",
+                    "content": "The payroll automation is incredibly accurate and easy to use. No more manual calculations or errors!"
+                },
+                {
+                    "name": "Datin Sri Kavitha Menon",
+                    "role": "CEO",
+                    "company": "Harapan Holdings Berhad",
+                    "content": "From recruitment to performance management, HRM covers everything we need in one platform."
+                },
+                {
+                    "name": "Mohd Hafizuddin bin Aziz",
+                    "role": "Talent Acquisition Lead",
+                    "company": "Nusantara Digital Sdn Bhd",
+                    "content": "Recruitment and onboarding have never been smoother. HRM platform is intuitive and efficient."
+                },
+                {
+                    "name": "Wong Siew Ling",
+                    "role": "Payroll Specialist",
+                    "company": "Borneo Retail Sdn Bhd",
+                    "content": "Payroll processing is now quick and error-free thanks to HRM. It has transformed our monthly workflow."
+                },
+                {
+                    "name": "Jason anak Ringgit",
+                    "role": "HR Coordinator",
+                    "company": "Kenyalang Energy Sdn Bhd",
+                    "content": "The performance management module helps us track employee goals and progress effortlessly."
+                }
+            ],
+            "trust_title": "Trusted by HR Professionals Across Malaysia",
+            "trust_stats": [
+                {
+                    "value": "4.9/5",
+                    "label": "Average Rating"
+                },
+                {
+                    "value": "500+",
+                    "label": "Companies Served"
+                }
+            ]
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "subtitle": "Got questions? We've got answers.",
+            "faqs": [
+                {
+                    "question": "How does HRM work?",
+                    "answer": "HRM is an all-in-one HR platform that helps you manage employees, payroll, attendance, recruitment, and performance efficiently."
+                },
+                {
+                    "question": "Can I automate payroll and leave tracking?",
+                    "answer": "Yes! HRM allows you to automate payroll calculations, generate payslips, and track employee leaves and attendance seamlessly."
+                },
+                {
+                    "question": "Is my employee data secure?",
+                    "answer": "Absolutely. HRM uses enterprise-grade security measures to keep all sensitive HR data safe and confidential."
+                },
+                {
+                    "question": "Can I manage recruitment and onboarding?",
+                    "answer": "Yes, HRM provides applicant tracking, interview management, and digital onboarding tools to simplify hiring."
+                },
+                {
+                    "question": "Does HRM support performance evaluations?",
+                    "answer": "Yes, you can set goals, track KPIs, and run performance reviews directly within the platform."
+                },
+                {
+                    "question": "Can HRM generate HR reports?",
+                    "answer": "HRM offers advanced analytics and reporting features to give insights on attendance, payroll, and workforce performance."
+                },
+                {
+                    "question": "How can I get started?",
+                    "answer": "Contact our team to learn more about implementing HRM for your organization."
+                }
+            ],
+            "cta_text": "Still have questions?",
+            "button_text": "Contact Support"
+        },
+        "newsletter": {
+            "title": "Stay Updated with HRM",
+            "subtitle": "Get the latest updates, HR tips, and feature announcements.",
+            "privacy_text": "No spam, unsubscribe at any time.",
+            "benefits": [
+                {
+                    "icon": "📧",
+                    "title": "Weekly Updates",
+                    "description": "Stay informed about the latest HRM features and improvements."
+                },
+                {
+                    "icon": "💡",
+                    "title": "HR Insights",
+                    "description": "Get tips and best practices to optimize your HR operations."
+                },
+                {
+                    "icon": "📊",
+                    "title": "Reports & Trends",
+                    "description": "Receive analytics insights and industry trends directly to your inbox."
+                }
+            ]
+        },
+        "contact": {
+            "title": "Get in Touch",
+            "subtitle": "Have questions about HRM? We'd love to hear from you.",
+            "form_title": "Send us a Message",
+            "info_title": "Contact Information",
+            "info_description": "We're here to help and answer any questions you might have about managing your HR processes efficiently.",
+            "email": "support@hrm.com.my",
+            "phone": "+60 3-2785 1234",
+            "address": "Menara HRM, Jalan Sultan Ismail, 50250 Kuala Lumpur"
+        },
+        "footer": {
+            "description": "Simplifying HR management with an all-in-one modern platform.",
+            "newsletter_title": "Stay Updated",
+            "newsletter_subtitle": "Join our newsletter for HR tips and product updates"
+        }
+    }
+}

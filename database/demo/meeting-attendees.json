@@ -1,0 +1,2652 @@
+[
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-20",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-09-19",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-20",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-09-19",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-20",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-19",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-20",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-19",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-20",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-09-19",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-27",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-09-26",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-27",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-09-26",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-27",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-26",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-27",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-26",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-27",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-09-26",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-04",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-10-03",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-04",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-10-03",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-04",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-03",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-04",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-03",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-04",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-10-03",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-11",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-10-10",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-11",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-10-10",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-11",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-10",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-11",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-10",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-11",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-10-10",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-18",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-10-17",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-18",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-10-17",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-18",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-17",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-18",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-17",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-18",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-10-17",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-25",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-10-24",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-25",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-10-24",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-25",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-24",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-25",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-24",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-25",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-10-24",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-01",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-10-31",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-01",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-10-31",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-01",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-31",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-01",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-31",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-01",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-10-31",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-08",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-11-07",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-08",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-11-07",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-08",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-07",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-08",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-07",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-08",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-11-07",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-15",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-11-14",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-15",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-11-14",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-15",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-14",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-15",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-14",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-15",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-11-14",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-22",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-11-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-22",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-11-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-22",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-21",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-22",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-22",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-11-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-29",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-11-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-29",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-11-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-29",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-28",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-29",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-29",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-11-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-06",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-12-05",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-06",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-12-05",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-06",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-12-05",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-06",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-12-05",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-06",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-12-05",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-13",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-12-12",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-13",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-12-12",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-13",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-12-12",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-13",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-12-12",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-13",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-12-12",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Client Presentation - Q4 Results",
+        "meeting_date": "2025-09-22",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-09-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Client Presentation - Q4 Results",
+        "meeting_date": "2025-09-22",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-09-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Client Presentation - Q4 Results",
+        "meeting_date": "2025-09-22",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-21",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Client Presentation - Q4 Results",
+        "meeting_date": "2025-09-22",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Performance Review Session",
+        "meeting_date": "2025-09-24",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Performance Review Session",
+        "meeting_date": "2025-10-24",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Performance Review Session",
+        "meeting_date": "2025-11-24",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Performance Review Session",
+        "meeting_date": "2025-12-24",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-12-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Performance Review Session",
+        "meeting_date": "2026-01-24",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-01-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Performance Review Session",
+        "meeting_date": "2026-02-24",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-02-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-19",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-09-18",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-19",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-09-18",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-19",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Present",
+        "rsvp_date": "2025-09-18",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-19",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-18",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-19",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Late",
+        "rsvp_date": "2025-09-18",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-20",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-19",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-20",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-19",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-20",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-19",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-20",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-19",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-20",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-19",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-21",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-20",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-21",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-20",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-21",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-20",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-21",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-20",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-21",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-20",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-22",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-22",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-22",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-22",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-22",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-21",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-23",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-22",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-23",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-22",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-23",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-22",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-23",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-22",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-23",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-22",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-24",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-24",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-24",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-24",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-24",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-23",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-25",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-24",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-25",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-24",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-25",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-24",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-25",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-24",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-25",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-24",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-26",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-26",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-26",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-26",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-26",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-27",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-26",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-27",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-26",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-27",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-26",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-27",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-26",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-27",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-26",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-28",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-27",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-28",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-27",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-28",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-27",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-28",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-27",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-28",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-27",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-29",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-29",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-29",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-29",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-29",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-30",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-29",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-30",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-29",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-30",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-29",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-30",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-29",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-30",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-29",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-01",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-30",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-01",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-30",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-01",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-30",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-01",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-30",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-01",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-30",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-02",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-01",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-02",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-01",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-02",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-01",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-02",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-01",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-02",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-01",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-03",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-02",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-03",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-02",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-03",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-02",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-03",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-02",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-03",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-02",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-04",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-03",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-04",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-03",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-04",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-03",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-04",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-03",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-04",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-03",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-05",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-04",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-05",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-04",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-05",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-04",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-05",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-04",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-05",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-04",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-06",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-05",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-06",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-05",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-06",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-05",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-06",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-05",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-06",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-05",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-07",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-06",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-07",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-06",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-07",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-06",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-07",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-06",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-07",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-06",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-08",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-07",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-08",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-07",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-08",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-07",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-08",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-07",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-08",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-07",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-09",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-08",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-09",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-08",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-09",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-08",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-09",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-08",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-09",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-08",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-10",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-09",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-10",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-09",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-10",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-09",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-10",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-09",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-10",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-09",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-11",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-10",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-11",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-10",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-11",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-10",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-11",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-10",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-11",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-10",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-12",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-11",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-12",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-11",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-12",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-11",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-12",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-11",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-12",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-11",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-13",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-12",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-13",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-12",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-13",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-12",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-13",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-12",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-13",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-12",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-14",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-13",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-14",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-13",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-14",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-13",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-14",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-13",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-14",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-13",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-15",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-14",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-15",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-14",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-15",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-14",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-15",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-14",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-15",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-14",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-16",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-15",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-16",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-15",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-16",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-15",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-16",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-15",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-16",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-15",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-17",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-16",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-17",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-16",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-17",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-16",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-17",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-16",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-17",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-16",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-18",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-17",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-18",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-17",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-18",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-17",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-18",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-17",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-18",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-17",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-19",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-18",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-19",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-18",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-19",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-18",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-19",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-18",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-10-19",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-18",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-09-26",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-09-26",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-09-26",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-09-26",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-25",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-09-26",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-10-26",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-10-26",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-10-26",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-10-26",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-25",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-10-26",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-10-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-11-26",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-11-26",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-11-26",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-11-26",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-25",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-11-26",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-11-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-12-26",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-12-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-12-26",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-12-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-12-26",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-12-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-12-26",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-12-25",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2025-12-26",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-12-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2026-01-26",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-01-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2026-01-26",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-01-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2026-01-26",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-01-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2026-01-26",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-01-25",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2026-01-26",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-01-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2026-02-26",
+        "user": "manager@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-02-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2026-02-26",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-02-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2026-02-26",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-02-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2026-02-26",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-02-25",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "Project Alpha Review",
+        "meeting_date": "2026-02-26",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2026-02-25",
+        "decline_reason": null
+    },
+    {
+        "meeting": "All Hands Company Meeting",
+        "meeting_date": "2025-09-29",
+        "user": "katrina28@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "All Hands Company Meeting",
+        "meeting_date": "2025-09-29",
+        "user": "hr@example.com",
+        "type": "Optional",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "All Hands Company Meeting",
+        "meeting_date": "2025-09-29",
+        "user": "corkery.cheyanne@example.net",
+        "type": "Required",
+        "rsvp_status": "Declined",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-28",
+        "decline_reason": "Conflicting meeting schedule"
+    },
+    {
+        "meeting": "All Hands Company Meeting",
+        "meeting_date": "2025-09-29",
+        "user": "employee@example.com",
+        "type": "Optional",
+        "rsvp_status": "Tentative",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-28",
+        "decline_reason": null
+    },
+    {
+        "meeting": "All Hands Company Meeting",
+        "meeting_date": "2025-09-29",
+        "user": "dimitri21@example.com",
+        "type": "Required",
+        "rsvp_status": "Accepted",
+        "attendance_status": "Not Attended",
+        "rsvp_date": "2025-09-28",
+        "decline_reason": null
+    }
+]

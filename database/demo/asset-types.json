@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Computer Hardware",
+        "description": "Computing equipment"
+    },
+    {
+        "name": "Mobile Devices",
+        "description": "Portable electronic devices such as smartphones and tablets assigned to employees for communication, work tasks, and business use."
+    },
+    {
+        "name": "Office Equipment",
+        "description": "Office machinery"
+    },
+    {
+        "name": "Furniture",
+        "description": "Office furniture including desks, chairs, cabinets, conference tables, and other workplace essentials used for daily operations."
+    },
+    {
+        "name": "Vehicles",
+        "description": "Company vehicles"
+    },
+    {
+        "name": "Network Equipment",
+        "description": "Networking hardware"
+    }
+]

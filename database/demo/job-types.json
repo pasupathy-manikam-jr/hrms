@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Full-time",
+        "description": "Standard full-time employment with regular hours, stable responsibilities, and full employee benefits within the organization",
+        "status": "active"
+    },
+    {
+        "name": "Part-time",
+        "description": "Reduced working hours",
+        "status": "active"
+    },
+    {
+        "name": "Contract",
+        "description": "Fixed-term employment",
+        "status": "active"
+    },
+    {
+        "name": "Temporary",
+        "description": "Short-term employment arranged to meet immediate or seasonal business needs with flexible duration",
+        "status": "active"
+    },
+    {
+        "name": "Freelance",
+        "description": "Project-based independent work",
+        "status": "active"
+    },
+    {
+        "name": "Internship",
+        "description": "Structured program offering practical work experience for students or recent graduates to develop skills and gain industry exposure",
+        "status": "active"
+    },
+    {
+        "name": "Remote",
+        "description": "Work from anywhere",
+        "status": "active"
+    },
+    {
+        "name": "Hybrid",
+        "description": "Office and remote mix",
+        "status": "active"
+    }
+]

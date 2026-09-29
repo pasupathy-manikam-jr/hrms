@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Company Website",
+        "description": "Direct career page applicants",
+        "status": "active"
+    },
+    {
+        "name": "LinkedIn",
+        "description": "Professional networking platform widely used for recruiting, sourcing, and connecting with qualified candidates across industries",
+        "status": "active"
+    },
+    {
+        "name": "JobStreet",
+        "description": "Popular job portal in Malaysia",
+        "status": "active"
+    },
+    {
+        "name": "Hiredly",
+        "description": "Malaysian job search and employer branding platform",
+        "status": "active"
+    },
+    {
+        "name": "Employee Referral",
+        "description": "Candidates recommended by existing employees through internal referral programs, helping attract trusted and high-quality talent",
+        "status": "active"
+    },
+    {
+        "name": "Recruitment Agency",
+        "description": "External agencies and headhunters that assist in sourcing, screening, and hiring candidates for various roles",
+        "status": "active"
+    },
+    {
+        "name": "Campus Recruitment",
+        "description": "College hiring drives",
+        "status": "active"
+    },
+    {
+        "name": "Walk-in Interview",
+        "description": "Open interview applicants",
+        "status": "active"
+    }
+]

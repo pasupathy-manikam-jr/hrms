@@ -1,0 +1,660 @@
+{
+    "custom_questions": [
+        {
+            "question": "What is your expected salary range?",
+            "type": "text",
+            "options": null,
+            "required": true,
+            "sort_order": 1,
+            "status": "active"
+        },
+        {
+            "question": "Do you have any previous experience in this field?",
+            "type": "radio",
+            "options": ["Yes", "No"],
+            "required": true,
+            "sort_order": 2,
+            "status": "active"
+        },
+        {
+            "question": "Are you willing to relocate for this position?",
+            "type": "radio",
+            "options": ["Yes", "No"],
+            "required": false,
+            "sort_order": 3,
+            "status": "active"
+        },
+        {
+            "question": "What are your career goals for the next 5 years?",
+            "type": "textarea",
+            "options": null,
+            "required": false,
+            "sort_order": 4,
+            "status": "active"
+        },
+        {
+            "question": "Do you have any certifications relevant to this role?",
+            "type": "textarea",
+            "options": null,
+            "required": false,
+            "sort_order": 5,
+            "status": "active"
+        },
+        {
+            "question": "What is your notice period in your current job?",
+            "type": "select",
+            "options": [
+                "Immediate",
+                "15 days",
+                "1 month",
+                "2 months",
+                "3 months"
+            ],
+            "required": true,
+            "sort_order": 6,
+            "status": "active"
+        },
+        {
+            "question": "Are you comfortable working in a team environment?",
+            "type": "radio",
+            "options": ["Yes", "No"],
+            "required": true,
+            "sort_order": 7,
+            "status": "active"
+        },
+        {
+            "question": "Do you have any questions about the company culture?",
+            "type": "textarea",
+            "options": null,
+            "required": false,
+            "sort_order": 8,
+            "status": "active"
+        }
+    ],
+    "candidate_assessments": [
+        {
+            "candidate_email": "muhammad.rosli@email.com",
+            "assessment_name": "Technical Skills Assessment",
+            "assessment_date": "2026-01-20",
+            "score": 85,
+            "max_score": 100,
+            "comments": "Strong technical knowledge demonstrated. Excellent problem-solving skills and good understanding of programming concepts.",
+            "conducted_by": "Brett Conroy"
+        },
+        {
+            "candidate_email": "muhammad.rosli@email.com",
+            "assessment_name": "Aptitude Test",
+            "assessment_date": "2026-01-18",
+            "score": 78,
+            "max_score": 100,
+            "comments": "Good analytical and logical reasoning abilities. Shows potential for learning and adaptation.",
+            "conducted_by": "Brett Conroy"
+        },
+        {
+            "candidate_email": "nur.rahman@email.com",
+            "assessment_name": "Communication Skills Test",
+            "assessment_date": "2026-01-21",
+            "score": 92,
+            "max_score": 100,
+            "comments": "Excellent verbal and written communication skills. Clear articulation and professional presentation.",
+            "conducted_by": "Employee"
+        },
+        {
+            "candidate_email": "nur.rahman@email.com",
+            "assessment_name": "Personality Assessment",
+            "assessment_date": "2026-01-19",
+            "score": 88,
+            "max_score": 100,
+            "comments": "Well-balanced personality traits. Shows good teamwork potential and leadership qualities.",
+            "conducted_by": "Employee"
+        },
+        {
+            "candidate_email": "tan.ming@email.com",
+            "assessment_name": "Domain Knowledge Test",
+            "assessment_date": "2026-01-17",
+            "score": 65,
+            "max_score": 100,
+            "comments": "Basic understanding of domain concepts but lacks depth in specialized areas. Requires additional training.",
+            "conducted_by": "Employee"
+        },
+        {
+            "candidate_email": "tan.ming@email.com",
+            "assessment_name": "Coding Challenge",
+            "assessment_date": "2026-01-22",
+            "score": 95,
+            "max_score": 100,
+            "comments": "Outstanding coding skills with clean, efficient solutions. Demonstrates excellent algorithmic thinking.",
+            "conducted_by": "HR"
+        },
+        {
+            "candidate_email": "arvind.ramasamy@email.com",
+            "assessment_name": "Case Study Analysis",
+            "assessment_date": "2026-01-16",
+            "score": 72,
+            "max_score": 100,
+            "comments": "Good analytical approach to business problems. Shows practical thinking and solution-oriented mindset.",
+            "conducted_by": "Orpha Nolan"
+        },
+        {
+            "candidate_email": "arvind.ramasamy@email.com",
+            "assessment_name": "Group Discussion",
+            "assessment_date": "2026-01-15",
+            "score": 80,
+            "max_score": 100,
+            "comments": "Active participation in group discussions. Good listening skills and ability to contribute meaningfully.",
+            "conducted_by": "Brett Conroy"
+        },
+        {
+            "candidate_email": "ahmad.othman@email.com",
+            "assessment_name": "Presentation Skills",
+            "assessment_date": "2026-01-14",
+            "score": 45,
+            "max_score": 100,
+            "comments": "Needs significant improvement in presentation delivery. Lacks confidence and clarity in communication.",
+            "conducted_by": "Employee"
+        },
+        {
+            "candidate_email": "ahmad.othman@email.com",
+            "assessment_name": "Logical Reasoning Test",
+            "assessment_date": "2026-01-23",
+            "score": null,
+            "max_score": 100,
+            "comments": "Assessment scheduled but not yet completed. Candidate to appear for test next week.",
+            "conducted_by": "Manager"
+        },
+        {
+            "candidate_email": "lim.hao@email.com",
+            "assessment_name": "Technical Skills Assessment",
+            "assessment_date": "2026-01-20",
+            "score": 85,
+            "max_score": 100,
+            "comments": "Strong technical knowledge demonstrated. Excellent problem-solving skills and good understanding of programming concepts.",
+            "conducted_by": "HR"
+        },
+        {
+            "candidate_email": "lim.hao@email.com",
+            "assessment_name": "Aptitude Test",
+            "assessment_date": "2026-01-18",
+            "score": 78,
+            "max_score": 100,
+            "comments": "Good analytical and logical reasoning abilities. Shows potential for learning and adaptation.",
+            "conducted_by": "Orpha Nolan"
+        },
+        {
+            "candidate_email": "kumaresan.muthu@email.com",
+            "assessment_name": "Communication Skills Test",
+            "assessment_date": "2026-01-21",
+            "score": 92,
+            "max_score": 100,
+            "comments": "Excellent verbal and written communication skills. Clear articulation and professional presentation.",
+            "conducted_by": "Employee"
+        },
+        {
+            "candidate_email": "kumaresan.muthu@email.com",
+            "assessment_name": "Personality Assessment",
+            "assessment_date": "2026-01-19",
+            "score": 88,
+            "max_score": 100,
+            "comments": "Well-balanced personality traits. Shows good teamwork potential and leadership qualities.",
+            "conducted_by": "Manager"
+        }
+    ],
+    "onboarding_checklists": [
+        {
+            "name": "Standard Employee Onboarding",
+            "description": "Comprehensive onboarding checklist for all new employees covering documentation, orientation, and initial setup requirements",
+            "is_default": true,
+            "status": "active",
+            "items": [
+                {
+                    "task_name": "Complete Employment Contract",
+                    "description": "Review and sign employment contract and related documents",
+                    "category": "Documentation",
+                    "assigned_to_role": "HR",
+                    "due_day": 1,
+                    "is_required": true,
+                    "sort_order": 1
+                },
+                {
+                    "task_name": "Submit Personal Documents",
+                    "description": "Provide ID proof, address proof, and educational certificates",
+                    "category": "Documentation",
+                    "assigned_to_role": "HR",
+                    "due_day": 1,
+                    "is_required": true,
+                    "sort_order": 2
+                },
+                {
+                    "task_name": "IT Equipment Setup",
+                    "description": "Receive laptop, phone, and other necessary IT equipment",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 1,
+                    "is_required": true,
+                    "sort_order": 3
+                },
+                {
+                    "task_name": "Create System Accounts",
+                    "description": "Setup email, system access, and security credentials",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 2,
+                    "is_required": true,
+                    "sort_order": 4
+                },
+                {
+                    "task_name": "Company Orientation Session",
+                    "description": "Attend company overview and culture orientation",
+                    "category": "Training",
+                    "assigned_to_role": "HR",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 5
+                },
+                {
+                    "task_name": "Office Tour and Introductions",
+                    "description": "Tour office facilities and meet team members",
+                    "category": "Facilities",
+                    "assigned_to_role": "Manager",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 6
+                },
+                {
+                    "task_name": "Benefits Enrollment",
+                    "description": "Complete health insurance and benefits registration",
+                    "category": "HR",
+                    "assigned_to_role": "HR",
+                    "due_day": 5,
+                    "is_required": true,
+                    "sort_order": 7
+                },
+                {
+                    "task_name": "Safety Training",
+                    "description": "Complete workplace safety and emergency procedures training",
+                    "category": "Training",
+                    "assigned_to_role": "HR",
+                    "due_day": 7,
+                    "is_required": true,
+                    "sort_order": 8
+                }
+            ]
+        },
+        {
+            "name": "Technical Team Onboarding",
+            "description": "Specialized onboarding process for technical roles including development environment setup, code access, and technical training",
+            "is_default": false,
+            "status": "active",
+            "items": [
+                {
+                    "task_name": "Development Environment Setup",
+                    "description": "Install and configure development tools and IDEs",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 1,
+                    "is_required": true,
+                    "sort_order": 1
+                },
+                {
+                    "task_name": "Code Repository Access",
+                    "description": "Grant access to version control systems and repositories",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 2,
+                    "is_required": true,
+                    "sort_order": 2
+                },
+                {
+                    "task_name": "Technical Documentation Review",
+                    "description": "Review system architecture and technical documentation",
+                    "category": "Training",
+                    "assigned_to_role": "Manager",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 3
+                },
+                {
+                    "task_name": "Code Standards Training",
+                    "description": "Learn coding standards and development practices",
+                    "category": "Training",
+                    "assigned_to_role": "Manager",
+                    "due_day": 5,
+                    "is_required": true,
+                    "sort_order": 4
+                },
+                {
+                    "task_name": "Project Assignment",
+                    "description": "Assign initial project and define responsibilities",
+                    "category": "Other",
+                    "assigned_to_role": "Manager",
+                    "due_day": 7,
+                    "is_required": true,
+                    "sort_order": 5
+                },
+                {
+                    "task_name": "Security Clearance",
+                    "description": "Complete security training and access permissions",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 6
+                }
+            ]
+        },
+        {
+            "name": "Management Level Onboarding",
+            "description": "Executive and management onboarding checklist including leadership orientation, strategic briefings, and team introductions",
+            "is_default": false,
+            "status": "active",
+            "items": [
+                {
+                    "task_name": "Executive Briefing",
+                    "description": "Strategic overview and company direction briefing",
+                    "category": "Training",
+                    "assigned_to_role": "CEO",
+                    "due_day": 1,
+                    "is_required": true,
+                    "sort_order": 1
+                },
+                {
+                    "task_name": "Leadership Team Introductions",
+                    "description": "Meet with senior leadership and key stakeholders",
+                    "category": "Other",
+                    "assigned_to_role": "CEO",
+                    "due_day": 2,
+                    "is_required": true,
+                    "sort_order": 2
+                },
+                {
+                    "task_name": "Department Overview",
+                    "description": "Review department structure, goals, and challenges",
+                    "category": "Training",
+                    "assigned_to_role": "HR",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 3
+                },
+                {
+                    "task_name": "Budget and Financial Review",
+                    "description": "Review departmental budget and financial responsibilities",
+                    "category": "Training",
+                    "assigned_to_role": "Finance",
+                    "due_day": 5,
+                    "is_required": true,
+                    "sort_order": 4
+                },
+                {
+                    "task_name": "Management Tools Access",
+                    "description": "Setup access to management dashboards and reporting tools",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 5
+                }
+            ]
+        },
+        {
+            "name": "Sales Team Onboarding",
+            "description": "Sales-focused onboarding covering CRM training, product knowledge, sales processes, and territory assignments",
+            "is_default": false,
+            "status": "active",
+            "items": [
+                {
+                    "task_name": "CRM System Training",
+                    "description": "Complete training on customer relationship management system",
+                    "category": "Training",
+                    "assigned_to_role": "Sales Manager",
+                    "due_day": 2,
+                    "is_required": true,
+                    "sort_order": 1
+                },
+                {
+                    "task_name": "Product Knowledge Training",
+                    "description": "Learn about products, services, and value propositions",
+                    "category": "Training",
+                    "assigned_to_role": "Sales Manager",
+                    "due_day": 5,
+                    "is_required": true,
+                    "sort_order": 2
+                },
+                {
+                    "task_name": "Sales Process Training",
+                    "description": "Understand sales methodology and processes",
+                    "category": "Training",
+                    "assigned_to_role": "Sales Manager",
+                    "due_day": 7,
+                    "is_required": true,
+                    "sort_order": 3
+                },
+                {
+                    "task_name": "Territory Assignment",
+                    "description": "Assign sales territory and customer accounts",
+                    "category": "Other",
+                    "assigned_to_role": "Sales Manager",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 4
+                },
+                {
+                    "task_name": "Sales Tools Setup",
+                    "description": "Configure sales tools, presentations, and materials",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 2,
+                    "is_required": true,
+                    "sort_order": 5
+                }
+            ]
+        },
+        {
+            "name": "Remote Employee Onboarding",
+            "description": "Onboarding checklist specifically designed for remote workers including equipment setup, virtual introductions, and remote work policies",
+            "is_default": false,
+            "status": "active",
+            "items": [
+                {
+                    "task_name": "Equipment Shipping",
+                    "description": "Ship laptop, monitor, and other equipment to home address",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 1,
+                    "is_required": true,
+                    "sort_order": 1
+                },
+                {
+                    "task_name": "Remote Setup Assistance",
+                    "description": "Provide technical support for home office setup",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 2,
+                    "is_required": true,
+                    "sort_order": 2
+                },
+                {
+                    "task_name": "Virtual Team Introductions",
+                    "description": "Schedule video calls with team members and stakeholders",
+                    "category": "Other",
+                    "assigned_to_role": "Manager",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 3
+                },
+                {
+                    "task_name": "Remote Work Policy Training",
+                    "description": "Review remote work policies and expectations",
+                    "category": "Training",
+                    "assigned_to_role": "HR",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 4
+                },
+                {
+                    "task_name": "Communication Tools Training",
+                    "description": "Training on video conferencing and collaboration tools",
+                    "category": "Training",
+                    "assigned_to_role": "IT",
+                    "due_day": 2,
+                    "is_required": true,
+                    "sort_order": 5
+                }
+            ]
+        },
+        {
+            "name": "Intern Onboarding Program",
+            "description": "Streamlined onboarding process for interns and temporary employees with essential orientation and basic requirements",
+            "is_default": false,
+            "status": "active",
+            "items": [
+                {
+                    "task_name": "Internship Agreement",
+                    "description": "Complete internship agreement and program expectations",
+                    "category": "Documentation",
+                    "assigned_to_role": "HR",
+                    "due_day": 1,
+                    "is_required": true,
+                    "sort_order": 1
+                },
+                {
+                    "task_name": "Mentor Assignment",
+                    "description": "Assign mentor and schedule regular check-ins",
+                    "category": "Other",
+                    "assigned_to_role": "Manager",
+                    "due_day": 1,
+                    "is_required": true,
+                    "sort_order": 2
+                },
+                {
+                    "task_name": "Project Overview",
+                    "description": "Present internship project goals and deliverables",
+                    "category": "Training",
+                    "assigned_to_role": "Manager",
+                    "due_day": 2,
+                    "is_required": true,
+                    "sort_order": 3
+                },
+                {
+                    "task_name": "Basic System Access",
+                    "description": "Provide limited system access for internship duties",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 1,
+                    "is_required": true,
+                    "sort_order": 4
+                }
+            ]
+        },
+        {
+            "name": "Customer Service Onboarding",
+            "description": "Customer service team onboarding including product training, customer interaction protocols, and support system access",
+            "is_default": false,
+            "status": "active",
+            "items": [
+                {
+                    "task_name": "Customer Service System Training",
+                    "description": "Training on helpdesk and ticketing systems",
+                    "category": "Training",
+                    "assigned_to_role": "CS Manager",
+                    "due_day": 2,
+                    "is_required": true,
+                    "sort_order": 1
+                },
+                {
+                    "task_name": "Product Knowledge Training",
+                    "description": "Comprehensive training on products and services",
+                    "category": "Training",
+                    "assigned_to_role": "CS Manager",
+                    "due_day": 5,
+                    "is_required": true,
+                    "sort_order": 2
+                },
+                {
+                    "task_name": "Customer Interaction Protocols",
+                    "description": "Learn customer communication standards and escalation procedures",
+                    "category": "Training",
+                    "assigned_to_role": "CS Manager",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 3
+                },
+                {
+                    "task_name": "Quality Assurance Training",
+                    "description": "Understand quality metrics and performance standards",
+                    "category": "Training",
+                    "assigned_to_role": "CS Manager",
+                    "due_day": 7,
+                    "is_required": true,
+                    "sort_order": 4
+                }
+            ]
+        },
+        {
+            "name": "Finance Department Onboarding",
+            "description": "Finance team specific onboarding covering financial systems, compliance requirements, and accounting procedures",
+            "is_default": false,
+            "status": "active",
+            "items": [
+                {
+                    "task_name": "Financial Systems Access",
+                    "description": "Setup access to accounting and financial management systems",
+                    "category": "IT Setup",
+                    "assigned_to_role": "IT",
+                    "due_day": 1,
+                    "is_required": true,
+                    "sort_order": 1
+                },
+                {
+                    "task_name": "Compliance Training",
+                    "description": "Training on financial regulations and compliance requirements",
+                    "category": "Training",
+                    "assigned_to_role": "Finance Manager",
+                    "due_day": 3,
+                    "is_required": true,
+                    "sort_order": 2
+                },
+                {
+                    "task_name": "Accounting Procedures Training",
+                    "description": "Learn company accounting processes and procedures",
+                    "category": "Training",
+                    "assigned_to_role": "Finance Manager",
+                    "due_day": 5,
+                    "is_required": true,
+                    "sort_order": 3
+                },
+                {
+                    "task_name": "Financial Reporting Training",
+                    "description": "Training on financial reporting requirements and schedules",
+                    "category": "Training",
+                    "assigned_to_role": "Finance Manager",
+                    "due_day": 7,
+                    "is_required": true,
+                    "sort_order": 4
+                }
+            ]
+        }
+    ],
+    "candidate_onboarding": [
+        {
+            "candidate_email": "tan.ming@email.com",
+            "checklist": "Management Level Onboarding",
+            "start_date": "2026-01-22",
+            "buddy": "Amie Jerde",
+            "status": "Completed"
+        },
+        {
+            "candidate_email": "ahmad.othman@email.com",
+            "checklist": "Management Level Onboarding",
+            "start_date": "2026-01-21",
+            "buddy": "Warren Jones",
+            "status": "In Progress"
+        },
+        {
+            "candidate_email": "lim.hao@email.com",
+            "checklist": "Standard Employee Onboarding",
+            "start_date": "2026-01-19",
+            "buddy": "Dr. Justus Boyer Jr.",
+            "status": "Pending"
+        }
+    ]
+}

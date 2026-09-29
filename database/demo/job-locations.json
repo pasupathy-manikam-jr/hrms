@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Head Office - Kuala Lumpur",
+        "address": "Menara HRM, Jalan Sultan Ismail",
+        "city": "Kuala Lumpur",
+        "state": "Wilayah Persekutuan Kuala Lumpur",
+        "country": "Malaysia",
+        "postal_code": "50250",
+        "is_remote": false,
+        "status": "active"
+    },
+    {
+        "name": "Branch Office - Petaling Jaya",
+        "address": "Jalan SS 7/26, Kelana Jaya",
+        "city": "Petaling Jaya",
+        "state": "Selangor",
+        "country": "Malaysia",
+        "postal_code": "47301",
+        "is_remote": false,
+        "status": "active"
+    },
+    {
+        "name": "Tech Hub - Cyberjaya",
+        "address": "Persiaran Multimedia, Cyber 7",
+        "city": "Cyberjaya",
+        "state": "Selangor",
+        "country": "Malaysia",
+        "postal_code": "63000",
+        "is_remote": false,
+        "status": "active"
+    },
+    {
+        "name": "Development Center - Penang",
+        "address": "Bayan Lepas Technoplex, Phase 4",
+        "city": "Bayan Lepas",
+        "state": "Pulau Pinang",
+        "country": "Malaysia",
+        "postal_code": "11900",
+        "is_remote": false,
+        "status": "active"
+    },
+    {
+        "name": "Regional Office - Johor Bahru",
+        "address": "Jalan Wong Ah Fook",
+        "city": "Johor Bahru",
+        "state": "Johor",
+        "country": "Malaysia",
+        "postal_code": "80000",
+        "is_remote": false,
+        "status": "active"
+    },
+    {
+        "name": "Service Center - Kuching",
+        "address": "Jalan Padungan",
+        "city": "Kuching",
+        "state": "Sarawak",
+        "country": "Malaysia",
+        "postal_code": "93100",
+        "is_remote": false,
+        "status": "active"
+    },
+    {
+        "name": "Remote Work - Peninsular Malaysia",
+        "address": null,
+        "city": null,
+        "state": null,
+        "country": "Malaysia",
+        "postal_code": null,
+        "is_remote": true,
+        "status": "active"
+    },
+    {
+        "name": "Remote Work - Sabah & Sarawak",
+        "address": null,
+        "city": null,
+        "state": null,
+        "country": "Malaysia",
+        "postal_code": null,
+        "is_remote": true,
+        "status": "active"
+    }
+]

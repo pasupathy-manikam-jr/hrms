@@ -1,0 +1,126 @@
+[
+    {
+        "employee_email": "lakin.rahsaan@example.net",
+        "employee_name": "Burdette Rath",
+        "from": {
+            "branch": "Kota Kinabalu",
+            "department": "Information Technology",
+            "department_branch": "Penang",
+            "designation": {
+                "designation": "HR Executive",
+                "department": "Human Resources",
+                "branch": "Cyberjaya"
+            }
+        },
+        "to": {
+            "branch": "Kuala Lumpur HQ",
+            "department": "Finance & Accounting",
+            "department_branch": "Ipoh",
+            "designation": {
+                "designation": "Recruiter",
+                "department": "Human Resources",
+                "branch": "Shah Alam"
+            }
+        },
+        "transfer_date": "2025-06-02",
+        "effective_date": "2025-09-29",
+        "reason": "Transfer to environment better suited for employee development and performance improvement.",
+        "notes": "Error natus blanditiis tenetur est et ipsa rerum qui.",
+        "status": "approved",
+        "approved_by": "katrina28@example.com",
+        "approved_at": "2025-08-09 21:54:37"
+    },
+    {
+        "employee_email": "lakin.rahsaan@example.net",
+        "employee_name": "Burdette Rath",
+        "from": {
+            "branch": "Kota Kinabalu",
+            "department": "Information Technology",
+            "department_branch": "Penang",
+            "designation": {
+                "designation": "HR Executive",
+                "department": "Human Resources",
+                "branch": "Cyberjaya"
+            }
+        },
+        "to": {
+            "branch": "Kuala Lumpur HQ",
+            "department": "Finance & Accounting",
+            "department_branch": "Ipoh",
+            "designation": {
+                "designation": "IT Manager",
+                "department": "Information Technology",
+                "branch": "Cyberjaya"
+            }
+        },
+        "transfer_date": "2025-06-08",
+        "effective_date": "2025-08-30",
+        "reason": "Employee transfer required to support business expansion and new market opportunities in different location.",
+        "notes": "Voluptas et molestiae neque similique labore est ex in et natus recusandae.",
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+    },
+    {
+        "employee_email": "gheathcote@example.net",
+        "employee_name": "Dr. Ashlee Schamberger",
+        "from": {
+            "branch": "Kuala Lumpur HQ",
+            "department": "Human Resources",
+            "department_branch": "Petaling Jaya",
+            "designation": {
+                "designation": "HR Executive",
+                "department": "Human Resources",
+                "branch": "Ipoh"
+            }
+        },
+        "to": {
+            "branch": "Kota Kinabalu",
+            "department": "Finance & Accounting",
+            "department_branch": "Shah Alam",
+            "designation": {
+                "designation": "IT Manager",
+                "department": "Information Technology",
+                "branch": "Kuala Lumpur HQ"
+            }
+        },
+        "transfer_date": "2025-05-18",
+        "effective_date": "2025-06-12",
+        "reason": "Transfer provides employee with career growth opportunities and exposure to different business functions.",
+        "notes": "Dignissimos tempore modi eius in fugit repellendus voluptate repellat vitae quo.",
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+    },
+    {
+        "employee_email": "employee@example.com",
+        "employee_name": "Employee",
+        "from": {
+            "branch": "Shah Alam",
+            "department": "Information Technology",
+            "department_branch": "Petaling Jaya",
+            "designation": {
+                "designation": "HR Manager",
+                "department": "Human Resources",
+                "branch": "Shah Alam"
+            }
+        },
+        "to": {
+            "branch": "Kota Kinabalu",
+            "department": "Information Technology",
+            "department_branch": "Kota Kinabalu",
+            "designation": {
+                "designation": "Recruiter",
+                "department": "Human Resources",
+                "branch": "Shah Alam"
+            }
+        },
+        "transfer_date": "2025-09-08",
+        "effective_date": "2025-10-16",
+        "reason": "Transfer supports succession planning initiatives and leadership development across organization.",
+        "notes": null,
+        "status": "approved",
+        "approved_by": "manager@example.com",
+        "approved_at": "2025-09-09 21:52:41"
+    }
+]

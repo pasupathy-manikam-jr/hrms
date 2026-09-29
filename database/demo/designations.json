@@ -1,0 +1,366 @@
+[
+    {
+        "name": "HR Manager",
+        "department": "Human Resources",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Oversees all HR functions including recruitment, employee relations, and policy implementation",
+        "status": "active"
+    },
+    {
+        "name": "HR Executive",
+        "department": "Human Resources",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Handles day-to-day HR operations, employee onboarding, and maintains employee records",
+        "status": "active"
+    },
+    {
+        "name": "Recruiter",
+        "department": "Human Resources",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Responsible for talent acquisition, conducting interviews, and managing recruitment processes",
+        "status": "active"
+    },
+    {
+        "name": "IT Manager",
+        "department": "Information Technology",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Manages IT infrastructure, oversees technical team, and ensures system security and performance",
+        "status": "active"
+    },
+    {
+        "name": "Software Developer",
+        "department": "Information Technology",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Designs, develops, and maintains software applications and systems",
+        "status": "active"
+    },
+    {
+        "name": "System Administrator",
+        "department": "Information Technology",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Maintains and configures computer systems, networks, and servers",
+        "status": "active"
+    },
+    {
+        "name": "Finance Manager",
+        "department": "Finance & Accounting",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Oversees financial planning, budgeting, and financial reporting activities",
+        "status": "active"
+    },
+    {
+        "name": "HR Manager",
+        "department": "Human Resources",
+        "branch": "Petaling Jaya",
+        "description": "Oversees all HR functions including recruitment, employee relations, and policy implementation",
+        "status": "active"
+    },
+    {
+        "name": "HR Executive",
+        "department": "Human Resources",
+        "branch": "Petaling Jaya",
+        "description": "Handles day-to-day HR operations, employee onboarding, and maintains employee records",
+        "status": "active"
+    },
+    {
+        "name": "IT Manager",
+        "department": "Information Technology",
+        "branch": "Petaling Jaya",
+        "description": "Manages IT infrastructure, oversees technical team, and ensures system security and performance",
+        "status": "active"
+    },
+    {
+        "name": "Software Developer",
+        "department": "Information Technology",
+        "branch": "Petaling Jaya",
+        "description": "Designs, develops, and maintains software applications and systems",
+        "status": "active"
+    },
+    {
+        "name": "System Administrator",
+        "department": "Information Technology",
+        "branch": "Petaling Jaya",
+        "description": "Maintains and configures computer systems, networks, and servers",
+        "status": "active"
+    },
+    {
+        "name": "HR Manager",
+        "department": "Human Resources",
+        "branch": "Penang",
+        "description": "Oversees all HR functions including recruitment, employee relations, and policy implementation",
+        "status": "active"
+    },
+    {
+        "name": "HR Executive",
+        "department": "Human Resources",
+        "branch": "Penang",
+        "description": "Handles day-to-day HR operations, employee onboarding, and maintains employee records",
+        "status": "active"
+    },
+    {
+        "name": "IT Manager",
+        "department": "Information Technology",
+        "branch": "Penang",
+        "description": "Manages IT infrastructure, oversees technical team, and ensures system security and performance",
+        "status": "active"
+    },
+    {
+        "name": "Finance Manager",
+        "department": "Finance & Accounting",
+        "branch": "Penang",
+        "description": "Oversees financial planning, budgeting, and financial reporting activities",
+        "status": "active"
+    },
+    {
+        "name": "Accountant",
+        "department": "Finance & Accounting",
+        "branch": "Penang",
+        "description": "Manages financial records, prepares financial statements, and ensures compliance",
+        "status": "active"
+    },
+    {
+        "name": "HR Manager",
+        "department": "Human Resources",
+        "branch": "Johor Bahru",
+        "description": "Oversees all HR functions including recruitment, employee relations, and policy implementation",
+        "status": "active"
+    },
+    {
+        "name": "IT Manager",
+        "department": "Information Technology",
+        "branch": "Johor Bahru",
+        "description": "Manages IT infrastructure, oversees technical team, and ensures system security and performance",
+        "status": "active"
+    },
+    {
+        "name": "Finance Manager",
+        "department": "Finance & Accounting",
+        "branch": "Johor Bahru",
+        "description": "Oversees financial planning, budgeting, and financial reporting activities",
+        "status": "active"
+    },
+    {
+        "name": "HR Manager",
+        "department": "Human Resources",
+        "branch": "Kuantan",
+        "description": "Oversees all HR functions including recruitment, employee relations, and policy implementation",
+        "status": "active"
+    },
+    {
+        "name": "IT Manager",
+        "department": "Information Technology",
+        "branch": "Kuantan",
+        "description": "Manages IT infrastructure, oversees technical team, and ensures system security and performance",
+        "status": "active"
+    },
+    {
+        "name": "HR Manager",
+        "department": "Human Resources",
+        "branch": "Ipoh",
+        "description": "Oversees all HR functions including recruitment, employee relations, and policy implementation",
+        "status": "active"
+    },
+    {
+        "name": "HR Executive",
+        "department": "Human Resources",
+        "branch": "Ipoh",
+        "description": "Handles day-to-day HR operations, employee onboarding, and maintains employee records",
+        "status": "active"
+    },
+    {
+        "name": "Recruiter",
+        "department": "Human Resources",
+        "branch": "Ipoh",
+        "description": "Responsible for talent acquisition, conducting interviews, and managing recruitment processes",
+        "status": "active"
+    },
+    {
+        "name": "IT Manager",
+        "department": "Information Technology",
+        "branch": "Ipoh",
+        "description": "Manages IT infrastructure, oversees technical team, and ensures system security and performance",
+        "status": "active"
+    },
+    {
+        "name": "Finance Manager",
+        "department": "Finance & Accounting",
+        "branch": "Ipoh",
+        "description": "Oversees financial planning, budgeting, and financial reporting activities",
+        "status": "active"
+    },
+    {
+        "name": "Accountant",
+        "department": "Finance & Accounting",
+        "branch": "Ipoh",
+        "description": "Manages financial records, prepares financial statements, and ensures compliance",
+        "status": "active"
+    },
+    {
+        "name": "Financial Analyst",
+        "department": "Finance & Accounting",
+        "branch": "Ipoh",
+        "description": "Analyzes financial data, prepares reports, and provides insights for decision making",
+        "status": "active"
+    },
+    {
+        "name": "HR Manager",
+        "department": "Human Resources",
+        "branch": "Cyberjaya",
+        "description": "Oversees all HR functions including recruitment, employee relations, and policy implementation",
+        "status": "active"
+    },
+    {
+        "name": "HR Executive",
+        "department": "Human Resources",
+        "branch": "Cyberjaya",
+        "description": "Handles day-to-day HR operations, employee onboarding, and maintains employee records",
+        "status": "active"
+    },
+    {
+        "name": "Recruiter",
+        "department": "Human Resources",
+        "branch": "Cyberjaya",
+        "description": "Responsible for talent acquisition, conducting interviews, and managing recruitment processes",
+        "status": "active"
+    },
+    {
+        "name": "IT Manager",
+        "department": "Information Technology",
+        "branch": "Cyberjaya",
+        "description": "Manages IT infrastructure, oversees technical team, and ensures system security and performance",
+        "status": "active"
+    },
+    {
+        "name": "Software Developer",
+        "department": "Information Technology",
+        "branch": "Cyberjaya",
+        "description": "Designs, develops, and maintains software applications and systems",
+        "status": "active"
+    },
+    {
+        "name": "System Administrator",
+        "department": "Information Technology",
+        "branch": "Cyberjaya",
+        "description": "Maintains and configures computer systems, networks, and servers",
+        "status": "active"
+    },
+    {
+        "name": "Finance Manager",
+        "department": "Finance & Accounting",
+        "branch": "Cyberjaya",
+        "description": "Oversees financial planning, budgeting, and financial reporting activities",
+        "status": "active"
+    },
+    {
+        "name": "HR Manager",
+        "department": "Human Resources",
+        "branch": "Shah Alam",
+        "description": "Oversees all HR functions including recruitment, employee relations, and policy implementation",
+        "status": "active"
+    },
+    {
+        "name": "HR Executive",
+        "department": "Human Resources",
+        "branch": "Shah Alam",
+        "description": "Handles day-to-day HR operations, employee onboarding, and maintains employee records",
+        "status": "active"
+    },
+    {
+        "name": "Recruiter",
+        "department": "Human Resources",
+        "branch": "Shah Alam",
+        "description": "Responsible for talent acquisition, conducting interviews, and managing recruitment processes",
+        "status": "active"
+    },
+    {
+        "name": "IT Manager",
+        "department": "Information Technology",
+        "branch": "Shah Alam",
+        "description": "Manages IT infrastructure, oversees technical team, and ensures system security and performance",
+        "status": "active"
+    },
+    {
+        "name": "Software Developer",
+        "department": "Information Technology",
+        "branch": "Shah Alam",
+        "description": "Designs, develops, and maintains software applications and systems",
+        "status": "active"
+    },
+    {
+        "name": "Finance Manager",
+        "department": "Finance & Accounting",
+        "branch": "Shah Alam",
+        "description": "Oversees financial planning, budgeting, and financial reporting activities",
+        "status": "active"
+    },
+    {
+        "name": "Accountant",
+        "department": "Finance & Accounting",
+        "branch": "Shah Alam",
+        "description": "Manages financial records, prepares financial statements, and ensures compliance",
+        "status": "active"
+    },
+    {
+        "name": "Financial Analyst",
+        "department": "Finance & Accounting",
+        "branch": "Shah Alam",
+        "description": "Analyzes financial data, prepares reports, and provides insights for decision making",
+        "status": "active"
+    },
+    {
+        "name": "HR Manager",
+        "department": "Human Resources",
+        "branch": "Kota Kinabalu",
+        "description": "Oversees all HR functions including recruitment, employee relations, and policy implementation",
+        "status": "active"
+    },
+    {
+        "name": "IT Manager",
+        "department": "Information Technology",
+        "branch": "Kota Kinabalu",
+        "description": "Manages IT infrastructure, oversees technical team, and ensures system security and performance",
+        "status": "active"
+    },
+    {
+        "name": "Software Developer",
+        "department": "Information Technology",
+        "branch": "Kota Kinabalu",
+        "description": "Designs, develops, and maintains software applications and systems",
+        "status": "active"
+    },
+    {
+        "name": "HR Assistant",
+        "department": "Human Resources",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Assists with HR operations",
+        "status": "active"
+    },
+    {
+        "name": "HR Coordinator",
+        "department": "Human Resources",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Coordinates HR and recruitment",
+        "status": "active"
+    },
+    {
+        "name": "Financial Analyst",
+        "department": "Finance & Accounting",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Financial planning and analysis",
+        "status": "active"
+    },
+    {
+        "name": "Accountant",
+        "department": "Finance & Accounting",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Manages general ledgers and bookkeeping",
+        "status": "active"
+    },
+    {
+        "name": "Junior Accountant",
+        "department": "Finance & Accounting",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Assists with accounting and reconciliations",
+        "status": "active"
+    }
+]

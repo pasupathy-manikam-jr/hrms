@@ -1,0 +1,30 @@
+[
+    {
+        "employee_email": "dimitri21@example.com",
+        "employee_name": "Amie Jerde",
+        "termination_type": "retirement",
+        "notice_date": "2025-06-28",
+        "termination_date": "2025-07-28",
+        "notice_period": "30 days",
+        "reason": "Normal Retirement",
+        "description": "Employee reached the standard retirement age and chose to retire with full benefits and pension eligibility.",
+        "status": "completed",
+        "approved_by": "manager@example.com",
+        "approved_at": "2025-08-13T08:03:20.000000Z",
+        "created_at": "2025-09-19T11:30:17.000000Z"
+    },
+    {
+        "employee_email": "lakin.rahsaan@example.net",
+        "employee_name": "Burdette Rath",
+        "termination_type": "retirement",
+        "notice_date": "2025-08-29",
+        "termination_date": "2025-09-12",
+        "notice_period": "2 weeks",
+        "reason": "Normal Retirement",
+        "description": "Employee reached the standard retirement age and chose to retire with full benefits and pension eligibility.",
+        "status": "in progress",
+        "approved_by": "hr@example.com",
+        "approved_at": "2025-09-11T14:30:04.000000Z",
+        "created_at": "2025-09-19T11:30:17.000000Z"
+    }
+]

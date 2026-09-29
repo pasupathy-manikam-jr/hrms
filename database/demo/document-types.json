@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Identity Proof",
+        "description": "A valid government-issued identity document, such as a passport, driver’s license, or national ID, used to verify identity for official and legal purposes, ensuring authenticity and compliance",
+        "is_required": true
+    },
+    {
+        "name": "Address Proof",
+        "description": "Address verification proof",
+        "is_required": true
+    },
+    {
+        "name": "Educational Certificates",
+        "description": "Academic certificates, degrees, diplomas, and transcripts",
+        "is_required": true
+    },
+    {
+        "name": "Experience Letters",
+        "description": "Documents from previous employers confirming work experience, roles, and performance, along with recommendation letters supporting professional credibility",
+        "is_required": false
+    }
+]

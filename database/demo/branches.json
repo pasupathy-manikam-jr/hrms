@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Kuala Lumpur HQ",
+        "address": "Level 16, Menara Bukit Bintang, Jalan Sultan Ismail",
+        "city": "Kuala Lumpur",
+        "state": "Wilayah Persekutuan Kuala Lumpur",
+        "country": "Malaysia",
+        "zip_code": "50250",
+        "phone": "+60 3-4055 3433",
+        "email": "kualalumpurhq@company.com.my",
+        "status": "active"
+    },
+    {
+        "name": "Petaling Jaya",
+        "address": "Level 19, Menara Kelana Jaya, Jalan SS 7/26",
+        "city": "Petaling Jaya",
+        "state": "Selangor",
+        "country": "Malaysia",
+        "zip_code": "47301",
+        "phone": "+60 3-6741 3416",
+        "email": "petalingjaya@company.com.my",
+        "status": "active"
+    },
+    {
+        "name": "Penang",
+        "address": "Level 16, Menara Pulau Tikus, Jalan Burma",
+        "city": "George Town",
+        "state": "Pulau Pinang",
+        "country": "Malaysia",
+        "zip_code": "10350",
+        "phone": "+60 4-2252 0393",
+        "email": "penang@company.com.my",
+        "status": "active"
+    },
+    {
+        "name": "Johor Bahru",
+        "address": "Level 21, Menara Bandar Johor Bahru, Jalan Wong Ah Fook",
+        "city": "Johor Bahru",
+        "state": "Johor",
+        "country": "Malaysia",
+        "zip_code": "80000",
+        "phone": "+60 7-9856 3038",
+        "email": "johorbahru@company.com.my",
+        "status": "active"
+    },
+    {
+        "name": "Kuantan",
+        "address": "Level 14, Menara Teluk Cempedak, Jalan Tun Ismail",
+        "city": "Kuantan",
+        "state": "Pahang",
+        "country": "Malaysia",
+        "zip_code": "25000",
+        "phone": "+60 9-4390 3991",
+        "email": "kuantan@company.com.my",
+        "status": "active"
+    },
+    {
+        "name": "Ipoh",
+        "address": "Level 11, Menara Greentown, Jalan Sultan Idris Shah",
+        "city": "Ipoh",
+        "state": "Perak",
+        "country": "Malaysia",
+        "zip_code": "30000",
+        "phone": "+60 5-6847 3268",
+        "email": "ipoh@company.com.my",
+        "status": "active"
+    },
+    {
+        "name": "Cyberjaya",
+        "address": "Level 16, Menara Cyber 7, Persiaran Multimedia",
+        "city": "Cyberjaya",
+        "state": "Selangor",
+        "country": "Malaysia",
+        "zip_code": "63000",
+        "phone": "+60 3-8046 4773",
+        "email": "cyberjaya@company.com.my",
+        "status": "active"
+    },
+    {
+        "name": "Shah Alam",
+        "address": "Level 17, Menara Seksyen 14, Persiaran Perbandaran",
+        "city": "Shah Alam",
+        "state": "Selangor",
+        "country": "Malaysia",
+        "zip_code": "40000",
+        "phone": "+60 3-3423 4954",
+        "email": "shahalam@company.com.my",
+        "status": "active"
+    },
+    {
+        "name": "Kota Kinabalu",
+        "address": "Level 19, Menara Sutera Harbour, Jalan Tun Fuad Stephens",
+        "city": "Kota Kinabalu",
+        "state": "Sabah",
+        "country": "Malaysia",
+        "zip_code": "88000",
+        "phone": "+60 88-397 892",
+        "email": "kotakinabalu@company.com.my",
+        "status": "active"
+    }
+]

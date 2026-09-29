@@ -1,0 +1,306 @@
+[
+    {
+        "name": "Dell OptiPlex 7090",
+        "asset_type": "Computer Hardware",
+        "serial_number": "DL001",
+        "asset_code": "COM001",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "85000.00",
+        "salvage_value": "8500.00",
+        "useful_life_years": 3,
+        "status": "available",
+        "condition": "new",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Computer Hardware for business operations",
+        "assignments": [
+            {
+                "employee": "Employee",
+                "assigned_at": "2025-09-19",
+                "returned_at": null,
+                "notes": "Asset assigned for regular business use"
+            }
+        ]
+    },
+    {
+        "name": "HP EliteBook 840",
+        "asset_type": "Computer Hardware",
+        "serial_number": "HP001",
+        "asset_code": "COM002",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "95000.00",
+        "salvage_value": "9500.00",
+        "useful_life_years": 3,
+        "status": "available",
+        "condition": "good",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Computer Hardware for business operations",
+        "assignments": []
+    },
+    {
+        "name": "Lenovo ThinkPad X1",
+        "asset_type": "Computer Hardware",
+        "serial_number": "LN001",
+        "asset_code": "COM003",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "120000.00",
+        "salvage_value": "12000.00",
+        "useful_life_years": 3,
+        "status": "available",
+        "condition": "new",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Computer Hardware for business operations",
+        "assignments": []
+    },
+    {
+        "name": "MacBook Pro 16\"",
+        "asset_type": "Computer Hardware",
+        "serial_number": "AP001",
+        "asset_code": "COM004",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "250000.00",
+        "salvage_value": "25000.00",
+        "useful_life_years": 3,
+        "status": "available",
+        "condition": "good",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Computer Hardware for business operations",
+        "assignments": [
+            {
+                "employee": "Employee",
+                "assigned_at": "2025-09-19",
+                "returned_at": null,
+                "notes": "Asset assigned for regular business use"
+            }
+        ]
+    },
+    {
+        "name": "iPhone 14 Pro",
+        "asset_type": "Mobile Devices",
+        "serial_number": "IP001",
+        "asset_code": "MOB001",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "130000.00",
+        "salvage_value": "13000.00",
+        "useful_life_years": 3,
+        "status": "available",
+        "condition": "new",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Mobile Devices for business operations",
+        "assignments": [
+            {
+                "employee": "Employee",
+                "assigned_at": "2025-09-19",
+                "returned_at": null,
+                "notes": "Asset assigned for regular business use"
+            }
+        ]
+    },
+    {
+        "name": "Samsung Galaxy S23",
+        "asset_type": "Mobile Devices",
+        "serial_number": "SM001",
+        "asset_code": "MOB002",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "80000.00",
+        "salvage_value": "8000.00",
+        "useful_life_years": 3,
+        "status": "available",
+        "condition": "good",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Mobile Devices for business operations",
+        "assignments": []
+    },
+    {
+        "name": "iPad Air 5th Gen",
+        "asset_type": "Mobile Devices",
+        "serial_number": "ID001",
+        "asset_code": "MOB003",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "60000.00",
+        "salvage_value": "6000.00",
+        "useful_life_years": 3,
+        "status": "available",
+        "condition": "new",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Mobile Devices for business operations",
+        "assignments": []
+    },
+    {
+        "name": "Canon ImageRunner Printer",
+        "asset_type": "Office Equipment",
+        "serial_number": "CN001",
+        "asset_code": "OFF001",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "45000.00",
+        "salvage_value": "4500.00",
+        "useful_life_years": 5,
+        "status": "available",
+        "condition": "good",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Office Equipment for business operations",
+        "assignments": [
+            {
+                "employee": "Employee",
+                "assigned_at": "2025-09-19",
+                "returned_at": null,
+                "notes": "Asset assigned for regular business use"
+            }
+        ]
+    },
+    {
+        "name": "Epson EcoTank Printer",
+        "asset_type": "Office Equipment",
+        "serial_number": "EP001",
+        "asset_code": "OFF002",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "25000.00",
+        "salvage_value": "2500.00",
+        "useful_life_years": 5,
+        "status": "available",
+        "condition": "new",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Office Equipment for business operations",
+        "assignments": []
+    },
+    {
+        "name": "Brother MFC Scanner",
+        "asset_type": "Office Equipment",
+        "serial_number": "BR001",
+        "asset_code": "OFF003",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "35000.00",
+        "salvage_value": "3500.00",
+        "useful_life_years": 5,
+        "status": "available",
+        "condition": "fair",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Office Equipment for business operations",
+        "assignments": []
+    },
+    {
+        "name": "Executive Office Desk",
+        "asset_type": "Furniture",
+        "serial_number": "FU001",
+        "asset_code": "FUR001",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "15000.00",
+        "salvage_value": "1500.00",
+        "useful_life_years": 10,
+        "status": "available",
+        "condition": "good",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Furniture for business operations",
+        "assignments": [
+            {
+                "employee": "Employee",
+                "assigned_at": "2025-09-19",
+                "returned_at": null,
+                "notes": "Asset assigned for regular business use"
+            }
+        ]
+    },
+    {
+        "name": "Ergonomic Office Chair",
+        "asset_type": "Furniture",
+        "serial_number": "FU002",
+        "asset_code": "FUR002",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "12000.00",
+        "salvage_value": "1200.00",
+        "useful_life_years": 10,
+        "status": "available",
+        "condition": "new",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Furniture for business operations",
+        "assignments": []
+    },
+    {
+        "name": "Conference Table 12-Seater",
+        "asset_type": "Furniture",
+        "serial_number": "FU003",
+        "asset_code": "FUR003",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "35000.00",
+        "salvage_value": "3500.00",
+        "useful_life_years": 10,
+        "status": "available",
+        "condition": "good",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Furniture for business operations",
+        "assignments": []
+    },
+    {
+        "name": "Toyota Camry 2023",
+        "asset_type": "Vehicles",
+        "serial_number": "TC001",
+        "asset_code": "VEH001",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "3500000.00",
+        "salvage_value": "350000.00",
+        "useful_life_years": 8,
+        "status": "available",
+        "condition": "new",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Vehicles for business operations",
+        "assignments": [
+            {
+                "employee": "Employee",
+                "assigned_at": "2025-09-19",
+                "returned_at": null,
+                "notes": "Asset assigned for regular business use"
+            }
+        ]
+    },
+    {
+        "name": "Honda City 2022",
+        "asset_type": "Vehicles",
+        "serial_number": "HC001",
+        "asset_code": "VEH002",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "1800000.00",
+        "salvage_value": "180000.00",
+        "useful_life_years": 8,
+        "status": "available",
+        "condition": "good",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Vehicles for business operations",
+        "assignments": []
+    },
+    {
+        "name": "Cisco Catalyst Switch",
+        "asset_type": "Network Equipment",
+        "serial_number": "CS001",
+        "asset_code": "NET001",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "75000.00",
+        "salvage_value": "7500.00",
+        "useful_life_years": 5,
+        "status": "available",
+        "condition": "new",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Network Equipment for business operations",
+        "assignments": [
+            {
+                "employee": "Employee",
+                "assigned_at": "2025-09-19",
+                "returned_at": null,
+                "notes": "Asset assigned for regular business use"
+            }
+        ]
+    },
+    {
+        "name": "TP-Link Wireless Router",
+        "asset_type": "Network Equipment",
+        "serial_number": "TP001",
+        "asset_code": "NET002",
+        "purchase_date": "2025-01-15",
+        "purchase_cost": "8000.00",
+        "salvage_value": "800.00",
+        "useful_life_years": 5,
+        "status": "available",
+        "condition": "good",
+        "location": "Kuala Lumpur HQ",
+        "description": "Standard Network Equipment for business operations",
+        "assignments": []
+    }
+]

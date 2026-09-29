@@ -1,0 +1,317 @@
+[
+    {
+        "employee": "EMP5082",
+        "date": "2026-07-01",
+        "requested_clock_in": "08:40",
+        "requested_clock_out": "18:15",
+        "reason": "Power outage at office caused attendance system to be unavailable"
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-07-01",
+        "requested_clock_in": "08:45",
+        "requested_clock_out": "18:30",
+        "reason": "Was working from home, forgot to mark attendance on the system"
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-07-01",
+        "requested_clock_in": "08:30",
+        "requested_clock_out": "10:00",
+        "reason": "Traffic jam caused delay, requesting time correction"
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-07-01",
+        "requested_clock_in": "08:35",
+        "requested_clock_out": "18:20",
+        "reason": "Was at client site for meeting, could not access office attendance system"
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-07-01",
+        "requested_clock_in": "09:10",
+        "requested_clock_out": "18:30",
+        "reason": "Was working from home, forgot to mark attendance on the system"
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-07-02",
+        "requested_clock_in": "08:30",
+        "requested_clock_out": "18:00",
+        "reason": "Traffic jam caused delay, requesting time correction"
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-07-02",
+        "requested_clock_in": "08:40",
+        "requested_clock_out": "18:15",
+        "reason": "Power outage at office caused attendance system to be unavailable"
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-07-02",
+        "requested_clock_in": "09:00",
+        "requested_clock_out": "18:00",
+        "reason": "Biometric device malfunction, forgot to punch in/out"
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-07-02",
+        "requested_clock_in": "08:50",
+        "requested_clock_out": "10:10",
+        "reason": "Internet connectivity issue prevented online attendance marking"
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-07-02",
+        "requested_clock_in": "09:00",
+        "requested_clock_out": "18:05",
+        "reason": "Had to leave early for medical appointment, worked from home later"
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-07-03",
+        "requested_clock_in": "08:35",
+        "requested_clock_out": "19:00",
+        "reason": "Was at client site for meeting, could not access office attendance system"
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-07-03",
+        "requested_clock_in": "08:30",
+        "requested_clock_out": "18:00",
+        "reason": "Traffic jam caused delay, requesting time correction"
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-07-03",
+        "requested_clock_in": "09:00",
+        "requested_clock_out": "18:00",
+        "reason": "Biometric device malfunction, forgot to punch in/out"
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-07-03",
+        "requested_clock_in": "08:35",
+        "requested_clock_out": "19:00",
+        "reason": "Was at client site for meeting, could not access office attendance system"
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-07-03",
+        "requested_clock_in": "08:30",
+        "requested_clock_out": "10:00",
+        "reason": "Traffic jam caused delay, requesting time correction"
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-08-03",
+        "requested_clock_in": "08:45",
+        "requested_clock_out": "18:30",
+        "reason": "Was working from home, forgot to mark attendance on the system"
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-08-03",
+        "requested_clock_in": "08:50",
+        "requested_clock_out": "18:20",
+        "reason": "System error during clock in/out, actual time was different"
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-08-03",
+        "requested_clock_in": "08:45",
+        "requested_clock_out": "18:30",
+        "reason": "Was working from home, forgot to mark attendance on the system"
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-08-03",
+        "requested_clock_in": "08:50",
+        "requested_clock_out": "10:10",
+        "reason": "Internet connectivity issue prevented online attendance marking"
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-08-04",
+        "requested_clock_in": "08:45",
+        "requested_clock_out": "18:25",
+        "reason": "ID card was not working properly, security manually logged entry and exit"
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-08-04",
+        "requested_clock_in": "09:00",
+        "requested_clock_out": "18:00",
+        "reason": "Biometric device malfunction, forgot to punch in/out"
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-08-04",
+        "requested_clock_in": "08:50",
+        "requested_clock_out": "18:10",
+        "reason": "Internet connectivity issue prevented online attendance marking"
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-08-04",
+        "requested_clock_in": "08:45",
+        "requested_clock_out": "18:25",
+        "reason": "ID card was not working properly, security manually logged entry and exit"
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-08-04",
+        "requested_clock_in": "09:00",
+        "requested_clock_out": "18:45",
+        "reason": "Had to leave early for medical appointment, worked from home later"
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-08-05",
+        "requested_clock_in": "09:00",
+        "requested_clock_out": "18:45",
+        "reason": "Had to leave early for medical appointment, worked from home later"
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-08-05",
+        "requested_clock_in": "08:50",
+        "requested_clock_out": "18:20",
+        "reason": "System error during clock in/out, actual time was different"
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-08-05",
+        "requested_clock_in": "08:45",
+        "requested_clock_out": "18:30",
+        "reason": "Was working from home, forgot to mark attendance on the system"
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-08-05",
+        "requested_clock_in": "09:00",
+        "requested_clock_out": "18:45",
+        "reason": "Had to leave early for medical appointment, worked from home later"
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-08-06",
+        "requested_clock_in": "08:50",
+        "requested_clock_out": "18:20",
+        "reason": "System error during clock in/out, actual time was different"
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-08-07",
+        "requested_clock_in": "08:45",
+        "requested_clock_out": "18:30",
+        "reason": "Was working from home, forgot to mark attendance on the system"
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-09-01",
+        "requested_clock_in": "08:30",
+        "requested_clock_out": "18:00",
+        "reason": "Traffic jam caused delay, requesting time correction"
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-09-01",
+        "requested_clock_in": "08:50",
+        "requested_clock_out": "18:10",
+        "reason": "Internet connectivity issue prevented online attendance marking"
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-09-01",
+        "requested_clock_in": "08:50",
+        "requested_clock_out": "10:10",
+        "reason": "Internet connectivity issue prevented online attendance marking"
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-09-01",
+        "requested_clock_in": "09:25",
+        "requested_clock_out": "18:00",
+        "reason": "Biometric device malfunction, forgot to punch in/out"
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-09-02",
+        "requested_clock_in": "09:00",
+        "requested_clock_out": "18:00",
+        "reason": "Biometric device malfunction, forgot to punch in/out"
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-09-02",
+        "requested_clock_in": "08:40",
+        "requested_clock_out": "18:15",
+        "reason": "Power outage at office caused attendance system to be unavailable"
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-09-02",
+        "requested_clock_in": "09:00",
+        "requested_clock_out": "18:00",
+        "reason": "Biometric device malfunction, forgot to punch in/out"
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-09-02",
+        "requested_clock_in": "08:35",
+        "requested_clock_out": "11:00",
+        "reason": "Was at client site for meeting, could not access office attendance system"
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-09-02",
+        "requested_clock_in": "08:50",
+        "requested_clock_out": "17:30",
+        "reason": "Internet connectivity issue prevented online attendance marking"
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-09-03",
+        "requested_clock_in": "08:45",
+        "requested_clock_out": "18:30",
+        "reason": "Was working from home, forgot to mark attendance on the system"
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-09-03",
+        "requested_clock_in": "08:40",
+        "requested_clock_out": "18:15",
+        "reason": "Power outage at office caused attendance system to be unavailable"
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-09-03",
+        "requested_clock_in": "08:45",
+        "requested_clock_out": "18:25",
+        "reason": "ID card was not working properly, security manually logged entry and exit"
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-09-03",
+        "requested_clock_in": "08:45",
+        "requested_clock_out": "18:25",
+        "reason": "ID card was not working properly, security manually logged entry and exit"
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-09-03",
+        "requested_clock_in": "08:50",
+        "requested_clock_out": "10:20",
+        "reason": "System error during clock in/out, actual time was different"
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-09-04",
+        "requested_clock_in": "09:00",
+        "requested_clock_out": "18:00",
+        "reason": "Biometric device malfunction, forgot to punch in/out"
+    }
+]

@@ -1,0 +1,92 @@
+[
+    {
+        "employee_email": "merle75@example.net",
+        "employee_name": "Warren Jones",
+        "previous_designation": "HR Manager",
+        "designation": {
+            "designation": "Accountant",
+            "department": "Finance & Accounting",
+            "branch": "Ipoh"
+        },
+        "promotion_date": "2025-09-12",
+        "effective_date": "2025-10-09",
+        "salary_adjustment": "2373.28",
+        "reason": "Successfully completed advanced training and acquired new certifications",
+        "status": "approved"
+    },
+    {
+        "employee_email": "merle75@example.net",
+        "employee_name": "Warren Jones",
+        "previous_designation": "HR Manager",
+        "designation": {
+            "designation": "Financial Analyst",
+            "department": "Finance & Accounting",
+            "branch": "Ipoh"
+        },
+        "promotion_date": "2025-08-22",
+        "effective_date": "2025-09-09",
+        "salary_adjustment": "2375.20",
+        "reason": "Excellent technical skills and innovative approach to problem-solving",
+        "status": "pending"
+    },
+    {
+        "employee_email": "dimitri21@example.com",
+        "employee_name": "Amie Jerde",
+        "previous_designation": "IT Manager",
+        "designation": {
+            "designation": "IT Manager",
+            "department": "Information Technology",
+            "branch": "Ipoh"
+        },
+        "promotion_date": "2025-05-13",
+        "effective_date": "2025-07-17",
+        "salary_adjustment": "1710.22",
+        "reason": "Led successful implementation of new systems and processes",
+        "status": "pending"
+    },
+    {
+        "employee_email": "lakin.rahsaan@example.net",
+        "employee_name": "Burdette Rath",
+        "previous_designation": "HR Executive",
+        "designation": {
+            "designation": "HR Manager",
+            "department": "Human Resources",
+            "branch": "Petaling Jaya"
+        },
+        "promotion_date": "2025-02-04",
+        "effective_date": "2025-07-11",
+        "salary_adjustment": "2312.14",
+        "reason": "Excellent technical skills and innovative approach to problem-solving",
+        "status": "approved"
+    },
+    {
+        "employee_email": "ugleichner@example.com",
+        "employee_name": "Caitlyn Harvey",
+        "previous_designation": "HR Manager",
+        "designation": {
+            "designation": "IT Manager",
+            "department": "Information Technology",
+            "branch": "Kuala Lumpur HQ"
+        },
+        "promotion_date": "2024-11-19",
+        "effective_date": "2025-02-03",
+        "salary_adjustment": null,
+        "reason": "Successfully completed advanced training and acquired new certifications",
+        "status": "rejected"
+    },
+    {
+        "employee_email": "lakin.rahsaan@example.net",
+        "employee_name": "Burdette Rath",
+        "previous_designation": "HR Executive",
+        "designation": {
+            "designation": "HR Executive",
+            "department": "Human Resources",
+            "branch": "Petaling Jaya"
+        },
+        "promotion_date": "2024-10-09",
+        "effective_date": "2025-05-09",
+        "salary_adjustment": "2191.74",
+        "reason": "Led successful implementation of new systems and processes",
+        "status": "pending"
+    }
+]

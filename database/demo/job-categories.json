@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Information Technology",
+        "description": "IT and technical roles",
+        "status": "active"
+    },
+    {
+        "name": "Sales and Marketing",
+        "description": "Sales representatives, marketing specialists, digital marketing, business development, and customer acquisition roles",
+        "status": "active"
+    },
+    {
+        "name": "Human Resources",
+        "description": "HR and people management roles",
+        "status": "active"
+    },
+    {
+        "name": "Finance and Accounting",
+        "description": "Financial and accounting roles including analysts, accountants, auditors, and tax specialists focused on managing finances and ensuring compliance",
+        "status": "active"
+    },
+    {
+        "name": "Operations and Management",
+        "description": "Operations and management roles",
+        "status": "active"
+    },
+    {
+        "name": "Customer Service",
+        "description": "Customer support roles",
+        "status": "active"
+    },
+    {
+        "name": "Engineering",
+        "description": "Engineering and technical roles",
+        "status": "active"
+    }
+]

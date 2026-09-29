@@ -1,0 +1,998 @@
+{
+    "categories": [
+        {
+            "name": "Employment Documents",
+            "description": "Contracts & Letters",
+            "color": "#F59E0B",
+            "is_mandatory": true,
+            "status": "active",
+            "icon": "Briefcase"
+        },
+        {
+            "name": "Financial Documents",
+            "description": "Financial Records",
+            "color": "#EF4444",
+            "is_mandatory": false,
+            "status": "active",
+            "icon": "Banknote"
+        },
+        {
+            "name": "Medical Records",
+            "description": "Includes health certificates, medical reports, fitness records, and insurance documents. Ensures employee health history is documented and accessible when required.",
+            "color": "#8B5CF6",
+            "is_mandatory": false,
+            "status": "active",
+            "icon": "Heart"
+        },
+        {
+            "name": "Legal Documents",
+            "description": "Legal Agreements",
+            "color": "#6B7280",
+            "is_mandatory": false,
+            "status": "active",
+            "icon": "Scale"
+        },
+        {
+            "name": "Training Certificates",
+            "description": "Covers professional certifications, skill development programs, and workshop completions. Helps track employee learning progress and verified skill enhancements.",
+            "color": "#06B6D4",
+            "is_mandatory": false,
+            "status": "active",
+            "icon": "Award"
+        },
+        {
+            "name": "Performance Records",
+            "description": "Performance Reports",
+            "color": "#84CC16",
+            "is_mandatory": false,
+            "status": "active",
+            "icon": "TrendingUp"
+        },
+        {
+            "name": "Personal Documents",
+            "description": "Contains personal details, emergency contacts, family information, and references. Useful for internal records management and quick access during emergencies.",
+            "color": "#F97316",
+            "is_mandatory": true,
+            "status": "active",
+            "icon": "User"
+        },
+        {
+            "name": "Compliance Documents",
+            "description": "Compliance Records",
+            "color": "#DC2626",
+            "is_mandatory": true,
+            "status": "active",
+            "icon": "Shield"
+        }
+    ],
+    "documents": [
+        {
+            "title": "Employee Handbook 2024",
+            "description": "Comprehensive employee handbook covering company policies, procedures, and guidelines for all employees",
+            "category": "Compliance Documents",
+            "version": "2.1",
+            "effective_date": "2024-01-01",
+            "expiry_date": "2024-12-31",
+            "requires_acknowledgment": true,
+            "status": "expired",
+            "download_count": 45,
+            "file_name": "employee_handbook_2024.txt"
+        },
+        {
+            "title": "Code of Conduct Policy",
+            "description": "Company code of conduct and ethical guidelines for professional behavior and workplace standards",
+            "category": "Compliance Documents",
+            "version": "1.5",
+            "effective_date": "2024-01-15",
+            "expiry_date": null,
+            "requires_acknowledgment": true,
+            "status": "published",
+            "download_count": 38,
+            "file_name": "code_of_conduct_policy.txt"
+        },
+        {
+            "title": "Leave Policy Document",
+            "description": "Detailed leave policy including annual leave, sick leave, maternity/paternity leave, and special leave provisions",
+            "category": "Employment Documents",
+            "version": "1.3",
+            "effective_date": "2024-02-01",
+            "expiry_date": "2024-12-31",
+            "requires_acknowledgment": true,
+            "status": "expired",
+            "download_count": 52,
+            "file_name": "leave_policy_2024.txt"
+        },
+        {
+            "title": "Health and Safety Guidelines",
+            "description": "Workplace health and safety procedures, emergency protocols, and safety compliance requirements",
+            "category": "Medical Records",
+            "version": "1.8",
+            "effective_date": "2024-01-10",
+            "expiry_date": null,
+            "requires_acknowledgment": true,
+            "status": "published",
+            "download_count": 29,
+            "file_name": "health_safety_guidelines.txt"
+        },
+        {
+            "title": "Performance Evaluation Form",
+            "description": "Standard performance evaluation form template for annual and quarterly employee assessments",
+            "category": "Performance Records",
+            "version": "2.0",
+            "effective_date": "2024-03-01",
+            "expiry_date": null,
+            "requires_acknowledgment": false,
+            "status": "published",
+            "download_count": 67,
+            "file_name": "performance_evaluation_form.txt"
+        },
+        {
+            "title": "Training and Development Policy",
+            "description": "Company policy on employee training, skill development programs, and professional growth opportunities",
+            "category": "Training Certificates",
+            "version": "1.2",
+            "effective_date": "2024-02-15",
+            "expiry_date": "2025-02-14",
+            "requires_acknowledgment": false,
+            "status": "expired",
+            "download_count": 34,
+            "file_name": "training_development_policy.txt"
+        },
+        {
+            "title": "Remote Work Policy",
+            "description": "Guidelines and procedures for remote work arrangements, equipment, and productivity expectations",
+            "category": "Employment Documents",
+            "version": "1.4",
+            "effective_date": "2024-01-20",
+            "expiry_date": null,
+            "requires_acknowledgment": true,
+            "status": "published",
+            "download_count": 78,
+            "file_name": "remote_work_policy.txt"
+        },
+        {
+            "title": "Expense Reimbursement Policy",
+            "description": "Policy and procedures for business expense reimbursements, travel expenses, and claim processes",
+            "category": "Financial Documents",
+            "version": "1.6",
+            "effective_date": "2024-01-05",
+            "expiry_date": null,
+            "requires_acknowledgment": false,
+            "status": "published",
+            "download_count": 41,
+            "file_name": "expense_reimbursement_policy.txt"
+        },
+        {
+            "title": "Data Privacy and Security Policy",
+            "description": "Company data protection policy, privacy guidelines, and information security protocols",
+            "category": "Legal Documents",
+            "version": "2.3",
+            "effective_date": "2024-01-01",
+            "expiry_date": null,
+            "requires_acknowledgment": true,
+            "status": "published",
+            "download_count": 56,
+            "file_name": "data_privacy_security_policy.txt"
+        },
+        {
+            "title": "Emergency Contact Form",
+            "description": "Standard form for employees to provide emergency contact information and medical details",
+            "category": "Personal Documents",
+            "version": "1.1",
+            "effective_date": "2024-01-01",
+            "expiry_date": null,
+            "requires_acknowledgment": false,
+            "status": "published",
+            "download_count": 90,
+            "file_name": "emergency_contact_form.txt"
+        }
+    ],
+    "acknowledgments": [
+        {
+            "document": "Employee Handbook 2024",
+            "employee_email": "employee@example.com",
+            "employee_name": "Employee",
+            "status": "acknowledged",
+            "due_date": "2025-09-25",
+            "acknowledged_at": "2025-09-19 11:30:20",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.100",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Employee Handbook 2024",
+            "employee_email": "dimitri21@example.com",
+            "employee_name": "Amie Jerde",
+            "status": "acknowledged",
+            "due_date": "2025-09-24",
+            "acknowledged_at": "2025-09-19 11:30:20",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.101",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Employee Handbook 2024",
+            "employee_email": "ugleichner@example.com",
+            "employee_name": "Caitlyn Harvey",
+            "status": "pending",
+            "due_date": "2025-09-23",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Employee Handbook 2024",
+            "employee_email": "lakin.rahsaan@example.net",
+            "employee_name": "Burdette Rath",
+            "status": "acknowledged",
+            "due_date": "2025-09-22",
+            "acknowledged_at": "2025-09-19 11:30:20",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.103",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Employee Handbook 2024",
+            "employee_email": "gheathcote@example.net",
+            "employee_name": "Dr. Ashlee Schamberger",
+            "status": "pending",
+            "due_date": "2025-09-17",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Employee Handbook 2024",
+            "employee_email": "tod.pagac@example.com",
+            "employee_name": "Dr. Justus Boyer Jr.",
+            "status": "acknowledged",
+            "due_date": "2025-09-20",
+            "acknowledged_at": "2025-09-19 11:30:20",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.105",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Employee Handbook 2024",
+            "employee_email": "merle75@example.net",
+            "employee_name": "Warren Jones",
+            "status": "pending",
+            "due_date": "2025-09-19",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Employee Handbook 2024",
+            "employee_email": "gmarquardt@example.net",
+            "employee_name": "Prof. Tommie Howell",
+            "status": "acknowledged",
+            "due_date": "2025-09-18",
+            "acknowledged_at": "2025-09-19 11:30:20",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.107",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Code of Conduct Policy",
+            "employee_email": "employee@example.com",
+            "employee_name": "Employee",
+            "status": "acknowledged",
+            "due_date": "2025-09-24",
+            "acknowledged_at": "2025-09-18 11:30:20",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.100",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Code of Conduct Policy",
+            "employee_email": "dimitri21@example.com",
+            "employee_name": "Amie Jerde",
+            "status": "acknowledged",
+            "due_date": "2025-09-23",
+            "acknowledged_at": "2025-09-18 11:30:20",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.101",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Code of Conduct Policy",
+            "employee_email": "ugleichner@example.com",
+            "employee_name": "Caitlyn Harvey",
+            "status": "pending",
+            "due_date": "2025-09-22",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Code of Conduct Policy",
+            "employee_email": "lakin.rahsaan@example.net",
+            "employee_name": "Burdette Rath",
+            "status": "acknowledged",
+            "due_date": "2025-09-21",
+            "acknowledged_at": "2025-09-18 11:30:20",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.103",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Code of Conduct Policy",
+            "employee_email": "gheathcote@example.net",
+            "employee_name": "Dr. Ashlee Schamberger",
+            "status": "pending",
+            "due_date": "2025-09-17",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Code of Conduct Policy",
+            "employee_email": "tod.pagac@example.com",
+            "employee_name": "Dr. Justus Boyer Jr.",
+            "status": "acknowledged",
+            "due_date": "2025-09-19",
+            "acknowledged_at": "2025-09-18 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.105",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Code of Conduct Policy",
+            "employee_email": "merle75@example.net",
+            "employee_name": "Warren Jones",
+            "status": "pending",
+            "due_date": "2025-09-18",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Code of Conduct Policy",
+            "employee_email": "gmarquardt@example.net",
+            "employee_name": "Prof. Tommie Howell",
+            "status": "acknowledged",
+            "due_date": "2025-09-17",
+            "acknowledged_at": "2025-09-18 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.107",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Leave Policy Document",
+            "employee_email": "employee@example.com",
+            "employee_name": "Employee",
+            "status": "acknowledged",
+            "due_date": "2025-09-23",
+            "acknowledged_at": "2025-09-17 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.100",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Leave Policy Document",
+            "employee_email": "dimitri21@example.com",
+            "employee_name": "Amie Jerde",
+            "status": "acknowledged",
+            "due_date": "2025-09-22",
+            "acknowledged_at": "2025-09-17 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.101",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Leave Policy Document",
+            "employee_email": "ugleichner@example.com",
+            "employee_name": "Caitlyn Harvey",
+            "status": "pending",
+            "due_date": "2025-09-21",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Leave Policy Document",
+            "employee_email": "lakin.rahsaan@example.net",
+            "employee_name": "Burdette Rath",
+            "status": "acknowledged",
+            "due_date": "2025-09-20",
+            "acknowledged_at": "2025-09-17 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.103",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Leave Policy Document",
+            "employee_email": "gheathcote@example.net",
+            "employee_name": "Dr. Ashlee Schamberger",
+            "status": "pending",
+            "due_date": "2025-09-17",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Leave Policy Document",
+            "employee_email": "tod.pagac@example.com",
+            "employee_name": "Dr. Justus Boyer Jr.",
+            "status": "acknowledged",
+            "due_date": "2025-09-18",
+            "acknowledged_at": "2025-09-17 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.105",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Leave Policy Document",
+            "employee_email": "merle75@example.net",
+            "employee_name": "Warren Jones",
+            "status": "pending",
+            "due_date": "2025-09-17",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Leave Policy Document",
+            "employee_email": "gmarquardt@example.net",
+            "employee_name": "Prof. Tommie Howell",
+            "status": "acknowledged",
+            "due_date": "2025-09-16",
+            "acknowledged_at": "2025-09-17 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.107",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Health and Safety Guidelines",
+            "employee_email": "employee@example.com",
+            "employee_name": "Employee",
+            "status": "acknowledged",
+            "due_date": "2025-09-22",
+            "acknowledged_at": "2025-09-16 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.100",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Health and Safety Guidelines",
+            "employee_email": "dimitri21@example.com",
+            "employee_name": "Amie Jerde",
+            "status": "acknowledged",
+            "due_date": "2025-09-21",
+            "acknowledged_at": "2025-09-16 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.101",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Health and Safety Guidelines",
+            "employee_email": "ugleichner@example.com",
+            "employee_name": "Caitlyn Harvey",
+            "status": "pending",
+            "due_date": "2025-09-20",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Health and Safety Guidelines",
+            "employee_email": "lakin.rahsaan@example.net",
+            "employee_name": "Burdette Rath",
+            "status": "acknowledged",
+            "due_date": "2025-09-19",
+            "acknowledged_at": "2025-09-16 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.103",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Health and Safety Guidelines",
+            "employee_email": "gheathcote@example.net",
+            "employee_name": "Dr. Ashlee Schamberger",
+            "status": "pending",
+            "due_date": "2025-09-17",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Health and Safety Guidelines",
+            "employee_email": "tod.pagac@example.com",
+            "employee_name": "Dr. Justus Boyer Jr.",
+            "status": "acknowledged",
+            "due_date": "2025-09-17",
+            "acknowledged_at": "2025-09-16 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.105",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Health and Safety Guidelines",
+            "employee_email": "merle75@example.net",
+            "employee_name": "Warren Jones",
+            "status": "pending",
+            "due_date": "2025-09-16",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Health and Safety Guidelines",
+            "employee_email": "gmarquardt@example.net",
+            "employee_name": "Prof. Tommie Howell",
+            "status": "acknowledged",
+            "due_date": "2025-09-15",
+            "acknowledged_at": "2025-09-16 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.107",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Remote Work Policy",
+            "employee_email": "employee@example.com",
+            "employee_name": "Employee",
+            "status": "acknowledged",
+            "due_date": "2025-09-21",
+            "acknowledged_at": "2025-09-15 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.100",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Remote Work Policy",
+            "employee_email": "dimitri21@example.com",
+            "employee_name": "Amie Jerde",
+            "status": "acknowledged",
+            "due_date": "2025-09-20",
+            "acknowledged_at": "2025-09-15 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.101",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Remote Work Policy",
+            "employee_email": "ugleichner@example.com",
+            "employee_name": "Caitlyn Harvey",
+            "status": "pending",
+            "due_date": "2025-09-19",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Remote Work Policy",
+            "employee_email": "lakin.rahsaan@example.net",
+            "employee_name": "Burdette Rath",
+            "status": "acknowledged",
+            "due_date": "2025-09-18",
+            "acknowledged_at": "2025-09-15 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.103",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Remote Work Policy",
+            "employee_email": "gheathcote@example.net",
+            "employee_name": "Dr. Ashlee Schamberger",
+            "status": "pending",
+            "due_date": "2025-09-17",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Remote Work Policy",
+            "employee_email": "tod.pagac@example.com",
+            "employee_name": "Dr. Justus Boyer Jr.",
+            "status": "acknowledged",
+            "due_date": "2025-09-16",
+            "acknowledged_at": "2025-09-15 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.105",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Remote Work Policy",
+            "employee_email": "merle75@example.net",
+            "employee_name": "Warren Jones",
+            "status": "pending",
+            "due_date": "2025-09-15",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Remote Work Policy",
+            "employee_email": "gmarquardt@example.net",
+            "employee_name": "Prof. Tommie Howell",
+            "status": "acknowledged",
+            "due_date": "2025-09-14",
+            "acknowledged_at": "2025-09-15 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.107",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Data Privacy and Security Policy",
+            "employee_email": "employee@example.com",
+            "employee_name": "Employee",
+            "status": "acknowledged",
+            "due_date": "2025-09-20",
+            "acknowledged_at": "2025-09-14 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.100",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Data Privacy and Security Policy",
+            "employee_email": "dimitri21@example.com",
+            "employee_name": "Amie Jerde",
+            "status": "acknowledged",
+            "due_date": "2025-09-19",
+            "acknowledged_at": "2025-09-14 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.101",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Data Privacy and Security Policy",
+            "employee_email": "ugleichner@example.com",
+            "employee_name": "Caitlyn Harvey",
+            "status": "pending",
+            "due_date": "2025-09-18",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Data Privacy and Security Policy",
+            "employee_email": "lakin.rahsaan@example.net",
+            "employee_name": "Burdette Rath",
+            "status": "acknowledged",
+            "due_date": "2025-09-17",
+            "acknowledged_at": "2025-09-14 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.103",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Data Privacy and Security Policy",
+            "employee_email": "gheathcote@example.net",
+            "employee_name": "Dr. Ashlee Schamberger",
+            "status": "pending",
+            "due_date": "2025-09-17",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Data Privacy and Security Policy",
+            "employee_email": "tod.pagac@example.com",
+            "employee_name": "Dr. Justus Boyer Jr.",
+            "status": "acknowledged",
+            "due_date": "2025-09-15",
+            "acknowledged_at": "2025-09-14 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.105",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+        {
+            "document": "Data Privacy and Security Policy",
+            "employee_email": "merle75@example.net",
+            "employee_name": "Warren Jones",
+            "status": "pending",
+            "due_date": "2025-09-14",
+            "acknowledged_at": null,
+            "acknowledgment_note": null,
+            "ip_address": null,
+            "user_agent": null
+        },
+        {
+            "document": "Data Privacy and Security Policy",
+            "employee_email": "gmarquardt@example.net",
+            "employee_name": "Prof. Tommie Howell",
+            "status": "acknowledged",
+            "due_date": "2025-09-13",
+            "acknowledged_at": "2025-09-14 11:30:21",
+            "acknowledgment_note": "I have read and understood the document contents and agree to comply with the policies outlined.",
+            "ip_address": "192.168.1.107",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        }
+    ],
+    "document_templates": [
+        {
+            "name": "Medical Fitness Certificate",
+            "description": "Template for medical fitness certificates required for employment and health records",
+            "category": "Medical Records",
+            "template_content": "MEDICAL FITNESS CERTIFICATE\n\nPatient Information:\n- Name: {{patient_name}}\n- Age: {{age}} years\n- Gender: {{gender}}\n- Employee ID: {{employee_id}}\n- Department: {{department}}\n\nMedical Examination Details:\n- Examination Date: {{examination_date}}\n- Examining Doctor: {{doctor_name}}\n- Medical Registration No: {{doctor_registration}}\n\nExamination Results:\n- Height: {{height}} cm\n- Weight: {{weight}} kg\n- Blood Pressure: {{blood_pressure}}\n- Pulse Rate: {{pulse_rate}} bpm\n- Vision: {{vision_status}}\n- Hearing: {{hearing_status}}\n\nMedical History:\n{{medical_history}}\n\nCurrent Health Status:\n{{health_status}}\n\nFitness Declaration:\nBased on the medical examination, {{patient_name}} is declared MEDICALLY FIT for employment in the position of {{job_position}}.\n\nValid Until: {{validity_date}}\n\n{{doctor_signature}}\nDr. {{doctor_name}}\n{{doctor_qualification}}\nMedical Officer",
+            "is_default": false,
+            "status": "active"
+        },
+        {
+            "name": "Performance Appraisal Form",
+            "description": "Standard template for employee performance evaluation and appraisal documentation",
+            "category": "Performance Records",
+            "template_content": "PERFORMANCE APPRAISAL FORM\n\nEmployee Information:\n- Name: {{employee_name}}\n- Employee ID: {{employee_id}}\n- Designation: {{designation}}\n- Department: {{department}}\n- Appraisal Period: {{appraisal_period}}\n\nPerformance Ratings:\n1. Job Knowledge: {{job_knowledge_rating}}/5\n2. Quality of Work: {{quality_rating}}/5\n3. Productivity: {{productivity_rating}}/5\n4. Communication: {{communication_rating}}/5\n5. Teamwork: {{teamwork_rating}}/5\n6. Leadership: {{leadership_rating}}/5\n\nOverall Performance: {{overall_rating}}/5\n\nKey Achievements:\n{{key_achievements}}\n\nAreas for Improvement:\n{{improvement_areas}}\n\nGoals for Next Period:\n{{future_goals}}\n\nTraining Recommendations:\n{{training_recommendations}}\n\nEmployee Comments:\n{{employee_comments}}\n\nAppraiser Comments:\n{{appraiser_comments}}\n\n{{employee_signature}}\nEmployee Signature\n\n{{appraiser_signature}}\n{{appraiser_name}}\nReporting Manager\n\nDate: {{appraisal_date}}",
+            "is_default": false,
+            "status": "active"
+        },
+        {
+            "name": "Training Certificate",
+            "description": "Template for training completion certificates and skill development programs",
+            "category": "Training Certificates",
+            "template_content": "CERTIFICATE OF COMPLETION\n\nThis is to certify that\n\n{{participant_name}}\n\nhas successfully completed the training program\n\n\"{{training_title}}\"\n\nTraining Details:\n- Duration: {{training_duration}}\n- Training Period: {{start_date}} to {{end_date}}\n- Training Mode: {{training_mode}}\n- Trainer: {{trainer_name}}\n- Training Hours: {{total_hours}} hours\n\nTopics Covered:\n{{training_topics}}\n\nPerformance:\n- Assessment Score: {{assessment_score}}%\n- Grade: {{grade}}\n- Attendance: {{attendance_percentage}}%\n\nThis certificate is awarded in recognition of successful completion of the training program.\n\nIssued on: {{issue_date}}\n\n{{trainer_signature}}\n{{trainer_name}}\nTraining Coordinator\n\n{{hr_manager_signature}}\n{{hr_manager_name}}\nHuman Resources Manager",
+            "is_default": false,
+            "status": "active"
+        },
+        {
+            "name": "Salary Certificate",
+            "description": "Template for salary certificates required for loan applications and official purposes",
+            "category": "Financial Documents",
+            "template_content": "SALARY CERTIFICATE\n\nTo Whom It May Concern,\n\nThis is to certify that {{employee_name}} is employed with {{company_name}} as {{designation}} in the {{department}} department.\n\nEmployment Details:\n- Employee ID: {{employee_id}}\n- Date of Joining: {{joining_date}}\n- Employment Status: {{employment_status}}\n\nSalary Details:\n- Basic Salary: {{basic_salary}} per month\n- Allowances: {{allowances}} per month\n- Gross Salary: {{gross_salary}} per month\n- Annual Package: {{annual_ctc}}\n\nThis certificate is issued for {{purpose}} as requested by the employee.\n\nIssued on: {{issue_date}}\n\n{{hr_manager_name}}\nHuman Resources Manager\n{{company_name}}\n{{company_seal}}",
+            "is_default": false,
+            "status": "active"
+        },
+        {
+            "name": "Experience Certificate",
+            "description": "Template for employee experience certificates upon resignation or completion of service",
+            "category": "Employment Documents",
+            "template_content": "EXPERIENCE CERTIFICATE\n\nThis is to certify that {{employee_name}} was employed with {{company_name}} from {{joining_date}} to {{leaving_date}}.\n\nEmployment Details:\n- Employee ID: {{employee_id}}\n- Designation: {{designation}}\n- Department: {{department}}\n- Employment Type: {{employment_type}}\n\nDuring the tenure, {{employee_name}} worked with dedication and professionalism. {{he_she}} demonstrated excellent skills in {{key_skills}} and contributed significantly to {{achievements}}.\n\n{{employee_name}} is leaving the organization on {{leaving_date}} due to {{reason_for_leaving}}.\n\nWe wish {{him_her}} all the best for future endeavors.\n\nIssued on: {{issue_date}}\n\n{{hr_manager_name}}\nHuman Resources Manager\n{{company_name}}\n{{company_address}}",
+            "is_default": false,
+            "status": "active"
+        },
+        {
+            "name": "Employment Offer Letter",
+            "description": "Standard template for employment offer letters with position details and compensation",
+            "category": "Employment Documents",
+            "template_content": "Dear {{candidate_name}},\n\nWe are pleased to offer you the position of {{job_title}} at {{company_name}}.\n\nPosition Details:\n- Job Title: {{job_title}}\n- Department: {{department}}\n- Reporting Manager: {{manager_name}}\n- Start Date: {{start_date}}\n- Work Location: {{work_location}}\n\nCompensation Package:\n- Annual Salary: {{annual_salary}}\n- Benefits: {{benefits_package}}\n- Probation Period: {{probation_period}} months\n\nTerms and Conditions:\n- This offer is contingent upon successful completion of background verification\n- Please confirm your acceptance by {{response_deadline}}\n- Notice period: {{notice_period}} days\n\nWe look forward to welcoming you to our team.\n\nBest regards,\n{{hr_manager_name}}\nHuman Resources\n{{company_name}}",
+            "is_default": true,
+            "status": "active"
+        }
+    ],
+    "contract_types": [
+        {
+            "name": "Seasonal Contract",
+            "description": "Seasonal employment contract for specific periods or seasonal business requirements",
+            "default_duration_months": 4,
+            "probation_period_months": 1,
+            "notice_period_days": 15,
+            "is_renewable": true,
+            "status": "active"
+        },
+        {
+            "name": "Probationary Contract",
+            "description": "Initial probationary employment contract with extended evaluation period",
+            "default_duration_months": 6,
+            "probation_period_months": 6,
+            "notice_period_days": 15,
+            "is_renewable": true,
+            "status": "active"
+        },
+        {
+            "name": "Internship Contract",
+            "description": "Educational internship contract for students and recent graduates with learning objectives",
+            "default_duration_months": 3,
+            "probation_period_months": 0,
+            "notice_period_days": 7,
+            "is_renewable": true,
+            "status": "active"
+        },
+        {
+            "name": "Consultant Agreement",
+            "description": "Independent contractor agreement for specialized consulting services and expertise",
+            "default_duration_months": 6,
+            "probation_period_months": 0,
+            "notice_period_days": 30,
+            "is_renewable": true,
+            "status": "active"
+        },
+        {
+            "name": "Temporary Contract",
+            "description": "Short-term temporary contract for immediate staffing needs or project-based work",
+            "default_duration_months": 6,
+            "probation_period_months": 1,
+            "notice_period_days": 15,
+            "is_renewable": true,
+            "status": "active"
+        },
+        {
+            "name": "Part-time Contract",
+            "description": "Part-time employment contract with reduced working hours and pro-rated benefits",
+            "default_duration_months": null,
+            "probation_period_months": 3,
+            "notice_period_days": 30,
+            "is_renewable": false,
+            "status": "active"
+        },
+        {
+            "name": "Fixed-term Contract",
+            "description": "Fixed-term employment contract for specific duration with defined start and end dates",
+            "default_duration_months": 12,
+            "probation_period_months": 3,
+            "notice_period_days": 30,
+            "is_renewable": true,
+            "status": "active"
+        },
+        {
+            "name": "Permanent Full-time",
+            "description": "Permanent employment contract with full-time working hours and comprehensive benefits package",
+            "default_duration_months": null,
+            "probation_period_months": 6,
+            "notice_period_days": 60,
+            "is_renewable": false,
+            "status": "active"
+        }
+    ],
+    "contract_templates": [
+        {
+            "name": "Fixed-Term Contract Template",
+            "description": "Template for fixed-term contracts with specific start and end dates",
+            "contract_type": "Fixed-term Contract",
+            "template_content": "FIXED-TERM EMPLOYMENT CONTRACT\n\nThis Fixed-Term Contract is between {{company_name}} and {{employee_name}}.\n\nCONTRACT PERIOD:\n- Start Date: {{start_date}}\n- End Date: {{end_date}}\n- Duration: {{contract_duration}} months\n\nPOSITION:\nEmployee is engaged as {{job_title}} for the specified contract period.\n\nCOMPENSATION:\n- Monthly Salary: {{monthly_salary}}\n- Total Contract Value: {{total_value}}\n- Payment Terms: {{payment_terms}}\n\nRENEWAL:\nThis contract may be renewed by mutual agreement before expiration.\n\nEARLY TERMINATION:\nContract may be terminated early with {{notice_period}} days notice or payment in lieu.\n\nDELIVERABLES:\n{{project_deliverables}}\n\nSigned:\n{{employee_name}} - Contractor\n{{project_manager}} - Project Manager\nDate: {{contract_date}}",
+            "is_default": false,
+            "status": "active"
+        },
+        {
+            "name": "Part-Time Employment Contract",
+            "description": "Contract template for part-time employees with flexible working arrangements",
+            "contract_type": "Part-time Contract",
+            "template_content": "PART-TIME EMPLOYMENT AGREEMENT\n\nAgreement between {{company_name}} and {{employee_name}} for part-time employment.\n\nWORKING ARRANGEMENT:\n- Position: {{job_title}}\n- Working Hours: {{weekly_hours}} hours per week\n- Schedule: {{work_schedule}}\n- Flexible Hours: {{flexible_arrangement}}\n\nCOMPENSATION:\n- Hourly Rate: {{hourly_rate}}\n- Monthly Salary: {{monthly_salary}}\n- Pro-rated Benefits: {{prorated_benefits}}\n\nBENEFITS:\n- Health Insurance: {{health_coverage}}\n- Paid Leave: {{leave_entitlement}} days annually\n- Professional Development: {{training_budget}}\n\nPERFORMANCE:\nPerformance will be evaluated based on {{performance_metrics}}.\n\nTERMINATION:\nEither party may terminate with {{notice_period}} days notice.\n\nSigned:\n{{employee_name}} - Employee\n{{hr_representative}} - HR Representative\nDate: {{contract_date}}",
+            "is_default": false,
+            "status": "active"
+        },
+        {
+            "name": "Consultant Agreement Template",
+            "description": "Independent contractor agreement for consulting services",
+            "contract_type": "Consultant Agreement",
+            "template_content": "INDEPENDENT CONTRACTOR AGREEMENT\n\nThis Agreement is between {{company_name}} and {{contractor_name}}.\n\nSERVICES:\nContractor will provide {{service_description}} as an independent contractor.\n\nSCOPE OF WORK:\n{{scope_of_work}}\n\nCOMPENSATION:\n- Contract Rate: {{contract_rate}}\n- Payment Schedule: {{payment_schedule}}\n- Total Contract Value: {{total_value}}\n- Expenses: {{expense_policy}}\n\nDELIVERABLES:\n{{deliverables_list}}\n\nTIMELINE:\n- Start Date: {{start_date}}\n- Completion Date: {{end_date}}\n- Milestones: {{project_milestones}}\n\nINTELLECTUAL PROPERTY:\nAll work products belong to {{company_name}}.\n\nCONFIDENTIALITY:\nContractor agrees to maintain strict confidentiality.\n\nTERMINATION:\nEither party may terminate with {{notice_period}} days notice.\n\nSigned:\n{{contractor_name}} - Contractor\n{{project_manager}} - Project Manager\nDate: {{contract_date}}",
+            "is_default": false,
+            "status": "active"
+        },
+        {
+            "name": "Internship Agreement Template",
+            "description": "Agreement template for internship programs and student placements",
+            "contract_type": "Internship Contract",
+            "template_content": "INTERNSHIP AGREEMENT\n\nAgreement between {{company_name}} and {{intern_name}} for internship program.\n\nINTERNSHIP DETAILS:\n- Position: {{internship_title}}\n- Department: {{department}}\n- Duration: {{internship_duration}}\n- Start Date: {{start_date}}\n- End Date: {{end_date}}\n\nSUPERVISION:\n- Supervisor: {{supervisor_name}}\n- Mentor: {{mentor_name}}\n\nLEARNING OBJECTIVES:\n{{learning_objectives}}\n\nCOMPENSATION:\n- Monthly Stipend: {{stipend_amount}}\n- Benefits: {{intern_benefits}}\n\nEVALUATION:\nPerformance will be evaluated {{evaluation_frequency}} based on {{evaluation_criteria}}.\n\nCONFIDENTIALITY:\nIntern agrees to maintain confidentiality of company information.\n\nCERTIFICATE:\nUpon successful completion, intern will receive {{certificate_type}}.\n\nSigned:\n{{intern_name}} - Intern\n{{supervisor_name}} - Supervisor\nDate: {{contract_date}}",
+            "is_default": false,
+            "status": "active"
+        },
+        {
+            "name": "Standard Permanent Employment Contract",
+            "description": "Standard template for permanent full-time employees with comprehensive terms and conditions",
+            "contract_type": "Permanent Full-time",
+            "template_content": "EMPLOYMENT AGREEMENT\n\nThis Employment Agreement is entered into between {{company_name}} and {{employee_name}}.\n\nPOSITION AND DUTIES:\nEmployee is hired as {{job_title}} in the {{department}} department, reporting to {{manager_name}}.\n\nCOMPENSATION:\n- Basic Salary: {{basic_salary}} per annum\n- Allowances: {{allowances}}\n- Benefits: {{benefits}}\n\nEMPLOYMENT TERMS:\n- Start Date: {{start_date}}\n- Probation Period: {{probation_period}} months\n- Notice Period: {{notice_period}} days\n- Working Hours: {{working_hours}}\n\nCONFIDENTIALITY:\nEmployee agrees to maintain confidentiality of company information and trade secrets.\n\nTERMINATION:\nEither party may terminate this agreement with {{notice_period}} days written notice.\n\nThis agreement is governed by the laws of {{jurisdiction}}.\n\nSigned:\n{{employee_name}} - Employee\n{{hr_manager}} - HR Manager\nDate: {{contract_date}}",
+            "is_default": true,
+            "status": "active"
+        }
+    ],
+    "employee_contracts": [
+        {
+            "contract_number": "EMP-2025-0001",
+            "employee_email": "employee@example.com",
+            "employee_name": "Employee",
+            "contract_type": "Permanent Full-time",
+            "start_date": "2025-08-20",
+            "end_date": "2027-06-30",
+            "basic_salary": "120000.00",
+            "terms_conditions": "Standard employment terms and conditions as per company policy. Employee is subject to 6 months probation period and 60 days notice period for termination.",
+            "status": "active"
+        },
+        {
+            "contract_number": "EMP-2025-0002",
+            "employee_email": "dimitri21@example.com",
+            "employee_name": "Amie Jerde",
+            "contract_type": "Permanent Full-time",
+            "start_date": "2025-08-19",
+            "end_date": "2026-06-30",
+            "basic_salary": "85000.00",
+            "terms_conditions": "Standard employment terms and conditions as per company policy. Employee is subject to 6 months probation period and 60 days notice period for termination.",
+            "status": "active"
+        },
+        {
+            "contract_number": "EMP-2025-0003",
+            "employee_email": "ugleichner@example.com",
+            "employee_name": "Caitlyn Harvey",
+            "contract_type": "Fixed-term Contract",
+            "start_date": "2025-08-18",
+            "end_date": "2026-08-18",
+            "basic_salary": "75000.00",
+            "terms_conditions": "Standard employment terms and conditions as per company policy. Employee is subject to 3 months probation period and 30 days notice period for termination.",
+            "status": "active"
+        },
+        {
+            "contract_number": "EMP-2025-0004",
+            "employee_email": "lakin.rahsaan@example.net",
+            "employee_name": "Burdette Rath",
+            "contract_type": "Permanent Full-time",
+            "start_date": "2025-08-17",
+            "end_date": "2026-08-31",
+            "basic_salary": "95000.00",
+            "terms_conditions": "Standard employment terms and conditions as per company policy. Employee is subject to 6 months probation period and 60 days notice period for termination.",
+            "status": "active"
+        },
+        {
+            "contract_number": "EMP-2025-0005",
+            "employee_email": "gheathcote@example.net",
+            "employee_name": "Dr. Ashlee Schamberger",
+            "contract_type": "Fixed-term Contract",
+            "start_date": "2025-08-16",
+            "end_date": "2026-08-16",
+            "basic_salary": "65000.00",
+            "terms_conditions": "Standard employment terms and conditions as per company policy. Employee is subject to 3 months probation period and 30 days notice period for termination.",
+            "status": "active"
+        },
+        {
+            "contract_number": "EMP-2025-0006",
+            "employee_email": "tod.pagac@example.com",
+            "employee_name": "Dr. Justus Boyer Jr.",
+            "contract_type": "Permanent Full-time",
+            "start_date": "2025-08-15",
+            "end_date": "2027-04-30",
+            "basic_salary": "110000.00",
+            "terms_conditions": "Standard employment terms and conditions as per company policy. Employee is subject to 6 months probation period and 60 days notice period for termination.",
+            "status": "active"
+        },
+        {
+            "contract_number": "EMP-2025-0007",
+            "employee_email": "merle75@example.net",
+            "employee_name": "Warren Jones",
+            "contract_type": "Internship Contract",
+            "start_date": "2025-08-14",
+            "end_date": "2025-11-14",
+            "basic_salary": "35000.00",
+            "terms_conditions": "Standard employment terms and conditions as per company policy. Employee is subject to 0 months probation period and 7 days notice period for termination.",
+            "status": "active"
+        },
+        {
+            "contract_number": "EMP-2025-0008",
+            "employee_email": "gmarquardt@example.net",
+            "employee_name": "Prof. Tommie Howell",
+            "contract_type": "Part-time Contract",
+            "start_date": "2025-08-13",
+            "end_date": "2026-11-30",
+            "basic_salary": "55000.00",
+            "terms_conditions": "Standard employment terms and conditions as per company policy. Employee is subject to 3 months probation period and 30 days notice period for termination.",
+            "status": "active"
+        },
+        {
+            "contract_number": "EMP-2025-0009",
+            "employee_email": "jesse33@example.net",
+            "employee_name": "Rosemary Okuneva",
+            "contract_type": "Permanent Full-time",
+            "start_date": "2025-08-12",
+            "end_date": "2028-05-31",
+            "basic_salary": "135000.00",
+            "terms_conditions": "Standard employment terms and conditions as per company policy. Employee is subject to 6 months probation period and 60 days notice period for termination.",
+            "status": "active"
+        },
+        {
+            "contract_number": "EMP-2025-0010",
+            "employee_email": "lynch.leonel@example.com",
+            "employee_name": "Ashlee Bernhard",
+            "contract_type": "Permanent Full-time",
+            "start_date": "2025-08-11",
+            "end_date": "2027-06-30",
+            "basic_salary": "88000.00",
+            "terms_conditions": "Standard employment terms and conditions as per company policy. Employee is subject to 6 months probation period and 60 days notice period for termination.",
+            "status": "active"
+        }
+    ]
+}

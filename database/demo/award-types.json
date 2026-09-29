@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Employee of the Month",
+        "description": "Outstanding performance and dedication award",
+        "status": "active"
+    },
+    {
+        "name": "Employee of the Year",
+        "description": "Annual recognition for exceptional contributions, consistent excellence, and outstanding dedication throughout the year",
+        "status": "active"
+    },
+    {
+        "name": "Excellence Award",
+        "description": "Excellence in quality, innovation, and standards",
+        "status": "active"
+    },
+    {
+        "name": "Innovation Award",
+        "description": "Recognition for outstanding creative thinking, impactful innovative solutions, and continuous contributions toward improving processes, driving efficiency, and fostering a culture of innovation within the organization",
+        "status": "active"
+    },
+    {
+        "name": "Leadership Award",
+        "description": "Recognition for exceptional leadership and team guidance",
+        "status": "active"
+    },
+    {
+        "name": "Customer Service Award",
+        "description": "Recognition for outstanding customer service, consistently high client satisfaction, and excellence in building and maintaining strong, long-term customer relationships through professionalism, responsiveness, and care",
+        "status": "active"
+    }
+]

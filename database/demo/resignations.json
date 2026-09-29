@@ -1,0 +1,80 @@
+[
+    {
+        "employee_email": "tod.pagac@example.com",
+        "employee_name": "Dr. Justus Boyer Jr.",
+        "resignation_date": "2025-08-26",
+        "last_working_day": "2025-09-09",
+        "notice_period": "2 weeks",
+        "reason": "Further Studies",
+        "description": "I have been accepted into a full-time academic program that will enhance my qualifications and require my complete dedication to studies.",
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null,
+        "created_at": "2025-09-19T11:30:17.000000Z"
+    },
+    {
+        "employee_email": "gheathcote@example.net",
+        "employee_name": "Dr. Ashlee Schamberger",
+        "resignation_date": "2025-08-12",
+        "last_working_day": "2025-08-26",
+        "notice_period": "2 weeks",
+        "reason": "Career Change",
+        "description": "I have decided to pursue a different career path that aligns better with my interests and long-term professional objectives.",
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null,
+        "created_at": "2025-09-19T11:30:17.000000Z"
+    },
+    {
+        "employee_email": "gheathcote@example.net",
+        "employee_name": "Dr. Ashlee Schamberger",
+        "resignation_date": "2025-06-22",
+        "last_working_day": "2025-07-22",
+        "notice_period": "1 month",
+        "reason": "Further Studies",
+        "description": "I have been accepted into a full-time academic program that will enhance my qualifications and require my complete dedication to studies.",
+        "status": "rejected",
+        "approved_by": null,
+        "approved_at": null,
+        "created_at": "2025-09-19T11:30:17.000000Z"
+    },
+    {
+        "employee_email": "lakin.rahsaan@example.net",
+        "employee_name": "Burdette Rath",
+        "resignation_date": "2025-06-24",
+        "last_working_day": "2025-08-23",
+        "notice_period": "60 days",
+        "reason": "Career Change",
+        "description": "I have decided to pursue a different career path that aligns better with my interests and long-term professional objectives.",
+        "status": "rejected",
+        "approved_by": null,
+        "approved_at": null,
+        "created_at": "2025-09-19T11:30:17.000000Z"
+    },
+    {
+        "employee_email": "dimitri21@example.com",
+        "employee_name": "Amie Jerde",
+        "resignation_date": "2025-05-19",
+        "last_working_day": "2025-07-18",
+        "notice_period": "60 days",
+        "reason": "Health Issues",
+        "description": "Due to health concerns that require extended treatment and recovery time, I am unable to continue in my current role and need to focus on my well-being.",
+        "status": "completed",
+        "approved_by": "corkery.cheyanne@example.net",
+        "approved_at": "2025-08-21T23:43:09.000000Z",
+        "created_at": "2025-09-19T11:30:17.000000Z"
+    },
+    {
+        "employee_email": "employee@example.com",
+        "employee_name": "Employee",
+        "resignation_date": "2025-06-02",
+        "last_working_day": "2025-08-31",
+        "notice_period": "90 days",
+        "reason": "Starting Own Business",
+        "description": "I have decided to pursue entrepreneurship and start my own business venture, which requires my full-time commitment and attention.",
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null,
+        "created_at": "2025-09-19T11:30:17.000000Z"
+    }
+]

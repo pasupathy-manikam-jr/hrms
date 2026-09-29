@@ -1,0 +1,1098 @@
+{
+    "interview_types": [
+        {
+            "name": "Phone Screening",
+            "description": "Initial phone assessment",
+            "status": "active"
+        },
+        {
+            "name": "Video Interview",
+            "description": "Remote interview conducted via video conferencing to assess candidate suitability, communication, and overall fit for the role",
+            "status": "active"
+        },
+        {
+            "name": "Technical Interview",
+            "description": "Technical skills assessment",
+            "status": "active"
+        },
+        {
+            "name": "Behavioral Interview",
+            "description": "Behavior and culture assessment",
+            "status": "active"
+        },
+        {
+            "name": "Panel Interview",
+            "description": "Interview with multiple interviewers conducted simultaneously to evaluate candidates from different perspectives and ensure a well-rounded assessment",
+            "status": "active"
+        },
+        {
+            "name": "HR Interview",
+            "description": "HR discussion and evaluation",
+            "status": "active"
+        },
+        {
+            "name": "Case Study Interview",
+            "description": "Problem-solving interview where candidates analyze real-world business scenarios and present structured solutions, demonstrating analytical and decision-making skills",
+            "status": "active"
+        },
+        {
+            "name": "Group Interview",
+            "description": "Multiple candidates assessed together",
+            "status": "active"
+        },
+        {
+            "name": "Final Interview",
+            "description": "Final round discussion",
+            "status": "active"
+        },
+        {
+            "name": "Practical Assessment",
+            "description": "Hands-on skills evaluation",
+            "status": "active"
+        }
+    ],
+    "interview_rounds": [
+        {
+            "job_code": "JOB-1-00001",
+            "name": "Technical Assessment",
+            "sequence_number": 1,
+            "description": "Technical skills evaluation and coding assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00001",
+            "name": "Technical Interview",
+            "sequence_number": 2,
+            "description": "In-depth technical discussion with senior developers",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00002",
+            "name": "Behavioral Interview",
+            "sequence_number": 1,
+            "description": "Assessment of leadership skills and behavioral competencies",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00002",
+            "name": "Panel Interview",
+            "sequence_number": 2,
+            "description": "Final panel interview with senior management team",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00003",
+            "name": "Initial Screening",
+            "sequence_number": 1,
+            "description": "Basic qualification and interest assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00003",
+            "name": "Final Interview",
+            "sequence_number": 2,
+            "description": "Final interview with hiring manager",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00004",
+            "name": "Technical Assessment",
+            "sequence_number": 1,
+            "description": "Technical skills evaluation and coding assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00004",
+            "name": "Technical Interview",
+            "sequence_number": 2,
+            "description": "In-depth technical discussion with senior developers",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00005",
+            "name": "Initial Screening",
+            "sequence_number": 1,
+            "description": "Basic qualification and interest assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00005",
+            "name": "Final Interview",
+            "sequence_number": 2,
+            "description": "Final interview with hiring manager",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00006",
+            "name": "Behavioral Interview",
+            "sequence_number": 1,
+            "description": "Assessment of leadership skills and behavioral competencies",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00006",
+            "name": "Panel Interview",
+            "sequence_number": 2,
+            "description": "Final panel interview with senior management team",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00007",
+            "name": "Initial Screening",
+            "sequence_number": 1,
+            "description": "Basic qualification and interest assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00007",
+            "name": "Final Interview",
+            "sequence_number": 2,
+            "description": "Final interview with hiring manager",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00008",
+            "name": "Technical Assessment",
+            "sequence_number": 1,
+            "description": "Technical skills evaluation and coding assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00008",
+            "name": "Technical Interview",
+            "sequence_number": 2,
+            "description": "In-depth technical discussion with senior developers",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00009",
+            "name": "Phone Interview",
+            "sequence_number": 1,
+            "description": "Initial phone interview to assess communication and sales aptitude",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00009",
+            "name": "Sales Presentation",
+            "sequence_number": 2,
+            "description": "Sales pitch presentation and role-playing exercise",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00010",
+            "name": "Technical Assessment",
+            "sequence_number": 1,
+            "description": "Technical skills evaluation and coding assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00010",
+            "name": "Technical Interview",
+            "sequence_number": 2,
+            "description": "In-depth technical discussion with senior developers",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00011",
+            "name": "Initial Screening",
+            "sequence_number": 1,
+            "description": "Basic qualification and interest assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00011",
+            "name": "Final Interview",
+            "sequence_number": 2,
+            "description": "Final interview with hiring manager",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00012",
+            "name": "Initial Screening",
+            "sequence_number": 1,
+            "description": "Basic qualification and interest assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00012",
+            "name": "Final Interview",
+            "sequence_number": 2,
+            "description": "Final interview with hiring manager",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00013",
+            "name": "Initial Screening",
+            "sequence_number": 1,
+            "description": "Basic qualification and interest assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00013",
+            "name": "Final Interview",
+            "sequence_number": 2,
+            "description": "Final interview with hiring manager",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00014",
+            "name": "Initial Screening",
+            "sequence_number": 1,
+            "description": "Basic qualification and interest assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00014",
+            "name": "Final Interview",
+            "sequence_number": 2,
+            "description": "Final interview with hiring manager",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00015",
+            "name": "Initial Screening",
+            "sequence_number": 1,
+            "description": "Basic qualification and interest assessment",
+            "status": "active"
+        },
+        {
+            "job_code": "JOB-1-00015",
+            "name": "Final Interview",
+            "sequence_number": 2,
+            "description": "Final interview with hiring manager",
+            "status": "active"
+        }
+    ],
+    "interviews": [
+        {
+            "candidate_email": "priya.krishnan@email.com",
+            "round": "Initial Screening",
+            "interview_type": "Technical Interview",
+            "scheduled_date": "2026-01-22",
+            "scheduled_time": "10:00:00",
+            "duration": 60,
+            "location": "Conference Room A",
+            "meeting_link": null,
+            "interviewers": ["hr@example.com", "employee@example.com"],
+            "status": "Completed",
+            "feedback_submitted": true
+        },
+        {
+            "candidate_email": "priya.krishnan@email.com",
+            "round": "Final Interview",
+            "interview_type": "Video Interview",
+            "scheduled_date": "2026-01-21",
+            "scheduled_time": "14:00:00",
+            "duration": 45,
+            "location": null,
+            "meeting_link": "https://zoom.us/j/123456789",
+            "interviewers": ["hr@example.com", "employee@example.com"],
+            "status": "Completed",
+            "feedback_submitted": true
+        },
+        {
+            "candidate_email": "chan.xiang@email.com",
+            "round": "Technical Assessment",
+            "interview_type": "HR Interview",
+            "scheduled_date": "2026-01-20",
+            "scheduled_time": "11:00:00",
+            "duration": 30,
+            "location": "HR Office",
+            "meeting_link": null,
+            "interviewers": ["hr@example.com", "employee@example.com"],
+            "status": "Completed",
+            "feedback_submitted": true
+        },
+        {
+            "candidate_email": "chan.xiang@email.com",
+            "round": "Technical Interview",
+            "interview_type": "Panel Interview",
+            "scheduled_date": "2026-01-19",
+            "scheduled_time": "15:30:00",
+            "duration": 90,
+            "location": "Meeting Room B",
+            "meeting_link": null,
+            "interviewers": ["hr@example.com", "employee@example.com"],
+            "status": "Cancelled",
+            "feedback_submitted": true
+        },
+        {
+            "candidate_email": "ng.min@email.com",
+            "round": "Technical Assessment",
+            "interview_type": "Behavioral Interview",
+            "scheduled_date": "2026-01-18",
+            "scheduled_time": "09:30:00",
+            "duration": 60,
+            "location": null,
+            "meeting_link": "https://teams.microsoft.com/meeting/join",
+            "interviewers": ["hr@example.com", "employee@example.com"],
+            "status": "No-show",
+            "feedback_submitted": true
+        },
+        {
+            "candidate_email": "ng.min@email.com",
+            "round": "Technical Interview",
+            "interview_type": "Practical Assessment",
+            "scheduled_date": "2026-01-17",
+            "scheduled_time": "16:00:00",
+            "duration": 45,
+            "location": "Training Room",
+            "meeting_link": null,
+            "interviewers": ["hr@example.com", "employee@example.com"],
+            "status": "Cancelled",
+            "feedback_submitted": true
+        },
+        {
+            "candidate_email": "hairul.nizam@email.com",
+            "round": "Initial Screening",
+            "interview_type": "Phone Screening",
+            "scheduled_date": "2026-01-24",
+            "scheduled_time": "13:00:00",
+            "duration": 30,
+            "location": null,
+            "meeting_link": "https://meet.google.com/abc-defg-hij",
+            "interviewers": ["hr@example.com", "employee@example.com"],
+            "status": "Scheduled",
+            "feedback_submitted": false
+        },
+        {
+            "candidate_email": "hairul.nizam@email.com",
+            "round": "Final Interview",
+            "interview_type": "Case Study Interview",
+            "scheduled_date": "2026-01-25",
+            "scheduled_time": "12:00:00",
+            "duration": 120,
+            "location": "Boardroom",
+            "meeting_link": null,
+            "interviewers": ["hr@example.com", "employee@example.com"],
+            "status": "Scheduled",
+            "feedback_submitted": false
+        },
+        {
+            "candidate_email": "anita.bujang@email.com",
+            "round": "Initial Screening",
+            "interview_type": "Technical Interview",
+            "scheduled_date": "2026-01-22",
+            "scheduled_time": "10:00:00",
+            "duration": 60,
+            "location": "Conference Room A",
+            "meeting_link": null,
+            "interviewers": ["hr@example.com", "employee@example.com"],
+            "status": "Completed",
+            "feedback_submitted": true
+        },
+        {
+            "candidate_email": "anita.bujang@email.com",
+            "round": "Final Interview",
+            "interview_type": "Video Interview",
+            "scheduled_date": "2026-01-21",
+            "scheduled_time": "14:00:00",
+            "duration": 45,
+            "location": null,
+            "meeting_link": "https://zoom.us/j/123456789",
+            "interviewers": ["hr@example.com", "employee@example.com"],
+            "status": "Completed",
+            "feedback_submitted": true
+        }
+    ],
+    "interview_feedback": [
+        {
+            "candidate_email": "priya.krishnan@email.com",
+            "round": "Initial Screening",
+            "interviewer": "hr@example.com",
+            "technical_rating": 4,
+            "communication_rating": 5,
+            "cultural_fit_rating": 4,
+            "overall_rating": 4,
+            "recommendation": "Hire",
+            "strengths": "Strong technical skills, excellent problem-solving abilities, good understanding of software development principles",
+            "weaknesses": "Could improve knowledge in advanced algorithms, needs more experience with cloud technologies",
+            "comments": "Candidate demonstrates solid technical foundation and shows potential for growth. Communication skills are excellent."
+        },
+        {
+            "candidate_email": "priya.krishnan@email.com",
+            "round": "Initial Screening",
+            "interviewer": "employee@example.com",
+            "technical_rating": 4,
+            "communication_rating": 5,
+            "cultural_fit_rating": 4,
+            "overall_rating": 4,
+            "recommendation": "Hire",
+            "strengths": "Strong technical skills, excellent problem-solving abilities, good understanding of software development principles",
+            "weaknesses": "Could improve knowledge in advanced algorithms, needs more experience with cloud technologies",
+            "comments": "Candidate demonstrates solid technical foundation and shows potential for growth. Communication skills are excellent."
+        },
+        {
+            "candidate_email": "priya.krishnan@email.com",
+            "round": "Final Interview",
+            "interviewer": "hr@example.com",
+            "technical_rating": 5,
+            "communication_rating": 4,
+            "cultural_fit_rating": 5,
+            "overall_rating": 5,
+            "recommendation": "Strong Hire",
+            "strengths": "Exceptional technical expertise, innovative thinking, strong leadership potential, excellent team collaboration",
+            "weaknesses": "Sometimes over-engineers solutions, could benefit from more business context understanding",
+            "comments": "Outstanding candidate with impressive technical skills and great cultural fit. Highly recommended for the position."
+        },
+        {
+            "candidate_email": "priya.krishnan@email.com",
+            "round": "Final Interview",
+            "interviewer": "employee@example.com",
+            "technical_rating": 5,
+            "communication_rating": 4,
+            "cultural_fit_rating": 5,
+            "overall_rating": 5,
+            "recommendation": "Strong Hire",
+            "strengths": "Exceptional technical expertise, innovative thinking, strong leadership potential, excellent team collaboration",
+            "weaknesses": "Sometimes over-engineers solutions, could benefit from more business context understanding",
+            "comments": "Outstanding candidate with impressive technical skills and great cultural fit. Highly recommended for the position."
+        },
+        {
+            "candidate_email": "chan.xiang@email.com",
+            "round": "Technical Assessment",
+            "interviewer": "hr@example.com",
+            "technical_rating": 3,
+            "communication_rating": 3,
+            "cultural_fit_rating": 3,
+            "overall_rating": 3,
+            "recommendation": "Maybe",
+            "strengths": "Basic technical knowledge, willing to learn, shows enthusiasm for the role",
+            "weaknesses": "Limited experience with required technologies, needs improvement in communication skills",
+            "comments": "Candidate has potential but requires significant training and mentoring to meet job requirements."
+        },
+        {
+            "candidate_email": "chan.xiang@email.com",
+            "round": "Technical Assessment",
+            "interviewer": "employee@example.com",
+            "technical_rating": 3,
+            "communication_rating": 3,
+            "cultural_fit_rating": 3,
+            "overall_rating": 3,
+            "recommendation": "Maybe",
+            "strengths": "Basic technical knowledge, willing to learn, shows enthusiasm for the role",
+            "weaknesses": "Limited experience with required technologies, needs improvement in communication skills",
+            "comments": "Candidate has potential but requires significant training and mentoring to meet job requirements."
+        },
+        {
+            "candidate_email": "chan.xiang@email.com",
+            "round": "Technical Interview",
+            "interviewer": "hr@example.com",
+            "technical_rating": 2,
+            "communication_rating": 2,
+            "cultural_fit_rating": 2,
+            "overall_rating": 2,
+            "recommendation": "Reject",
+            "strengths": "Shows interest in learning, has basic understanding of fundamental concepts",
+            "weaknesses": "Lacks required technical skills, poor communication, insufficient experience for the role",
+            "comments": "Candidate does not meet the minimum requirements for this position. Significant skill gaps identified."
+        },
+        {
+            "candidate_email": "chan.xiang@email.com",
+            "round": "Technical Interview",
+            "interviewer": "employee@example.com",
+            "technical_rating": 2,
+            "communication_rating": 2,
+            "cultural_fit_rating": 2,
+            "overall_rating": 2,
+            "recommendation": "Reject",
+            "strengths": "Shows interest in learning, has basic understanding of fundamental concepts",
+            "weaknesses": "Lacks required technical skills, poor communication, insufficient experience for the role",
+            "comments": "Candidate does not meet the minimum requirements for this position. Significant skill gaps identified."
+        },
+        {
+            "candidate_email": "ng.min@email.com",
+            "round": "Technical Assessment",
+            "interviewer": "hr@example.com",
+            "technical_rating": 4,
+            "communication_rating": 4,
+            "cultural_fit_rating": 4,
+            "overall_rating": 4,
+            "recommendation": "Maybe",
+            "strengths": "Good technical skills, clear communication, positive attitude, relevant experience",
+            "weaknesses": "Could improve depth in certain technical areas, needs more exposure to large-scale systems",
+            "comments": "Solid candidate with good all-around skills. Would be a good addition to the team with proper onboarding."
+        },
+        {
+            "candidate_email": "ng.min@email.com",
+            "round": "Technical Assessment",
+            "interviewer": "employee@example.com",
+            "technical_rating": 4,
+            "communication_rating": 4,
+            "cultural_fit_rating": 4,
+            "overall_rating": 4,
+            "recommendation": "Hire",
+            "strengths": "Good technical skills, clear communication, positive attitude, relevant experience",
+            "weaknesses": "Could improve depth in certain technical areas, needs more exposure to large-scale systems",
+            "comments": "Solid candidate with good all-around skills. Would be a good addition to the team with proper onboarding."
+        },
+        {
+            "candidate_email": "ng.min@email.com",
+            "round": "Technical Interview",
+            "interviewer": "hr@example.com",
+            "technical_rating": 1,
+            "communication_rating": 1,
+            "cultural_fit_rating": 1,
+            "overall_rating": 1,
+            "recommendation": "Strong Reject",
+            "strengths": "Punctual for the interview, shows basic interest in the field",
+            "weaknesses": "Severely lacking technical skills, poor communication, does not understand job requirements",
+            "comments": "Candidate is not suitable for this position. Major skill and experience gaps that cannot be addressed."
+        },
+        {
+            "candidate_email": "ng.min@email.com",
+            "round": "Technical Interview",
+            "interviewer": "employee@example.com",
+            "technical_rating": 1,
+            "communication_rating": 1,
+            "cultural_fit_rating": 1,
+            "overall_rating": 1,
+            "recommendation": "Strong Reject",
+            "strengths": "Punctual for the interview, shows basic interest in the field",
+            "weaknesses": "Severely lacking technical skills, poor communication, does not understand job requirements",
+            "comments": "Candidate is not suitable for this position. Major skill and experience gaps that cannot be addressed."
+        },
+        {
+            "candidate_email": "anita.bujang@email.com",
+            "round": "Initial Screening",
+            "interviewer": "hr@example.com",
+            "technical_rating": 5,
+            "communication_rating": 5,
+            "cultural_fit_rating": 4,
+            "overall_rating": 5,
+            "recommendation": "Strong Hire",
+            "strengths": "Excellent technical expertise, outstanding communication, proven track record, strong problem-solving",
+            "weaknesses": "May be overqualified for some aspects of the role, high salary expectations",
+            "comments": "Exceptional candidate who would bring significant value to the organization. Highly recommended."
+        },
+        {
+            "candidate_email": "anita.bujang@email.com",
+            "round": "Initial Screening",
+            "interviewer": "employee@example.com",
+            "technical_rating": 5,
+            "communication_rating": 5,
+            "cultural_fit_rating": 4,
+            "overall_rating": 5,
+            "recommendation": "Strong Hire",
+            "strengths": "Excellent technical expertise, outstanding communication, proven track record, strong problem-solving",
+            "weaknesses": "May be overqualified for some aspects of the role, high salary expectations",
+            "comments": "Exceptional candidate who would bring significant value to the organization. Highly recommended."
+        },
+        {
+            "candidate_email": "anita.bujang@email.com",
+            "round": "Final Interview",
+            "interviewer": "hr@example.com",
+            "technical_rating": 3,
+            "communication_rating": 4,
+            "cultural_fit_rating": 3,
+            "overall_rating": 3,
+            "recommendation": "Maybe",
+            "strengths": "Good communication skills, shows enthusiasm, has relevant educational background",
+            "weaknesses": "Limited practical experience, needs training in key technical areas, lacks industry exposure",
+            "comments": "Candidate has potential but would require significant investment in training and development."
+        },
+        {
+            "candidate_email": "anita.bujang@email.com",
+            "round": "Final Interview",
+            "interviewer": "employee@example.com",
+            "technical_rating": 3,
+            "communication_rating": 4,
+            "cultural_fit_rating": 3,
+            "overall_rating": 3,
+            "recommendation": "Maybe",
+            "strengths": "Good communication skills, shows enthusiasm, has relevant educational background",
+            "weaknesses": "Limited practical experience, needs training in key technical areas, lacks industry exposure",
+            "comments": "Candidate has potential but would require significant investment in training and development."
+        },
+        {
+            "candidate_email": "priya.krishnan@email.com",
+            "round": "Initial Screening",
+            "interviewer": "hr@example.com",
+            "technical_rating": 4,
+            "communication_rating": 5,
+            "cultural_fit_rating": 4,
+            "overall_rating": 4,
+            "recommendation": "Hire",
+            "strengths": "Strong technical skills, excellent problem-solving abilities, good understanding of software development principles",
+            "weaknesses": "Could improve knowledge in advanced algorithms, needs more experience with cloud technologies",
+            "comments": "Candidate demonstrates solid technical foundation and shows potential for growth. Communication skills are excellent."
+        },
+        {
+            "candidate_email": "priya.krishnan@email.com",
+            "round": "Final Interview",
+            "interviewer": "hr@example.com",
+            "technical_rating": 5,
+            "communication_rating": 4,
+            "cultural_fit_rating": 5,
+            "overall_rating": 5,
+            "recommendation": "Strong Hire",
+            "strengths": "Exceptional technical expertise, innovative thinking, strong leadership potential, excellent team collaboration",
+            "weaknesses": "Sometimes over-engineers solutions, could benefit from more business context understanding",
+            "comments": "Outstanding candidate with impressive technical skills and great cultural fit. Highly recommended for the position."
+        },
+        {
+            "candidate_email": "chan.xiang@email.com",
+            "round": "Technical Assessment",
+            "interviewer": "employee@example.com",
+            "technical_rating": 3,
+            "communication_rating": 3,
+            "cultural_fit_rating": 3,
+            "overall_rating": 3,
+            "recommendation": "Maybe",
+            "strengths": "Basic technical knowledge, willing to learn, shows enthusiasm for the role",
+            "weaknesses": "Limited experience with required technologies, needs improvement in communication skills",
+            "comments": "Candidate has potential but requires significant training and mentoring to meet job requirements."
+        },
+        {
+            "candidate_email": "chan.xiang@email.com",
+            "round": "Technical Interview",
+            "interviewer": "hr@example.com",
+            "technical_rating": 2,
+            "communication_rating": 2,
+            "cultural_fit_rating": 2,
+            "overall_rating": 2,
+            "recommendation": "Reject",
+            "strengths": "Shows interest in learning, has basic understanding of fundamental concepts",
+            "weaknesses": "Lacks required technical skills, poor communication, insufficient experience for the role",
+            "comments": "Candidate does not meet the minimum requirements for this position. Significant skill gaps identified."
+        },
+        {
+            "candidate_email": "ng.min@email.com",
+            "round": "Technical Assessment",
+            "interviewer": "hr@example.com",
+            "technical_rating": 4,
+            "communication_rating": 4,
+            "cultural_fit_rating": 4,
+            "overall_rating": 4,
+            "recommendation": "Hire",
+            "strengths": "Good technical skills, clear communication, positive attitude, relevant experience",
+            "weaknesses": "Could improve depth in certain technical areas, needs more exposure to large-scale systems",
+            "comments": "Solid candidate with good all-around skills. Would be a good addition to the team with proper onboarding."
+        },
+        {
+            "candidate_email": "ng.min@email.com",
+            "round": "Technical Interview",
+            "interviewer": "employee@example.com",
+            "technical_rating": 1,
+            "communication_rating": 1,
+            "cultural_fit_rating": 1,
+            "overall_rating": 1,
+            "recommendation": "Strong Reject",
+            "strengths": "Punctual for the interview, shows basic interest in the field",
+            "weaknesses": "Severely lacking technical skills, poor communication, does not understand job requirements",
+            "comments": "Candidate is not suitable for this position. Major skill and experience gaps that cannot be addressed."
+        },
+        {
+            "candidate_email": "anita.bujang@email.com",
+            "round": "Initial Screening",
+            "interviewer": "employee@example.com",
+            "technical_rating": 5,
+            "communication_rating": 5,
+            "cultural_fit_rating": 4,
+            "overall_rating": 5,
+            "recommendation": "Strong Hire",
+            "strengths": "Excellent technical expertise, outstanding communication, proven track record, strong problem-solving",
+            "weaknesses": "May be overqualified for some aspects of the role, high salary expectations",
+            "comments": "Exceptional candidate who would bring significant value to the organization. Highly recommended."
+        },
+        {
+            "candidate_email": "anita.bujang@email.com",
+            "round": "Final Interview",
+            "interviewer": "hr@example.com",
+            "technical_rating": 3,
+            "communication_rating": 4,
+            "cultural_fit_rating": 3,
+            "overall_rating": 3,
+            "recommendation": "Maybe",
+            "strengths": "Good communication skills, shows enthusiasm, has relevant educational background",
+            "weaknesses": "Limited practical experience, needs training in key technical areas, lacks industry exposure",
+            "comments": "Candidate has potential but would require significant investment in training and development."
+        }
+    ],
+    "offer_templates": [
+        {
+            "name": "Standard Full-Time Offer",
+            "template_content": "Dear {{candidate_name}},\n\nWe are pleased to extend an offer of employment for the position of {{job_title}} at {{company_name}}. We believe your skills and experience will be a valuable addition to our team.\n\nPosition Details:\n- Job Title: {{job_title}}\n- Department: {{department}}\n- Start Date: {{start_date}}\n- Reporting Manager: {{manager_name}}\n\nCompensation Package:\n- Annual Salary: {{salary}}\n- Performance Bonus: {{bonus}}\n- Benefits: {{benefits}}\n\nTerms and Conditions:\n- Employment Type: Full-time\n- Probation Period: {{probation_period}}\n- Notice Period: {{notice_period}}\n- Working Hours: {{working_hours}}\n\nThis offer is contingent upon successful completion of background verification and reference checks. Please confirm your acceptance by {{offer_expiry_date}}.\n\nWe look forward to welcoming you to our team.\n\nBest regards,\n{{hr_manager_name}}\nHuman Resources\n{{company_name}}",
+            "variables": [
+                "candidate_name",
+                "job_title",
+                "company_name",
+                "department",
+                "start_date",
+                "manager_name",
+                "salary",
+                "bonus",
+                "benefits",
+                "probation_period",
+                "notice_period",
+                "working_hours",
+                "offer_expiry_date",
+                "hr_manager_name"
+            ],
+            "status": "active"
+        },
+        {
+            "name": "Contract Position Offer",
+            "template_content": "Dear {{candidate_name}},\n\nWe are pleased to offer you a contract position for {{job_title}} at {{company_name}}.\n\nContract Details:\n- Position: {{job_title}}\n- Contract Duration: {{contract_duration}}\n- Start Date: {{start_date}}\n- End Date: {{end_date}}\n- Location: {{work_location}}\n\nCompensation:\n- Contract Rate: {{contract_rate}}\n- Payment Terms: {{payment_terms}}\n- Additional Benefits: {{contract_benefits}}\n\nTerms:\n- Contract Type: {{contract_type}}\n- Renewal Options: {{renewal_terms}}\n- Termination Clause: {{termination_clause}}\n\nPlease review the attached contract agreement and confirm your acceptance by {{acceptance_deadline}}.\n\nBest regards,\n{{hr_contact_name}}\n{{company_name}}",
+            "variables": [
+                "candidate_name",
+                "job_title",
+                "company_name",
+                "contract_duration",
+                "start_date",
+                "end_date",
+                "work_location",
+                "contract_rate",
+                "payment_terms",
+                "contract_benefits",
+                "contract_type",
+                "renewal_terms",
+                "termination_clause",
+                "acceptance_deadline",
+                "hr_contact_name"
+            ],
+            "status": "active"
+        },
+        {
+            "name": "Senior Management Offer",
+            "template_content": "Dear {{candidate_name}},\n\nOn behalf of {{company_name}}, I am delighted to extend an offer for the position of {{job_title}}.\n\nExecutive Position Details:\n- Title: {{job_title}}\n- Division: {{division}}\n- Reporting: {{reporting_structure}}\n- Start Date: {{start_date}}\n\nExecutive Compensation Package:\n- Base Salary: {{base_salary}}\n- Variable Compensation: {{variable_pay}}\n- Equity/Stock Options: {{equity_details}}\n- Executive Benefits: {{executive_benefits}}\n- Car Allowance: {{car_allowance}}\n- Club Membership: {{club_membership}}\n\nAdditional Terms:\n- Employment Agreement: {{employment_agreement}}\n- Confidentiality: {{confidentiality_terms}}\n- Non-Compete: {{non_compete_clause}}\n\nThis offer reflects our confidence in your ability to contribute significantly to our organization's success.\n\nPlease confirm your acceptance by {{response_deadline}}.\n\nSincerely,\n{{ceo_name}}\nChief Executive Officer\n{{company_name}}",
+            "variables": [
+                "candidate_name",
+                "company_name",
+                "job_title",
+                "division",
+                "reporting_structure",
+                "start_date",
+                "base_salary",
+                "variable_pay",
+                "equity_details",
+                "executive_benefits",
+                "car_allowance",
+                "club_membership",
+                "employment_agreement",
+                "confidentiality_terms",
+                "non_compete_clause",
+                "response_deadline",
+                "ceo_name"
+            ],
+            "status": "active"
+        },
+        {
+            "name": "Internship Offer",
+            "template_content": "Dear {{candidate_name}},\n\nCongratulations! We are pleased to offer you an internship position at {{company_name}}.\n\nInternship Details:\n- Position: {{internship_title}}\n- Department: {{department}}\n- Duration: {{internship_duration}}\n- Start Date: {{start_date}}\n- End Date: {{end_date}}\n- Supervisor: {{supervisor_name}}\n\nInternship Benefits:\n- Monthly Stipend: {{stipend_amount}}\n- Learning Opportunities: {{learning_programs}}\n- Mentorship: {{mentorship_details}}\n- Certificate: {{certificate_details}}\n\nExpectations:\n- Working Hours: {{working_hours}}\n- Project Assignments: {{project_details}}\n- Performance Evaluation: {{evaluation_process}}\n\nWe are excited to have you join our team and contribute to your professional development.\n\nPlease confirm your acceptance by {{confirmation_date}}.\n\nBest regards,\n{{internship_coordinator}}\n{{company_name}}",
+            "variables": [
+                "candidate_name",
+                "company_name",
+                "internship_title",
+                "department",
+                "internship_duration",
+                "start_date",
+                "end_date",
+                "supervisor_name",
+                "stipend_amount",
+                "learning_programs",
+                "mentorship_details",
+                "certificate_details",
+                "working_hours",
+                "project_details",
+                "evaluation_process",
+                "confirmation_date",
+                "internship_coordinator"
+            ],
+            "status": "active"
+        },
+        {
+            "name": "Remote Work Offer",
+            "template_content": "Dear {{candidate_name}},\n\nWe are excited to offer you the remote position of {{job_title}} at {{company_name}}.\n\nRemote Work Details:\n- Position: {{job_title}}\n- Work Model: {{work_model}}\n- Time Zone: {{time_zone}}\n- Start Date: {{start_date}}\n- Team: {{team_name}}\n\nCompensation & Benefits:\n- Annual Salary: {{annual_salary}}\n- Remote Work Allowance: {{remote_allowance}}\n- Equipment Provided: {{equipment_list}}\n- Health Benefits: {{health_benefits}}\n- Vacation Days: {{vacation_days}}\n\nRemote Work Policies:\n- Communication Tools: {{communication_tools}}\n- Meeting Schedule: {{meeting_schedule}}\n- Performance Tracking: {{performance_metrics}}\n- Office Visits: {{office_visit_requirements}}\n\nTechnology Setup:\n- Laptop/Desktop: {{computer_specs}}\n- Software Licenses: {{software_provided}}\n- Internet Reimbursement: {{internet_allowance}}\n\nPlease confirm your acceptance and provide your shipping address for equipment delivery by {{acceptance_date}}.\n\nWelcome to the team!\n\n{{hiring_manager_name}}\n{{company_name}}",
+            "variables": [
+                "candidate_name",
+                "job_title",
+                "company_name",
+                "work_model",
+                "time_zone",
+                "start_date",
+                "team_name",
+                "annual_salary",
+                "remote_allowance",
+                "equipment_list",
+                "health_benefits",
+                "vacation_days",
+                "communication_tools",
+                "meeting_schedule",
+                "performance_metrics",
+                "office_visit_requirements",
+                "computer_specs",
+                "software_provided",
+                "internet_allowance",
+                "acceptance_date",
+                "hiring_manager_name"
+            ],
+            "status": "active"
+        },
+        {
+            "name": "Part-Time Position Offer",
+            "template_content": "Dear {{candidate_name}},\n\nWe are pleased to offer you a part-time position as {{job_title}} at {{company_name}}.\n\nPart-Time Position Details:\n- Job Title: {{job_title}}\n- Department: {{department}}\n- Working Hours: {{part_time_hours}}\n- Schedule: {{work_schedule}}\n- Start Date: {{start_date}}\n\nCompensation:\n- Hourly Rate: {{hourly_rate}}\n- Monthly Salary: {{monthly_salary}}\n- Pro-rated Benefits: {{prorated_benefits}}\n\nWork Arrangement:\n- Flexible Hours: {{flexible_hours}}\n- Core Hours: {{core_hours}}\n- Remote Work: {{remote_options}}\n\nBenefits (Pro-rated):\n- Health Insurance: {{health_coverage}}\n- Paid Time Off: {{pto_days}}\n- Professional Development: {{training_budget}}\n\nThis position offers excellent work-life balance while contributing meaningfully to our organization.\n\nPlease respond by {{response_date}}.\n\nBest regards,\n{{hr_representative}}\n{{company_name}}",
+            "variables": [
+                "candidate_name",
+                "job_title",
+                "company_name",
+                "department",
+                "part_time_hours",
+                "work_schedule",
+                "start_date",
+                "hourly_rate",
+                "monthly_salary",
+                "prorated_benefits",
+                "flexible_hours",
+                "core_hours",
+                "remote_options",
+                "health_coverage",
+                "pto_days",
+                "training_budget",
+                "response_date",
+                "hr_representative"
+            ],
+            "status": "active"
+        }
+    ],
+    "offers": [
+        {
+            "candidate_email": "muhammad.rosli@email.com",
+            "job_code": "JOB-1-00001",
+            "offer_date": "2026-01-23",
+            "salary": 120000.0,
+            "bonus": null,
+            "benefits": "Comprehensive health insurance coverage for you and your family. Provident fund with company matching. Annual performance-based bonus. Professional development budget for courses and certifications. Flexible working hours and remote work options. Modern office with latest technology and equipment. Team building activities and company events. Paid time off and sick leave.",
+            "start_date": "2026-02-13",
+            "expiration_date": "2026-02-02",
+            "status": "Negotiating",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": false
+        },
+        {
+            "candidate_email": "nur.rahman@email.com",
+            "job_code": "JOB-1-00002",
+            "offer_date": "2026-01-21",
+            "salary": 85000.0,
+            "bonus": null,
+            "benefits": "Comprehensive medical coverage including dental and vision. Annual leave and paid holidays. Professional training and development programs. Performance-based incentives and bonuses. Modern office environment with collaborative spaces. Employee wellness programs. Career advancement opportunities. Company-sponsored team outings and events.",
+            "start_date": "2026-02-11",
+            "expiration_date": "2026-01-31",
+            "status": "Expired",
+            "response_date": "2026-08-21",
+            "decline_reason": null,
+            "approved": true
+        },
+        {
+            "candidate_email": "tan.ming@email.com",
+            "job_code": "JOB-1-00003",
+            "offer_date": "2026-01-23",
+            "salary": 75000.0,
+            "bonus": null,
+            "benefits": "Remote work allowance for home office setup. Comprehensive health and wellness benefits. Flexible work schedule to maintain work-life balance. Professional development opportunities and HR certifications support. Paid vacation, sick leave, and personal days. Company-provided laptop and necessary equipment. Virtual team building activities. Annual performance reviews with salary adjustments.",
+            "start_date": "2026-02-20",
+            "expiration_date": "2026-02-06",
+            "status": "Accepted",
+            "response_date": "2026-08-21",
+            "decline_reason": null,
+            "approved": false
+        },
+        {
+            "candidate_email": "arvind.ramasamy@email.com",
+            "job_code": "JOB-1-00004",
+            "offer_date": "2026-01-20",
+            "salary": 70000.0,
+            "bonus": null,
+            "benefits": "Comprehensive health insurance for you and dependents. Annual learning and development budget for courses and conferences. Flexible working hours with option for remote work. Modern office with ergonomic workstations. Latest technology and tools. Collaborative and innovative work environment. Regular team events and hackathons. Competitive salary with annual reviews. Paid time off and holidays.",
+            "start_date": "2026-02-17",
+            "expiration_date": "2026-02-03",
+            "status": "Declined",
+            "response_date": "2026-08-21",
+            "decline_reason": null,
+            "approved": true
+        },
+        {
+            "candidate_email": "ahmad.othman@email.com",
+            "job_code": "JOB-1-00005",
+            "offer_date": "2026-01-23",
+            "salary": 100000.0,
+            "bonus": null,
+            "benefits": "Comprehensive health coverage including medical, dental, and vision. Professional training programs and certifications support. Career growth opportunities within the analytics team. Collaborative work environment with experienced mentors. Modern office with latest analytics tools and software. Flexible work arrangements. Paid vacation and sick leave. Performance-based bonuses. Employee assistance programs.",
+            "start_date": "2026-02-06",
+            "expiration_date": "2026-01-30",
+            "status": "Accepted",
+            "response_date": "2026-08-21",
+            "decline_reason": null,
+            "approved": false
+        },
+        {
+            "candidate_email": "lim.hao@email.com",
+            "job_code": "JOB-1-00006",
+            "offer_date": "2026-01-22",
+            "salary": 65000.0,
+            "bonus": null,
+            "benefits": "Health insurance, Bonus, Professional development",
+            "start_date": "2026-02-05",
+            "expiration_date": "2026-01-29",
+            "status": "Accepted",
+            "response_date": "2026-08-21",
+            "decline_reason": null,
+            "approved": true
+        },
+        {
+            "candidate_email": "kumaresan.muthu@email.com",
+            "job_code": "JOB-1-00007",
+            "offer_date": "2026-01-23",
+            "salary": 35000.0,
+            "bonus": null,
+            "benefits": "Creative environment, Health benefits, Equipment allowance",
+            "start_date": "2026-02-13",
+            "expiration_date": "2026-02-02",
+            "status": "Declined",
+            "response_date": "2026-08-21",
+            "decline_reason": null,
+            "approved": false
+        },
+        {
+            "candidate_email": "mohd.abdullah@email.com",
+            "job_code": "JOB-1-00008",
+            "offer_date": "2026-01-21",
+            "salary": 60000.0,
+            "bonus": null,
+            "benefits": "Health insurance, Certification budget, Remote work",
+            "start_date": "2026-02-11",
+            "expiration_date": "2026-01-31",
+            "status": "Negotiating",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": true
+        },
+        {
+            "candidate_email": "wong.seng@email.com",
+            "job_code": "JOB-1-00009",
+            "offer_date": "2026-01-23",
+            "salary": 105000.0,
+            "bonus": null,
+            "benefits": "Commission structure, Health benefits, Travel allowance",
+            "start_date": "2026-02-13",
+            "expiration_date": "2026-02-02",
+            "status": "Draft",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": false
+        },
+        {
+            "candidate_email": "daniel.jugah@email.com",
+            "job_code": "JOB-1-00010",
+            "offer_date": "2026-01-21",
+            "salary": 80000.0,
+            "bonus": null,
+            "benefits": "Health insurance, Learning opportunities, Flexible schedule",
+            "start_date": "2026-02-11",
+            "expiration_date": "2026-01-31",
+            "status": "Sent",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": true
+        },
+        {
+            "candidate_email": "syafiq.kamarudin@email.com",
+            "job_code": "JOB-1-00011",
+            "offer_date": "2026-01-23",
+            "salary": 110000.0,
+            "bonus": null,
+            "benefits": "Health coverage, Professional development, Bonus",
+            "start_date": "2026-02-20",
+            "expiration_date": "2026-02-06",
+            "status": "Draft",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": false
+        },
+        {
+            "candidate_email": "chong.yee@email.com",
+            "job_code": "JOB-1-00003",
+            "offer_date": "2026-01-20",
+            "salary": 135000.0,
+            "bonus": null,
+            "benefits": "Remote work allowance for home office setup. Comprehensive health and wellness benefits. Flexible work schedule to maintain work-life balance. Professional development opportunities and HR certifications support. Paid vacation, sick leave, and personal days. Company-provided laptop and necessary equipment. Virtual team building activities. Annual performance reviews with salary adjustments.",
+            "start_date": "2026-02-17",
+            "expiration_date": "2026-02-03",
+            "status": "Sent",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": true
+        },
+        {
+            "candidate_email": "gopal.nair@email.com",
+            "job_code": "JOB-1-00007",
+            "offer_date": "2026-01-23",
+            "salary": 100000.0,
+            "bonus": null,
+            "benefits": "Creative environment, Health benefits, Equipment allowance",
+            "start_date": "2026-02-06",
+            "expiration_date": "2026-01-30",
+            "status": "Draft",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": false
+        },
+        {
+            "candidate_email": "farah.zulkifli@email.com",
+            "job_code": "JOB-1-00008",
+            "offer_date": "2026-01-22",
+            "salary": 80000.0,
+            "bonus": null,
+            "benefits": "Health insurance, Certification budget, Remote work",
+            "start_date": "2026-02-05",
+            "expiration_date": "2026-01-29",
+            "status": "Sent",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": true
+        },
+        {
+            "candidate_email": "leong.wai@email.com",
+            "job_code": "JOB-1-00009",
+            "offer_date": "2026-01-23",
+            "salary": 85000.0,
+            "bonus": null,
+            "benefits": "Commission structure, Health benefits, Travel allowance",
+            "start_date": "2026-02-13",
+            "expiration_date": "2026-02-02",
+            "status": "Draft",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": false
+        },
+        {
+            "candidate_email": "zulhilmi.aziz@email.com",
+            "job_code": "JOB-1-00015",
+            "offer_date": "2026-01-21",
+            "salary": 105000.0,
+            "bonus": null,
+            "benefits": "Health benefits, Training provided, Career growth",
+            "start_date": "2026-02-11",
+            "expiration_date": "2026-01-31",
+            "status": "Sent",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": true
+        },
+        {
+            "candidate_email": "teh.shan@email.com",
+            "job_code": "JOB-1-00001",
+            "offer_date": "2026-01-23",
+            "salary": 45000.0,
+            "bonus": null,
+            "benefits": "Comprehensive health insurance coverage for you and your family. Provident fund with company matching. Annual performance-based bonus. Professional development budget for courses and certifications. Flexible working hours and remote work options. Modern office with latest technology and equipment. Team building activities and company events. Paid time off and sick leave.",
+            "start_date": "2026-02-13",
+            "expiration_date": "2026-02-02",
+            "status": "Draft",
+            "response_date": null,
+            "decline_reason": null,
+            "approved": false
+        }
+    ]
+}

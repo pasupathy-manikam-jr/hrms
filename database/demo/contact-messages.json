@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Azman bin Yusof",
+        "email": "azman.yusof@example.com.my",
+        "subject": "Inquiry about HR Management System",
+        "message": "Hello, I am interested in learning more about your HR management system. Could you please provide more details about the features and pricing?",
+        "status": "new"
+    },
+    {
+        "name": "Tan Siew Mei",
+        "email": "siewmei.tan@company.com.my",
+        "subject": "Demo Request",
+        "message": "Hi, we are looking for an HR solution for our growing company. Would it be possible to schedule a demo to see the system in action?",
+        "status": "contacted"
+    },
+    {
+        "name": "Ravi a/l Chandran",
+        "email": "ravi.chandran@business.com.my",
+        "subject": "Integration Questions",
+        "message": "We currently use several HR tools and would like to know about integration capabilities with your system. Can you help us understand the options?",
+        "status": "qualified"
+    },
+    {
+        "name": "Nur Syafiqah binti Ali",
+        "email": "syafiqah.ali@startup.my",
+        "subject": "Pricing Information",
+        "message": "Could you please send us detailed pricing information for your HR management system? We are a startup with about 25 employees.",
+        "status": "new"
+    },
+    {
+        "name": "Lim Kok Wai",
+        "email": "kokwai.lim@enterprise.com.my",
+        "subject": "Enterprise Solution Inquiry",
+        "message": "We are an enterprise with 500+ employees looking for a comprehensive HR solution. What enterprise features do you offer?",
+        "status": "contacted"
+    },
+    {
+        "name": "Aishah binti Hamid",
+        "email": "aishah.hamid@tech.com.my",
+        "subject": "Support Question",
+        "message": "What kind of customer support do you provide? We need 24/7 support for our global operations.",
+        "status": "closed"
+    },
+    {
+        "name": "Chua Beng Huat",
+        "email": "benghuat.chua@consulting.com.my",
+        "subject": "Partnership Opportunity",
+        "message": "We are a consulting firm and would like to explore partnership opportunities. Could we schedule a call to discuss this?",
+        "status": "converted"
+    },
+    {
+        "name": "Jennifer anak Nyambar",
+        "email": "jennifer.nyambar@ngo.org.my",
+        "subject": "Non-profit Discount",
+        "message": "Do you offer any special pricing for non-profit organizations? We are interested in your HR management solution.",
+        "status": "new"
+    }
+]

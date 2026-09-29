@@ -1,0 +1,59 @@
+{
+    "directories": [
+        "Company - Assets",
+        "Company - Documents",
+        "Company - Branding"
+    ],
+    "media": [
+        {
+            "name": "Company Logo",
+            "file_name": "company-logo.png",
+            "directory": "Company - Branding"
+        },
+        {
+            "name": "Company Employee Handbook",
+            "file_name": "company-employee-handbook.pdf",
+            "directory": "Company - Documents"
+        },
+        {
+            "name": "Company Office Photo",
+            "file_name": "company-office-photo.png",
+            "directory": "Company - Assets"
+        },
+        {
+            "name": "Company Business Card",
+            "file_name": "company-business-card.png",
+            "directory": "Company - Branding"
+        },
+        {
+            "name": "Company Letterhead",
+            "file_name": "company-letterhead.png",
+            "directory": "Company - Branding"
+        },
+        {
+            "name": "Company Policy Document",
+            "file_name": "company-policy-document.pdf",
+            "directory": "Company - Documents"
+        },
+        {
+            "name": "Company Training Manual",
+            "file_name": "company-training-manual.pdf",
+            "directory": "Company - Documents"
+        },
+        {
+            "name": "Company Team Photo",
+            "file_name": "company-team-photo.png",
+            "directory": "Company - Assets"
+        },
+        {
+            "name": "Company Building Exterior",
+            "file_name": "company-building-exterior.png",
+            "directory": "Company - Assets"
+        },
+        {
+            "name": "Company Social Media Banner",
+            "file_name": "company-social-banner.png",
+            "directory": "Company - Branding"
+        }
+    ]
+}

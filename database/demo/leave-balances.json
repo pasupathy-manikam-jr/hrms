@@ -1,0 +1,92 @@
+[
+    {
+        "employee_name": "Employee",
+        "employee_code": "EMP6816",
+        "leave_type": "Annual Leave",
+        "year": 2026,
+        "carried_forward": 2,
+        "manual_adjustment": 0,
+        "adjustment_reason": null
+    },
+    {
+        "employee_name": "Amie Jerde",
+        "employee_code": "EMP2277",
+        "leave_type": "Annual Leave",
+        "year": 2026,
+        "carried_forward": 2,
+        "manual_adjustment": 0,
+        "adjustment_reason": null
+    },
+    {
+        "employee_name": "Caitlyn Harvey",
+        "employee_code": "EMP8651",
+        "leave_type": "Annual Leave",
+        "year": 2026,
+        "carried_forward": 2,
+        "manual_adjustment": 0,
+        "adjustment_reason": null
+    },
+    {
+        "employee_name": "Burdette Rath",
+        "employee_code": "EMP1465",
+        "leave_type": "Annual Leave",
+        "year": 2026,
+        "carried_forward": 2,
+        "manual_adjustment": 0,
+        "adjustment_reason": null
+    },
+    {
+        "employee_name": "Dr. Ashlee Schamberger",
+        "employee_code": "EMP5082",
+        "leave_type": "Annual Leave",
+        "year": 2026,
+        "carried_forward": 2,
+        "manual_adjustment": 0,
+        "adjustment_reason": null
+    },
+    {
+        "employee_name": "Dr. Justus Boyer Jr.",
+        "employee_code": "EMP5501",
+        "leave_type": "Annual Leave",
+        "year": 2026,
+        "carried_forward": 2,
+        "manual_adjustment": 0,
+        "adjustment_reason": null
+    },
+    {
+        "employee_name": "Warren Jones",
+        "employee_code": "EMP2362",
+        "leave_type": "Annual Leave",
+        "year": 2026,
+        "carried_forward": 2,
+        "manual_adjustment": 0,
+        "adjustment_reason": null
+    },
+    {
+        "employee_name": "Prof. Tommie Howell",
+        "employee_code": "EMP8020",
+        "leave_type": "Annual Leave",
+        "year": 2026,
+        "carried_forward": 2,
+        "manual_adjustment": 0,
+        "adjustment_reason": null
+    },
+    {
+        "employee_name": "Rosemary Okuneva",
+        "employee_code": "EMP8434",
+        "leave_type": "Annual Leave",
+        "year": 2026,
+        "carried_forward": 2,
+        "manual_adjustment": 0,
+        "adjustment_reason": null
+    },
+    {
+        "employee_name": "Ashlee Bernhard",
+        "employee_code": "EMP6897",
+        "leave_type": "Annual Leave",
+        "year": 2026,
+        "carried_forward": 2,
+        "manual_adjustment": 0,
+        "adjustment_reason": null
+    }
+]

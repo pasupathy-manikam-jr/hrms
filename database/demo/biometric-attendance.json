@@ -1,0 +1,242 @@
+{
+    "mappings": {
+        "EMP6816": "101",
+        "EMP2277": "102",
+        "EMP8651": "103",
+        "EMP1465": "104",
+        "EMP5082": "105",
+        "EMP5501": "106",
+        "EMP2362": "107",
+        "EMP8020": "108",
+        "EMP8434": "109",
+        "EMP6897": "110",
+        "EMP000011": "111",
+        "EMP000012": "112"
+    },
+    "punches": [
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-09 09:00:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-09 18:30:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-09 09:00:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-09 18:30:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-09 09:00:17"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-09 13:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-09 14:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-09 18:30:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-08 09:00:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-08 18:30:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-08 09:00:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-08 18:30:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-08 09:00:17"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-08 13:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-08 14:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-08 18:30:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-07 09:00:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-07 18:30:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-07 09:00:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-07 18:30:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-07 09:00:17"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-07 13:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-07 14:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-07 18:30:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-06 09:00:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-06 18:30:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-06 09:00:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-06 18:30:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-06 09:00:17"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-06 13:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-06 14:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-06 18:30:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-03 09:00:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-03 18:30:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-03 09:00:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-03 18:30:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-03 09:00:17"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-03 13:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-03 14:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-03 18:30:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-02 09:00:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-02 18:30:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-02 09:00:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-02 18:30:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-02 09:00:17"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-02 13:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-02 14:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-02 18:30:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-01 09:00:00"
+        },
+        {
+            "biometric_emp_id": "103",
+            "timestamp": "2025-10-01 18:30:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-01 09:00:00"
+        },
+        {
+            "biometric_emp_id": "102",
+            "timestamp": "2025-10-01 18:30:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-01 09:00:17"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-01 13:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-01 14:00:00"
+        },
+        {
+            "biometric_emp_id": "101",
+            "timestamp": "2025-10-01 18:30:00"
+        }
+    ]
+}

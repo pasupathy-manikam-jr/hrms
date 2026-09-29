@@ -1,0 +1,931 @@
+{
+    "types": [
+        {
+            "name": "Orientation and Onboarding",
+            "description": "Comprehensive introduction program for new employees covering company culture, policies, procedures, and job-specific training",
+            "branch": "Kuala Lumpur HQ",
+            "departments": [
+                "Human Resources",
+                "Information Technology",
+                "Finance & Accounting"
+            ]
+        },
+        {
+            "name": "Technical Skills Training",
+            "description": "Specialized training focused on developing technical competencies, software proficiency, and job-specific technical skills",
+            "branch": "Petaling Jaya",
+            "departments": ["Human Resources", "Information Technology"]
+        },
+        {
+            "name": "Leadership Development",
+            "description": "Training program designed to develop leadership capabilities, management skills, and strategic thinking abilities",
+            "branch": "Penang",
+            "departments": [
+                "Human Resources",
+                "Information Technology",
+                "Finance & Accounting"
+            ]
+        },
+        {
+            "name": "Communication Skills",
+            "description": "Training to enhance verbal, written, and interpersonal communication skills for effective workplace interaction",
+            "branch": "Johor Bahru",
+            "departments": [
+                "Human Resources",
+                "Information Technology",
+                "Finance & Accounting"
+            ]
+        },
+        {
+            "name": "Safety and Compliance",
+            "description": "Mandatory training covering workplace safety protocols, regulatory compliance, and risk management procedures",
+            "branch": "Kuantan",
+            "departments": ["Human Resources", "Information Technology"]
+        },
+        {
+            "name": "Customer Service Excellence",
+            "description": "Training focused on improving customer interaction skills, service quality, and customer satisfaction techniques",
+            "branch": "Ipoh",
+            "departments": [
+                "Human Resources",
+                "Information Technology",
+                "Finance & Accounting"
+            ]
+        },
+        {
+            "name": "Sales and Marketing",
+            "description": "Training program covering sales techniques, marketing strategies, customer relationship management, and revenue generation",
+            "branch": "Cyberjaya",
+            "departments": ["Human Resources"]
+        },
+        {
+            "name": "Project Management",
+            "description": "Training on project planning, execution, monitoring, and delivery methodologies including agile and traditional approaches",
+            "branch": "Shah Alam",
+            "departments": ["Human Resources"]
+        },
+        {
+            "name": "Quality Management",
+            "description": "Training focused on quality standards, process improvement, quality control measures, and continuous improvement methodologies",
+            "branch": "Kota Kinabalu",
+            "departments": ["Human Resources"]
+        },
+        {
+            "name": "Digital Literacy",
+            "description": "Training to enhance digital skills, software applications, online tools, and technology adoption in the workplace",
+            "branch": "Kuala Lumpur HQ",
+            "departments": ["Human Resources"]
+        },
+        {
+            "name": "Soft Skills Development",
+            "description": "Training covering teamwork, problem-solving, time management, adaptability, and other essential workplace soft skills",
+            "branch": "Petaling Jaya",
+            "departments": ["Human Resources"]
+        },
+        {
+            "name": "Professional Certification",
+            "description": "Training programs designed to prepare employees for industry-recognized professional certifications and credentials",
+            "branch": "Penang",
+            "departments": ["Human Resources"]
+        }
+    ],
+    "programs": [
+        {
+            "type": "Orientation and Onboarding",
+            "name": "New Employee Orientation Program",
+            "description": "Comprehensive 3-day orientation covering company culture, policies, and basic job requirements",
+            "duration": 24,
+            "cost": "5000.00",
+            "capacity": 20,
+            "status": "active",
+            "prerequisites": "None",
+            "is_mandatory": true,
+            "is_self_enrollment": false
+        },
+        {
+            "type": "Orientation and Onboarding",
+            "name": "Department Integration Workshop",
+            "description": "Specialized onboarding focused on department-specific processes and team integration",
+            "duration": 8,
+            "cost": "2000.00",
+            "capacity": 15,
+            "status": "active",
+            "prerequisites": "Completion of basic orientation",
+            "is_mandatory": true,
+            "is_self_enrollment": false
+        },
+        {
+            "type": "Technical Skills Training",
+            "name": "Advanced Software Development",
+            "description": "Intensive training on latest programming languages, frameworks, and development methodologies",
+            "duration": 40,
+            "cost": "15000.00",
+            "capacity": 12,
+            "status": "active",
+            "prerequisites": "Basic programming knowledge",
+            "is_mandatory": false,
+            "is_self_enrollment": true
+        },
+        {
+            "type": "Technical Skills Training",
+            "name": "Database Management Certification",
+            "description": "Comprehensive database design, optimization, and administration training program",
+            "duration": 32,
+            "cost": "12000.00",
+            "capacity": 10,
+            "status": "draft",
+            "prerequisites": "SQL fundamentals",
+            "is_mandatory": false,
+            "is_self_enrollment": true
+        },
+        {
+            "type": "Leadership Development",
+            "name": "Executive Leadership Program",
+            "description": "Strategic leadership development for senior management and high-potential employees",
+            "duration": 48,
+            "cost": "25000.00",
+            "capacity": 8,
+            "status": "active",
+            "prerequisites": "Management experience",
+            "is_mandatory": false,
+            "is_self_enrollment": false
+        },
+        {
+            "type": "Leadership Development",
+            "name": "Team Leadership Fundamentals",
+            "description": "Essential leadership skills for new managers and team leads",
+            "duration": 16,
+            "cost": "8000.00",
+            "capacity": 15,
+            "status": "completed",
+            "prerequisites": "Supervisory role",
+            "is_mandatory": true,
+            "is_self_enrollment": false
+        },
+        {
+            "type": "Communication Skills",
+            "name": "Effective Business Communication",
+            "description": "Professional communication skills including presentations, meetings, and written correspondence",
+            "duration": 12,
+            "cost": "4000.00",
+            "capacity": 25,
+            "status": "active",
+            "prerequisites": "None",
+            "is_mandatory": false,
+            "is_self_enrollment": true
+        },
+        {
+            "type": "Communication Skills",
+            "name": "Cross-Cultural Communication",
+            "description": "Communication strategies for diverse and multicultural work environments",
+            "duration": 8,
+            "cost": "3000.00",
+            "capacity": 20,
+            "status": "active",
+            "prerequisites": "Basic communication skills",
+            "is_mandatory": false,
+            "is_self_enrollment": true
+        },
+        {
+            "type": "Safety and Compliance",
+            "name": "Workplace Safety Certification",
+            "description": "Mandatory safety training covering OSHA regulations, emergency procedures, and risk management",
+            "duration": 6,
+            "cost": "1500.00",
+            "capacity": 50,
+            "status": "active",
+            "prerequisites": "None",
+            "is_mandatory": true,
+            "is_self_enrollment": false
+        },
+        {
+            "type": "Safety and Compliance",
+            "name": "Data Privacy and Security Training",
+            "description": "Compliance training on data protection, privacy regulations, and cybersecurity best practices",
+            "duration": 4,
+            "cost": "1000.00",
+            "capacity": 100,
+            "status": "active",
+            "prerequisites": "None",
+            "is_mandatory": true,
+            "is_self_enrollment": false
+        },
+        {
+            "type": "Customer Service Excellence",
+            "name": "Customer Experience Mastery",
+            "description": "Advanced customer service techniques, complaint handling, and relationship building strategies",
+            "duration": 16,
+            "cost": "6000.00",
+            "capacity": 20,
+            "status": "active",
+            "prerequisites": "Customer service experience",
+            "is_mandatory": false,
+            "is_self_enrollment": true
+        },
+        {
+            "type": "Customer Service Excellence",
+            "name": "Digital Customer Support",
+            "description": "Modern customer support tools, chatbots, CRM systems, and omnichannel service delivery",
+            "duration": 12,
+            "cost": "4500.00",
+            "capacity": 15,
+            "status": "draft",
+            "prerequisites": "Basic computer skills",
+            "is_mandatory": false,
+            "is_self_enrollment": true
+        }
+    ],
+    "sessions": [
+        {
+            "program": "New Employee Orientation Program",
+            "name": "Morning Session - Batch A",
+            "start_date": "2025-03-10 09:00:00",
+            "end_date": "2025-03-10 13:00:00",
+            "location_type": "physical",
+            "location": "Training Room 1",
+            "meeting_link": null,
+            "status": "completed",
+            "notes": "Training session for New Employee Orientation Program",
+            "trainers": [
+                "tod.pagac@example.com",
+                "merle75@example.net",
+                "gmarquardt@example.net"
+            ]
+        },
+        {
+            "program": "New Employee Orientation Program",
+            "name": "Afternoon Session - Batch B",
+            "start_date": "2025-03-20 14:00:00",
+            "end_date": "2025-03-20 18:00:00",
+            "location_type": "physical",
+            "location": "Training Room 2",
+            "meeting_link": null,
+            "status": "completed",
+            "notes": "Training session for New Employee Orientation Program",
+            "trainers": [
+                "employee@example.com",
+                "tod.pagac@example.com",
+                "merle75@example.net"
+            ]
+        },
+        {
+            "program": "Department Integration Workshop",
+            "name": "Virtual Workshop Session",
+            "start_date": "2025-04-10 10:00:00",
+            "end_date": "2025-04-10 13:00:00",
+            "location_type": "virtual",
+            "location": "Online Platform",
+            "meeting_link": "https://meet.google.com/abc-defg-hij",
+            "status": "in_progress",
+            "notes": "Training session for Department Integration Workshop",
+            "trainers": [
+                "merle75@example.net",
+                "gmarquardt@example.net",
+                "lynch.leonel@example.com"
+            ]
+        },
+        {
+            "program": "Department Integration Workshop",
+            "name": "Weekend Intensive Session",
+            "start_date": "2025-04-20 09:00:00",
+            "end_date": "2025-04-20 15:00:00",
+            "location_type": "physical",
+            "location": "Conference Hall",
+            "meeting_link": "https://meet.google.com/abc-defg-hij",
+            "status": "scheduled",
+            "notes": "Training session for Department Integration Workshop",
+            "trainers": [
+                "tod.pagac@example.com",
+                "jesse33@example.net",
+                "lynch.leonel@example.com",
+                "lakin.rahsaan@example.net",
+                "ugleichner@example.com"
+            ]
+        },
+        {
+            "program": "Advanced Software Development",
+            "name": "Evening Online Session",
+            "start_date": "2025-05-10 18:00:00",
+            "end_date": "2025-05-10 20:00:00",
+            "location_type": "virtual",
+            "location": "Zoom Meeting",
+            "meeting_link": "https://gotomeeting.com/join/session",
+            "status": "completed",
+            "notes": "Training session for Advanced Software Development",
+            "trainers": [
+                "dimitri21@example.com",
+                "tod.pagac@example.com",
+                "lynch.leonel@example.com"
+            ]
+        },
+        {
+            "program": "Advanced Software Development",
+            "name": "Morning Session - Batch A",
+            "start_date": "2025-05-20 09:00:00",
+            "end_date": "2025-05-20 13:00:00",
+            "location_type": "physical",
+            "location": "Training Room 1",
+            "meeting_link": "https://gotomeeting.com/join/session",
+            "status": "completed",
+            "notes": "Training session for Advanced Software Development",
+            "trainers": [
+                "ugleichner@example.com",
+                "tod.pagac@example.com",
+                "lynch.leonel@example.com",
+                "gmarquardt@example.net",
+                "jesse33@example.net",
+                "ines.cline@example.com",
+                "lakin.rahsaan@example.net"
+            ]
+        },
+        {
+            "program": "Database Management Certification",
+            "name": "Afternoon Session - Batch B",
+            "start_date": "2025-06-10 14:00:00",
+            "end_date": "2025-06-10 18:00:00",
+            "location_type": "physical",
+            "location": "Training Room 2",
+            "meeting_link": null,
+            "status": "completed",
+            "notes": "Training session for Database Management Certification",
+            "trainers": [
+                "lakin.rahsaan@example.net",
+                "gheathcote@example.net",
+                "jesse33@example.net"
+            ]
+        },
+        {
+            "program": "Database Management Certification",
+            "name": "Virtual Workshop Session",
+            "start_date": "2025-06-20 10:00:00",
+            "end_date": "2025-06-20 13:00:00",
+            "location_type": "virtual",
+            "location": "Online Platform",
+            "meeting_link": "https://meet.google.com/abc-defg-hij",
+            "status": "in_progress",
+            "notes": "Training session for Database Management Certification",
+            "trainers": [
+                "employee@example.com",
+                "dimitri21@example.com",
+                "lynch.leonel@example.com"
+            ]
+        },
+        {
+            "program": "Executive Leadership Program",
+            "name": "Weekend Intensive Session",
+            "start_date": "2025-07-10 09:00:00",
+            "end_date": "2025-07-10 15:00:00",
+            "location_type": "physical",
+            "location": "Conference Hall",
+            "meeting_link": "https://gotomeeting.com/join/session",
+            "status": "scheduled",
+            "notes": "Training session for Executive Leadership Program",
+            "trainers": [
+                "dimitri21@example.com",
+                "ugleichner@example.com",
+                "lakin.rahsaan@example.net",
+                "gmarquardt@example.net",
+                "lynch.leonel@example.com",
+                "jesse33@example.net",
+                "tod.pagac@example.com"
+            ]
+        },
+        {
+            "program": "Executive Leadership Program",
+            "name": "Evening Online Session",
+            "start_date": "2025-07-20 18:00:00",
+            "end_date": "2025-07-20 20:00:00",
+            "location_type": "virtual",
+            "location": "Zoom Meeting",
+            "meeting_link": "https://gotomeeting.com/join/session",
+            "status": "completed",
+            "notes": "Training session for Executive Leadership Program",
+            "trainers": [
+                "lakin.rahsaan@example.net",
+                "jesse33@example.net",
+                "lynch.leonel@example.com"
+            ]
+        }
+    ],
+    "employee_trainings": [
+        {
+            "employee": "employee@example.com",
+            "program": "New Employee Orientation Program",
+            "status": "assigned",
+            "assigned_date": "2025-02-01",
+            "completion_date": null,
+            "score": null,
+            "certification": false,
+            "feedback": null,
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "employee@example.com",
+            "program": "Department Integration Workshop",
+            "status": "in_progress",
+            "assigned_date": "2025-03-01",
+            "completion_date": null,
+            "score": null,
+            "certification": false,
+            "feedback": null,
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "employee@example.com",
+            "program": "Advanced Software Development",
+            "status": "completed",
+            "assigned_date": "2025-04-01",
+            "completion_date": "2025-05-01",
+            "score": "78.50",
+            "certification": true,
+            "feedback": "Good training overall, could benefit from more interactive sessions",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "employee@example.com",
+            "program": "Database Management Certification",
+            "status": "completed",
+            "assigned_date": "2025-05-01",
+            "completion_date": "2025-05-31",
+            "score": "88.00",
+            "certification": true,
+            "feedback": "Outstanding program that significantly improved my skills and knowledge",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "employee@example.com",
+            "program": "Executive Leadership Program",
+            "status": "completed",
+            "assigned_date": "2025-06-01",
+            "completion_date": "2025-07-01",
+            "score": "95.50",
+            "certification": true,
+            "feedback": "Comprehensive training with relevant case studies and real-world applications",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "program": "New Employee Orientation Program",
+            "status": "completed",
+            "assigned_date": "2025-02-01",
+            "completion_date": "2025-03-03",
+            "score": "88.00",
+            "certification": true,
+            "feedback": "Outstanding program that significantly improved my skills and knowledge",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "program": "Department Integration Workshop",
+            "status": "completed",
+            "assigned_date": "2025-03-01",
+            "completion_date": "2025-03-31",
+            "score": "95.50",
+            "certification": true,
+            "feedback": "Comprehensive training with relevant case studies and real-world applications",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "program": "Advanced Software Development",
+            "status": "assigned",
+            "assigned_date": "2025-04-01",
+            "completion_date": null,
+            "score": null,
+            "certification": false,
+            "feedback": null,
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "program": "Database Management Certification",
+            "status": "in_progress",
+            "assigned_date": "2025-05-01",
+            "completion_date": null,
+            "score": null,
+            "certification": false,
+            "feedback": null,
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "program": "Executive Leadership Program",
+            "status": "completed",
+            "assigned_date": "2025-06-01",
+            "completion_date": "2025-07-01",
+            "score": "78.50",
+            "certification": true,
+            "feedback": "Good training overall, could benefit from more interactive sessions",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "program": "New Employee Orientation Program",
+            "status": "in_progress",
+            "assigned_date": "2025-02-01",
+            "completion_date": null,
+            "score": null,
+            "certification": false,
+            "feedback": null,
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "program": "Department Integration Workshop",
+            "status": "completed",
+            "assigned_date": "2025-03-01",
+            "completion_date": "2025-03-31",
+            "score": "78.50",
+            "certification": true,
+            "feedback": "Good training overall, could benefit from more interactive sessions",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "program": "Advanced Software Development",
+            "status": "completed",
+            "assigned_date": "2025-04-01",
+            "completion_date": "2025-05-01",
+            "score": "88.00",
+            "certification": true,
+            "feedback": "Outstanding program that significantly improved my skills and knowledge",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "program": "Database Management Certification",
+            "status": "completed",
+            "assigned_date": "2025-05-01",
+            "completion_date": "2025-05-31",
+            "score": "95.50",
+            "certification": true,
+            "feedback": "Comprehensive training with relevant case studies and real-world applications",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "program": "Executive Leadership Program",
+            "status": "assigned",
+            "assigned_date": "2025-06-01",
+            "completion_date": null,
+            "score": null,
+            "certification": false,
+            "feedback": null,
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "program": "New Employee Orientation Program",
+            "status": "completed",
+            "assigned_date": "2025-02-01",
+            "completion_date": "2025-03-03",
+            "score": "95.50",
+            "certification": true,
+            "feedback": "Comprehensive training with relevant case studies and real-world applications",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "program": "Department Integration Workshop",
+            "status": "assigned",
+            "assigned_date": "2025-03-01",
+            "completion_date": null,
+            "score": null,
+            "certification": false,
+            "feedback": null,
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "program": "Advanced Software Development",
+            "status": "in_progress",
+            "assigned_date": "2025-04-01",
+            "completion_date": null,
+            "score": null,
+            "certification": false,
+            "feedback": null,
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "program": "Database Management Certification",
+            "status": "completed",
+            "assigned_date": "2025-05-01",
+            "completion_date": "2025-05-31",
+            "score": "78.50",
+            "certification": true,
+            "feedback": "Good training overall, could benefit from more interactive sessions",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "program": "Executive Leadership Program",
+            "status": "completed",
+            "assigned_date": "2025-06-01",
+            "completion_date": "2025-07-01",
+            "score": "88.00",
+            "certification": true,
+            "feedback": "Outstanding program that significantly improved my skills and knowledge",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "gheathcote@example.net",
+            "program": "New Employee Orientation Program",
+            "status": "completed",
+            "assigned_date": "2025-02-01",
+            "completion_date": "2025-03-03",
+            "score": "78.50",
+            "certification": true,
+            "feedback": "Good training overall, could benefit from more interactive sessions",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "gheathcote@example.net",
+            "program": "Department Integration Workshop",
+            "status": "completed",
+            "assigned_date": "2025-03-01",
+            "completion_date": "2025-03-31",
+            "score": "88.00",
+            "certification": true,
+            "feedback": "Outstanding program that significantly improved my skills and knowledge",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "gheathcote@example.net",
+            "program": "Advanced Software Development",
+            "status": "completed",
+            "assigned_date": "2025-04-01",
+            "completion_date": "2025-05-01",
+            "score": "95.50",
+            "certification": true,
+            "feedback": "Comprehensive training with relevant case studies and real-world applications",
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "gheathcote@example.net",
+            "program": "Database Management Certification",
+            "status": "assigned",
+            "assigned_date": "2025-05-01",
+            "completion_date": null,
+            "score": null,
+            "certification": false,
+            "feedback": null,
+            "notes": "Training assigned for skill development and compliance requirements"
+        },
+        {
+            "employee": "gheathcote@example.net",
+            "program": "Executive Leadership Program",
+            "status": "in_progress",
+            "assigned_date": "2025-06-01",
+            "completion_date": null,
+            "score": null,
+            "certification": false,
+            "feedback": null,
+            "notes": "Training assigned for skill development and compliance requirements"
+        }
+    ],
+    "assessments": [
+        {
+            "program": "Advanced Software Development",
+            "name": "Technical Presentation",
+            "description": "Assessment for Advanced Software Development - Technical Presentation",
+            "type": "presentation",
+            "passing_score": "70.00",
+            "criteria": "Technical knowledge presentation and communication skills"
+        },
+        {
+            "program": "Customer Experience Mastery",
+            "name": "Service Excellence Presentation",
+            "description": "Assessment for Customer Experience Mastery - Service Excellence Presentation",
+            "type": "presentation",
+            "passing_score": "75.00",
+            "criteria": "Customer service best practices and improvement strategies"
+        },
+        {
+            "program": "New Employee Orientation Program",
+            "name": "Safety Procedures Assessment",
+            "description": "Assessment for New Employee Orientation Program - Safety Procedures Assessment",
+            "type": "practical",
+            "passing_score": "85.00",
+            "criteria": "Demonstration of safety protocols and emergency procedures"
+        },
+        {
+            "program": "Workplace Safety Certification",
+            "name": "Safety Knowledge Test",
+            "description": "Assessment for Workplace Safety Certification - Safety Knowledge Test",
+            "type": "quiz",
+            "passing_score": "90.00",
+            "criteria": "Comprehensive understanding of safety regulations and procedures"
+        },
+        {
+            "program": "Effective Business Communication",
+            "name": "Presentation Skills Demo",
+            "description": "Assessment for Effective Business Communication - Presentation Skills Demo",
+            "type": "presentation",
+            "passing_score": "80.00",
+            "criteria": "Public speaking and presentation delivery skills"
+        },
+        {
+            "program": "Executive Leadership Program",
+            "name": "Management Skills Evaluation",
+            "description": "Assessment for Executive Leadership Program - Management Skills Evaluation",
+            "type": "practical",
+            "passing_score": "85.00",
+            "criteria": "Team management and conflict resolution abilities"
+        },
+        {
+            "program": "Executive Leadership Program",
+            "name": "Leadership Case Study",
+            "description": "Assessment for Executive Leadership Program - Leadership Case Study",
+            "type": "presentation",
+            "passing_score": "80.00",
+            "criteria": "Strategic thinking and leadership decision-making"
+        },
+        {
+            "program": "Workplace Safety Certification",
+            "name": "Emergency Response Drill",
+            "description": "Assessment for Workplace Safety Certification - Emergency Response Drill",
+            "type": "practical",
+            "passing_score": "95.00",
+            "criteria": "Proper execution of emergency response procedures"
+        },
+        {
+            "program": "Customer Experience Mastery",
+            "name": "Customer Service Scenarios",
+            "description": "Assessment for Customer Experience Mastery - Customer Service Scenarios",
+            "type": "practical",
+            "passing_score": "80.00",
+            "criteria": "Customer interaction skills and problem-solving abilities"
+        },
+        {
+            "program": "New Employee Orientation Program",
+            "name": "Company Policy Quiz",
+            "description": "Assessment for New Employee Orientation Program - Company Policy Quiz",
+            "type": "quiz",
+            "passing_score": "80.00",
+            "criteria": "Understanding of company policies and procedures"
+        },
+        {
+            "program": "Effective Business Communication",
+            "name": "Communication Skills Test",
+            "description": "Assessment for Effective Business Communication - Communication Skills Test",
+            "type": "quiz",
+            "passing_score": "75.00",
+            "criteria": "Written and verbal communication proficiency"
+        },
+        {
+            "program": "Advanced Software Development",
+            "name": "Coding Skills Assessment",
+            "description": "Assessment for Advanced Software Development - Coding Skills Assessment",
+            "type": "practical",
+            "passing_score": "75.00",
+            "criteria": "Programming proficiency and code quality"
+        }
+    ],
+    "results": [
+        {
+            "employee": "dimitri21@example.com",
+            "program": "New Employee Orientation Program",
+            "assessment": "Company Policy Quiz",
+            "score": "89.50",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-03-03"
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "program": "New Employee Orientation Program",
+            "assessment": "Company Policy Quiz",
+            "score": "94.00",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-03-03"
+        },
+        {
+            "employee": "gheathcote@example.net",
+            "program": "New Employee Orientation Program",
+            "assessment": "Company Policy Quiz",
+            "score": "76.00",
+            "feedback": "Good effort, but needs improvement in some areas to meet the required standards",
+            "assessment_date": "2025-03-03"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "program": "New Employee Orientation Program",
+            "assessment": "Safety Procedures Assessment",
+            "score": "87.00",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-03-03"
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "program": "New Employee Orientation Program",
+            "assessment": "Safety Procedures Assessment",
+            "score": "90.50",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-03-03"
+        },
+        {
+            "employee": "gheathcote@example.net",
+            "program": "New Employee Orientation Program",
+            "assessment": "Safety Procedures Assessment",
+            "score": "92.00",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-03-03"
+        },
+        {
+            "employee": "employee@example.com",
+            "program": "Advanced Software Development",
+            "assessment": "Coding Skills Assessment",
+            "score": "76.00",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-05-01"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "program": "Advanced Software Development",
+            "assessment": "Coding Skills Assessment",
+            "score": "89.50",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-05-01"
+        },
+        {
+            "employee": "gheathcote@example.net",
+            "program": "Advanced Software Development",
+            "assessment": "Coding Skills Assessment",
+            "score": "94.00",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-05-01"
+        },
+        {
+            "employee": "employee@example.com",
+            "program": "Advanced Software Development",
+            "assessment": "Technical Presentation",
+            "score": "92.00",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-05-01"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "program": "Advanced Software Development",
+            "assessment": "Technical Presentation",
+            "score": "87.00",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-05-01"
+        },
+        {
+            "employee": "gheathcote@example.net",
+            "program": "Advanced Software Development",
+            "assessment": "Technical Presentation",
+            "score": "90.50",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-05-01"
+        },
+        {
+            "employee": "employee@example.com",
+            "program": "Executive Leadership Program",
+            "assessment": "Leadership Case Study",
+            "score": "94.00",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-07-01"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "program": "Executive Leadership Program",
+            "assessment": "Leadership Case Study",
+            "score": "76.00",
+            "feedback": "Good effort, but needs improvement in some areas to meet the required standards",
+            "assessment_date": "2025-07-01"
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "program": "Executive Leadership Program",
+            "assessment": "Leadership Case Study",
+            "score": "89.50",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-07-01"
+        },
+        {
+            "employee": "employee@example.com",
+            "program": "Executive Leadership Program",
+            "assessment": "Management Skills Evaluation",
+            "score": "90.50",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-07-01"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "program": "Executive Leadership Program",
+            "assessment": "Management Skills Evaluation",
+            "score": "92.00",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-07-01"
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "program": "Executive Leadership Program",
+            "assessment": "Management Skills Evaluation",
+            "score": "87.00",
+            "feedback": "Excellent performance, demonstrates strong understanding of the subject matter",
+            "assessment_date": "2025-07-01"
+        }
+    ]
+}

@@ -1,0 +1,359 @@
+[
+    {
+        "name": "New Year's Day",
+        "start_date": "2026-01-01",
+        "end_date": "2026-01-01",
+        "category": "national",
+        "description": "Public holiday in most states.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": true,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Thaipusam",
+        "start_date": "2026-02-01",
+        "end_date": "2026-02-01",
+        "category": "religious",
+        "description": "Observed in Johor, Kedah, Kuala Lumpur, Negeri Sembilan, Penang, Perak, Putrajaya and Selangor. Date follows the lunar calendar and is subject to the official announcement.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Federal Territory Day",
+        "start_date": "2026-02-02",
+        "end_date": "2026-02-02",
+        "category": "regional",
+        "description": "Kuala Lumpur, Labuan and Putrajaya.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Chinese New Year",
+        "start_date": "2026-02-17",
+        "end_date": "2026-02-18",
+        "category": "national",
+        "description": "First and second day of the lunar new year.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Nuzul Al-Quran",
+        "start_date": "2026-03-07",
+        "end_date": "2026-03-07",
+        "category": "religious",
+        "description": "Observed in Kuala Lumpur, Selangor, Penang, Perak, Pahang and other states. Date follows the lunar calendar and is subject to the official announcement.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Hari Raya Aidilfitri",
+        "start_date": "2026-03-21",
+        "end_date": "2026-03-22",
+        "category": "religious",
+        "description": "End of Ramadan. Date follows the lunar calendar and is subject to the official announcement.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Labour Day",
+        "start_date": "2026-05-01",
+        "end_date": "2026-05-01",
+        "category": "national",
+        "description": "International Workers' Day.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": true,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Hari Raya Haji",
+        "start_date": "2026-05-27",
+        "end_date": "2026-05-27",
+        "category": "religious",
+        "description": "Festival of Sacrifice. Date follows the lunar calendar and is subject to the official announcement.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Wesak Day",
+        "start_date": "2026-05-31",
+        "end_date": "2026-05-31",
+        "category": "religious",
+        "description": "Birth of the Buddha. Date follows the lunar calendar and is subject to the official announcement.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Agong's Birthday",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-01",
+        "category": "national",
+        "description": "Birthday of SPB Yang di-Pertuan Agong (first Monday of June).",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Awal Muharram",
+        "start_date": "2026-06-17",
+        "end_date": "2026-06-17",
+        "category": "religious",
+        "description": "Islamic New Year. Date follows the lunar calendar and is subject to the official announcement.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Maulidur Rasul",
+        "start_date": "2026-08-25",
+        "end_date": "2026-08-25",
+        "category": "religious",
+        "description": "Birthday of Prophet Muhammad. Date follows the lunar calendar and is subject to the official announcement.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "National Day",
+        "start_date": "2026-08-31",
+        "end_date": "2026-08-31",
+        "category": "national",
+        "description": "Hari Merdeka.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": true,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Malaysia Day",
+        "start_date": "2026-09-16",
+        "end_date": "2026-09-16",
+        "category": "national",
+        "description": "Formation of Malaysia.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": true,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Deepavali",
+        "start_date": "2026-11-08",
+        "end_date": "2026-11-08",
+        "category": "religious",
+        "description": "All states except Sarawak. Date follows the lunar calendar and is subject to the official announcement.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Deepavali (in lieu)",
+        "start_date": "2026-11-09",
+        "end_date": "2026-11-09",
+        "category": "national",
+        "description": "Replacement holiday in most states.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": false,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    },
+    {
+        "name": "Christmas Day",
+        "start_date": "2026-12-25",
+        "end_date": "2026-12-25",
+        "category": "religious",
+        "description": "Christmas.",
+        "is_paid": true,
+        "is_half_day": false,
+        "is_recurring": true,
+        "branches": [
+            "Kuala Lumpur HQ",
+            "Petaling Jaya",
+            "Penang",
+            "Johor Bahru",
+            "Kuantan",
+            "Ipoh",
+            "Cyberjaya",
+            "Shah Alam",
+            "Kota Kinabalu"
+        ]
+    }
+]

@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Annual Leave Policy",
+        "description": "Standard annual leave policy with yearly accrual and carry forward provisions",
+        "leave_type": "Annual Leave",
+        "accrual_type": "yearly",
+        "accrual_rate": 21.0,
+        "carry_forward_limit": 5,
+        "min_days_per_application": 1,
+        "max_days_per_application": 15,
+        "requires_approval": true,
+        "status": "active"
+    },
+    {
+        "name": "Sick Leave Policy",
+        "description": "Medical leave policy for health-related absences with flexible application",
+        "leave_type": "Sick Leave",
+        "accrual_type": "yearly",
+        "accrual_rate": 10.0,
+        "carry_forward_limit": 2,
+        "min_days_per_application": 1,
+        "max_days_per_application": 10,
+        "requires_approval": false,
+        "status": "active"
+    },
+    {
+        "name": "Emergency Leave Policy",
+        "description": "Urgent leave policy for unexpected situations with immediate approval",
+        "leave_type": "Emergency Leave",
+        "accrual_type": "yearly",
+        "accrual_rate": 5.0,
+        "carry_forward_limit": 0,
+        "min_days_per_application": 1,
+        "max_days_per_application": 3,
+        "requires_approval": false,
+        "status": "active"
+    },
+    {
+        "name": "Compensatory Leave Policy",
+        "description": "Time off policy for overtime work compensation with monthly accrual",
+        "leave_type": "Compensatory Leave",
+        "accrual_type": "monthly",
+        "accrual_rate": 1.0,
+        "carry_forward_limit": 3,
+        "min_days_per_application": 1,
+        "max_days_per_application": 5,
+        "requires_approval": true,
+        "status": "active"
+    },
+    {
+        "name": "Personal Leave Policy",
+        "description": "Personal time off policy for individual matters without pay",
+        "leave_type": "Personal Leave",
+        "accrual_type": "yearly",
+        "accrual_rate": 5.0,
+        "carry_forward_limit": 0,
+        "min_days_per_application": 1,
+        "max_days_per_application": 3,
+        "requires_approval": true,
+        "status": "active"
+    },
+    {
+        "name": "Marriage Leave Policy",
+        "description": "Special leave policy for wedding ceremonies and related celebrations",
+        "leave_type": "Marriage Leave",
+        "accrual_type": "yearly",
+        "accrual_rate": 7.0,
+        "carry_forward_limit": 0,
+        "min_days_per_application": 1,
+        "max_days_per_application": 7,
+        "requires_approval": true,
+        "status": "active"
+    }
+]

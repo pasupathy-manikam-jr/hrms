@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Annual Leave",
+        "description": "Yearly vacation leave for rest and recreation",
+        "max_days_per_year": 21,
+        "is_paid": true,
+        "color": "#10B981",
+        "status": "active"
+    },
+    {
+        "name": "Sick Leave",
+        "description": "Medical leave for illness or health-related issues. Ensures employees can recover properly without affecting productivity.",
+        "max_days_per_year": 10,
+        "is_paid": true,
+        "color": "#EF4444",
+        "status": "active"
+    },
+    {
+        "name": "Emergency Leave",
+        "description": "Urgent leave for unexpected personal or family emergencies",
+        "max_days_per_year": 5,
+        "is_paid": true,
+        "color": "#F59E0B",
+        "status": "active"
+    },
+    {
+        "name": "Compensatory Leave",
+        "description": "Time off provided in exchange for overtime or extra working hours. Helps maintain work-life balance after extended or weekend duties.",
+        "max_days_per_year": 12,
+        "is_paid": true,
+        "color": "#06B6D4",
+        "status": "active"
+    },
+    {
+        "name": "Personal Leave",
+        "description": "Personal time off for individual matters and commitments",
+        "max_days_per_year": 5,
+        "is_paid": false,
+        "color": "#84CC16",
+        "status": "active"
+    },
+    {
+        "name": "Marriage Leave",
+        "description": "Special leave granted for wedding ceremonies and related functions.\nAllows employees to manage personal commitments during important life events.",
+        "max_days_per_year": 7,
+        "is_paid": true,
+        "color": "#F97316",
+        "status": "active"
+    }
+]

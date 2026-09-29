@@ -1,0 +1,452 @@
+[
+    {
+        "employee": "EMP6897",
+        "date": "2026-09-21",
+        "project": "Testing",
+        "description": "Researched new technologies and best practices",
+        "hours": 7.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP6897",
+        "date": "2026-09-23",
+        "project": "Documentation",
+        "description": "Attended team meetings and project planning sessions",
+        "hours": 7.0,
+        "status": "approved",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP6897",
+        "date": "2026-09-24",
+        "project": "Bug Fixes",
+        "description": "Updated project documentation and technical specifications",
+        "hours": 8.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP6897",
+        "date": "2026-09-25",
+        "project": "Database Optimization",
+        "description": "Fixed critical bugs and performance issues in the system",
+        "hours": 7.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP6897",
+        "date": "2026-09-22",
+        "project": "Mobile App",
+        "description": "Implemented new features and functionality as per requirements",
+        "hours": 7.0,
+        "status": "rejected",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP8434",
+        "date": "2026-09-24",
+        "project": "Website Development",
+        "description": "Worked on frontend components and user interface improvements",
+        "hours": 8.0,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP8434",
+        "date": "2026-09-25",
+        "project": "Documentation",
+        "description": "Attended team meetings and project planning sessions",
+        "hours": 7.0,
+        "status": "pending",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP8434",
+        "date": "2026-09-22",
+        "project": "Code Review",
+        "description": "Performed testing and quality assurance activities",
+        "hours": 6.5,
+        "status": "pending",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP8434",
+        "date": "2026-09-21",
+        "project": "Bug Fixes",
+        "description": "Updated project documentation and technical specifications",
+        "hours": 8.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP8434",
+        "date": "2026-09-23",
+        "project": "API Integration",
+        "description": "Conducted code review and provided feedback to team members",
+        "hours": 8.0,
+        "status": "rejected",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP8020",
+        "date": "2026-09-23",
+        "project": "Website Development",
+        "description": "Worked on frontend components and user interface improvements",
+        "hours": 8.0,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP8020",
+        "date": "2026-09-24",
+        "project": "Documentation",
+        "description": "Attended team meetings and project planning sessions",
+        "hours": 7.0,
+        "status": "pending",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP8020",
+        "date": "2026-09-25",
+        "project": "Bug Fixes",
+        "description": "Updated project documentation and technical specifications",
+        "hours": 8.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP8020",
+        "date": "2026-09-22",
+        "project": "API Integration",
+        "description": "Conducted code review and provided feedback to team members",
+        "hours": 8.0,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP8020",
+        "date": "2026-09-21",
+        "project": "Database Optimization",
+        "description": "Fixed critical bugs and performance issues in the system",
+        "hours": 7.5,
+        "status": "rejected",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP2362",
+        "date": "2026-09-21",
+        "project": "Testing",
+        "description": "Researched new technologies and best practices",
+        "hours": 7.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP2362",
+        "date": "2026-09-23",
+        "project": "Documentation",
+        "description": "Attended team meetings and project planning sessions",
+        "hours": 7.0,
+        "status": "approved",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP2362",
+        "date": "2026-09-24",
+        "project": "Bug Fixes",
+        "description": "Updated project documentation and technical specifications",
+        "hours": 8.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP2362",
+        "date": "2026-09-25",
+        "project": "Database Optimization",
+        "description": "Fixed critical bugs and performance issues in the system",
+        "hours": 7.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP2362",
+        "date": "2026-09-22",
+        "project": "Mobile App",
+        "description": "Implemented new features and functionality as per requirements",
+        "hours": 7.0,
+        "status": "rejected",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP5501",
+        "date": "2026-09-24",
+        "project": "Website Development",
+        "description": "Worked on frontend components and user interface improvements",
+        "hours": 8.0,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP5501",
+        "date": "2026-09-25",
+        "project": "Documentation",
+        "description": "Attended team meetings and project planning sessions",
+        "hours": 7.0,
+        "status": "pending",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP5501",
+        "date": "2026-09-22",
+        "project": "Code Review",
+        "description": "Performed testing and quality assurance activities",
+        "hours": 6.5,
+        "status": "pending",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP5501",
+        "date": "2026-09-21",
+        "project": "Bug Fixes",
+        "description": "Updated project documentation and technical specifications",
+        "hours": 8.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP5501",
+        "date": "2026-09-23",
+        "project": "API Integration",
+        "description": "Conducted code review and provided feedback to team members",
+        "hours": 8.0,
+        "status": "rejected",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-09-23",
+        "project": "Website Development",
+        "description": "Worked on frontend components and user interface improvements",
+        "hours": 8.0,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-09-24",
+        "project": "Documentation",
+        "description": "Attended team meetings and project planning sessions",
+        "hours": 7.0,
+        "status": "pending",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-09-25",
+        "project": "Bug Fixes",
+        "description": "Updated project documentation and technical specifications",
+        "hours": 8.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-09-22",
+        "project": "API Integration",
+        "description": "Conducted code review and provided feedback to team members",
+        "hours": 8.0,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP5082",
+        "date": "2026-09-21",
+        "project": "Database Optimization",
+        "description": "Fixed critical bugs and performance issues in the system",
+        "hours": 7.5,
+        "status": "rejected",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-09-21",
+        "project": "Testing",
+        "description": "Researched new technologies and best practices",
+        "hours": 7.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-09-23",
+        "project": "Documentation",
+        "description": "Attended team meetings and project planning sessions",
+        "hours": 7.0,
+        "status": "approved",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-09-24",
+        "project": "Bug Fixes",
+        "description": "Updated project documentation and technical specifications",
+        "hours": 8.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-09-25",
+        "project": "Database Optimization",
+        "description": "Fixed critical bugs and performance issues in the system",
+        "hours": 7.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP1465",
+        "date": "2026-09-22",
+        "project": "Mobile App",
+        "description": "Implemented new features and functionality as per requirements",
+        "hours": 7.0,
+        "status": "rejected",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-09-24",
+        "project": "Website Development",
+        "description": "Worked on frontend components and user interface improvements",
+        "hours": 8.0,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-09-25",
+        "project": "Documentation",
+        "description": "Attended team meetings and project planning sessions",
+        "hours": 7.0,
+        "status": "pending",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-09-22",
+        "project": "Code Review",
+        "description": "Performed testing and quality assurance activities",
+        "hours": 6.5,
+        "status": "pending",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-09-21",
+        "project": "Bug Fixes",
+        "description": "Updated project documentation and technical specifications",
+        "hours": 8.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP8651",
+        "date": "2026-09-23",
+        "project": "API Integration",
+        "description": "Conducted code review and provided feedback to team members",
+        "hours": 8.0,
+        "status": "rejected",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-09-23",
+        "project": "Website Development",
+        "description": "Worked on frontend components and user interface improvements",
+        "hours": 8.0,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-09-24",
+        "project": "Documentation",
+        "description": "Attended team meetings and project planning sessions",
+        "hours": 7.0,
+        "status": "pending",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-09-25",
+        "project": "Bug Fixes",
+        "description": "Updated project documentation and technical specifications",
+        "hours": 8.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-09-22",
+        "project": "API Integration",
+        "description": "Conducted code review and provided feedback to team members",
+        "hours": 8.0,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP2277",
+        "date": "2026-09-21",
+        "project": "Database Optimization",
+        "description": "Fixed critical bugs and performance issues in the system",
+        "hours": 7.5,
+        "status": "rejected",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-09-21",
+        "project": "Testing",
+        "description": "Researched new technologies and best practices",
+        "hours": 7.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-09-23",
+        "project": "Documentation",
+        "description": "Attended team meetings and project planning sessions",
+        "hours": 7.0,
+        "status": "approved",
+        "is_billable": false
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-09-24",
+        "project": "Bug Fixes",
+        "description": "Updated project documentation and technical specifications",
+        "hours": 8.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-09-25",
+        "project": "Database Optimization",
+        "description": "Fixed critical bugs and performance issues in the system",
+        "hours": 7.5,
+        "status": "pending",
+        "is_billable": true
+    },
+    {
+        "employee": "EMP6816",
+        "date": "2026-09-22",
+        "project": "Mobile App",
+        "description": "Implemented new features and functionality as per requirements",
+        "hours": 7.0,
+        "status": "rejected",
+        "is_billable": true
+    }
+]

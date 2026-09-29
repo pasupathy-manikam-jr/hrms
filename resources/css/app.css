@@ -1,0 +1,229 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+    --background: oklch(0.984 0.004 270);
+    --foreground: oklch(0.22 0.03 270);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.22 0.03 270);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.22 0.03 270);
+    --primary: oklch(0.511 0.23 277);
+    --primary-foreground: oklch(1 0 0);
+    --secondary: oklch(0.955 0.02 277);
+    --secondary-foreground: oklch(0.38 0.14 277);
+    --muted: oklch(0.965 0.007 270);
+    --muted-foreground: oklch(0.54 0.03 270);
+    --accent: oklch(0.955 0.02 277);
+    --accent-foreground: oklch(0.38 0.14 277);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.577 0.245 27.325);
+    --border: oklch(0.915 0.012 270);
+    --input: oklch(0.9 0.014 270);
+    --ring: oklch(0.511 0.23 277);
+    --chart-1: oklch(0.511 0.23 277);
+    --chart-2: oklch(0.7 0.15 200);
+    --chart-3: oklch(0.72 0.17 340);
+    --chart-4: oklch(0.8 0.15 75);
+    --chart-5: oklch(0.6 0.2 300);
+    --radius: 0.8rem;
+    --sidebar: oklch(0.235 0.06 277);
+    --sidebar-foreground: oklch(0.88 0.03 277);
+    --sidebar-primary: oklch(0.585 0.22 277);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.31 0.08 277);
+    --sidebar-accent-foreground: oklch(1 0 0);
+    --sidebar-border: oklch(0.32 0.06 277);
+    --sidebar-ring: oklch(0.585 0.22 277);
+}
+
+.dark {
+    --background: oklch(0.17 0.02 275);
+    --foreground: oklch(0.96 0.01 275);
+    --card: oklch(0.21 0.025 275);
+    --card-foreground: oklch(0.96 0.01 275);
+    --popover: oklch(0.21 0.025 275);
+    --popover-foreground: oklch(0.96 0.01 275);
+    --primary: oklch(0.62 0.2 277);
+    --primary-foreground: oklch(1 0 0);
+    --secondary: oklch(0.27 0.04 277);
+    --secondary-foreground: oklch(0.92 0.03 277);
+    --muted: oklch(0.26 0.03 275);
+    --muted-foreground: oklch(0.7 0.03 275);
+    --accent: oklch(0.28 0.05 277);
+    --accent-foreground: oklch(0.96 0.01 275);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.3 0.03 275);
+    --input: oklch(0.32 0.03 275);
+    --ring: oklch(0.62 0.2 277);
+    --chart-1: oklch(0.62 0.2 277);
+    --chart-2: oklch(0.7 0.15 200);
+    --chart-3: oklch(0.72 0.17 340);
+    --chart-4: oklch(0.8 0.15 75);
+    --chart-5: oklch(0.65 0.2 300);
+    --sidebar: oklch(0.14 0.03 277);
+    --sidebar-foreground: oklch(0.88 0.03 277);
+    --sidebar-primary: oklch(0.585 0.22 277);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.24 0.05 277);
+    --sidebar-accent-foreground: oklch(1 0 0);
+    --sidebar-border: oklch(0.26 0.04 277);
+    --sidebar-ring: oklch(0.585 0.22 277);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    /*
+     * Form fields sit in grid rows; when an error or hint makes one cell taller, keep the neighbouring
+     * cell's label and input at the top instead of stretching them down, so side-by-side inputs line up.
+     */
+    form .grid {
+        align-content: start;
+    }
+}
+
+/* Organization chart connector lines (resources/js/pages/hr/organization-chart). */
+.org-tree,
+.org-tree ul {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.org-tree ul {
+    padding-top: 2rem;
+}
+
+.org-tree li {
+    list-style: none;
+    position: relative;
+    padding: 2rem 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Horizontal bar across siblings plus the drop to each child. */
+.org-tree li::before,
+.org-tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    inset-inline-end: 50%;
+    width: 50%;
+    height: 2rem;
+    border-top: 2px solid var(--border);
+}
+
+.org-tree li::after {
+    inset-inline-end: auto;
+    inset-inline-start: 50%;
+    border-inline-start: 2px solid var(--border);
+}
+
+.org-tree li:first-child::before,
+.org-tree li:last-child::after {
+    border: 0 none;
+}
+
+.org-tree li:last-child::before {
+    border-inline-end: 2px solid var(--border);
+    border-start-end-radius: 0.5rem;
+}
+
+.org-tree li:first-child::after {
+    border-start-start-radius: 0.5rem;
+}
+
+.org-tree li:only-child {
+    padding-top: 0;
+}
+
+.org-tree li:only-child::before,
+.org-tree li:only-child::after,
+.org-tree > li::before,
+.org-tree > li::after {
+    display: none;
+}
+
+.org-tree > li {
+    padding-top: 0;
+}
+
+/* Line from a parent card down to its children's bar. */
+.org-tree ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    inset-inline-start: 50%;
+    height: 2rem;
+    border-inline-start: 2px solid var(--border);
+}

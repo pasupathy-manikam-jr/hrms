@@ -1,0 +1,272 @@
+{
+    "salary_components": [
+        {
+            "name": "Housing Allowance",
+            "description": "Monthly housing allowance for accommodation expenses",
+            "type": "earning",
+            "calculation_type": "percentage",
+            "default_amount": "0.00",
+            "percentage_of_basic": "10.00",
+            "is_taxable": true,
+            "is_mandatory": false,
+            "status": "active"
+        },
+        {
+            "name": "Transport Allowance",
+            "description": "Transportation allowance for commuting expenses",
+            "type": "earning",
+            "calculation_type": "fixed",
+            "default_amount": "300.00",
+            "percentage_of_basic": null,
+            "is_taxable": false,
+            "is_mandatory": false,
+            "status": "active"
+        },
+        {
+            "name": "Medical Allowance",
+            "description": "Medical allowance for healthcare expenses",
+            "type": "earning",
+            "calculation_type": "fixed",
+            "default_amount": "150.00",
+            "percentage_of_basic": null,
+            "is_taxable": false,
+            "is_mandatory": false,
+            "status": "active"
+        },
+        {
+            "name": "Cost of Living Allowance (COLA)",
+            "description": "Cost of living allowance to offset inflation",
+            "type": "earning",
+            "calculation_type": "fixed",
+            "default_amount": "350.00",
+            "percentage_of_basic": null,
+            "is_taxable": true,
+            "is_mandatory": false,
+            "status": "active"
+        },
+        {
+            "name": "Special Allowance",
+            "description": "Special allowance for additional responsibilities",
+            "type": "earning",
+            "calculation_type": "fixed",
+            "default_amount": "500.00",
+            "percentage_of_basic": null,
+            "is_taxable": true,
+            "is_mandatory": false,
+            "status": "active"
+        },
+        {
+            "name": "EPF (KWSP)",
+            "description": "Employees Provident Fund employee contribution (11%)",
+            "type": "deduction",
+            "calculation_type": "percentage",
+            "default_amount": "0.00",
+            "percentage_of_basic": "11.00",
+            "is_taxable": false,
+            "is_mandatory": true,
+            "status": "active"
+        },
+        {
+            "name": "SOCSO (PERKESO)",
+            "description": "Social Security Organisation employee contribution",
+            "type": "deduction",
+            "calculation_type": "percentage",
+            "default_amount": "0.00",
+            "percentage_of_basic": "0.50",
+            "is_taxable": false,
+            "is_mandatory": true,
+            "status": "active"
+        },
+        {
+            "name": "EIS (SIP)",
+            "description": "Employment Insurance System employee contribution",
+            "type": "deduction",
+            "calculation_type": "percentage",
+            "default_amount": "0.00",
+            "percentage_of_basic": "0.20",
+            "is_taxable": false,
+            "is_mandatory": true,
+            "status": "active"
+        },
+        {
+            "name": "PCB (Monthly Tax Deduction)",
+            "description": "Potongan Cukai Bulanan remitted to LHDN",
+            "type": "deduction",
+            "calculation_type": "percentage",
+            "default_amount": "0.00",
+            "percentage_of_basic": "5.00",
+            "is_taxable": false,
+            "is_mandatory": false,
+            "status": "active"
+        },
+        {
+            "name": "Loan Deduction",
+            "description": "Employee loan repayment deduction",
+            "type": "deduction",
+            "calculation_type": "fixed",
+            "default_amount": "300.00",
+            "percentage_of_basic": null,
+            "is_taxable": false,
+            "is_mandatory": false,
+            "status": "active"
+        }
+    ],
+    "employee_salaries": [
+        {
+            "email": "employee@example.com",
+            "basic_salary": "3750.00",
+            "components": [
+                "Housing Allowance",
+                "Transport Allowance",
+                "EPF (KWSP)",
+                "EIS (SIP)"
+            ],
+            "is_active": true,
+            "notes": "Salary setup for employee"
+        },
+        {
+            "email": "dimitri21@example.com",
+            "basic_salary": "4400.00",
+            "components": [
+                "Housing Allowance",
+                "Transport Allowance",
+                "Medical Allowance",
+                "EPF (KWSP)",
+                "SOCSO (PERKESO)",
+                "EIS (SIP)",
+                "PCB (Monthly Tax Deduction)"
+            ],
+            "is_active": true,
+            "notes": "Salary setup for employee"
+        },
+        {
+            "email": "ugleichner@example.com",
+            "basic_salary": "5000.00",
+            "components": [
+                "Housing Allowance",
+                "Transport Allowance",
+                "Medical Allowance",
+                "Cost of Living Allowance (COLA)",
+                "Special Allowance",
+                "EPF (KWSP)",
+                "EIS (SIP)"
+            ],
+            "is_active": true,
+            "notes": "Salary setup for employee"
+        },
+        {
+            "email": "lakin.rahsaan@example.net",
+            "basic_salary": "5600.00",
+            "components": [
+                "Housing Allowance",
+                "Transport Allowance",
+                "EPF (KWSP)",
+                "SOCSO (PERKESO)",
+                "EIS (SIP)",
+                "PCB (Monthly Tax Deduction)"
+            ],
+            "is_active": true,
+            "notes": "Salary setup for employee"
+        },
+        {
+            "email": "gheathcote@example.net",
+            "basic_salary": "1900.00",
+            "components": [
+                "Housing Allowance",
+                "Transport Allowance",
+                "Medical Allowance",
+                "EPF (KWSP)",
+                "EIS (SIP)"
+            ],
+            "is_active": true,
+            "notes": "Salary setup for employee"
+        },
+        {
+            "email": "tod.pagac@example.com",
+            "basic_salary": "6900.00",
+            "components": [
+                "Housing Allowance",
+                "Transport Allowance",
+                "Medical Allowance",
+                "Cost of Living Allowance (COLA)",
+                "Special Allowance",
+                "EPF (KWSP)",
+                "SOCSO (PERKESO)",
+                "EIS (SIP)",
+                "PCB (Monthly Tax Deduction)"
+            ],
+            "is_active": true,
+            "notes": "Salary setup for employee"
+        },
+        {
+            "email": "merle75@example.net",
+            "basic_salary": "7500.00",
+            "components": [
+                "Housing Allowance",
+                "Transport Allowance",
+                "EPF (KWSP)",
+                "EIS (SIP)"
+            ],
+            "is_active": true,
+            "notes": "Salary setup for employee"
+        },
+        {
+            "email": "gmarquardt@example.net",
+            "basic_salary": "2500.00",
+            "components": [
+                "Housing Allowance",
+                "Transport Allowance",
+                "Medical Allowance",
+                "EPF (KWSP)",
+                "SOCSO (PERKESO)",
+                "EIS (SIP)",
+                "PCB (Monthly Tax Deduction)"
+            ],
+            "is_active": true,
+            "notes": "Salary setup for employee"
+        },
+        {
+            "email": "jesse33@example.net",
+            "basic_salary": "8750.00",
+            "components": [
+                "Housing Allowance",
+                "Transport Allowance",
+                "Medical Allowance",
+                "Cost of Living Allowance (COLA)",
+                "Special Allowance",
+                "EPF (KWSP)",
+                "EIS (SIP)"
+            ],
+            "is_active": true,
+            "notes": "Salary setup for employee"
+        },
+        {
+            "email": "lynch.leonel@example.com",
+            "basic_salary": "9400.00",
+            "components": [
+                "Housing Allowance",
+                "Transport Allowance",
+                "EPF (KWSP)",
+                "SOCSO (PERKESO)",
+                "EIS (SIP)",
+                "PCB (Monthly Tax Deduction)"
+            ],
+            "is_active": true,
+            "notes": "Salary setup for employee"
+        },
+        {
+            "email": "wilmer.duarte@example.com",
+            "basic_salary": "6250.00",
+            "components": [],
+            "is_active": true,
+            "notes": null
+        },
+        {
+            "email": "ines.cline@example.com",
+            "basic_salary": "6250.00",
+            "components": [],
+            "is_active": true,
+            "notes": null
+        }
+    ]
+}

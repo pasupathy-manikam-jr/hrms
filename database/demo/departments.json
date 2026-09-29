@@ -1,0 +1,146 @@
+[
+    {
+        "name": "Human Resources",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Manages employee relations, recruitment, training, benefits administration, and organizational development",
+        "status": "active"
+    },
+    {
+        "name": "Information Technology",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Responsible for managing IT infrastructure, software development, system maintenance, and technical support",
+        "status": "active"
+    },
+    {
+        "name": "Finance & Accounting",
+        "branch": "Kuala Lumpur HQ",
+        "description": "Handles financial planning, budgeting, accounting, financial reporting, and compliance with financial regulations",
+        "status": "active"
+    },
+    {
+        "name": "Human Resources",
+        "branch": "Petaling Jaya",
+        "description": "Manages employee relations, recruitment, training, benefits administration, and organizational development",
+        "status": "active"
+    },
+    {
+        "name": "Information Technology",
+        "branch": "Petaling Jaya",
+        "description": "Responsible for managing IT infrastructure, software development, system maintenance, and technical support",
+        "status": "active"
+    },
+    {
+        "name": "Human Resources",
+        "branch": "Penang",
+        "description": "Manages employee relations, recruitment, training, benefits administration, and organizational development",
+        "status": "active"
+    },
+    {
+        "name": "Information Technology",
+        "branch": "Penang",
+        "description": "Responsible for managing IT infrastructure, software development, system maintenance, and technical support",
+        "status": "active"
+    },
+    {
+        "name": "Finance & Accounting",
+        "branch": "Penang",
+        "description": "Handles financial planning, budgeting, accounting, financial reporting, and compliance with financial regulations",
+        "status": "active"
+    },
+    {
+        "name": "Human Resources",
+        "branch": "Johor Bahru",
+        "description": "Manages employee relations, recruitment, training, benefits administration, and organizational development",
+        "status": "active"
+    },
+    {
+        "name": "Information Technology",
+        "branch": "Johor Bahru",
+        "description": "Responsible for managing IT infrastructure, software development, system maintenance, and technical support",
+        "status": "active"
+    },
+    {
+        "name": "Finance & Accounting",
+        "branch": "Johor Bahru",
+        "description": "Handles financial planning, budgeting, accounting, financial reporting, and compliance with financial regulations",
+        "status": "active"
+    },
+    {
+        "name": "Human Resources",
+        "branch": "Kuantan",
+        "description": "Manages employee relations, recruitment, training, benefits administration, and organizational development",
+        "status": "active"
+    },
+    {
+        "name": "Information Technology",
+        "branch": "Kuantan",
+        "description": "Responsible for managing IT infrastructure, software development, system maintenance, and technical support",
+        "status": "active"
+    },
+    {
+        "name": "Human Resources",
+        "branch": "Ipoh",
+        "description": "Manages employee relations, recruitment, training, benefits administration, and organizational development",
+        "status": "active"
+    },
+    {
+        "name": "Information Technology",
+        "branch": "Ipoh",
+        "description": "Responsible for managing IT infrastructure, software development, system maintenance, and technical support",
+        "status": "active"
+    },
+    {
+        "name": "Finance & Accounting",
+        "branch": "Ipoh",
+        "description": "Handles financial planning, budgeting, accounting, financial reporting, and compliance with financial regulations",
+        "status": "active"
+    },
+    {
+        "name": "Human Resources",
+        "branch": "Cyberjaya",
+        "description": "Manages employee relations, recruitment, training, benefits administration, and organizational development",
+        "status": "active"
+    },
+    {
+        "name": "Information Technology",
+        "branch": "Cyberjaya",
+        "description": "Responsible for managing IT infrastructure, software development, system maintenance, and technical support",
+        "status": "active"
+    },
+    {
+        "name": "Finance & Accounting",
+        "branch": "Cyberjaya",
+        "description": "Handles financial planning, budgeting, accounting, financial reporting, and compliance with financial regulations",
+        "status": "active"
+    },
+    {
+        "name": "Human Resources",
+        "branch": "Shah Alam",
+        "description": "Manages employee relations, recruitment, training, benefits administration, and organizational development",
+        "status": "active"
+    },
+    {
+        "name": "Information Technology",
+        "branch": "Shah Alam",
+        "description": "Responsible for managing IT infrastructure, software development, system maintenance, and technical support",
+        "status": "active"
+    },
+    {
+        "name": "Finance & Accounting",
+        "branch": "Shah Alam",
+        "description": "Handles financial planning, budgeting, accounting, financial reporting, and compliance with financial regulations",
+        "status": "active"
+    },
+    {
+        "name": "Human Resources",
+        "branch": "Kota Kinabalu",
+        "description": "Manages employee relations, recruitment, training, benefits administration, and organizational development",
+        "status": "active"
+    },
+    {
+        "name": "Information Technology",
+        "branch": "Kota Kinabalu",
+        "description": "Responsible for managing IT infrastructure, software development, system maintenance, and technical support",
+        "status": "active"
+    }
+]

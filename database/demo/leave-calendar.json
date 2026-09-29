@@ -1,0 +1,30 @@
+[
+    {
+        "employee_email": "employee@example.com",
+        "leave_type": "Compensatory Leave",
+        "day": 0,
+        "days": 2,
+        "reason": "Compensatory off for overtime"
+    },
+    {
+        "employee_email": "dimitri21@example.com",
+        "leave_type": "Annual Leave",
+        "day": 0,
+        "days": 2,
+        "reason": "Family vacation"
+    },
+    {
+        "employee_email": "merle75@example.net",
+        "leave_type": "Annual Leave",
+        "day": 1,
+        "days": 2,
+        "reason": "Family vacation"
+    },
+    {
+        "employee_email": "lynch.leonel@example.com",
+        "leave_type": "Compensatory Leave",
+        "day": 1,
+        "days": 2,
+        "reason": "Compensatory off for overtime"
+    }
+]

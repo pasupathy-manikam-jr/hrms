@@ -1,0 +1,837 @@
+{
+    "indicator_categories": [
+        {
+            "name": "Job Performance",
+            "description": "Measures employee effectiveness in completing assigned tasks, meeting deadlines, and achieving job-specific objectives",
+            "status": "active"
+        },
+        {
+            "name": "Quality of Work",
+            "description": "Evaluates accuracy, attention to detail, and overall quality standards in work output and deliverables",
+            "status": "active"
+        },
+        {
+            "name": "Communication Skills",
+            "description": "Assesses verbal and written communication abilities, listening skills, and effectiveness in conveying information",
+            "status": "active"
+        },
+        {
+            "name": "Teamwork and Collaboration",
+            "description": "Measures ability to work effectively with colleagues, contribute to team goals, and maintain positive working relationships",
+            "status": "active"
+        },
+        {
+            "name": "Leadership and Initiative",
+            "description": "Evaluates leadership qualities, proactive approach, decision-making skills, and ability to guide and motivate others",
+            "status": "active"
+        },
+        {
+            "name": "Problem Solving",
+            "description": "Assesses analytical thinking, creativity in finding solutions, and ability to resolve challenges effectively",
+            "status": "active"
+        },
+        {
+            "name": "Adaptability and Flexibility",
+            "description": "Measures ability to adapt to changes, learn new skills, and handle varying work demands and environments",
+            "status": "active"
+        },
+        {
+            "name": "Time Management",
+            "description": "Evaluates efficiency in managing time, prioritizing tasks, and meeting deadlines consistently",
+            "status": "active"
+        },
+        {
+            "name": "Customer Service",
+            "description": "Measures effectiveness in serving customers, handling inquiries, and maintaining positive customer relationships",
+            "status": "active"
+        },
+        {
+            "name": "Technical Competency",
+            "description": "Assesses proficiency in job-related technical skills, software applications, and industry-specific knowledge",
+            "status": "active"
+        },
+        {
+            "name": "Professional Development",
+            "description": "Evaluates commitment to continuous learning, skill enhancement, and career growth initiatives",
+            "status": "active"
+        },
+        {
+            "name": "Attendance and Punctuality",
+            "description": "Measures reliability in attendance, punctuality, and adherence to work schedules and policies",
+            "status": "active"
+        }
+    ],
+    "indicators": [
+        {
+            "category": "Job Performance",
+            "name": "Task Completion Rate",
+            "description": "Percentage of assigned tasks completed within specified timeframes",
+            "measurement_unit": "Percentage",
+            "target_value": "95%",
+            "status": "active"
+        },
+        {
+            "category": "Job Performance",
+            "name": "Goal Achievement",
+            "description": "Success rate in achieving individual and team objectives",
+            "measurement_unit": "Percentage",
+            "target_value": "90%",
+            "status": "active"
+        },
+        {
+            "category": "Job Performance",
+            "name": "Productivity Level",
+            "description": "Output efficiency compared to established benchmarks",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Quality of Work",
+            "name": "Error Rate",
+            "description": "Frequency of mistakes or defects in work output",
+            "measurement_unit": "Percentage",
+            "target_value": "<5%",
+            "status": "active"
+        },
+        {
+            "category": "Quality of Work",
+            "name": "Accuracy Level",
+            "description": "Precision and correctness in completing tasks and deliverables",
+            "measurement_unit": "Percentage",
+            "target_value": "98%",
+            "status": "active"
+        },
+        {
+            "category": "Quality of Work",
+            "name": "Attention to Detail",
+            "description": "Thoroughness and care in reviewing and completing work",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Communication Skills",
+            "name": "Verbal Communication",
+            "description": "Effectiveness in spoken communication and presentations",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Communication Skills",
+            "name": "Written Communication",
+            "description": "Clarity and professionalism in written correspondence",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Communication Skills",
+            "name": "Active Listening",
+            "description": "Ability to understand and respond appropriately to others",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Teamwork and Collaboration",
+            "name": "Team Contribution",
+            "description": "Active participation and valuable input in team activities",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Teamwork and Collaboration",
+            "name": "Cooperation Level",
+            "description": "Willingness to work with others and support team goals",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Teamwork and Collaboration",
+            "name": "Conflict Resolution",
+            "description": "Ability to handle disagreements constructively",
+            "measurement_unit": "Rating",
+            "target_value": "3/5",
+            "status": "active"
+        },
+        {
+            "category": "Leadership and Initiative",
+            "name": "Decision Making",
+            "description": "Quality and timeliness of decisions made independently",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Leadership and Initiative",
+            "name": "Initiative Taking",
+            "description": "Proactive approach to identifying and addressing opportunities",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Leadership and Initiative",
+            "name": "Mentoring Ability",
+            "description": "Effectiveness in guiding and developing junior team members",
+            "measurement_unit": "Rating",
+            "target_value": "3/5",
+            "status": "active"
+        },
+        {
+            "category": "Problem Solving",
+            "name": "Analytical Thinking",
+            "description": "Ability to break down complex problems and analyze components",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Problem Solving",
+            "name": "Creative Solutions",
+            "description": "Innovation and creativity in developing problem solutions",
+            "measurement_unit": "Rating",
+            "target_value": "3/5",
+            "status": "active"
+        },
+        {
+            "category": "Problem Solving",
+            "name": "Resolution Speed",
+            "description": "Efficiency in identifying and implementing solutions",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Adaptability and Flexibility",
+            "name": "Change Adaptation",
+            "description": "Ability to adjust to new processes, systems, or requirements",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Adaptability and Flexibility",
+            "name": "Learning Agility",
+            "description": "Speed and effectiveness in acquiring new skills and knowledge",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Adaptability and Flexibility",
+            "name": "Stress Management",
+            "description": "Ability to maintain performance under pressure",
+            "measurement_unit": "Rating",
+            "target_value": "3/5",
+            "status": "active"
+        },
+        {
+            "category": "Time Management",
+            "name": "Deadline Adherence",
+            "description": "Consistency in meeting project and task deadlines",
+            "measurement_unit": "Percentage",
+            "target_value": "95%",
+            "status": "active"
+        },
+        {
+            "category": "Time Management",
+            "name": "Priority Management",
+            "description": "Effectiveness in organizing and prioritizing multiple tasks",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Time Management",
+            "name": "Efficiency Rating",
+            "description": "Optimal use of time and resources to achieve objectives",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Customer Service",
+            "name": "Customer Satisfaction",
+            "description": "Level of customer satisfaction with service provided",
+            "measurement_unit": "Rating",
+            "target_value": "4.5/5",
+            "status": "active"
+        },
+        {
+            "category": "Customer Service",
+            "name": "Response Time",
+            "description": "Speed in responding to customer inquiries and requests",
+            "measurement_unit": "Hours",
+            "target_value": "<24",
+            "status": "active"
+        },
+        {
+            "category": "Customer Service",
+            "name": "Issue Resolution",
+            "description": "Effectiveness in resolving customer problems and complaints",
+            "measurement_unit": "Percentage",
+            "target_value": "90%",
+            "status": "active"
+        },
+        {
+            "category": "Technical Competency",
+            "name": "Skill Proficiency",
+            "description": "Level of expertise in job-related technical skills",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Technical Competency",
+            "name": "Tool Utilization",
+            "description": "Effective use of software, systems, and technical tools",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Technical Competency",
+            "name": "Knowledge Application",
+            "description": "Practical application of technical knowledge to solve problems",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        },
+        {
+            "category": "Professional Development",
+            "name": "Training Completion",
+            "description": "Participation and completion rate in professional development programs",
+            "measurement_unit": "Percentage",
+            "target_value": "100%",
+            "status": "active"
+        },
+        {
+            "category": "Professional Development",
+            "name": "Skill Enhancement",
+            "description": "Progress in developing new competencies and improving existing skills",
+            "measurement_unit": "Rating",
+            "target_value": "3/5",
+            "status": "active"
+        },
+        {
+            "category": "Professional Development",
+            "name": "Certification Achievement",
+            "description": "Success in obtaining relevant professional certifications",
+            "measurement_unit": "Count",
+            "target_value": "2/year",
+            "status": "active"
+        },
+        {
+            "category": "Attendance and Punctuality",
+            "name": "Attendance Rate",
+            "description": "Percentage of scheduled work days attended",
+            "measurement_unit": "Percentage",
+            "target_value": "98%",
+            "status": "active"
+        },
+        {
+            "category": "Attendance and Punctuality",
+            "name": "Punctuality Score",
+            "description": "Consistency in arriving on time for work and meetings",
+            "measurement_unit": "Percentage",
+            "target_value": "95%",
+            "status": "active"
+        },
+        {
+            "category": "Attendance and Punctuality",
+            "name": "Leave Management",
+            "description": "Appropriate use of leave policies and advance notification",
+            "measurement_unit": "Rating",
+            "target_value": "4/5",
+            "status": "active"
+        }
+    ],
+    "goal_types": [
+        {
+            "name": "Performance Goals",
+            "description": "Performance and productivity goals",
+            "status": "active"
+        },
+        {
+            "name": "Career Development Goals",
+            "description": "Career growth and skills",
+            "status": "active"
+        },
+        {
+            "name": "Learning and Training Goals",
+            "description": "Goals related to acquiring new knowledge, completing training programs, and developing competencies required for current or future roles",
+            "status": "active"
+        },
+        {
+            "name": "Project Goals",
+            "description": "Project objectives and milestones",
+            "status": "active"
+        },
+        {
+            "name": "Sales and Revenue Goals",
+            "description": "Sales and growth targets",
+            "status": "active"
+        },
+        {
+            "name": "Quality Improvement Goals",
+            "description": "Goals aimed at enhancing work quality, reducing errors, improving processes, and maintaining high standards of excellence",
+            "status": "active"
+        },
+        {
+            "name": "Customer Service Goals",
+            "description": "Customer service improvement goals",
+            "status": "active"
+        },
+        {
+            "name": "Team Collaboration Goals",
+            "description": "Objectives aimed at improving teamwork, communication, cross-functional collaboration, and team effectiveness",
+            "status": "active"
+        },
+        {
+            "name": "Leadership Goals",
+            "description": "Leadership and management development",
+            "status": "active"
+        }
+    ],
+    "review_cycles": [
+        {
+            "name": "Monthly Performance Review",
+            "frequency": "Monthly",
+            "description": "Monthly review",
+            "status": "active"
+        },
+        {
+            "name": "Quarterly Business Review",
+            "frequency": "Quarterly",
+            "description": "Comprehensive quarterly assessment of employee performance, goal achievement, and development planning",
+            "status": "active"
+        },
+        {
+            "name": "Mid-Year Performance Review",
+            "frequency": "Semi-Annual",
+            "description": "Mid-year review",
+            "status": "active"
+        },
+        {
+            "name": "Annual Performance Appraisal",
+            "frequency": "Annual",
+            "description": "Annual appraisal",
+            "status": "active"
+        },
+        {
+            "name": "Probationary Review",
+            "frequency": "Quarterly",
+            "description": "Performance evaluation for employees during probationary period to assess job fit and performance standards",
+            "status": "active"
+        },
+        {
+            "name": "Project Completion Review",
+            "frequency": "Monthly",
+            "description": "Project outcome review",
+            "status": "active"
+        },
+        {
+            "name": "Leadership Assessment Cycle",
+            "frequency": "Semi-Annual",
+            "description": "Leadership effectiveness review",
+            "status": "active"
+        },
+        {
+            "name": "Sales Performance Review",
+            "frequency": "Quarterly",
+            "description": "Performance evaluation specifically designed for sales team members focusing on targets and customer relationships",
+            "status": "active"
+        }
+    ],
+    "employee_goals": [
+        {
+            "employee": "employee@example.com",
+            "goal_type": "Performance Goals",
+            "title": "Increase Task Completion Rate",
+            "description": "Improve task completion rate from 85% to 95% by implementing better time management strategies",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "95% completion rate",
+            "progress": 75,
+            "status": "in_progress"
+        },
+        {
+            "employee": "employee@example.com",
+            "goal_type": "Career Development Goals",
+            "title": "Obtain Professional Certification",
+            "description": "Complete industry-relevant certification to enhance professional credentials",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "1 certification",
+            "progress": 40,
+            "status": "in_progress"
+        },
+        {
+            "employee": "employee@example.com",
+            "goal_type": "Learning and Training Goals",
+            "title": "Complete Mandatory Training",
+            "description": "Finish all required compliance and safety training modules within deadline",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "100% training completion",
+            "progress": 100,
+            "status": "completed"
+        },
+        {
+            "employee": "employee@example.com",
+            "goal_type": "Project Goals",
+            "title": "Complete Project Alpha",
+            "description": "Successfully deliver Project Alpha within budget and timeline constraints",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "On-time delivery",
+            "progress": 80,
+            "status": "in_progress"
+        },
+        {
+            "employee": "employee@example.com",
+            "goal_type": "Sales and Revenue Goals",
+            "title": "Achieve Sales Quota",
+            "description": "Meet or exceed quarterly sales targets and contribute to revenue growth",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "110% of quota",
+            "progress": 85,
+            "status": "in_progress"
+        },
+        {
+            "employee": "employee@example.com",
+            "goal_type": "Quality Improvement Goals",
+            "title": "Reduce Error Rate",
+            "description": "Implement quality control measures to reduce work errors by 50%",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "50% error reduction",
+            "progress": 65,
+            "status": "in_progress"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "goal_type": "Performance Goals",
+            "title": "Enhance Productivity Metrics",
+            "description": "Achieve 20% increase in daily productivity by optimizing workflow processes",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "20% productivity increase",
+            "progress": 60,
+            "status": "in_progress"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "goal_type": "Career Development Goals",
+            "title": "Develop Leadership Skills",
+            "description": "Participate in leadership development program and apply learned skills",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "Complete leadership program",
+            "progress": 30,
+            "status": "in_progress"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "goal_type": "Learning and Training Goals",
+            "title": "Attend Professional Workshops",
+            "description": "Participate in at least 3 professional development workshops this year",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "3 workshops",
+            "progress": 67,
+            "status": "in_progress"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "goal_type": "Project Goals",
+            "title": "Implement Process Improvement",
+            "description": "Lead initiative to streamline departmental processes and reduce inefficiencies",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "25% efficiency gain",
+            "progress": 55,
+            "status": "in_progress"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "goal_type": "Sales and Revenue Goals",
+            "title": "Acquire New Clients",
+            "description": "Identify and onboard 15 new clients to expand customer base",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "15 new clients",
+            "progress": 70,
+            "status": "in_progress"
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "goal_type": "Quality Improvement Goals",
+            "title": "Enhance Review Process",
+            "description": "Establish comprehensive review process to ensure deliverable quality",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "Implement review process",
+            "progress": 100,
+            "status": "completed"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "goal_type": "Performance Goals",
+            "title": "Meet Quality Standards",
+            "description": "Maintain consistent quality standards with zero critical errors in deliverables",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "Zero critical errors",
+            "progress": 90,
+            "status": "in_progress"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "goal_type": "Career Development Goals",
+            "title": "Expand Technical Expertise",
+            "description": "Master new technology stack relevant to current role and future opportunities",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "Master 2 new technologies",
+            "progress": 50,
+            "status": "in_progress"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "goal_type": "Learning and Training Goals",
+            "title": "Learn New Software Tools",
+            "description": "Gain proficiency in advanced features of job-related software applications",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "Advanced proficiency",
+            "progress": 45,
+            "status": "in_progress"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "goal_type": "Project Goals",
+            "title": "Launch New Product Feature",
+            "description": "Coordinate cross-functional team to launch new product feature successfully",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "Successful launch",
+            "progress": 35,
+            "status": "in_progress"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "goal_type": "Sales and Revenue Goals",
+            "title": "Increase Customer Retention",
+            "description": "Improve customer retention rate through enhanced service and relationship management",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "95% retention rate",
+            "progress": 88,
+            "status": "in_progress"
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "goal_type": "Quality Improvement Goals",
+            "title": "Achieve Quality Certification",
+            "description": "Work towards obtaining quality management certification for the department",
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "target": "Quality certification",
+            "progress": 25,
+            "status": "in_progress"
+        }
+    ],
+    "employee_reviews": [
+        {
+            "employee": "employee@example.com",
+            "reviewer": "hr@example.com",
+            "review_cycle": "Monthly Performance Review",
+            "review_date": "2025-03-01",
+            "completion_date": "2025-06-15",
+            "comments": "Employee demonstrates strong performance and meets expectations consistently",
+            "status": "completed",
+            "ratings": [
+                {
+                    "indicator": "Task Completion Rate",
+                    "rating": 4,
+                    "comments": "Consistently meets performance standards with room for improvement"
+                },
+                {
+                    "indicator": "Goal Achievement",
+                    "rating": 4.5,
+                    "comments": "Exceeds expectations and demonstrates strong competency"
+                },
+                {
+                    "indicator": "Productivity Level",
+                    "rating": 3.5,
+                    "comments": "Meets basic requirements but could benefit from additional development"
+                },
+                {
+                    "indicator": "Error Rate",
+                    "rating": 4.2,
+                    "comments": "Strong performance with consistent quality output"
+                },
+                {
+                    "indicator": "Accuracy Level",
+                    "rating": 3.8,
+                    "comments": "Good performance with occasional areas for enhancement"
+                }
+            ]
+        },
+        {
+            "employee": "employee@example.com",
+            "reviewer": "hr@example.com",
+            "review_cycle": "Quarterly Business Review",
+            "review_date": "2025-03-01",
+            "completion_date": "2025-06-15",
+            "comments": "Excellent work quality and dedication to achieving team objectives",
+            "status": "completed",
+            "ratings": [
+                {
+                    "indicator": "Task Completion Rate",
+                    "rating": 4,
+                    "comments": "Consistently meets performance standards with room for improvement"
+                },
+                {
+                    "indicator": "Goal Achievement",
+                    "rating": 4.5,
+                    "comments": "Exceeds expectations and demonstrates strong competency"
+                },
+                {
+                    "indicator": "Productivity Level",
+                    "rating": 3.5,
+                    "comments": "Meets basic requirements but could benefit from additional development"
+                },
+                {
+                    "indicator": "Error Rate",
+                    "rating": 4.2,
+                    "comments": "Strong performance with consistent quality output"
+                },
+                {
+                    "indicator": "Accuracy Level",
+                    "rating": 3.8,
+                    "comments": "Good performance with occasional areas for enhancement"
+                }
+            ]
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "reviewer": "hr@example.com",
+            "review_cycle": "Monthly Performance Review",
+            "review_date": "2025-03-01",
+            "completion_date": "2025-06-15",
+            "comments": "Shows good progress in skill development and professional growth",
+            "status": "completed",
+            "ratings": [
+                {
+                    "indicator": "Task Completion Rate",
+                    "rating": 4,
+                    "comments": "Consistently meets performance standards with room for improvement"
+                },
+                {
+                    "indicator": "Goal Achievement",
+                    "rating": 4.5,
+                    "comments": "Exceeds expectations and demonstrates strong competency"
+                },
+                {
+                    "indicator": "Productivity Level",
+                    "rating": 3.5,
+                    "comments": "Meets basic requirements but could benefit from additional development"
+                },
+                {
+                    "indicator": "Error Rate",
+                    "rating": 4.2,
+                    "comments": "Strong performance with consistent quality output"
+                },
+                {
+                    "indicator": "Accuracy Level",
+                    "rating": 3.8,
+                    "comments": "Good performance with occasional areas for enhancement"
+                }
+            ]
+        },
+        {
+            "employee": "dimitri21@example.com",
+            "reviewer": "hr@example.com",
+            "review_cycle": "Quarterly Business Review",
+            "review_date": "2025-03-01",
+            "completion_date": "2025-06-15",
+            "comments": "Reliable team member with positive attitude and strong work ethic",
+            "status": "completed",
+            "ratings": [
+                {
+                    "indicator": "Task Completion Rate",
+                    "rating": 4,
+                    "comments": "Consistently meets performance standards with room for improvement"
+                },
+                {
+                    "indicator": "Goal Achievement",
+                    "rating": 4.5,
+                    "comments": "Exceeds expectations and demonstrates strong competency"
+                },
+                {
+                    "indicator": "Productivity Level",
+                    "rating": 3.5,
+                    "comments": "Meets basic requirements but could benefit from additional development"
+                },
+                {
+                    "indicator": "Error Rate",
+                    "rating": 4.2,
+                    "comments": "Strong performance with consistent quality output"
+                },
+                {
+                    "indicator": "Accuracy Level",
+                    "rating": 3.8,
+                    "comments": "Good performance with occasional areas for enhancement"
+                }
+            ]
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "reviewer": "hr@example.com",
+            "review_cycle": "Monthly Performance Review",
+            "review_date": "2025-03-01",
+            "completion_date": null,
+            "comments": null,
+            "status": "in_progress",
+            "ratings": []
+        },
+        {
+            "employee": "ugleichner@example.com",
+            "reviewer": "hr@example.com",
+            "review_cycle": "Quarterly Business Review",
+            "review_date": "2025-03-01",
+            "completion_date": null,
+            "comments": null,
+            "status": "in_progress",
+            "ratings": []
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "reviewer": "hr@example.com",
+            "review_cycle": "Monthly Performance Review",
+            "review_date": "2025-03-01",
+            "completion_date": null,
+            "comments": null,
+            "status": "scheduled",
+            "ratings": []
+        },
+        {
+            "employee": "lakin.rahsaan@example.net",
+            "reviewer": "hr@example.com",
+            "review_cycle": "Quarterly Business Review",
+            "review_date": "2025-03-01",
+            "completion_date": null,
+            "comments": null,
+            "status": "scheduled",
+            "ratings": []
+        }
+    ]
+}

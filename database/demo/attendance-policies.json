@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Standard Attendance Policy",
+        "description": "Default attendance policy with standard grace periods and overtime rates",
+        "late_arrival_grace": 15,
+        "early_departure_grace": 15,
+        "half_day_threshold": "4.00",
+        "overtime_rate_per_hour": "150.00",
+        "status": "active"
+    },
+    {
+        "name": "Flexible Attendance Policy",
+        "description": "Flexible attendance policy with extended grace periods for remote and flexible workers",
+        "late_arrival_grace": 30,
+        "early_departure_grace": 30,
+        "half_day_threshold": "3.50",
+        "overtime_rate_per_hour": "175.00",
+        "status": "active"
+    },
+    {
+        "name": "Strict Attendance Policy",
+        "description": "Strict attendance policy with minimal grace periods for critical operations",
+        "late_arrival_grace": 5,
+        "early_departure_grace": 5,
+        "half_day_threshold": "4.50",
+        "overtime_rate_per_hour": "200.00",
+        "status": "active"
+    }
+]

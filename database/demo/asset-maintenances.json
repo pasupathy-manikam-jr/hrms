@@ -1,0 +1,47 @@
+[
+    {
+        "asset": "Dell OptiPlex 7090",
+        "maintenance_type": "preventive",
+        "start_date": "2026-10-05",
+        "end_date": "2026-10-12",
+        "cost": "425.00",
+        "details": "Regular preventive maintenance and system updates",
+        "supplier": "Teknik Servis Sdn Bhd"
+    },
+    {
+        "asset": "iPhone 14 Pro",
+        "maintenance_type": "preventive",
+        "start_date": "2026-10-05",
+        "end_date": "2026-10-12",
+        "cost": "650.00",
+        "details": "Regular preventive maintenance and system updates",
+        "supplier": "Teknik Servis Sdn Bhd"
+    },
+    {
+        "asset": "Canon ImageRunner Printer",
+        "maintenance_type": "preventive",
+        "start_date": "2026-10-05",
+        "end_date": "2026-10-12",
+        "cost": "225.00",
+        "details": "Regular preventive maintenance and system updates",
+        "supplier": "Teknik Servis Sdn Bhd"
+    },
+    {
+        "asset": "Executive Office Desk",
+        "maintenance_type": "preventive",
+        "start_date": "2026-10-05",
+        "end_date": "2026-10-12",
+        "cost": "75.00",
+        "details": "Regular preventive maintenance and system updates",
+        "supplier": "Teknik Servis Sdn Bhd"
+    },
+    {
+        "asset": "Toyota Camry 2023",
+        "maintenance_type": "preventive",
+        "start_date": "2026-10-05",
+        "end_date": "2026-10-12",
+        "cost": "1750.00",
+        "details": "Regular preventive maintenance and system updates",
+        "supplier": "Teknik Servis Sdn Bhd"
+    }
+]

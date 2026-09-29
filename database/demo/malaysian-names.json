@@ -1,0 +1,176 @@
+[
+    {
+        "from": "company@example.com",
+        "name": "Dato' Lim Chee Keong",
+        "email": "company@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "hr@example.com",
+        "name": "Nurul Aisyah binti Rahman",
+        "email": "hr@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "employee@example.com",
+        "name": "Siti Hajar binti Kamal",
+        "email": "employee@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "manager@example.com",
+        "name": "Ahmad Faizal bin Yusof",
+        "email": "manager@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "dimitri21@example.com",
+        "name": "Tan Wei Jie",
+        "email": "weijie.tan@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "ugleichner@example.com",
+        "name": "Muhammad Hafiz bin Ismail",
+        "email": "hafiz.ismail@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "lakin.rahsaan@example.net",
+        "name": "Rajesh a/l Subramaniam",
+        "email": "rajesh.subramaniam@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "gheathcote@example.net",
+        "name": "Chong Mei Ling",
+        "email": "meiling.chong@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "tod.pagac@example.com",
+        "name": "Kavitha a/p Muniandy",
+        "email": "kavitha.muniandy@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "merle75@example.net",
+        "name": "Jugah anak Barieng",
+        "email": "jugah.barieng@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "gmarquardt@example.net",
+        "name": "Jenny Lajiun",
+        "email": "jenny.lajiun@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "jesse33@example.net",
+        "name": "Felix Majalu",
+        "email": "felix.majalu@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "lynch.leonel@example.com",
+        "name": "Arvind a/l Krishnan",
+        "email": "arvind.krishnan@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "wilmer.duarte@example.com",
+        "name": "Wong Kah Seng",
+        "email": "kahseng.wong@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "ines.cline@example.com",
+        "name": "Dayang Norhayati binti Awang",
+        "email": "norhayati.awang@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "elena.petrova@example.com",
+        "name": "Lee Siew Mei",
+        "email": "siewmei.lee@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "katrina28@example.com",
+        "name": "Priya a/p Ramasamy",
+        "email": "priya.ramasamy@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "amity@mailinator.com",
+        "name": "Nur Ain binti Salleh",
+        "email": "nurain.salleh@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "cole@mailinator.com",
+        "name": "Jimmy Gundaya",
+        "email": "jimmy.gundaya@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "corkery.cheyanne@example.net",
+        "name": "Ong Boon Hock",
+        "email": "boonhock.ong@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "sofia.rossi@example.com",
+        "name": "Suresh a/l Nadarajah",
+        "email": "suresh.nadarajah@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "lucas.martin@example.com",
+        "name": "Chen Li Ting",
+        "email": "liting.chen@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "kiayada@mailinator.com",
+        "name": "Mohd Azlan bin Othman",
+        "email": "azlan.othman@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "xenos@mailinator.com",
+        "name": "Rinda anak Jimbun",
+        "email": "rinda.jimbun@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "wesley@mailinator.com",
+        "name": "Deepa a/p Rajendran",
+        "email": "deepa.rajendran@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "hakeem@mailinator.com",
+        "name": "Lau Chee Wah",
+        "email": "cheewah.lau@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "emmanuel@mailinator.com",
+        "name": "Faridah binti Hassan",
+        "email": "faridah.hassan@example.com",
+        "gender": "female"
+    },
+    {
+        "from": "katelyn@mailinator.com",
+        "name": "Bernard Kunjan",
+        "email": "bernard.kunjan@example.com",
+        "gender": "male"
+    },
+    {
+        "from": "daniel.mueller@example.com",
+        "name": "Sabrina Gumpit",
+        "email": "sabrina.gumpit@example.com",
+        "gender": "female"
+    }
+]

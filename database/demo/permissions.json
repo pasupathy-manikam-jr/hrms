@@ -1,0 +1,3884 @@
+[
+    {
+        "module": "dashboard",
+        "name": "manage-dashboard",
+        "label": "Manage Dashboard",
+        "description": "Can view dashboard"
+    },
+    {
+        "module": "users",
+        "name": "manage-users",
+        "label": "Manage Users",
+        "description": "Can manage users"
+    },
+    {
+        "module": "users",
+        "name": "manage-any-users",
+        "label": "Manage All Users",
+        "description": "Manage Any Users"
+    },
+    {
+        "module": "users",
+        "name": "manage-own-users",
+        "label": "Manage Own Users",
+        "description": "Manage Limited Users that is created by own"
+    },
+    {
+        "module": "users",
+        "name": "view-users",
+        "label": "Manage Users",
+        "description": "View Users"
+    },
+    {
+        "module": "users",
+        "name": "create-users",
+        "label": "Create Users",
+        "description": "Can create users"
+    },
+    {
+        "module": "users",
+        "name": "edit-users",
+        "label": "Edit Users",
+        "description": "Can edit users"
+    },
+    {
+        "module": "users",
+        "name": "delete-users",
+        "label": "Delete Users",
+        "description": "Can delete users"
+    },
+    {
+        "module": "users",
+        "name": "reset-password-users",
+        "label": "Reset Password Users",
+        "description": "Can reset password users"
+    },
+    {
+        "module": "users",
+        "name": "toggle-status-users",
+        "label": "Change Status Users",
+        "description": "Can change status users"
+    },
+    {
+        "module": "roles",
+        "name": "manage-roles",
+        "label": "Manage Roles",
+        "description": "Can manage roles"
+    },
+    {
+        "module": "roles",
+        "name": "manage-any-roles",
+        "label": "Manage All Roles",
+        "description": "Manage Any Roles"
+    },
+    {
+        "module": "roles",
+        "name": "manage-own-roles",
+        "label": "Manage Own Roles",
+        "description": "Manage Limited Roles that is created by own"
+    },
+    {
+        "module": "roles",
+        "name": "view-roles",
+        "label": "View Roles",
+        "description": "View Roles"
+    },
+    {
+        "module": "roles",
+        "name": "create-roles",
+        "label": "Create Roles",
+        "description": "Can create roles"
+    },
+    {
+        "module": "roles",
+        "name": "edit-roles",
+        "label": "Edit Roles",
+        "description": "Can edit roles"
+    },
+    {
+        "module": "roles",
+        "name": "delete-roles",
+        "label": "Delete Roles",
+        "description": "Can delete roles"
+    },
+    {
+        "module": "media",
+        "name": "manage-media",
+        "label": "Manage Media",
+        "description": "Can manage media"
+    },
+    {
+        "module": "media",
+        "name": "manage-any-media",
+        "label": "Manage All Media",
+        "description": "Manage Any media"
+    },
+    {
+        "module": "media",
+        "name": "manage-own-media",
+        "label": "Manage Own Media",
+        "description": "Manage Limited media that is created by own"
+    },
+    {
+        "module": "media",
+        "name": "create-media",
+        "label": "Create media",
+        "description": "Create media"
+    },
+    {
+        "module": "media",
+        "name": "edit-media",
+        "label": "Edit media",
+        "description": "Edit media"
+    },
+    {
+        "module": "media",
+        "name": "delete-media",
+        "label": "Delete media",
+        "description": "Delete media"
+    },
+    {
+        "module": "media",
+        "name": "view-media",
+        "label": "View media",
+        "description": "View media"
+    },
+    {
+        "module": "media",
+        "name": "download-media",
+        "label": "Download media",
+        "description": "Download media"
+    },
+    {
+        "module": "media_directories",
+        "name": "manage-media-directories",
+        "label": "Manage Media Directory",
+        "description": "Can manage media directories"
+    },
+    {
+        "module": "media_directories",
+        "name": "manage-any-media-directories",
+        "label": "Manage All Media Directory",
+        "description": "Manage any media directories"
+    },
+    {
+        "module": "media_directories",
+        "name": "manage-own-media-directories",
+        "label": "Manage Own Media Directory",
+        "description": "Manage only media directories created by self"
+    },
+    {
+        "module": "media_directories",
+        "name": "create-media-directories",
+        "label": "Create Media Directory",
+        "description": "Create new media directories"
+    },
+    {
+        "module": "media_directories",
+        "name": "edit-media-directories",
+        "label": "Edit Media Directory",
+        "description": "Edit existing media directories"
+    },
+    {
+        "module": "media_directories",
+        "name": "delete-media-directories",
+        "label": "Delete Media Directory",
+        "description": "Delete media directories files"
+    },
+    {
+        "module": "branches",
+        "name": "manage-branches",
+        "label": "Manage Branches",
+        "description": "Can manage branches"
+    },
+    {
+        "module": "branches",
+        "name": "manage-any-branches",
+        "label": "Manage All Branches",
+        "description": "Manage Any Branches"
+    },
+    {
+        "module": "branches",
+        "name": "manage-own-branches",
+        "label": "Manage Own Branches",
+        "description": "Manage Limited Branches that is created by own"
+    },
+    {
+        "module": "branches",
+        "name": "view-branches",
+        "label": "View Branches",
+        "description": "View Branches"
+    },
+    {
+        "module": "branches",
+        "name": "create-branches",
+        "label": "Create Branches",
+        "description": "Can create branches"
+    },
+    {
+        "module": "branches",
+        "name": "edit-branches",
+        "label": "Edit Branches",
+        "description": "Can edit branches"
+    },
+    {
+        "module": "branches",
+        "name": "delete-branches",
+        "label": "Delete Branches",
+        "description": "Can delete branches"
+    },
+    {
+        "module": "branches",
+        "name": "toggle-status-branches",
+        "label": "Manage Branch Status",
+        "description": "Can toggle status of branches"
+    },
+    {
+        "module": "departments",
+        "name": "manage-departments",
+        "label": "Manage Departments",
+        "description": "Can manage departments"
+    },
+    {
+        "module": "departments",
+        "name": "manage-any-departments",
+        "label": "Manage All Departments",
+        "description": "Manage Any Departments"
+    },
+    {
+        "module": "departments",
+        "name": "manage-own-departments",
+        "label": "Manage Own Departments",
+        "description": "Manage Limited Departments that is created by own"
+    },
+    {
+        "module": "departments",
+        "name": "view-departments",
+        "label": "View Departments",
+        "description": "View Departments"
+    },
+    {
+        "module": "departments",
+        "name": "create-departments",
+        "label": "Create Departments",
+        "description": "Can create departments"
+    },
+    {
+        "module": "departments",
+        "name": "edit-departments",
+        "label": "Edit Departments",
+        "description": "Can edit departments"
+    },
+    {
+        "module": "departments",
+        "name": "delete-departments",
+        "label": "Delete Departments",
+        "description": "Can delete departments"
+    },
+    {
+        "module": "departments",
+        "name": "toggle-status-departments",
+        "label": "Manage Departments Status",
+        "description": "Can toggle status of departments"
+    },
+    {
+        "module": "designations",
+        "name": "manage-designations",
+        "label": "Manage Designations",
+        "description": "Can manage designations"
+    },
+    {
+        "module": "designations",
+        "name": "manage-any-designations",
+        "label": "Manage All Designations",
+        "description": "Manage Any Designations"
+    },
+    {
+        "module": "designations",
+        "name": "manage-own-designations",
+        "label": "Manage Own Designations",
+        "description": "Manage Limited Designations that is created by own"
+    },
+    {
+        "module": "designations",
+        "name": "view-designations",
+        "label": "View Designations",
+        "description": "View Designations"
+    },
+    {
+        "module": "designations",
+        "name": "create-designations",
+        "label": "Create Designations",
+        "description": "Can create designations"
+    },
+    {
+        "module": "designations",
+        "name": "edit-designations",
+        "label": "Edit Designations",
+        "description": "Can edit designations"
+    },
+    {
+        "module": "designations",
+        "name": "delete-designations",
+        "label": "Delete Designations",
+        "description": "Can delete designations"
+    },
+    {
+        "module": "designations",
+        "name": "toggle-status-designations",
+        "label": "Manage Designations Status",
+        "description": "Can toggle status of designations"
+    },
+    {
+        "module": "document_types",
+        "name": "manage-document-types",
+        "label": "Manage Document Types",
+        "description": "Can manage document types"
+    },
+    {
+        "module": "document_types",
+        "name": "manage-any-document-types",
+        "label": "Manage All Document Types",
+        "description": "Manage Any Document Types"
+    },
+    {
+        "module": "document_types",
+        "name": "manage-own-document-types",
+        "label": "Manage Own Document Types",
+        "description": "Manage Limited Document Types that is created by own"
+    },
+    {
+        "module": "document_types",
+        "name": "view-document-types",
+        "label": "View Document Types",
+        "description": "View Document Types"
+    },
+    {
+        "module": "document_types",
+        "name": "create-document-types",
+        "label": "Create Document Types",
+        "description": "Can create document types"
+    },
+    {
+        "module": "document_types",
+        "name": "edit-document-types",
+        "label": "Edit Document Types",
+        "description": "Can edit document types"
+    },
+    {
+        "module": "document_types",
+        "name": "delete-document-types",
+        "label": "Delete Document Types",
+        "description": "Can delete document types"
+    },
+    {
+        "module": "employees",
+        "name": "manage-employees",
+        "label": "Manage Employees",
+        "description": "Can manage employees"
+    },
+    {
+        "module": "employees",
+        "name": "manage-any-employees",
+        "label": "Manage All Employees",
+        "description": "Manage Any Employees"
+    },
+    {
+        "module": "employees",
+        "name": "manage-own-employees",
+        "label": "Manage Own Employees",
+        "description": "Manage Limited Employees that is created by own"
+    },
+    {
+        "module": "employees",
+        "name": "view-employees",
+        "label": "View Employees",
+        "description": "View Employees"
+    },
+    {
+        "module": "employees",
+        "name": "create-employees",
+        "label": "Create Employees",
+        "description": "Can create employees"
+    },
+    {
+        "module": "employees",
+        "name": "edit-employees",
+        "label": "Edit Employees",
+        "description": "Can edit employees"
+    },
+    {
+        "module": "employees",
+        "name": "delete-employees",
+        "label": "Delete Employees",
+        "description": "Can delete employees"
+    },
+    {
+        "module": "employees",
+        "name": "download-joining-letter",
+        "label": "Download Joining Letter",
+        "description": "Can download joining letter"
+    },
+    {
+        "module": "employees",
+        "name": "download-experience-certificate",
+        "label": "Download Experience Certificate",
+        "description": "Can download experience certificate"
+    },
+    {
+        "module": "employees",
+        "name": "download-noc-certificate",
+        "label": "Download NOC Certificate",
+        "description": "Can download NOC certificate"
+    },
+    {
+        "module": "employees",
+        "name": "import-employee",
+        "label": "Import Employees",
+        "description": "Can Import Employees"
+    },
+    {
+        "module": "employees",
+        "name": "export-employee",
+        "label": "Export Employees",
+        "description": "Can Export Employees"
+    },
+    {
+        "module": "award_types",
+        "name": "manage-award-types",
+        "label": "Manage Award Types",
+        "description": "Can manage award types"
+    },
+    {
+        "module": "award_types",
+        "name": "manage-any-award-types",
+        "label": "Manage All Award Types",
+        "description": "Manage Any Award Types"
+    },
+    {
+        "module": "award_types",
+        "name": "manage-own-award-types",
+        "label": "Manage Own Award Types",
+        "description": "Manage Limited Award Types that is created by own"
+    },
+    {
+        "module": "award_types",
+        "name": "view-award-types",
+        "label": "View Award Types",
+        "description": "View Award Types"
+    },
+    {
+        "module": "award_types",
+        "name": "create-award-types",
+        "label": "Create Award Types",
+        "description": "Can create award types"
+    },
+    {
+        "module": "award_types",
+        "name": "edit-award-types",
+        "label": "Edit Award Types",
+        "description": "Can edit award types"
+    },
+    {
+        "module": "award_types",
+        "name": "delete-award-types",
+        "label": "Delete Award Types",
+        "description": "Can delete award types"
+    },
+    {
+        "module": "awards",
+        "name": "manage-awards",
+        "label": "Manage Awards",
+        "description": "Can manage awards"
+    },
+    {
+        "module": "awards",
+        "name": "manage-any-awards",
+        "label": "Manage All Awards",
+        "description": "Manage Any Awards"
+    },
+    {
+        "module": "awards",
+        "name": "manage-own-awards",
+        "label": "Manage Own Awards",
+        "description": "Manage Limited Awards that is created by own"
+    },
+    {
+        "module": "awards",
+        "name": "view-awards",
+        "label": "View Awards",
+        "description": "View Awards"
+    },
+    {
+        "module": "awards",
+        "name": "create-awards",
+        "label": "Create Awards",
+        "description": "Can create awards"
+    },
+    {
+        "module": "awards",
+        "name": "edit-awards",
+        "label": "Edit Awards",
+        "description": "Can edit awards"
+    },
+    {
+        "module": "awards",
+        "name": "delete-awards",
+        "label": "Delete Awards",
+        "description": "Can delete awards"
+    },
+    {
+        "module": "promotions",
+        "name": "manage-promotions",
+        "label": "Manage Promotions",
+        "description": "Can manage promotions"
+    },
+    {
+        "module": "promotions",
+        "name": "manage-any-promotions",
+        "label": "Manage All Promotions",
+        "description": "Manage Any Promotions"
+    },
+    {
+        "module": "promotions",
+        "name": "manage-own-promotions",
+        "label": "Manage Own Promotions",
+        "description": "Manage Limited Promotions that is created by own"
+    },
+    {
+        "module": "promotions",
+        "name": "view-promotions",
+        "label": "View Promotions",
+        "description": "View Promotions"
+    },
+    {
+        "module": "promotions",
+        "name": "create-promotions",
+        "label": "Create Promotions",
+        "description": "Can create promotions"
+    },
+    {
+        "module": "promotions",
+        "name": "edit-promotions",
+        "label": "Edit Promotions",
+        "description": "Can edit promotions"
+    },
+    {
+        "module": "promotions",
+        "name": "delete-promotions",
+        "label": "Delete Promotions",
+        "description": "Can delete promotions"
+    },
+    {
+        "module": "promotions",
+        "name": "approve-promotions",
+        "label": "Approve Promotions",
+        "description": "Can approve promotions"
+    },
+    {
+        "module": "promotions",
+        "name": "reject-promotions",
+        "label": "Reject Promotions",
+        "description": "Can reject promotions"
+    },
+    {
+        "module": "resignations",
+        "name": "manage-resignations",
+        "label": "Manage Resignations",
+        "description": "Can manage resignations"
+    },
+    {
+        "module": "resignations",
+        "name": "manage-any-resignations",
+        "label": "Manage All Resignations",
+        "description": "Manage Any Resignations"
+    },
+    {
+        "module": "resignations",
+        "name": "manage-own-resignations",
+        "label": "Manage Own Resignations",
+        "description": "Manage Limited Resignations that is created by own"
+    },
+    {
+        "module": "resignations",
+        "name": "view-resignations",
+        "label": "View Resignations",
+        "description": "View Resignations"
+    },
+    {
+        "module": "resignations",
+        "name": "create-resignations",
+        "label": "Create Resignations",
+        "description": "Can create resignations"
+    },
+    {
+        "module": "resignations",
+        "name": "edit-resignations",
+        "label": "Edit Resignations",
+        "description": "Can edit resignations"
+    },
+    {
+        "module": "resignations",
+        "name": "delete-resignations",
+        "label": "Delete Resignations",
+        "description": "Can delete resignations"
+    },
+    {
+        "module": "resignations",
+        "name": "approve-resignations",
+        "label": "Approve Resignations",
+        "description": "Can approve resignations"
+    },
+    {
+        "module": "resignations",
+        "name": "reject-resignations",
+        "label": "Reject Resignations",
+        "description": "Can reject resignations"
+    },
+    {
+        "module": "terminations",
+        "name": "manage-terminations",
+        "label": "Manage Terminations",
+        "description": "Can manage terminations"
+    },
+    {
+        "module": "terminations",
+        "name": "manage-any-terminations",
+        "label": "Manage All Terminations",
+        "description": "Manage Any Terminations"
+    },
+    {
+        "module": "terminations",
+        "name": "manage-own-terminations",
+        "label": "Manage Own Terminations",
+        "description": "Manage Limited Terminations that is created by own"
+    },
+    {
+        "module": "terminations",
+        "name": "view-terminations",
+        "label": "View Terminations",
+        "description": "View Terminations"
+    },
+    {
+        "module": "terminations",
+        "name": "create-terminations",
+        "label": "Create Terminations",
+        "description": "Can create terminations"
+    },
+    {
+        "module": "terminations",
+        "name": "edit-terminations",
+        "label": "Edit Terminations",
+        "description": "Can edit terminations"
+    },
+    {
+        "module": "terminations",
+        "name": "delete-terminations",
+        "label": "Delete Terminations",
+        "description": "Can delete terminations"
+    },
+    {
+        "module": "terminations",
+        "name": "approve-terminations",
+        "label": "Approve Terminations",
+        "description": "Can approve terminations"
+    },
+    {
+        "module": "terminations",
+        "name": "reject-terminations",
+        "label": "Reject Terminations",
+        "description": "Can reject terminations"
+    },
+    {
+        "module": "warnings",
+        "name": "manage-warnings",
+        "label": "Manage Warnings",
+        "description": "Can manage warnings"
+    },
+    {
+        "module": "warnings",
+        "name": "manage-any-warnings",
+        "label": "Manage All Warnings",
+        "description": "Manage Any Warnings"
+    },
+    {
+        "module": "warnings",
+        "name": "manage-own-warnings",
+        "label": "Manage Own Warnings",
+        "description": "Manage Limited Warnings that is created by own"
+    },
+    {
+        "module": "warnings",
+        "name": "view-warnings",
+        "label": "View Warnings",
+        "description": "View Warnings"
+    },
+    {
+        "module": "warnings",
+        "name": "create-warnings",
+        "label": "Create Warnings",
+        "description": "Can create warnings"
+    },
+    {
+        "module": "warnings",
+        "name": "edit-warnings",
+        "label": "Edit Warnings",
+        "description": "Can edit warnings"
+    },
+    {
+        "module": "warnings",
+        "name": "delete-warnings",
+        "label": "Delete Warnings",
+        "description": "Can delete warnings"
+    },
+    {
+        "module": "warnings",
+        "name": "approve-warnings",
+        "label": "Approve Warnings",
+        "description": "Can approve warnings"
+    },
+    {
+        "module": "warnings",
+        "name": "acknowledge-warnings",
+        "label": "Acknowledge Warnings",
+        "description": "Can acknowledge warnings"
+    },
+    {
+        "module": "trips",
+        "name": "manage-trips",
+        "label": "Manage Trips",
+        "description": "Can manage trips"
+    },
+    {
+        "module": "trips",
+        "name": "manage-any-trips",
+        "label": "Manage All Trips",
+        "description": "Manage Any Trips"
+    },
+    {
+        "module": "trips",
+        "name": "manage-own-trips",
+        "label": "Manage Own Trips",
+        "description": "Manage Limited Trips that is created by own"
+    },
+    {
+        "module": "trips",
+        "name": "view-trips",
+        "label": "View Trips",
+        "description": "View Trips"
+    },
+    {
+        "module": "trips",
+        "name": "create-trips",
+        "label": "Create Trips",
+        "description": "Can create trips"
+    },
+    {
+        "module": "trips",
+        "name": "edit-trips",
+        "label": "Edit Trips",
+        "description": "Can edit trips"
+    },
+    {
+        "module": "trips",
+        "name": "delete-trips",
+        "label": "Delete Trips",
+        "description": "Can delete trips"
+    },
+    {
+        "module": "trips",
+        "name": "approve-trips",
+        "label": "Approve Trips",
+        "description": "Can approve trips"
+    },
+    {
+        "module": "trips",
+        "name": "manage-trip-expenses",
+        "label": "Manage Trip Expenses",
+        "description": "Can manage trip expenses"
+    },
+    {
+        "module": "trips",
+        "name": "approve-trip-expenses",
+        "label": "Approve Trip Expenses",
+        "description": "Can approve trip expenses"
+    },
+    {
+        "module": "complaints",
+        "name": "manage-complaints",
+        "label": "Manage Complaints",
+        "description": "Can manage complaints"
+    },
+    {
+        "module": "complaints",
+        "name": "manage-any-complaints",
+        "label": "Manage All Complaints",
+        "description": "Manage Any Complaints"
+    },
+    {
+        "module": "complaints",
+        "name": "manage-own-complaints",
+        "label": "Manage Own Complaints",
+        "description": "Manage Limited Complaints that is created by own"
+    },
+    {
+        "module": "complaints",
+        "name": "view-complaints",
+        "label": "View Complaints",
+        "description": "View Complaints"
+    },
+    {
+        "module": "complaints",
+        "name": "create-complaints",
+        "label": "Create Complaints",
+        "description": "Can create complaints"
+    },
+    {
+        "module": "complaints",
+        "name": "edit-complaints",
+        "label": "Edit Complaints",
+        "description": "Can edit complaints"
+    },
+    {
+        "module": "complaints",
+        "name": "delete-complaints",
+        "label": "Delete Complaints",
+        "description": "Can delete complaints"
+    },
+    {
+        "module": "complaints",
+        "name": "assign-complaints",
+        "label": "Assign Complaints",
+        "description": "Can assign complaints to HR personnel"
+    },
+    {
+        "module": "complaints",
+        "name": "resolve-complaints",
+        "label": "Resolve Complaints",
+        "description": "Can resolve complaints"
+    },
+    {
+        "module": "transfers",
+        "name": "manage-employee-transfers",
+        "label": "Manage Transfers",
+        "description": "Can manage employee transfers"
+    },
+    {
+        "module": "transfers",
+        "name": "manage-any-employee-transfers",
+        "label": "Manage All Transfers",
+        "description": "Manage Any Transfers"
+    },
+    {
+        "module": "transfers",
+        "name": "manage-own-employee-transfers",
+        "label": "Manage Own Transfers",
+        "description": "Manage Limited Transfers that is created by own"
+    },
+    {
+        "module": "transfers",
+        "name": "view-employee-transfers",
+        "label": "View Transfers",
+        "description": "View employee transfers"
+    },
+    {
+        "module": "transfers",
+        "name": "create-employee-transfers",
+        "label": "Create Transfers",
+        "description": "Can create employee transfers"
+    },
+    {
+        "module": "transfers",
+        "name": "edit-employee-transfers",
+        "label": "Edit Transfers",
+        "description": "Can edit employee transfers"
+    },
+    {
+        "module": "transfers",
+        "name": "delete-employee-transfers",
+        "label": "Delete Transfers",
+        "description": "Can delete employee transfers"
+    },
+    {
+        "module": "transfers",
+        "name": "approve-employee-transfers",
+        "label": "Approve Transfers",
+        "description": "Can approve employee transfers"
+    },
+    {
+        "module": "transfers",
+        "name": "reject-employee-transfers",
+        "label": "Reject Transfers",
+        "description": "Can reject employee transfers"
+    },
+    {
+        "module": "holidays",
+        "name": "manage-holidays",
+        "label": "Manage Holidays",
+        "description": "Can manage holidays"
+    },
+    {
+        "module": "holidays",
+        "name": "manage-any-holidays",
+        "label": "Manage All Holidays",
+        "description": "Manage Any Holidays"
+    },
+    {
+        "module": "holidays",
+        "name": "manage-own-holidays",
+        "label": "Manage Own Holidays",
+        "description": "Manage Limited Holidays that is created by own"
+    },
+    {
+        "module": "holidays",
+        "name": "view-holidays",
+        "label": "View Holidays",
+        "description": "View holidays"
+    },
+    {
+        "module": "holidays",
+        "name": "create-holidays",
+        "label": "Create Holidays",
+        "description": "Can create holidays"
+    },
+    {
+        "module": "holidays",
+        "name": "edit-holidays",
+        "label": "Edit Holidays",
+        "description": "Can edit holidays"
+    },
+    {
+        "module": "holidays",
+        "name": "delete-holidays",
+        "label": "Delete Holidays",
+        "description": "Can delete holidays"
+    },
+    {
+        "module": "announcements",
+        "name": "manage-announcements",
+        "label": "Manage Announcements",
+        "description": "Can manage announcements"
+    },
+    {
+        "module": "announcements",
+        "name": "manage-any-announcements",
+        "label": "Manage All Announcements",
+        "description": "Manage Any Announcements"
+    },
+    {
+        "module": "announcements",
+        "name": "manage-own-announcements",
+        "label": "Manage Own Announcements",
+        "description": "Manage Limited Announcements that is created by own"
+    },
+    {
+        "module": "announcements",
+        "name": "view-announcements",
+        "label": "View Announcements",
+        "description": "View announcements"
+    },
+    {
+        "module": "announcements",
+        "name": "create-announcements",
+        "label": "Create Announcements",
+        "description": "Can create announcements"
+    },
+    {
+        "module": "announcements",
+        "name": "edit-announcements",
+        "label": "Edit Announcements",
+        "description": "Can edit announcements"
+    },
+    {
+        "module": "announcements",
+        "name": "delete-announcements",
+        "label": "Delete Announcements",
+        "description": "Can delete announcements"
+    },
+    {
+        "module": "asset-types",
+        "name": "manage-asset-types",
+        "label": "Manage Asset Types",
+        "description": "Can manage asset types"
+    },
+    {
+        "module": "asset-types",
+        "name": "manage-any-asset-types",
+        "label": "Manage All Asset Types",
+        "description": "Manage Any Asset Types"
+    },
+    {
+        "module": "asset-types",
+        "name": "manage-own-asset-types",
+        "label": "Manage Own Asset Types",
+        "description": "Manage Limited Asset Types that is created by own"
+    },
+    {
+        "module": "asset-types",
+        "name": "view-asset-types",
+        "label": "View Asset Types",
+        "description": "View asset types"
+    },
+    {
+        "module": "asset-types",
+        "name": "create-asset-types",
+        "label": "Create Asset Types",
+        "description": "Can create asset types"
+    },
+    {
+        "module": "asset-types",
+        "name": "edit-asset-types",
+        "label": "Edit Asset Types",
+        "description": "Can edit asset types"
+    },
+    {
+        "module": "asset-types",
+        "name": "delete-asset-types",
+        "label": "Delete Asset Types",
+        "description": "Can delete asset types"
+    },
+    {
+        "module": "assets",
+        "name": "manage-assets",
+        "label": "Manage Assets",
+        "description": "Can manage assets"
+    },
+    {
+        "module": "assets",
+        "name": "manage-any-assets",
+        "label": "Manage All Assets",
+        "description": "Manage Any Assets"
+    },
+    {
+        "module": "assets",
+        "name": "manage-own-assets",
+        "label": "Manage Own Assets",
+        "description": "Manage Limited Assets that is created by own"
+    },
+    {
+        "module": "assets",
+        "name": "view-assets",
+        "label": "View Assets",
+        "description": "View assets"
+    },
+    {
+        "module": "assets",
+        "name": "create-assets",
+        "label": "Create Assets",
+        "description": "Can create assets"
+    },
+    {
+        "module": "assets",
+        "name": "edit-assets",
+        "label": "Edit Assets",
+        "description": "Can edit assets"
+    },
+    {
+        "module": "assets",
+        "name": "delete-assets",
+        "label": "Delete Assets",
+        "description": "Can delete assets"
+    },
+    {
+        "module": "assets",
+        "name": "assign-assets",
+        "label": "Assign Assets",
+        "description": "Can assign assets to employees"
+    },
+    {
+        "module": "assets",
+        "name": "manage-asset-maintenance",
+        "label": "Manage Asset Maintenance",
+        "description": "Can manage asset maintenance"
+    },
+    {
+        "module": "assets",
+        "name": "export-assets",
+        "label": "Export Assets",
+        "description": "Can export assets to CSV"
+    },
+    {
+        "module": "assets",
+        "name": "import-assets",
+        "label": "Import Assets",
+        "description": "Can import assets from CSV/Excel"
+    },
+    {
+        "module": "training-types",
+        "name": "manage-training-types",
+        "label": "Manage Training Types",
+        "description": "Can manage training types"
+    },
+    {
+        "module": "training-types",
+        "name": "manage-any-training-types",
+        "label": "Manage All Training Types",
+        "description": "Manage Any Training Types"
+    },
+    {
+        "module": "training-types",
+        "name": "manage-own-training-types",
+        "label": "Manage Own Training Types",
+        "description": "Manage Limited Training Types that is created by own"
+    },
+    {
+        "module": "training-types",
+        "name": "view-training-types",
+        "label": "View Training Types",
+        "description": "View training types"
+    },
+    {
+        "module": "training-types",
+        "name": "create-training-types",
+        "label": "Create Training Types",
+        "description": "Can create training types"
+    },
+    {
+        "module": "training-types",
+        "name": "edit-training-types",
+        "label": "Edit Training Types",
+        "description": "Can edit training types"
+    },
+    {
+        "module": "training-types",
+        "name": "delete-training-types",
+        "label": "Delete Training Types",
+        "description": "Can delete training types"
+    },
+    {
+        "module": "training-programs",
+        "name": "manage-training-programs",
+        "label": "Manage Training Programs",
+        "description": "Can manage training programs"
+    },
+    {
+        "module": "training-programs",
+        "name": "manage-any-training-programs",
+        "label": "Manage All Training Programs",
+        "description": "Manage Any Training Programs"
+    },
+    {
+        "module": "training-programs",
+        "name": "manage-own-training-programs",
+        "label": "Manage Own Training Programs",
+        "description": "Manage Limited Training Programs that is created by own"
+    },
+    {
+        "module": "training-programs",
+        "name": "view-training-programs",
+        "label": "View Training Programs",
+        "description": "View training programs"
+    },
+    {
+        "module": "training-programs",
+        "name": "create-training-programs",
+        "label": "Create Training Programs",
+        "description": "Can create training programs"
+    },
+    {
+        "module": "training-programs",
+        "name": "edit-training-programs",
+        "label": "Edit Training Programs",
+        "description": "Can edit training programs"
+    },
+    {
+        "module": "training-programs",
+        "name": "delete-training-programs",
+        "label": "Delete Training Programs",
+        "description": "Can delete training programs"
+    },
+    {
+        "module": "training-sessions",
+        "name": "manage-training-sessions",
+        "label": "Manage Training Sessions",
+        "description": "Can manage training sessions"
+    },
+    {
+        "module": "training-sessions",
+        "name": "manage-any-training-sessions",
+        "label": "Manage All Training Sessions",
+        "description": "Manage Any Training Sessions"
+    },
+    {
+        "module": "training-sessions",
+        "name": "manage-own-training-sessions",
+        "label": "Manage Own Training Sessions",
+        "description": "Manage Limited Training Sessions that is created by own"
+    },
+    {
+        "module": "training-sessions",
+        "name": "view-training-sessions",
+        "label": "View Training Sessions",
+        "description": "View training sessions"
+    },
+    {
+        "module": "training-sessions",
+        "name": "create-training-sessions",
+        "label": "Create Training Sessions",
+        "description": "Can create training sessions"
+    },
+    {
+        "module": "training-sessions",
+        "name": "edit-training-sessions",
+        "label": "Edit Training Sessions",
+        "description": "Can edit training sessions"
+    },
+    {
+        "module": "training-sessions",
+        "name": "delete-training-sessions",
+        "label": "Delete Training Sessions",
+        "description": "Can delete training sessions"
+    },
+    {
+        "module": "training-sessions",
+        "name": "manage-attendance",
+        "label": "Manage Attendance",
+        "description": "Can manage training session attendance"
+    },
+    {
+        "module": "employee-trainings",
+        "name": "manage-employee-trainings",
+        "label": "Manage Employee Trainings",
+        "description": "Can manage employee trainings"
+    },
+    {
+        "module": "employee-trainings",
+        "name": "manage-any-employee-trainings",
+        "label": "Manage All Employee Trainings",
+        "description": "Manage Any Employee Trainings"
+    },
+    {
+        "module": "employee-trainings",
+        "name": "manage-own-employee-trainings",
+        "label": "Manage Own Employee Trainings",
+        "description": "Manage Limited Employee Trainings that is created by own"
+    },
+    {
+        "module": "employee-trainings",
+        "name": "view-employee-trainings",
+        "label": "View Employee Trainings",
+        "description": "View employee trainings"
+    },
+    {
+        "module": "employee-trainings",
+        "name": "create-employee-trainings",
+        "label": "Create Employee Trainings",
+        "description": "Can create employee trainings"
+    },
+    {
+        "module": "employee-trainings",
+        "name": "edit-employee-trainings",
+        "label": "Edit Employee Trainings",
+        "description": "Can edit employee trainings"
+    },
+    {
+        "module": "employee-trainings",
+        "name": "delete-employee-trainings",
+        "label": "Delete Employee Trainings",
+        "description": "Can delete employee trainings"
+    },
+    {
+        "module": "employee-trainings",
+        "name": "assign-trainings",
+        "label": "Assign Trainings",
+        "description": "Can assign trainings to employees"
+    },
+    {
+        "module": "employee-trainings",
+        "name": "manage-assessments",
+        "label": "Manage Assessments",
+        "description": "Can manage training assessments"
+    },
+    {
+        "module": "employee-trainings",
+        "name": "record-assessment-results",
+        "label": "Record Assessment Results",
+        "description": "Can record training assessment results"
+    },
+    {
+        "module": "performance_indicator_categories",
+        "name": "manage-performance-indicator-categories",
+        "label": "Manage Performance Indicator Categories",
+        "description": "Can manage performance indicator categories"
+    },
+    {
+        "module": "performance_indicator_categories",
+        "name": "manage-any-performance-indicator-categories",
+        "label": "Manage All Performance Indicator Categories",
+        "description": "Manage Any Performance Indicator Categories"
+    },
+    {
+        "module": "performance_indicator_categories",
+        "name": "manage-own-performance-indicator-categories",
+        "label": "Manage Own Performance Indicator Categories",
+        "description": "Manage Limited Performance Indicator Categories that is created by own"
+    },
+    {
+        "module": "performance_indicator_categories",
+        "name": "view-performance-indicator-categories",
+        "label": "View Performance Indicator Categories",
+        "description": "View Performance Indicator Categories"
+    },
+    {
+        "module": "performance_indicator_categories",
+        "name": "create-performance-indicator-categories",
+        "label": "Create Performance Indicator Categories",
+        "description": "Can create performance indicator categories"
+    },
+    {
+        "module": "performance_indicator_categories",
+        "name": "edit-performance-indicator-categories",
+        "label": "Edit Performance Indicator Categories",
+        "description": "Can edit performance indicator categories"
+    },
+    {
+        "module": "performance_indicator_categories",
+        "name": "delete-performance-indicator-categories",
+        "label": "Delete Performance Indicator Categories",
+        "description": "Can delete performance indicator categories"
+    },
+    {
+        "module": "performance_indicators",
+        "name": "manage-performance-indicators",
+        "label": "Manage Performance Indicators",
+        "description": "Can manage performance indicators"
+    },
+    {
+        "module": "performance_indicators",
+        "name": "manage-any-performance-indicators",
+        "label": "Manage All Performance Indicators",
+        "description": "Manage Any Performance Indicators"
+    },
+    {
+        "module": "performance_indicators",
+        "name": "manage-own-performance-indicators",
+        "label": "Manage Own Performance Indicators",
+        "description": "Manage Limited Performance Indicators that is created by own"
+    },
+    {
+        "module": "performance_indicators",
+        "name": "view-performance-indicators",
+        "label": "View Performance Indicators",
+        "description": "View Performance Indicators"
+    },
+    {
+        "module": "performance_indicators",
+        "name": "create-performance-indicators",
+        "label": "Create Performance Indicators",
+        "description": "Can create performance indicators"
+    },
+    {
+        "module": "performance_indicators",
+        "name": "edit-performance-indicators",
+        "label": "Edit Performance Indicators",
+        "description": "Can edit performance indicators"
+    },
+    {
+        "module": "performance_indicators",
+        "name": "delete-performance-indicators",
+        "label": "Delete Performance Indicators",
+        "description": "Can delete performance indicators"
+    },
+    {
+        "module": "goal_types",
+        "name": "manage-goal-types",
+        "label": "Manage Goal Types",
+        "description": "Can manage goal types"
+    },
+    {
+        "module": "goal_types",
+        "name": "manage-any-goal-types",
+        "label": "Manage All Goal Types",
+        "description": "Manage Any Goal Types"
+    },
+    {
+        "module": "goal_types",
+        "name": "manage-own-goal-types",
+        "label": "Manage Own Goal Types",
+        "description": "Manage Limited Goal Types that is created by own"
+    },
+    {
+        "module": "goal_types",
+        "name": "view-goal-types",
+        "label": "View Goal Types",
+        "description": "View Goal Types"
+    },
+    {
+        "module": "goal_types",
+        "name": "create-goal-types",
+        "label": "Create Goal Types",
+        "description": "Can create goal types"
+    },
+    {
+        "module": "goal_types",
+        "name": "edit-goal-types",
+        "label": "Edit Goal Types",
+        "description": "Can edit goal types"
+    },
+    {
+        "module": "goal_types",
+        "name": "delete-goal-types",
+        "label": "Delete Goal Types",
+        "description": "Can delete goal types"
+    },
+    {
+        "module": "employee_goals",
+        "name": "manage-employee-goals",
+        "label": "Manage Employee Goals",
+        "description": "Can manage employee goals"
+    },
+    {
+        "module": "employee_goals",
+        "name": "manage-any-employee-goals",
+        "label": "Manage All Employee Goals",
+        "description": "Manage Any Employee Goals"
+    },
+    {
+        "module": "employee_goals",
+        "name": "manage-own-employee-goals",
+        "label": "Manage Own Employee Goals",
+        "description": "Manage Limited Employee Goals that is created by own"
+    },
+    {
+        "module": "employee_goals",
+        "name": "view-employee-goals",
+        "label": "View Employee Goals",
+        "description": "View Employee Goals"
+    },
+    {
+        "module": "employee_goals",
+        "name": "create-employee-goals",
+        "label": "Create Employee Goals",
+        "description": "Can create employee goals"
+    },
+    {
+        "module": "employee_goals",
+        "name": "edit-employee-goals",
+        "label": "Edit Employee Goals",
+        "description": "Can edit employee goals"
+    },
+    {
+        "module": "employee_goals",
+        "name": "delete-employee-goals",
+        "label": "Delete Employee Goals",
+        "description": "Can delete employee goals"
+    },
+    {
+        "module": "review_cycles",
+        "name": "manage-review-cycles",
+        "label": "Manage Review Cycles",
+        "description": "Can manage review cycles"
+    },
+    {
+        "module": "review_cycles",
+        "name": "manage-any-review-cycles",
+        "label": "Manage All Review Cycles",
+        "description": "Manage Any Review Cycles"
+    },
+    {
+        "module": "review_cycles",
+        "name": "manage-own-review-cycles",
+        "label": "Manage Own Review Cycles",
+        "description": "Manage Limited Review Cycles that is created by own"
+    },
+    {
+        "module": "review_cycles",
+        "name": "view-review-cycles",
+        "label": "View Review Cycles",
+        "description": "View Review Cycles"
+    },
+    {
+        "module": "review_cycles",
+        "name": "create-review-cycles",
+        "label": "Create Review Cycles",
+        "description": "Can create review cycles"
+    },
+    {
+        "module": "review_cycles",
+        "name": "edit-review-cycles",
+        "label": "Edit Review Cycles",
+        "description": "Can edit review cycles"
+    },
+    {
+        "module": "review_cycles",
+        "name": "delete-review-cycles",
+        "label": "Delete Review Cycles",
+        "description": "Can delete review cycles"
+    },
+    {
+        "module": "employee_reviews",
+        "name": "manage-employee-reviews",
+        "label": "Manage Employee Reviews",
+        "description": "Can manage employee reviews"
+    },
+    {
+        "module": "employee_reviews",
+        "name": "manage-any-employee-reviews",
+        "label": "Manage All Employee Reviews",
+        "description": "Manage Any Employee Reviews"
+    },
+    {
+        "module": "employee_reviews",
+        "name": "manage-own-employee-reviews",
+        "label": "Manage Own Employee Reviews",
+        "description": "Manage Limited Employee Reviews that is created by own"
+    },
+    {
+        "module": "employee_reviews",
+        "name": "view-employee-reviews",
+        "label": "View Employee Reviews",
+        "description": "View Employee Reviews"
+    },
+    {
+        "module": "employee_reviews",
+        "name": "create-employee-reviews",
+        "label": "Create Employee Reviews",
+        "description": "Can create employee reviews"
+    },
+    {
+        "module": "employee_reviews",
+        "name": "edit-employee-reviews",
+        "label": "Edit Employee Reviews",
+        "description": "Can edit employee reviews"
+    },
+    {
+        "module": "employee_reviews",
+        "name": "delete-employee-reviews",
+        "label": "Delete Employee Reviews",
+        "description": "Can delete employee reviews"
+    },
+    {
+        "module": "job_categories",
+        "name": "manage-job-categories",
+        "label": "Manage Job Categories",
+        "description": "Can manage job categories"
+    },
+    {
+        "module": "job_categories",
+        "name": "manage-any-job-categories",
+        "label": "Manage All Job Categories",
+        "description": "Manage Any Job Categories"
+    },
+    {
+        "module": "job_categories",
+        "name": "manage-own-job-categories",
+        "label": "Manage Own Job Categories",
+        "description": "Manage Limited Job Categories that is created by own"
+    },
+    {
+        "module": "job_categories",
+        "name": "view-job-categories",
+        "label": "View Job Categories",
+        "description": "View Job Categories"
+    },
+    {
+        "module": "job_categories",
+        "name": "create-job-categories",
+        "label": "Create Job Categories",
+        "description": "Can create job categories"
+    },
+    {
+        "module": "job_categories",
+        "name": "edit-job-categories",
+        "label": "Edit Job Categories",
+        "description": "Can edit job categories"
+    },
+    {
+        "module": "job_categories",
+        "name": "delete-job-categories",
+        "label": "Delete Job Categories",
+        "description": "Can delete job categories"
+    },
+    {
+        "module": "job_types",
+        "name": "manage-job-types",
+        "label": "Manage Job Types",
+        "description": "Can manage job types"
+    },
+    {
+        "module": "job_types",
+        "name": "manage-any-job-types",
+        "label": "Manage All Job Types",
+        "description": "Manage Any Job Types"
+    },
+    {
+        "module": "job_types",
+        "name": "manage-own-job-types",
+        "label": "Manage Own Job Types",
+        "description": "Manage Limited Job Types that is created by own"
+    },
+    {
+        "module": "job_types",
+        "name": "view-job-types",
+        "label": "View Job Types",
+        "description": "View Job Types"
+    },
+    {
+        "module": "job_types",
+        "name": "create-job-types",
+        "label": "Create Job Types",
+        "description": "Can create job types"
+    },
+    {
+        "module": "job_types",
+        "name": "edit-job-types",
+        "label": "Edit Job Types",
+        "description": "Can edit job types"
+    },
+    {
+        "module": "job_types",
+        "name": "delete-job-types",
+        "label": "Delete Job Types",
+        "description": "Can delete job types"
+    },
+    {
+        "module": "job_locations",
+        "name": "manage-job-locations",
+        "label": "Manage Job Locations",
+        "description": "Can manage job locations"
+    },
+    {
+        "module": "job_locations",
+        "name": "manage-any-job-locations",
+        "label": "Manage All Job Locations",
+        "description": "Manage Any Job Locations"
+    },
+    {
+        "module": "job_locations",
+        "name": "manage-own-job-locations",
+        "label": "Manage Own Job Locations",
+        "description": "Manage Limited Job Locations that is created by own"
+    },
+    {
+        "module": "job_locations",
+        "name": "view-job-locations",
+        "label": "View Job Locations",
+        "description": "View Job Locations"
+    },
+    {
+        "module": "job_locations",
+        "name": "create-job-locations",
+        "label": "Create Job Locations",
+        "description": "Can create job locations"
+    },
+    {
+        "module": "job_locations",
+        "name": "edit-job-locations",
+        "label": "Edit Job Locations",
+        "description": "Can edit job locations"
+    },
+    {
+        "module": "job_locations",
+        "name": "delete-job-locations",
+        "label": "Delete Job Locations",
+        "description": "Can delete job locations"
+    },
+    {
+        "module": "job_postings",
+        "name": "manage-job-postings",
+        "label": "Manage Job Postings",
+        "description": "Can manage job postings"
+    },
+    {
+        "module": "job_postings",
+        "name": "manage-any-job-postings",
+        "label": "Manage All Job Postings",
+        "description": "Manage Any Job Postings"
+    },
+    {
+        "module": "job_postings",
+        "name": "manage-own-job-postings",
+        "label": "Manage Own Job Postings",
+        "description": "Manage Limited Job Postings that is created by own"
+    },
+    {
+        "module": "job_postings",
+        "name": "view-job-postings",
+        "label": "View Job Postings",
+        "description": "View Job Postings"
+    },
+    {
+        "module": "job_postings",
+        "name": "create-job-postings",
+        "label": "Create Job Postings",
+        "description": "Can create job postings"
+    },
+    {
+        "module": "job_postings",
+        "name": "edit-job-postings",
+        "label": "Edit Job Postings",
+        "description": "Can edit job postings"
+    },
+    {
+        "module": "job_postings",
+        "name": "delete-job-postings",
+        "label": "Delete Job Postings",
+        "description": "Can delete job postings"
+    },
+    {
+        "module": "job_postings",
+        "name": "publish-job-postings",
+        "label": "Publish Job Postings",
+        "description": "Can publish job postings"
+    },
+    {
+        "module": "candidate_sources",
+        "name": "manage-candidate-sources",
+        "label": "Manage Candidate Sources",
+        "description": "Can manage candidate sources"
+    },
+    {
+        "module": "candidate_sources",
+        "name": "manage-any-candidate-sources",
+        "label": "Manage All Candidate Sources",
+        "description": "Manage Any Candidate Sources"
+    },
+    {
+        "module": "candidate_sources",
+        "name": "manage-own-candidate-sources",
+        "label": "Manage Own Candidate Sources",
+        "description": "Manage Limited Candidate Sources that is created by own"
+    },
+    {
+        "module": "candidate_sources",
+        "name": "view-candidate-sources",
+        "label": "View Candidate Sources",
+        "description": "View Candidate Sources"
+    },
+    {
+        "module": "candidate_sources",
+        "name": "create-candidate-sources",
+        "label": "Create Candidate Sources",
+        "description": "Can create candidate sources"
+    },
+    {
+        "module": "candidate_sources",
+        "name": "edit-candidate-sources",
+        "label": "Edit Candidate Sources",
+        "description": "Can edit candidate sources"
+    },
+    {
+        "module": "candidate_sources",
+        "name": "delete-candidate-sources",
+        "label": "Delete Candidate Sources",
+        "description": "Can delete candidate sources"
+    },
+    {
+        "module": "candidates",
+        "name": "manage-candidates",
+        "label": "Manage Candidates",
+        "description": "Can manage candidates"
+    },
+    {
+        "module": "candidates",
+        "name": "manage-any-candidates",
+        "label": "Manage All Candidates",
+        "description": "Manage Any Candidates"
+    },
+    {
+        "module": "candidates",
+        "name": "manage-own-candidates",
+        "label": "Manage Own Candidates",
+        "description": "Manage Limited Candidates that is created by own"
+    },
+    {
+        "module": "candidates",
+        "name": "view-candidates",
+        "label": "View Candidates",
+        "description": "View Candidates"
+    },
+    {
+        "module": "candidates",
+        "name": "edit-candidates",
+        "label": "Edit Candidates",
+        "description": "Can edit candidates"
+    },
+    {
+        "module": "candidates",
+        "name": "delete-candidates",
+        "label": "Delete Candidates",
+        "description": "Can delete candidates"
+    },
+    {
+        "module": "candidates",
+        "name": "convert-to-employee",
+        "label": "Convert to Employee",
+        "description": "Convert Candidate to Employee"
+    },
+    {
+        "module": "interview_types",
+        "name": "manage-interview-types",
+        "label": "Manage Interview Types",
+        "description": "Can manage interview types"
+    },
+    {
+        "module": "interview_types",
+        "name": "manage-any-interview-types",
+        "label": "Manage All Interview Types",
+        "description": "Manage Any Interview Types"
+    },
+    {
+        "module": "interview_types",
+        "name": "manage-own-interview-types",
+        "label": "Manage Own Interview Types",
+        "description": "Manage Limited Interview Types that is created by own"
+    },
+    {
+        "module": "interview_types",
+        "name": "view-interview-types",
+        "label": "View Interview Types",
+        "description": "View Interview Types"
+    },
+    {
+        "module": "interview_types",
+        "name": "create-interview-types",
+        "label": "Create Interview Types",
+        "description": "Can create interview types"
+    },
+    {
+        "module": "interview_types",
+        "name": "edit-interview-types",
+        "label": "Edit Interview Types",
+        "description": "Can edit interview types"
+    },
+    {
+        "module": "interview_types",
+        "name": "delete-interview-types",
+        "label": "Delete Interview Types",
+        "description": "Can delete interview types"
+    },
+    {
+        "module": "interview_rounds",
+        "name": "manage-interview-rounds",
+        "label": "Manage Interview Rounds",
+        "description": "Can manage interview rounds"
+    },
+    {
+        "module": "interview_rounds",
+        "name": "manage-any-interview-rounds",
+        "label": "Manage All Interview Rounds",
+        "description": "Manage Any Interview Rounds"
+    },
+    {
+        "module": "interview_rounds",
+        "name": "manage-own-interview-rounds",
+        "label": "Manage Own Interview Rounds",
+        "description": "Manage Limited Interview Rounds that is created by own"
+    },
+    {
+        "module": "interview_rounds",
+        "name": "view-interview-rounds",
+        "label": "View Interview Rounds",
+        "description": "View Interview Rounds"
+    },
+    {
+        "module": "interview_rounds",
+        "name": "create-interview-rounds",
+        "label": "Create Interview Rounds",
+        "description": "Can create interview rounds"
+    },
+    {
+        "module": "interview_rounds",
+        "name": "edit-interview-rounds",
+        "label": "Edit Interview Rounds",
+        "description": "Can edit interview rounds"
+    },
+    {
+        "module": "interview_rounds",
+        "name": "delete-interview-rounds",
+        "label": "Delete Interview Rounds",
+        "description": "Can delete interview rounds"
+    },
+    {
+        "module": "interviews",
+        "name": "manage-interviews",
+        "label": "Manage Interviews",
+        "description": "Can manage interviews"
+    },
+    {
+        "module": "interviews",
+        "name": "manage-any-interviews",
+        "label": "Manage All Interviews",
+        "description": "Manage Any Interviews"
+    },
+    {
+        "module": "interviews",
+        "name": "manage-own-interviews",
+        "label": "Manage Own Interviews",
+        "description": "Manage Limited Interviews that is created by own"
+    },
+    {
+        "module": "interviews",
+        "name": "view-interviews",
+        "label": "View Interviews",
+        "description": "View Interviews"
+    },
+    {
+        "module": "interviews",
+        "name": "create-interviews",
+        "label": "Create Interviews",
+        "description": "Can create interviews"
+    },
+    {
+        "module": "interviews",
+        "name": "edit-interviews",
+        "label": "Edit Interviews",
+        "description": "Can edit interviews"
+    },
+    {
+        "module": "interviews",
+        "name": "delete-interviews",
+        "label": "Delete Interviews",
+        "description": "Can delete interviews"
+    },
+    {
+        "module": "interview_feedback",
+        "name": "manage-interview-feedback",
+        "label": "Manage Interview Feedback",
+        "description": "Can manage interview feedback"
+    },
+    {
+        "module": "interview_feedback",
+        "name": "manage-any-interview-feedback",
+        "label": "Manage All Interview Feedback",
+        "description": "Manage Any Interview Feedback"
+    },
+    {
+        "module": "interview_feedback",
+        "name": "manage-own-interview-feedback",
+        "label": "Manage Own Interview Feedback",
+        "description": "Manage Limited Interview Feedback that is created by own"
+    },
+    {
+        "module": "interview_feedback",
+        "name": "view-interview-feedback",
+        "label": "View Interview Feedback",
+        "description": "View Interview Feedback"
+    },
+    {
+        "module": "interview_feedback",
+        "name": "create-interview-feedback",
+        "label": "Create Interview Feedback",
+        "description": "Can create interview feedback"
+    },
+    {
+        "module": "interview_feedback",
+        "name": "edit-interview-feedback",
+        "label": "Edit Interview Feedback",
+        "description": "Can edit interview feedback"
+    },
+    {
+        "module": "interview_feedback",
+        "name": "delete-interview-feedback",
+        "label": "Delete Interview Feedback",
+        "description": "Can delete interview feedback"
+    },
+    {
+        "module": "candidate_assessments",
+        "name": "manage-candidate-assessments",
+        "label": "Manage Candidate Assessments",
+        "description": "Can manage candidate assessments"
+    },
+    {
+        "module": "candidate_assessments",
+        "name": "manage-any-candidate-assessments",
+        "label": "Manage All Candidate Assessments",
+        "description": "Manage Any Candidate Assessments"
+    },
+    {
+        "module": "candidate_assessments",
+        "name": "manage-own-candidate-assessments",
+        "label": "Manage Own Candidate Assessments",
+        "description": "Manage Limited Candidate Assessments that is created by own"
+    },
+    {
+        "module": "candidate_assessments",
+        "name": "view-candidate-assessments",
+        "label": "View Candidate Assessments",
+        "description": "View Candidate Assessments"
+    },
+    {
+        "module": "candidate_assessments",
+        "name": "create-candidate-assessments",
+        "label": "Create Candidate Assessments",
+        "description": "Can create candidate assessments"
+    },
+    {
+        "module": "candidate_assessments",
+        "name": "edit-candidate-assessments",
+        "label": "Edit Candidate Assessments",
+        "description": "Can edit candidate assessments"
+    },
+    {
+        "module": "candidate_assessments",
+        "name": "delete-candidate-assessments",
+        "label": "Delete Candidate Assessments",
+        "description": "Can delete candidate assessments"
+    },
+    {
+        "module": "offer_templates",
+        "name": "manage-offer-templates",
+        "label": "Manage Offer Templates",
+        "description": "Can manage offer templates"
+    },
+    {
+        "module": "offer_templates",
+        "name": "manage-any-offer-templates",
+        "label": "Manage All Offer Templates",
+        "description": "Manage Any Offer Templates"
+    },
+    {
+        "module": "offer_templates",
+        "name": "manage-own-offer-templates",
+        "label": "Manage Own Offer Templates",
+        "description": "Manage Limited Offer Templates that is created by own"
+    },
+    {
+        "module": "offer_templates",
+        "name": "view-offer-templates",
+        "label": "View Offer Templates",
+        "description": "View Offer Templates"
+    },
+    {
+        "module": "offer_templates",
+        "name": "create-offer-templates",
+        "label": "Create Offer Templates",
+        "description": "Can create offer templates"
+    },
+    {
+        "module": "offer_templates",
+        "name": "edit-offer-templates",
+        "label": "Edit Offer Templates",
+        "description": "Can edit offer templates"
+    },
+    {
+        "module": "offer_templates",
+        "name": "delete-offer-templates",
+        "label": "Delete Offer Templates",
+        "description": "Can delete offer templates"
+    },
+    {
+        "module": "offers",
+        "name": "manage-offers",
+        "label": "Manage Offers",
+        "description": "Can manage offers"
+    },
+    {
+        "module": "offers",
+        "name": "manage-any-offers",
+        "label": "Manage All Offers",
+        "description": "Manage Any Offers"
+    },
+    {
+        "module": "offers",
+        "name": "manage-own-offers",
+        "label": "Manage Own Offers",
+        "description": "Manage Limited Offers that is created by own"
+    },
+    {
+        "module": "offers",
+        "name": "view-offers",
+        "label": "View Offers",
+        "description": "View Offers"
+    },
+    {
+        "module": "offers",
+        "name": "create-offers",
+        "label": "Create Offers",
+        "description": "Can create offers"
+    },
+    {
+        "module": "offers",
+        "name": "edit-offers",
+        "label": "Edit Offers",
+        "description": "Can edit offers"
+    },
+    {
+        "module": "offers",
+        "name": "delete-offers",
+        "label": "Delete Offers",
+        "description": "Can delete offers"
+    },
+    {
+        "module": "offers",
+        "name": "approve-offers",
+        "label": "Approve Offers",
+        "description": "Can approve offers"
+    },
+    {
+        "module": "onboarding_checklists",
+        "name": "manage-onboarding-checklists",
+        "label": "Manage Onboarding Checklists",
+        "description": "Can manage onboarding checklists"
+    },
+    {
+        "module": "onboarding_checklists",
+        "name": "manage-any-onboarding-checklists",
+        "label": "Manage All Onboarding Checklists",
+        "description": "Manage Any Onboarding Checklists"
+    },
+    {
+        "module": "onboarding_checklists",
+        "name": "manage-own-onboarding-checklists",
+        "label": "Manage Own Onboarding Checklists",
+        "description": "Manage Limited Onboarding Checklists that is created by own"
+    },
+    {
+        "module": "onboarding_checklists",
+        "name": "view-onboarding-checklists",
+        "label": "View Onboarding Checklists",
+        "description": "View Onboarding Checklists"
+    },
+    {
+        "module": "onboarding_checklists",
+        "name": "create-onboarding-checklists",
+        "label": "Create Onboarding Checklists",
+        "description": "Can create onboarding checklists"
+    },
+    {
+        "module": "onboarding_checklists",
+        "name": "edit-onboarding-checklists",
+        "label": "Edit Onboarding Checklists",
+        "description": "Can edit onboarding checklists"
+    },
+    {
+        "module": "onboarding_checklists",
+        "name": "delete-onboarding-checklists",
+        "label": "Delete Onboarding Checklists",
+        "description": "Can delete onboarding checklists"
+    },
+    {
+        "module": "checklist_items",
+        "name": "manage-checklist-items",
+        "label": "Manage Checklist Items",
+        "description": "Can manage checklist items"
+    },
+    {
+        "module": "checklist_items",
+        "name": "manage-any-checklist-items",
+        "label": "Manage All Checklist Items",
+        "description": "Manage Any Checklist Items"
+    },
+    {
+        "module": "checklist_items",
+        "name": "manage-own-checklist-items",
+        "label": "Manage Own Checklist Items",
+        "description": "Manage Limited Checklist Items that is created by own"
+    },
+    {
+        "module": "checklist_items",
+        "name": "view-checklist-items",
+        "label": "View Checklist Items",
+        "description": "View Checklist Items"
+    },
+    {
+        "module": "checklist_items",
+        "name": "create-checklist-items",
+        "label": "Create Checklist Items",
+        "description": "Can create checklist items"
+    },
+    {
+        "module": "checklist_items",
+        "name": "edit-checklist-items",
+        "label": "Edit Checklist Items",
+        "description": "Can edit checklist items"
+    },
+    {
+        "module": "checklist_items",
+        "name": "delete-checklist-items",
+        "label": "Delete Checklist Items",
+        "description": "Can delete checklist items"
+    },
+    {
+        "module": "candidate_onboarding",
+        "name": "manage-candidate-onboarding",
+        "label": "Manage Candidate Onboarding",
+        "description": "Can manage candidate onboarding"
+    },
+    {
+        "module": "candidate_onboarding",
+        "name": "manage-any-candidate-onboarding",
+        "label": "Manage All Candidate Onboarding",
+        "description": "Manage Any Candidate Onboarding"
+    },
+    {
+        "module": "candidate_onboarding",
+        "name": "manage-own-candidate-onboarding",
+        "label": "Manage Own Candidate Onboarding",
+        "description": "Manage Limited Candidate Onboarding that is created by own"
+    },
+    {
+        "module": "candidate_onboarding",
+        "name": "view-candidate-onboarding",
+        "label": "View Candidate Onboarding",
+        "description": "View Candidate Onboarding"
+    },
+    {
+        "module": "candidate_onboarding",
+        "name": "create-candidate-onboarding",
+        "label": "Create Candidate Onboarding",
+        "description": "Can create candidate onboarding"
+    },
+    {
+        "module": "candidate_onboarding",
+        "name": "edit-candidate-onboarding",
+        "label": "Edit Candidate Onboarding",
+        "description": "Can edit candidate onboarding"
+    },
+    {
+        "module": "candidate_onboarding",
+        "name": "delete-candidate-onboarding",
+        "label": "Delete Candidate Onboarding",
+        "description": "Can delete candidate onboarding"
+    },
+    {
+        "module": "candidate_onboarding",
+        "name": "manage-candidate-onboarding-status",
+        "label": "Manage Candidate Onboarding status",
+        "description": "Manage Candidate Onboarding Status"
+    },
+    {
+        "module": "meeting_types",
+        "name": "manage-meeting-types",
+        "label": "Manage Meeting Types",
+        "description": "Can manage meeting types"
+    },
+    {
+        "module": "meeting_types",
+        "name": "manage-any-meeting-types",
+        "label": "Manage All Meeting Types",
+        "description": "Manage Any Meeting Types"
+    },
+    {
+        "module": "meeting_types",
+        "name": "manage-own-meeting-types",
+        "label": "Manage Own Meeting Types",
+        "description": "Manage Limited Meeting Types that is created by own"
+    },
+    {
+        "module": "meeting_types",
+        "name": "view-meeting-types",
+        "label": "View Meeting Types",
+        "description": "View Meeting Types"
+    },
+    {
+        "module": "meeting_types",
+        "name": "create-meeting-types",
+        "label": "Create Meeting Types",
+        "description": "Can create meeting types"
+    },
+    {
+        "module": "meeting_types",
+        "name": "edit-meeting-types",
+        "label": "Edit Meeting Types",
+        "description": "Can edit meeting types"
+    },
+    {
+        "module": "meeting_types",
+        "name": "delete-meeting-types",
+        "label": "Delete Meeting Types",
+        "description": "Can delete meeting types"
+    },
+    {
+        "module": "meeting_rooms",
+        "name": "manage-meeting-rooms",
+        "label": "Manage Meeting Rooms",
+        "description": "Can manage meeting rooms"
+    },
+    {
+        "module": "meeting_rooms",
+        "name": "manage-any-meeting-rooms",
+        "label": "Manage All Meeting Rooms",
+        "description": "Manage Any Meeting Rooms"
+    },
+    {
+        "module": "meeting_rooms",
+        "name": "manage-own-meeting-rooms",
+        "label": "Manage Own Meeting Rooms",
+        "description": "Manage Limited Meeting Rooms that is created by own"
+    },
+    {
+        "module": "meeting_rooms",
+        "name": "view-meeting-rooms",
+        "label": "View Meeting Rooms",
+        "description": "View Meeting Rooms"
+    },
+    {
+        "module": "meeting_rooms",
+        "name": "create-meeting-rooms",
+        "label": "Create Meeting Rooms",
+        "description": "Can create meeting rooms"
+    },
+    {
+        "module": "meeting_rooms",
+        "name": "edit-meeting-rooms",
+        "label": "Edit Meeting Rooms",
+        "description": "Can edit meeting rooms"
+    },
+    {
+        "module": "meeting_rooms",
+        "name": "delete-meeting-rooms",
+        "label": "Delete Meeting Rooms",
+        "description": "Can delete meeting rooms"
+    },
+    {
+        "module": "meetings",
+        "name": "manage-meetings",
+        "label": "Manage Meetings",
+        "description": "Can manage meetings"
+    },
+    {
+        "module": "meetings",
+        "name": "manage-any-meetings",
+        "label": "Manage All Meetings",
+        "description": "Manage Any Meetings"
+    },
+    {
+        "module": "meetings",
+        "name": "manage-own-meetings",
+        "label": "Manage Own Meetings",
+        "description": "Manage Limited Meetings that is created by own"
+    },
+    {
+        "module": "meetings",
+        "name": "view-meetings",
+        "label": "View Meetings",
+        "description": "View Meetings"
+    },
+    {
+        "module": "meetings",
+        "name": "create-meetings",
+        "label": "Create Meetings",
+        "description": "Can create meetings"
+    },
+    {
+        "module": "meetings",
+        "name": "edit-meetings",
+        "label": "Edit Meetings",
+        "description": "Can edit meetings"
+    },
+    {
+        "module": "meetings",
+        "name": "delete-meetings",
+        "label": "Delete Meetings",
+        "description": "Can delete meetings"
+    },
+    {
+        "module": "meetings",
+        "name": "manage-meeting-status",
+        "label": "Manage Meeting Status",
+        "description": "Can manage meeting status"
+    },
+    {
+        "module": "meeting_attendees",
+        "name": "manage-meeting-attendees",
+        "label": "Manage Meeting Attendees",
+        "description": "Can manage meeting attendees"
+    },
+    {
+        "module": "meeting_attendees",
+        "name": "manage-any-meeting-attendees",
+        "label": "Manage All Meeting Attendees",
+        "description": "Manage Any Meeting Attendees"
+    },
+    {
+        "module": "meeting_attendees",
+        "name": "manage-own-meeting-attendees",
+        "label": "Manage Own Meeting Attendees",
+        "description": "Manage Limited Meeting Attendees that is created by own"
+    },
+    {
+        "module": "meeting_attendees",
+        "name": "view-meeting-attendees",
+        "label": "View Meeting Attendees",
+        "description": "View Meeting Attendees"
+    },
+    {
+        "module": "meeting_attendees",
+        "name": "create-meeting-attendees",
+        "label": "Create Meeting Attendees",
+        "description": "Can create meeting attendees"
+    },
+    {
+        "module": "meeting_attendees",
+        "name": "edit-meeting-attendees",
+        "label": "Edit Meeting Attendees",
+        "description": "Can edit meeting attendees"
+    },
+    {
+        "module": "meeting_attendees",
+        "name": "delete-meeting-attendees",
+        "label": "Delete Meeting Attendees",
+        "description": "Can delete meeting attendees"
+    },
+    {
+        "module": "meeting_attendees",
+        "name": "manage-meeting-rsvp-status",
+        "label": "Manage Meeting RSVP Status",
+        "description": "Can manage meeting RSVP status"
+    },
+    {
+        "module": "meeting_attendees",
+        "name": "manage-meeting-attendance",
+        "label": "Manage Meeting Attendance",
+        "description": "Can manage meeting attendance"
+    },
+    {
+        "module": "meeting_minutes",
+        "name": "manage-meeting-minutes",
+        "label": "Manage Meeting Minutes",
+        "description": "Can manage meeting minutes"
+    },
+    {
+        "module": "meeting_minutes",
+        "name": "manage-any-meeting-minutes",
+        "label": "Manage All Meeting Minutes",
+        "description": "Manage Any Meeting Minutes"
+    },
+    {
+        "module": "meeting_minutes",
+        "name": "manage-own-meeting-minutes",
+        "label": "Manage Own Meeting Minutes",
+        "description": "Manage Limited Meeting Minutes that is created by own"
+    },
+    {
+        "module": "meeting_minutes",
+        "name": "view-meeting-minutes",
+        "label": "View Meeting Minutes",
+        "description": "View Meeting Minutes"
+    },
+    {
+        "module": "meeting_minutes",
+        "name": "create-meeting-minutes",
+        "label": "Create Meeting Minutes",
+        "description": "Can create meeting minutes"
+    },
+    {
+        "module": "meeting_minutes",
+        "name": "edit-meeting-minutes",
+        "label": "Edit Meeting Minutes",
+        "description": "Can edit meeting minutes"
+    },
+    {
+        "module": "meeting_minutes",
+        "name": "delete-meeting-minutes",
+        "label": "Delete Meeting Minutes",
+        "description": "Can delete meeting minutes"
+    },
+    {
+        "module": "action_items",
+        "name": "manage-action-items",
+        "label": "Manage Action Items",
+        "description": "Can manage action items"
+    },
+    {
+        "module": "action_items",
+        "name": "manage-any-action-items",
+        "label": "Manage All Action Items",
+        "description": "Manage Any Action Items"
+    },
+    {
+        "module": "action_items",
+        "name": "manage-own-action-items",
+        "label": "Manage Own Action Items",
+        "description": "Manage Limited Action Items that is created by own"
+    },
+    {
+        "module": "action_items",
+        "name": "view-action-items",
+        "label": "View Action Items",
+        "description": "View Action Items"
+    },
+    {
+        "module": "action_items",
+        "name": "create-action-items",
+        "label": "Create Action Items",
+        "description": "Can create action items"
+    },
+    {
+        "module": "action_items",
+        "name": "edit-action-items",
+        "label": "Edit Action Items",
+        "description": "Can edit action items"
+    },
+    {
+        "module": "action_items",
+        "name": "delete-action-items",
+        "label": "Delete Action Items",
+        "description": "Can delete action items"
+    },
+    {
+        "module": "contract_types",
+        "name": "manage-contract-types",
+        "label": "Manage Contract Types",
+        "description": "Can manage contract types"
+    },
+    {
+        "module": "contract_types",
+        "name": "manage-any-contract-types",
+        "label": "Manage All Contract Types",
+        "description": "Manage Any Contract Types"
+    },
+    {
+        "module": "contract_types",
+        "name": "manage-own-contract-types",
+        "label": "Manage Own Contract Types",
+        "description": "Manage Limited Contract Types that is created by own"
+    },
+    {
+        "module": "contract_types",
+        "name": "view-contract-types",
+        "label": "View Contract Types",
+        "description": "View Contract Types"
+    },
+    {
+        "module": "contract_types",
+        "name": "create-contract-types",
+        "label": "Create Contract Types",
+        "description": "Can create contract types"
+    },
+    {
+        "module": "contract_types",
+        "name": "edit-contract-types",
+        "label": "Edit Contract Types",
+        "description": "Can edit contract types"
+    },
+    {
+        "module": "contract_types",
+        "name": "delete-contract-types",
+        "label": "Delete Contract Types",
+        "description": "Can delete contract types"
+    },
+    {
+        "module": "employee_contracts",
+        "name": "manage-employee-contracts",
+        "label": "Manage Employee Contracts",
+        "description": "Can manage employee contracts"
+    },
+    {
+        "module": "employee_contracts",
+        "name": "manage-any-employee-contracts",
+        "label": "Manage All Employee Contracts",
+        "description": "Manage Any Employee Contracts"
+    },
+    {
+        "module": "employee_contracts",
+        "name": "manage-own-employee-contracts",
+        "label": "Manage Own Employee Contracts",
+        "description": "Manage Limited Employee Contracts that is created by own"
+    },
+    {
+        "module": "employee_contracts",
+        "name": "view-employee-contracts",
+        "label": "View Employee Contracts",
+        "description": "View Employee Contracts"
+    },
+    {
+        "module": "employee_contracts",
+        "name": "create-employee-contracts",
+        "label": "Create Employee Contracts",
+        "description": "Can create employee contracts"
+    },
+    {
+        "module": "employee_contracts",
+        "name": "edit-employee-contracts",
+        "label": "Edit Employee Contracts",
+        "description": "Can edit employee contracts"
+    },
+    {
+        "module": "employee_contracts",
+        "name": "delete-employee-contracts",
+        "label": "Delete Employee Contracts",
+        "description": "Can delete employee contracts"
+    },
+    {
+        "module": "employee_contracts",
+        "name": "approve-employee-contracts",
+        "label": "Approve Employee Contracts",
+        "description": "Can approve employee contracts"
+    },
+    {
+        "module": "employee_contracts",
+        "name": "reject-employee-contracts",
+        "label": "Reject Employee Contracts",
+        "description": "Can reject employee contracts"
+    },
+    {
+        "module": "contract_templates",
+        "name": "manage-contract-templates",
+        "label": "Manage Contract Templates",
+        "description": "Can manage contract templates"
+    },
+    {
+        "module": "contract_templates",
+        "name": "manage-any-contract-templates",
+        "label": "Manage All Contract Templates",
+        "description": "Manage Any Contract Templates"
+    },
+    {
+        "module": "contract_templates",
+        "name": "manage-own-contract-templates",
+        "label": "Manage Own Contract Templates",
+        "description": "Manage Limited Contract Templates that is created by own"
+    },
+    {
+        "module": "contract_templates",
+        "name": "view-contract-templates",
+        "label": "View Contract Templates",
+        "description": "View Contract Templates"
+    },
+    {
+        "module": "contract_templates",
+        "name": "create-contract-templates",
+        "label": "Create Contract Templates",
+        "description": "Can create contract templates"
+    },
+    {
+        "module": "contract_templates",
+        "name": "edit-contract-templates",
+        "label": "Edit Contract Templates",
+        "description": "Can edit contract templates"
+    },
+    {
+        "module": "contract_templates",
+        "name": "delete-contract-templates",
+        "label": "Delete Contract Templates",
+        "description": "Can delete contract templates"
+    },
+    {
+        "module": "document_categories",
+        "name": "manage-document-categories",
+        "label": "Manage Document Categories",
+        "description": "Can manage document categories"
+    },
+    {
+        "module": "document_categories",
+        "name": "manage-any-document-categories",
+        "label": "Manage All Document Categories",
+        "description": "Manage Any Document Categories"
+    },
+    {
+        "module": "document_categories",
+        "name": "manage-own-document-categories",
+        "label": "Manage Own Document Categories",
+        "description": "Manage Limited Document Categories that is created by own"
+    },
+    {
+        "module": "document_categories",
+        "name": "view-document-categories",
+        "label": "View Document Categories",
+        "description": "View Document Categories"
+    },
+    {
+        "module": "document_categories",
+        "name": "create-document-categories",
+        "label": "Create Document Categories",
+        "description": "Can create document categories"
+    },
+    {
+        "module": "document_categories",
+        "name": "edit-document-categories",
+        "label": "Edit Document Categories",
+        "description": "Can edit document categories"
+    },
+    {
+        "module": "document_categories",
+        "name": "delete-document-categories",
+        "label": "Delete Document Categories",
+        "description": "Can delete document categories"
+    },
+    {
+        "module": "hr_documents",
+        "name": "manage-hr-documents",
+        "label": "Manage HR Documents",
+        "description": "Can manage HR documents"
+    },
+    {
+        "module": "hr_documents",
+        "name": "manage-any-hr-documents",
+        "label": "Manage All HR Documents",
+        "description": "Manage Any HR Documents"
+    },
+    {
+        "module": "hr_documents",
+        "name": "manage-own-hr-documents",
+        "label": "Manage Own HR Documents",
+        "description": "Manage Limited HR Documents that is created by own"
+    },
+    {
+        "module": "hr_documents",
+        "name": "view-hr-documents",
+        "label": "View HR Documents",
+        "description": "View HR Documents"
+    },
+    {
+        "module": "hr_documents",
+        "name": "create-hr-documents",
+        "label": "Create HR Documents",
+        "description": "Can create HR documents"
+    },
+    {
+        "module": "hr_documents",
+        "name": "edit-hr-documents",
+        "label": "Edit HR Documents",
+        "description": "Can edit HR documents"
+    },
+    {
+        "module": "hr_documents",
+        "name": "delete-hr-documents",
+        "label": "Delete HR Documents",
+        "description": "Can delete HR documents"
+    },
+    {
+        "module": "document_acknowledgments",
+        "name": "manage-document-acknowledgments",
+        "label": "Manage Document Acknowledgments",
+        "description": "Can manage document acknowledgments"
+    },
+    {
+        "module": "document_acknowledgments",
+        "name": "manage-any-document-acknowledgments",
+        "label": "Manage All Document Acknowledgments",
+        "description": "Manage Any Document Acknowledgments"
+    },
+    {
+        "module": "document_acknowledgments",
+        "name": "manage-own-document-acknowledgments",
+        "label": "Manage Own Document Acknowledgments",
+        "description": "Manage Limited Document Acknowledgments that is created by own"
+    },
+    {
+        "module": "document_acknowledgments",
+        "name": "view-document-acknowledgments",
+        "label": "View Document Acknowledgments",
+        "description": "View Document Acknowledgments"
+    },
+    {
+        "module": "document_acknowledgments",
+        "name": "create-document-acknowledgments",
+        "label": "Create Document Acknowledgments",
+        "description": "Can create document acknowledgments"
+    },
+    {
+        "module": "document_acknowledgments",
+        "name": "edit-document-acknowledgments",
+        "label": "Edit Document Acknowledgments",
+        "description": "Can edit document acknowledgments"
+    },
+    {
+        "module": "document_acknowledgments",
+        "name": "delete-document-acknowledgments",
+        "label": "Delete Document Acknowledgments",
+        "description": "Can delete document acknowledgments"
+    },
+    {
+        "module": "document_acknowledgments",
+        "name": "acknowledge-document-acknowledgments",
+        "label": "Acknowledge Document Acknowledgments",
+        "description": "Can acknowledge document acknowledgments"
+    },
+    {
+        "module": "document_templates",
+        "name": "manage-document-templates",
+        "label": "Manage Document Templates",
+        "description": "Can manage document templates"
+    },
+    {
+        "module": "document_templates",
+        "name": "manage-any-document-templates",
+        "label": "Manage All Document Templates",
+        "description": "Manage Any Document Templates"
+    },
+    {
+        "module": "document_templates",
+        "name": "manage-own-document-templates",
+        "label": "Manage Own Document Templates",
+        "description": "Manage Limited Document Templates that is created by own"
+    },
+    {
+        "module": "document_templates",
+        "name": "view-document-templates",
+        "label": "View Document Templates",
+        "description": "View Document Templates"
+    },
+    {
+        "module": "document_templates",
+        "name": "create-document-templates",
+        "label": "Create Document Templates",
+        "description": "Can create document templates"
+    },
+    {
+        "module": "document_templates",
+        "name": "edit-document-templates",
+        "label": "Edit Document Templates",
+        "description": "Can edit document templates"
+    },
+    {
+        "module": "document_templates",
+        "name": "delete-document-templates",
+        "label": "Delete Document Templates",
+        "description": "Can delete document templates"
+    },
+    {
+        "module": "leave_types",
+        "name": "manage-leave-types",
+        "label": "Manage Leave Types",
+        "description": "Can manage leave types"
+    },
+    {
+        "module": "leave_types",
+        "name": "manage-any-leave-types",
+        "label": "Manage All Leave Types",
+        "description": "Manage Any Leave Types"
+    },
+    {
+        "module": "leave_types",
+        "name": "manage-own-leave-types",
+        "label": "Manage Own Leave Types",
+        "description": "Manage Limited Leave Types that is created by own"
+    },
+    {
+        "module": "leave_types",
+        "name": "view-leave-types",
+        "label": "View Leave Types",
+        "description": "View Leave Types"
+    },
+    {
+        "module": "leave_types",
+        "name": "create-leave-types",
+        "label": "Create Leave Types",
+        "description": "Can create leave types"
+    },
+    {
+        "module": "leave_types",
+        "name": "edit-leave-types",
+        "label": "Edit Leave Types",
+        "description": "Can edit leave types"
+    },
+    {
+        "module": "leave_types",
+        "name": "delete-leave-types",
+        "label": "Delete Leave Types",
+        "description": "Can delete leave types"
+    },
+    {
+        "module": "leave_policies",
+        "name": "manage-leave-policies",
+        "label": "Manage Leave Policies",
+        "description": "Can manage leave policies"
+    },
+    {
+        "module": "leave_policies",
+        "name": "manage-any-leave-policies",
+        "label": "Manage All Leave Policies",
+        "description": "Manage Any Leave Policies"
+    },
+    {
+        "module": "leave_policies",
+        "name": "manage-own-leave-policies",
+        "label": "Manage Own Leave Policies",
+        "description": "Manage Limited Leave Policies that is created by own"
+    },
+    {
+        "module": "leave_policies",
+        "name": "view-leave-policies",
+        "label": "View Leave Policies",
+        "description": "View Leave Policies"
+    },
+    {
+        "module": "leave_policies",
+        "name": "create-leave-policies",
+        "label": "Create Leave Policies",
+        "description": "Can create leave policies"
+    },
+    {
+        "module": "leave_policies",
+        "name": "edit-leave-policies",
+        "label": "Edit Leave Policies",
+        "description": "Can edit leave policies"
+    },
+    {
+        "module": "leave_policies",
+        "name": "delete-leave-policies",
+        "label": "Delete Leave Policies",
+        "description": "Can delete leave policies"
+    },
+    {
+        "module": "leave_applications",
+        "name": "manage-leave-applications",
+        "label": "Manage Leave Applications",
+        "description": "Can manage leave applications"
+    },
+    {
+        "module": "leave_applications",
+        "name": "manage-any-leave-applications",
+        "label": "Manage All Leave Applications",
+        "description": "Manage Any Leave Applications"
+    },
+    {
+        "module": "leave_applications",
+        "name": "manage-own-leave-applications",
+        "label": "Manage Own Leave Applications",
+        "description": "Manage Limited Leave Applications that is created by own"
+    },
+    {
+        "module": "leave_applications",
+        "name": "view-leave-applications",
+        "label": "View Leave Applications",
+        "description": "View Leave Applications"
+    },
+    {
+        "module": "leave_applications",
+        "name": "create-leave-applications",
+        "label": "Create Leave Applications",
+        "description": "Can create leave applications"
+    },
+    {
+        "module": "leave_applications",
+        "name": "edit-leave-applications",
+        "label": "Edit Leave Applications",
+        "description": "Can edit leave applications"
+    },
+    {
+        "module": "leave_applications",
+        "name": "delete-leave-applications",
+        "label": "Delete Leave Applications",
+        "description": "Can delete leave applications"
+    },
+    {
+        "module": "leave_applications",
+        "name": "approve-leave-applications",
+        "label": "Approve Leave Applications",
+        "description": "Can approve leave applications"
+    },
+    {
+        "module": "leave_applications",
+        "name": "reject-leave-applications",
+        "label": "Reject Leave Applications",
+        "description": "Can reject leave applications"
+    },
+    {
+        "module": "leave_applications",
+        "name": "export-leave-applications",
+        "label": "Export Leave Applications",
+        "description": "Can Export leave applications"
+    },
+    {
+        "module": "leave_balances",
+        "name": "manage-leave-balances",
+        "label": "Manage Leave Balances",
+        "description": "Can manage leave balances"
+    },
+    {
+        "module": "leave_balances",
+        "name": "manage-any-leave-balances",
+        "label": "Manage All Leave Balances",
+        "description": "Manage Any Leave Balances"
+    },
+    {
+        "module": "leave_balances",
+        "name": "manage-own-leave-balances",
+        "label": "Manage Own Leave Balances",
+        "description": "Manage Limited Leave Balances that is created by own"
+    },
+    {
+        "module": "leave_balances",
+        "name": "view-leave-balances",
+        "label": "View Leave Balances",
+        "description": "View Leave Balances"
+    },
+    {
+        "module": "leave_balances",
+        "name": "create-leave-balances",
+        "label": "Create Leave Balances",
+        "description": "Can create leave balances"
+    },
+    {
+        "module": "leave_balances",
+        "name": "edit-leave-balances",
+        "label": "Edit Leave Balances",
+        "description": "Can edit leave balances"
+    },
+    {
+        "module": "leave_balances",
+        "name": "delete-leave-balances",
+        "label": "Delete Leave Balances",
+        "description": "Can delete leave balances"
+    },
+    {
+        "module": "leave_balances",
+        "name": "adjust-leave-balances",
+        "label": "Adjust Leave Balances",
+        "description": "Can make manual adjustments to leave balances"
+    },
+    {
+        "module": "leave_balances",
+        "name": "view-leave-balance-sync-history",
+        "label": "View Leave Balance Sync History",
+        "description": "Can view leave balance sync history"
+    },
+    {
+        "module": "leave_balances",
+        "name": "manage-leave-balance-sync-history",
+        "label": "Manage Leave Balance Sync History",
+        "description": "Can manage leave balance sync history"
+    },
+    {
+        "module": "leave_balances",
+        "name": "manage-any-leave-balance-sync-history",
+        "label": "Manage All Leave Balance Sync History",
+        "description": "Can manage any leave balance sync history"
+    },
+    {
+        "module": "leave_balances",
+        "name": "manage-own-leave-balance-sync-history",
+        "label": "Manage Own Leave Balance Sync History",
+        "description": "Can manage own leave balance sync history"
+    },
+    {
+        "module": "leave_balances",
+        "name": "sync-leave-balances",
+        "label": "Sync Leave Balances",
+        "description": "Can sync leave balances for current year"
+    },
+    {
+        "module": "shifts",
+        "name": "manage-shifts",
+        "label": "Manage Shifts",
+        "description": "Can manage shifts"
+    },
+    {
+        "module": "shifts",
+        "name": "manage-any-shifts",
+        "label": "Manage All Shifts",
+        "description": "Manage Any Shifts"
+    },
+    {
+        "module": "shifts",
+        "name": "manage-own-shifts",
+        "label": "Manage Own Shifts",
+        "description": "Manage Limited Shifts that is created by own"
+    },
+    {
+        "module": "shifts",
+        "name": "view-shifts",
+        "label": "View Shifts",
+        "description": "View Shifts"
+    },
+    {
+        "module": "shifts",
+        "name": "create-shifts",
+        "label": "Create Shifts",
+        "description": "Can create shifts"
+    },
+    {
+        "module": "shifts",
+        "name": "edit-shifts",
+        "label": "Edit Shifts",
+        "description": "Can edit shifts"
+    },
+    {
+        "module": "shifts",
+        "name": "delete-shifts",
+        "label": "Delete Shifts",
+        "description": "Can delete shifts"
+    },
+    {
+        "module": "attendance_policies",
+        "name": "manage-attendance-policies",
+        "label": "Manage Attendance Policies",
+        "description": "Can manage attendance policies"
+    },
+    {
+        "module": "attendance_policies",
+        "name": "manage-any-attendance-policies",
+        "label": "Manage All Attendance Policies",
+        "description": "Manage Any Attendance Policies"
+    },
+    {
+        "module": "attendance_policies",
+        "name": "manage-own-attendance-policies",
+        "label": "Manage Own Attendance Policies",
+        "description": "Manage Limited Attendance Policies that is created by own"
+    },
+    {
+        "module": "attendance_policies",
+        "name": "view-attendance-policies",
+        "label": "View Attendance Policies",
+        "description": "View Attendance Policies"
+    },
+    {
+        "module": "attendance_policies",
+        "name": "create-attendance-policies",
+        "label": "Create Attendance Policies",
+        "description": "Can create attendance policies"
+    },
+    {
+        "module": "attendance_policies",
+        "name": "edit-attendance-policies",
+        "label": "Edit Attendance Policies",
+        "description": "Can edit attendance policies"
+    },
+    {
+        "module": "attendance_policies",
+        "name": "delete-attendance-policies",
+        "label": "Delete Attendance Policies",
+        "description": "Can delete attendance policies"
+    },
+    {
+        "module": "attendance_records",
+        "name": "manage-attendance-records",
+        "label": "Manage Attendance Records",
+        "description": "Can manage attendance records"
+    },
+    {
+        "module": "attendance_records",
+        "name": "manage-any-attendance-records",
+        "label": "Manage All Attendance Records",
+        "description": "Manage Any Attendance Records"
+    },
+    {
+        "module": "attendance_records",
+        "name": "manage-own-attendance-records",
+        "label": "Manage Own Attendance Records",
+        "description": "Manage Limited Attendance Records that is created by own"
+    },
+    {
+        "module": "attendance_records",
+        "name": "view-attendance-records",
+        "label": "View Attendance Records",
+        "description": "View Attendance Records"
+    },
+    {
+        "module": "attendance_records",
+        "name": "create-attendance-records",
+        "label": "Create Attendance Records",
+        "description": "Can create attendance records"
+    },
+    {
+        "module": "attendance_records",
+        "name": "edit-attendance-records",
+        "label": "Edit Attendance Records",
+        "description": "Can edit attendance records"
+    },
+    {
+        "module": "attendance_records",
+        "name": "delete-attendance-records",
+        "label": "Delete Attendance Records",
+        "description": "Can delete attendance records"
+    },
+    {
+        "module": "attendance_records",
+        "name": "clock-in-out",
+        "label": "Clock In/Out",
+        "description": "Can clock in and out"
+    },
+    {
+        "module": "attendance_records",
+        "name": "import-attendance-record",
+        "label": "Import Attendance Records",
+        "description": "Can Import Attendance Records"
+    },
+    {
+        "module": "attendance_records",
+        "name": "export-attendance-record",
+        "label": "Export Attendance Records",
+        "description": "Can Export Attendance Records"
+    },
+    {
+        "module": "attendance_regularizations",
+        "name": "manage-attendance-regularizations",
+        "label": "Manage Attendance Regularizations",
+        "description": "Can manage attendance regularizations"
+    },
+    {
+        "module": "attendance_regularizations",
+        "name": "manage-any-attendance-regularizations",
+        "label": "Manage All Attendance Regularizations",
+        "description": "Manage Any Attendance Regularizations"
+    },
+    {
+        "module": "attendance_regularizations",
+        "name": "manage-own-attendance-regularizations",
+        "label": "Manage Own Attendance Regularizations",
+        "description": "Manage Limited Attendance Regularizations that is created by own"
+    },
+    {
+        "module": "attendance_regularizations",
+        "name": "view-attendance-regularizations",
+        "label": "View Attendance Regularizations",
+        "description": "View Attendance Regularizations"
+    },
+    {
+        "module": "attendance_regularizations",
+        "name": "create-attendance-regularizations",
+        "label": "Create Attendance Regularizations",
+        "description": "Can create attendance regularizations"
+    },
+    {
+        "module": "attendance_regularizations",
+        "name": "edit-attendance-regularizations",
+        "label": "Edit Attendance Regularizations",
+        "description": "Can edit attendance regularizations"
+    },
+    {
+        "module": "attendance_regularizations",
+        "name": "delete-attendance-regularizations",
+        "label": "Delete Attendance Regularizations",
+        "description": "Can delete attendance regularizations"
+    },
+    {
+        "module": "attendance_regularizations",
+        "name": "approve-attendance-regularizations",
+        "label": "Approve Attendance Regularizations",
+        "description": "Can approve attendance regularizations"
+    },
+    {
+        "module": "attendance_regularizations",
+        "name": "reject-attendance-regularizations",
+        "label": "Reject Attendance Regularizations",
+        "description": "Can reject attendance regularizations"
+    },
+    {
+        "module": "time_entries",
+        "name": "manage-time-entries",
+        "label": "Manage Time Entries",
+        "description": "Can manage time entries"
+    },
+    {
+        "module": "time_entries",
+        "name": "manage-any-time-entries",
+        "label": "Manage All Time Entries",
+        "description": "Manage Any Time Entries"
+    },
+    {
+        "module": "time_entries",
+        "name": "manage-own-time-entries",
+        "label": "Manage Own Time Entries",
+        "description": "Manage Limited Time Entries that is created by own"
+    },
+    {
+        "module": "time_entries",
+        "name": "view-time-entries",
+        "label": "View Time Entries",
+        "description": "View Time Entries"
+    },
+    {
+        "module": "time_entries",
+        "name": "create-time-entries",
+        "label": "Create Time Entries",
+        "description": "Can create time entries"
+    },
+    {
+        "module": "time_entries",
+        "name": "edit-time-entries",
+        "label": "Edit Time Entries",
+        "description": "Can edit time entries"
+    },
+    {
+        "module": "time_entries",
+        "name": "delete-time-entries",
+        "label": "Delete Time Entries",
+        "description": "Can delete time entries"
+    },
+    {
+        "module": "time_entries",
+        "name": "approve-time-entries",
+        "label": "Approve Time Entries",
+        "description": "Can approve time entries"
+    },
+    {
+        "module": "time_entries",
+        "name": "reject-time-entries",
+        "label": "Reject Time Entries",
+        "description": "Can reject time entries"
+    },
+    {
+        "module": "time_entries",
+        "name": "import-time-entry",
+        "label": "Import Time Entries",
+        "description": "Can Import Time Entries"
+    },
+    {
+        "module": "time_entries",
+        "name": "export-time-entry",
+        "label": "Export Time Entries",
+        "description": "Can Export Time Entries"
+    },
+    {
+        "module": "salary_components",
+        "name": "manage-salary-components",
+        "label": "Manage Salary Components",
+        "description": "Can manage salary components"
+    },
+    {
+        "module": "salary_components",
+        "name": "manage-any-salary-components",
+        "label": "Manage All Salary Components",
+        "description": "Manage Any Salary Components"
+    },
+    {
+        "module": "salary_components",
+        "name": "manage-own-salary-components",
+        "label": "Manage Own Salary Components",
+        "description": "Manage Limited Salary Components that is created by own"
+    },
+    {
+        "module": "salary_components",
+        "name": "view-salary-components",
+        "label": "View Salary Components",
+        "description": "View Salary Components"
+    },
+    {
+        "module": "salary_components",
+        "name": "create-salary-components",
+        "label": "Create Salary Components",
+        "description": "Can create salary components"
+    },
+    {
+        "module": "salary_components",
+        "name": "edit-salary-components",
+        "label": "Edit Salary Components",
+        "description": "Can edit salary components"
+    },
+    {
+        "module": "salary_components",
+        "name": "delete-salary-components",
+        "label": "Delete Salary Components",
+        "description": "Can delete salary components"
+    },
+    {
+        "module": "employee_salaries",
+        "name": "manage-employee-salaries",
+        "label": "Manage Employee Salaries",
+        "description": "Can manage employee salaries"
+    },
+    {
+        "module": "employee_salaries",
+        "name": "manage-any-employee-salaries",
+        "label": "Manage All Employee Salaries",
+        "description": "Manage Any Employee Salaries"
+    },
+    {
+        "module": "employee_salaries",
+        "name": "manage-own-employee-salaries",
+        "label": "Manage Own Employee Salaries",
+        "description": "Manage Limited Employee Salaries that is created by own"
+    },
+    {
+        "module": "employee_salaries",
+        "name": "view-employee-salaries",
+        "label": "View Employee Salaries",
+        "description": "View Employee Salaries"
+    },
+    {
+        "module": "employee_salaries",
+        "name": "create-employee-salaries",
+        "label": "Create Employee Salaries",
+        "description": "Can create employee salaries"
+    },
+    {
+        "module": "employee_salaries",
+        "name": "edit-employee-salaries",
+        "label": "Edit Employee Salaries",
+        "description": "Can edit employee salaries"
+    },
+    {
+        "module": "employee_salaries",
+        "name": "delete-employee-salaries",
+        "label": "Delete Employee Salaries",
+        "description": "Can delete employee salaries"
+    },
+    {
+        "module": "payroll_runs",
+        "name": "manage-payroll-runs",
+        "label": "Manage Payroll Runs",
+        "description": "Can manage payroll runs"
+    },
+    {
+        "module": "payroll_runs",
+        "name": "manage-any-payroll-runs",
+        "label": "Manage All Payroll Runs",
+        "description": "Manage Any Payroll Runs"
+    },
+    {
+        "module": "payroll_runs",
+        "name": "manage-own-payroll-runs",
+        "label": "Manage Own Payroll Runs",
+        "description": "Manage Limited Payroll Runs that is created by own"
+    },
+    {
+        "module": "payroll_runs",
+        "name": "view-payroll-runs",
+        "label": "View Payroll Runs",
+        "description": "View Payroll Runs"
+    },
+    {
+        "module": "payroll_runs",
+        "name": "create-payroll-runs",
+        "label": "Create Payroll Runs",
+        "description": "Can create payroll runs"
+    },
+    {
+        "module": "payroll_runs",
+        "name": "edit-payroll-runs",
+        "label": "Edit Payroll Runs",
+        "description": "Can edit payroll runs"
+    },
+    {
+        "module": "payroll_runs",
+        "name": "delete-payroll-runs",
+        "label": "Delete Payroll Runs",
+        "description": "Can delete payroll runs"
+    },
+    {
+        "module": "payroll_runs",
+        "name": "process-payroll-runs",
+        "label": "Process Payroll Runs",
+        "description": "Can process payroll runs"
+    },
+    {
+        "module": "payroll_runs",
+        "name": "import-payroll-runs",
+        "label": "Import Payroll Runs",
+        "description": "Can Import Payroll Runs"
+    },
+    {
+        "module": "payroll_runs",
+        "name": "export-payroll-runs",
+        "label": "Export Payroll Runs",
+        "description": "Can Export Payroll Runs"
+    },
+    {
+        "module": "payslips",
+        "name": "manage-payslips",
+        "label": "Manage Payslips",
+        "description": "Can manage payslips"
+    },
+    {
+        "module": "payslips",
+        "name": "manage-any-payslips",
+        "label": "Manage All Payslips",
+        "description": "Manage Any Payslips"
+    },
+    {
+        "module": "payslips",
+        "name": "manage-own-payslips",
+        "label": "Manage Own Payslips",
+        "description": "Manage Limited Payslips that is created by own"
+    },
+    {
+        "module": "payslips",
+        "name": "view-payslips",
+        "label": "View Payslips",
+        "description": "View Payslips"
+    },
+    {
+        "module": "payslips",
+        "name": "create-payslips",
+        "label": "Create Payslips",
+        "description": "Can create payslips"
+    },
+    {
+        "module": "payslips",
+        "name": "download-payslips",
+        "label": "Download Payslips",
+        "description": "Can download payslips"
+    },
+    {
+        "module": "calendar",
+        "name": "manage-calendar",
+        "label": "Manage Calendar",
+        "description": "Can manage calendar"
+    },
+    {
+        "module": "calendar",
+        "name": "view-calendar",
+        "label": "View Calendar",
+        "description": "Can view calendar"
+    },
+    {
+        "module": "working_days",
+        "name": "manage-working-days-settings",
+        "label": "Manage Working Days",
+        "description": "Manage Working Days"
+    },
+    {
+        "module": "working_days",
+        "name": "update-working-days-settings",
+        "label": "Update Working Days",
+        "description": "Update Working Days"
+    },
+    {
+        "module": "biometric_attendance",
+        "name": "manage-biometric-attendance",
+        "label": "Manage Biometric Attendance",
+        "description": "Can manage biometric attendance data"
+    },
+    {
+        "module": "biometric_attendance",
+        "name": "manage-any-biometric-attendance",
+        "label": "Manage All Biometric Attendance",
+        "description": "Manage Any Biometric Attendance"
+    },
+    {
+        "module": "biometric_attendance",
+        "name": "manage-own-biometric-attendance",
+        "label": "Manage Own Biometric Attendance",
+        "description": "Manage Limited Biometric Attendance that is created by own"
+    },
+    {
+        "module": "biometric_attendance",
+        "name": "view-biometric-attendance",
+        "label": "View Biometric Attendance",
+        "description": "View Biometric Attendance"
+    },
+    {
+        "module": "biometric_attendance",
+        "name": "sync-biometric-attendance",
+        "label": "Sync Biometric Attendance",
+        "description": "Can sync biometric attendance data"
+    },
+    {
+        "module": "biometric_attendance",
+        "name": "manage-biomatric-attedance-settings",
+        "label": "Manage Biometric Attendance Setting",
+        "description": "Manage Biometric Attendance Setting"
+    },
+    {
+        "module": "ip_restriction",
+        "name": "manage-ip-restriction-settings",
+        "label": "Manage Ip Restriction Settings",
+        "description": "Manage Ip Restriction Settings"
+    },
+    {
+        "module": "ip_restriction",
+        "name": "create-ip-restriction",
+        "label": "Create Ip Restriction",
+        "description": "Create Ip Restriction"
+    },
+    {
+        "module": "ip_restriction",
+        "name": "edit-ip-restriction",
+        "label": "Edit Ip Restriction",
+        "description": "Edit Ip Restriction"
+    },
+    {
+        "module": "ip_restriction",
+        "name": "delete-ip-restriction",
+        "label": "Delete Ip Restriction",
+        "description": "Delete Ip Restriction"
+    },
+    {
+        "module": "custom_questions",
+        "name": "manage-custom-questions",
+        "label": "Manage Custom Questions",
+        "description": "Can manage custom questions"
+    },
+    {
+        "module": "custom_questions",
+        "name": "manage-any-custom-questions",
+        "label": "Manage All Custom Questions",
+        "description": "Manage Any Custom Questions"
+    },
+    {
+        "module": "custom_questions",
+        "name": "manage-own-custom-questions",
+        "label": "Manage Own Custom Questions",
+        "description": "Manage Limited Custom Questions that is created by own"
+    },
+    {
+        "module": "custom_questions",
+        "name": "view-custom-questions",
+        "label": "View Custom Questions",
+        "description": "View Custom Questions"
+    },
+    {
+        "module": "custom_questions",
+        "name": "create-custom-questions",
+        "label": "Create Custom Questions",
+        "description": "Can create custom questions"
+    },
+    {
+        "module": "custom_questions",
+        "name": "edit-custom-questions",
+        "label": "Edit Custom Questions",
+        "description": "Can edit custom questions"
+    },
+    {
+        "module": "custom_questions",
+        "name": "delete-custom-questions",
+        "label": "Delete Custom Questions",
+        "description": "Can delete custom questions"
+    },
+    {
+        "module": "career",
+        "name": "manage-career-page",
+        "label": "Manage Career Page",
+        "description": "Manage Career Page"
+    },
+    {
+        "module": "organization_chart",
+        "name": "manage-organization-chart",
+        "label": "Manage Organization Chart",
+        "description": "Can manage organization chart"
+    },
+    {
+        "module": "organization_chart",
+        "name": "manage-any-organization-chart",
+        "label": "Manage All Organization Chart",
+        "description": "Can view organization chart for all employees"
+    },
+    {
+        "module": "organization_chart",
+        "name": "manage-own-organization-chart",
+        "label": "Manage Own Organization Chart",
+        "description": "Can view own organization chart only"
+    },
+    {
+        "module": "contacts",
+        "name": "delete-contacts",
+        "label": "Delete Contacts",
+        "description": "Can delete contacts"
+    },
+    {
+        "module": "contacts",
+        "name": "manage-contacts",
+        "label": "Manage Contacts",
+        "description": "Can manage contacts"
+    },
+    {
+        "module": "contacts",
+        "name": "send-reply-contacts",
+        "label": "Send Reply Contacts",
+        "description": "Can send reply contacts"
+    },
+    {
+        "module": "contacts",
+        "name": "update-contact-status",
+        "label": "Update Contact Status",
+        "description": "Can update contact status"
+    },
+    {
+        "module": "contacts",
+        "name": "view-contacts",
+        "label": "View Contacts",
+        "description": "Can view contacts"
+    },
+    {
+        "module": "currencies",
+        "name": "create-currencies",
+        "label": "Create Currencies",
+        "description": "Can create currencies"
+    },
+    {
+        "module": "currencies",
+        "name": "delete-currencies",
+        "label": "Delete Currencies",
+        "description": "Can delete currencies"
+    },
+    {
+        "module": "currencies",
+        "name": "edit-currencies",
+        "label": "Edit Currencies",
+        "description": "Can edit currencies"
+    },
+    {
+        "module": "currencies",
+        "name": "manage-any-currencies",
+        "label": "Manage All Currencies",
+        "description": "Can manage all currencies"
+    },
+    {
+        "module": "currencies",
+        "name": "manage-currencies",
+        "label": "Manage Currencies",
+        "description": "Can manage currencies"
+    },
+    {
+        "module": "currencies",
+        "name": "manage-own-currencies",
+        "label": "Manage Own Currencies",
+        "description": "Can manage own currencies"
+    },
+    {
+        "module": "currencies",
+        "name": "view-currencies",
+        "label": "View Currencies",
+        "description": "Can view currencies"
+    },
+    {
+        "module": "experience_certificate",
+        "name": "manage-experience-certificate",
+        "label": "Manage Experience Certificate",
+        "description": "Can manage experience certificate"
+    },
+    {
+        "module": "experience_certificate",
+        "name": "update-experience-certificate",
+        "label": "Update Experience Certificate",
+        "description": "Can update experience certificate"
+    },
+    {
+        "module": "joining_letter",
+        "name": "manage-joining-letter",
+        "label": "Manage Joining Letter",
+        "description": "Can manage joining letter"
+    },
+    {
+        "module": "joining_letter",
+        "name": "update-joining-letter",
+        "label": "Update Joining Letter",
+        "description": "Can update joining letter"
+    },
+    {
+        "module": "landing_page",
+        "name": "edit-landing-page",
+        "label": "Edit Landing Page",
+        "description": "Can edit landing page"
+    },
+    {
+        "module": "landing_page",
+        "name": "manage-landing-page",
+        "label": "Manage Landing Page",
+        "description": "Can manage landing page"
+    },
+    {
+        "module": "landing_page",
+        "name": "view-landing-page",
+        "label": "View Landing Page",
+        "description": "Can view landing page"
+    },
+    {
+        "module": "language",
+        "name": "edit-language",
+        "label": "Edit Language",
+        "description": "Can edit language"
+    },
+    {
+        "module": "language",
+        "name": "manage-language",
+        "label": "Manage Language",
+        "description": "Can manage language"
+    },
+    {
+        "module": "language",
+        "name": "view-language",
+        "label": "View Language",
+        "description": "Can view language"
+    },
+    {
+        "module": "login_history",
+        "name": "delete-login-history",
+        "label": "Delete Login History",
+        "description": "Can delete login history"
+    },
+    {
+        "module": "login_history",
+        "name": "manage-login-history",
+        "label": "Manage Login History",
+        "description": "Can manage login history"
+    },
+    {
+        "module": "login_history",
+        "name": "show-login-history",
+        "label": "Show Login History",
+        "description": "Can show login history"
+    },
+    {
+        "module": "newsletters",
+        "name": "delete-newsletters",
+        "label": "Delete Newsletters",
+        "description": "Can delete newsletters"
+    },
+    {
+        "module": "newsletters",
+        "name": "manage-newsletters",
+        "label": "Manage Newsletters",
+        "description": "Can manage newsletters"
+    },
+    {
+        "module": "noc",
+        "name": "manage-noc",
+        "label": "Manage NOC",
+        "description": "Can manage noc"
+    },
+    {
+        "module": "noc",
+        "name": "update-noc",
+        "label": "Update NOC",
+        "description": "Can update noc"
+    },
+    {
+        "module": "payroll_entries",
+        "name": "delete-payroll-entries",
+        "label": "Delete Payroll Entries",
+        "description": "Can delete payroll entries"
+    },
+    {
+        "module": "permissions",
+        "name": "view-permissions",
+        "label": "View Permissions",
+        "description": "Can view permissions"
+    },
+    {
+        "module": "settings",
+        "name": "manage-brand-settings",
+        "label": "Manage Brand Settings",
+        "description": "Can manage brand settings"
+    },
+    {
+        "module": "settings",
+        "name": "manage-email-settings",
+        "label": "Manage Email Settings",
+        "description": "Can manage email settings"
+    },
+    {
+        "module": "settings",
+        "name": "manage-settings",
+        "label": "Manage Settings",
+        "description": "Can manage settings"
+    },
+    {
+        "module": "settings",
+        "name": "manage-webhook-settings",
+        "label": "Manage Webhook Settings",
+        "description": "Can manage webhook settings"
+    },
+    {
+        "module": "training-assessments",
+        "name": "create-training-assessments",
+        "label": "Create Training Assessments",
+        "description": "Can create training assessments"
+    },
+    {
+        "module": "training-assessments",
+        "name": "delete-training-assessments",
+        "label": "Delete Training Assessments",
+        "description": "Can delete training assessments"
+    },
+    {
+        "module": "training-assessments",
+        "name": "edit-training-assessments",
+        "label": "Edit Training Assessments",
+        "description": "Can edit training assessments"
+    },
+    {
+        "module": "training-assessments",
+        "name": "manage-any-training-assessments",
+        "label": "Manage All Training Assessments",
+        "description": "Can manage all training assessments"
+    },
+    {
+        "module": "training-assessments",
+        "name": "manage-training-assessments",
+        "label": "Manage Training Assessments",
+        "description": "Can manage training assessments"
+    },
+    {
+        "module": "training-assessments",
+        "name": "view-training-assessments",
+        "label": "View Training Assessments",
+        "description": "Can view training assessments"
+    }
+]

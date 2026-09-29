@@ -1,0 +1,542 @@
+[
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-20",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-20",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-20",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-20",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-27",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-27",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-27",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-09-27",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-04",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-04",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-04",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-04",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-11",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-11",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-11",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-11",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-18",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-18",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-18",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-18",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-25",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-25",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-25",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-10-25",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:22"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-01",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-01",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-01",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-01",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-08",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-08",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-08",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-08",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-15",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-15",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-15",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-15",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-22",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-22",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-22",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-22",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-29",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-29",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-29",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-11-29",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-06",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-06",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-06",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-06",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-13",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-13",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-13",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Weekly Team Standup",
+        "meeting_date": "2025-12-13",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "manager@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Client Presentation - Q4 Results",
+        "meeting_date": "2025-09-22",
+        "topic": "Project Scope Discussion",
+        "content": "Client requested additional features for the mobile app. Discussed timeline implications and budget adjustments required.",
+        "type": "Discussion",
+        "recorder": "katrina28@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Client Presentation - Q4 Results",
+        "meeting_date": "2025-09-22",
+        "topic": "Delivery Timeline Approval",
+        "content": "Client approved the revised delivery timeline. New deadline set for March 15th with phased rollout approach.",
+        "type": "Decision",
+        "recorder": "katrina28@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Client Presentation - Q4 Results",
+        "meeting_date": "2025-09-22",
+        "topic": "Weekly Status Reports",
+        "content": "Action item: Provide weekly status reports every Friday. Include progress metrics and risk assessments.",
+        "type": "Action Item",
+        "recorder": "katrina28@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Client Presentation - Q4 Results",
+        "meeting_date": "2025-09-22",
+        "topic": "Next Meeting Schedule",
+        "content": "Note: Next client meeting scheduled for two weeks from today at 2 PM.",
+        "type": "Note",
+        "recorder": "katrina28@example.com",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-19",
+        "topic": "Sprint Progress Review",
+        "content": "Team reviewed current sprint progress. 80% of planned tasks completed. Discussed blockers and dependencies for remaining tasks.",
+        "type": "Discussion",
+        "recorder": "corkery.cheyanne@example.net",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-19",
+        "topic": "Resource Allocation Decision",
+        "content": "Decided to allocate additional developer resources to Project Alpha. Siti will join the team starting next Monday.",
+        "type": "Decision",
+        "recorder": "corkery.cheyanne@example.net",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-19",
+        "topic": "Code Review Process",
+        "content": "Action item: Implement automated code review process using GitHub Actions. Hafiz to research and propose solution by Friday.",
+        "type": "Action Item",
+        "recorder": "corkery.cheyanne@example.net",
+        "recorded_at": "2025-09-18 11:30:23"
+    },
+    {
+        "meeting": "Daily Scrum Meeting",
+        "meeting_date": "2025-09-19",
+        "topic": "Team Building Event",
+        "content": "Note: Team building event scheduled for next month. HR will send details via email.",
+        "type": "Note",
+        "recorder": "corkery.cheyanne@example.net",
+        "recorded_at": "2025-09-18 11:30:23"
+    }
+]

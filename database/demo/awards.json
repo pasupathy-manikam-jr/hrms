@@ -1,0 +1,65 @@
+[
+    {
+        "employee_email": "merle75@example.net",
+        "employee_name": "Warren Jones",
+        "award_type": "Employee of the Month",
+        "award_date": "2024-09-28",
+        "gift": "Dinner Voucher",
+        "monetary_value": "562.90",
+        "description": "Demonstrated excellent customer service and positive attitude throughout the month"
+    },
+    {
+        "employee_email": "employee@example.com",
+        "employee_name": "Employee",
+        "award_type": "Employee of the Year",
+        "award_date": "2025-05-02",
+        "gift": "Plaque",
+        "monetary_value": null,
+        "description": "Showed remarkable leadership qualities and mentored junior team members effectively"
+    },
+    {
+        "employee_email": "dimitri21@example.com",
+        "employee_name": "Amie Jerde",
+        "award_type": "Customer Service Award",
+        "award_date": "2024-11-01",
+        "gift": "Medal",
+        "monetary_value": null,
+        "description": "Resolved complex customer issues with professionalism and efficiency"
+    },
+    {
+        "employee_email": "tod.pagac@example.com",
+        "employee_name": "Dr. Justus Boyer Jr.",
+        "award_type": "Innovation Award",
+        "award_date": "2024-08-31",
+        "gift": "Plaque",
+        "monetary_value": "5287.08",
+        "description": "Implemented new technology that enhanced team productivity and workflow"
+    },
+    {
+        "employee_email": "dimitri21@example.com",
+        "employee_name": "Amie Jerde",
+        "award_type": "Customer Service Award",
+        "award_date": "2024-07-25",
+        "gift": "Gift Voucher",
+        "monetary_value": null,
+        "description": "Achieved highest customer satisfaction rating and received excellent feedback"
+    },
+    {
+        "employee_email": "employee@example.com",
+        "employee_name": "Employee",
+        "award_type": "Employee of the Year",
+        "award_date": "2024-12-12",
+        "gift": "Bonus Cash",
+        "monetary_value": "3614.89",
+        "description": "Showed remarkable leadership qualities and mentored junior team members effectively"
+    },
+    {
+        "employee_email": "merle75@example.net",
+        "employee_name": "Warren Jones",
+        "award_type": "Leadership Award",
+        "award_date": "2024-08-02",
+        "gift": "Trophy",
+        "monetary_value": null,
+        "description": "Demonstrated exceptional leadership during challenging project situations"
+    }
+]
