@@ -35,7 +35,8 @@ return Application::configure(basePath: dirname(__DIR__))
             RestrictIp::class,
             HandleAppearance::class,
             HandleInertiaRequests::class,
-            AddLinkHeadersForPreloadedAssets::class,
+            // Capped: every page chunk in one Link header passed 8 KB on staging, which its proxy rejects with an empty 500.
+            AddLinkHeadersForPreloadedAssets::using(30),
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
