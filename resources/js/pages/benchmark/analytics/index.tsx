@@ -689,6 +689,20 @@ export default function BenchmarkAnalytics({
                             },
                         ]}
                     />
+                    <FilterSelect
+                        url={url}
+                        filters={filters}
+                        name="confidentiality"
+                        label={t('Show all figures')}
+                        options={[
+                            {
+                                id: 'on',
+                                name: t('Hide figures from < :n companies', {
+                                    n: cycle.min_companies,
+                                }),
+                            },
+                        ]}
+                    />
                     <Button
                         variant="ghost"
                         onClick={() =>
@@ -757,8 +771,11 @@ export default function BenchmarkAnalytics({
                         },
                         {
                             label: 'Confidentiality',
-                            value: `≥ ${cycle.min_companies}`,
-                            note: 'Companies needed per figure',
+                            value:
+                                filters.confidentiality === 'on'
+                                    ? `≥ ${cycle.min_companies}`
+                                    : t('Off'),
+                            note: 'Hiding figures from few companies',
                             icon: ShieldCheck,
                             tone: 'bg-amber-100 text-amber-600',
                         },
@@ -790,6 +807,15 @@ export default function BenchmarkAnalytics({
                             </button>
                         ))}
                     </div>
+                    {filters.confidentiality === 'on' &&
+                        report.salaries.some((row) => row.suppressed) && (
+                            <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200">
+                                {t(
+                                    'Confidential view for sharing: figures reported by fewer than :n companies are hidden as “Insufficient data”. Choose “Show all figures” in the filters to see everything.',
+                                    { n: cycle.min_companies },
+                                )}
+                            </p>
+                        )}
                     {report.overview.companies === 0 ? (
                         <p className="py-10 text-center text-muted-foreground">
                             {t('No companies match these filters.')}

@@ -299,7 +299,7 @@ const CHAPTERS: Chapter[] = [
                 steps: [
                     'Name: the edition, for example 2025/2026.',
                     'Status: Open while you are collecting workbooks, Closed when the edition is final.',
-                    'Min. Companies per Figure: the confidentiality rule (3 is the usual choice). A salary, percentage or median is hidden unless at least this many companies contribute to it.',
+                    'Min. Companies per Figure: the confidentiality rule for reports you share (3 is the usual choice). When you switch confidentiality on in Analytics, a figure is hidden unless at least this many companies contribute to it.',
                     'Completed Workbooks: drop in the companies’ filled-in workbooks. Each one carries the survey’s hidden Lookups sheet — the 420 standard job titles and every dropdown list — so the cycle’s job catalogue is taken from them. Each file’s result is shown; the dialog closes when all are imported.',
                     'Blank Survey Template (optional): the unfilled .xlsx the companies were sent. You only need it to create a cycle before any workbooks arrive, or to let the system clean out remarks that companies left as the template’s grey guidance text. You can add it later by editing the cycle; remarks already imported are cleaned then.',
                     'Save. To use a corrected template later, edit the cycle and upload it again; the catalogue and lists are replaced.',
@@ -365,8 +365,8 @@ const CHAPTERS: Chapter[] = [
                 ],
             },
             {
-                title: '9. “Insufficient data”',
-                body: 'When fewer companies than the cycle’s minimum contribute to a figure, it shows “Insufficient data” instead of a number, so no single company’s pay can be worked out. Narrow cuts hide more figures; widen the filters or collect more workbooks. You can change the minimum on the cycle, but keep it at 3 or more for anything shared outside your team.',
+                title: '9. Confidentiality and “Insufficient data”',
+                body: 'Analytics shows every figure by default, even one that comes from a single company, because it is your own working view. Before sharing results outside your team, set the last filter to “Hide figures from < N companies” (N is the cycle’s Min. Companies per Figure, usually 3). Figures reported by fewer companies then read “Insufficient data”, so no single company’s pay can be worked out, and Excel and PDF exports follow the same setting.',
             },
             {
                 title: '10. Exporting reports',

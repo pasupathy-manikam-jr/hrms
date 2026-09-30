@@ -270,7 +270,7 @@ export default function SurveyCycles({
                         />
                         <p className="text-xs text-muted-foreground">
                             {t(
-                                'A figure is hidden unless at least this many companies contribute to it.',
+                                'Used when you hide figures from few companies in shared reports.',
                             )}
                         </p>
                         <InputError message={form.errors.min_companies} />

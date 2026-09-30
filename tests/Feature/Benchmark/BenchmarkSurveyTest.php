@@ -138,13 +138,19 @@ class BenchmarkSurveyTest extends TestCase
         $this->actingAs($this->userWithRole());
         $this->upload($cycle, ['Alpha' => 4000, 'Beta' => 5000]);
 
-        $this->get(route('benchmark.analytics.index'))->assertInertia(fn ($page) => $page
+        $this->get(route('benchmark.analytics.index', ['confidentiality' => 'on']))->assertInertia(fn ($page) => $page
             ->component('benchmark/analytics/index')
             ->where('report.overview.companies', 2)
             ->where('report.salaries.0.job_title', 'Process Engineer')
             ->where('report.salaries.0.suppressed', true)
             ->missing('report.salaries.0.median')
             ->where('report.attrition.suppressed', true));
+
+        // By default the admin sees every figure; the rule is only for reports shared outside.
+        $this->get(route('benchmark.analytics.index'))->assertInertia(fn ($page) => $page
+            ->where('report.salaries.0.suppressed', false)
+            ->where('report.salaries.0.median', 4500)
+            ->where('report.attrition.suppressed', false));
 
         $this->upload($cycle, ['Gamma' => 6000]);
 

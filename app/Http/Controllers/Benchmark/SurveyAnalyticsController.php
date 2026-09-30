@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 class SurveyAnalyticsController extends Controller
 {
-    private const FILTERS = [...SurveyAnalytics::PROFILE_FILTERS, ...SurveyAnalytics::JOB_FILTERS, 'gender', 'weighting'];
+    private const FILTERS = [...SurveyAnalytics::PROFILE_FILTERS, ...SurveyAnalytics::JOB_FILTERS, 'gender', 'weighting', 'confidentiality'];
 
     /** Profile filters the comparison may override, sent as vs_<filter>; "*" removes the filter (whole market). */
     private const COMPARE_FILTERS = ['industry', 'state', 'employee_band', 'ownership_type'];
@@ -85,6 +85,7 @@ class SurveyAnalyticsController extends Controller
             'filters' => $filters,
             'report' => $report,
             'tables' => $this->tables($report),
+            'minCompanies' => (new SurveyAnalytics($cycle, $filters))->minCompanies,
             'brand' => config('app.name'),
         ])->setPaper('a4', 'landscape')->download('benchmark-report-'.Str::slug(str_replace('/', '-', $cycle->name)).'.pdf');
     }

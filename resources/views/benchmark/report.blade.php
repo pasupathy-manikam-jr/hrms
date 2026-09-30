@@ -28,7 +28,11 @@
                 'roles' => $report['overview']['roles'],
                 'incumbents' => number_format($report['overview']['incumbents']),
             ]) }}
-            {{ __('A figure is only shown when at least :min companies contribute to it; otherwise it reads "Insufficient data".', ['min' => $cycle->min_companies]) }}
+            @if ($minCompanies > 1)
+                {{ __('A figure is only shown when at least :min companies contribute to it; otherwise it reads "Insufficient data".', ['min' => $minCompanies]) }}
+            @else
+                {{ __('Confidentiality rule off: figures based on a single company are shown. For internal use only.') }}
+            @endif
             {{ __('Salaries are monthly base pay in RM; percentiles are :weighting.', ['weighting' => ($filters['weighting'] ?? 'company') === 'incumbent' ? __('weighted by headcount') : __('company-weighted (each company counts once)')]) }}
         </p>
 

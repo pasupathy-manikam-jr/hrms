@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
 
 /**
- * Pooled statistics for one cycle, cut by any profile or job filter. A figure is only returned when at
- * least the cycle's `min_companies` companies contribute to it (null otherwise), so no company's own
- * answers can be singled out.
+ * Pooled statistics for one cycle, cut by any profile or job filter. With confidentiality on (for reports
+ * shared outside), a figure is only returned when at least the cycle's `min_companies` companies contribute
+ * to it, so no company's own answers can be singled out.
  */
 class SurveyAnalytics
 {
@@ -40,11 +40,15 @@ class SurveyAnalytics
     /** @var EloquentCollection<int, SurveyParticipant> */
     private EloquentCollection $participants;
 
+    /** Companies needed per figure: 1 (show everything) unless confidentiality is switched on for a shared report. */
+    public readonly int $minCompanies;
+
     /**
-     * @param  array<string, string|null>  $filters  profile + job filters, plus `gender` (male|female) and `weighting` (company|incumbent)
+     * @param  array<string, string|null>  $filters  profile + job filters, plus `gender` (male|female), `weighting` (company|incumbent) and `confidentiality` (on hides figures from fewer than the cycle's min_companies)
      */
     public function __construct(private SurveyCycle $cycle, private array $filters = [])
     {
+        $this->minCompanies = ($filters['confidentiality'] ?? null) === 'on' ? $cycle->min_companies : 1;
         $this->participants = SurveyParticipant::query()
             ->where('survey_cycle_id', $cycle->id)
             ->where(function (Builder $query) {
@@ -75,7 +79,7 @@ class SurveyAnalytics
             'companies' => $this->companyCount(),
             'roles' => $rows->unique(fn (SurveySalaryRow $row) => $row->job_title.'|'.$row->job_level)->count(),
             'incumbents' => (int) $rows->sum('headcount'),
-            'suppressed' => $this->companyCount() < $this->cycle->min_companies,
+            'suppressed' => $this->companyCount() < $this->minCompanies,
         ];
     }
 
@@ -118,7 +122,7 @@ class SurveyAnalytics
                     'incumbents' => (int) $rows->sum('headcount'),
                 ];
 
-                if ($companies < $this->cycle->min_companies) {
+                if ($companies < $this->minCompanies) {
                     return $stats + ['suppressed' => true];
                 }
 
@@ -160,7 +164,7 @@ class SurveyAnalytics
                 $female = (int) $rows->sum('female');
                 $stats = ['name' => $name, 'companies' => $companies, 'male' => $male, 'female' => $female];
 
-                if ($companies < $this->cycle->min_companies) {
+                if ($companies < $this->minCompanies) {
                     return $stats + ['suppressed' => true];
                 }
 
@@ -192,7 +196,7 @@ class SurveyAnalytics
     {
         $byCompany = $this->salaryRows()->groupBy('survey_participant_id');
         $companies = $byCompany->count();
-        $suppressed = $companies < $this->cycle->min_companies;
+        $suppressed = $companies < $this->minCompanies;
 
         $types = collect(self::ALLOWANCES)->map(function (string $label, string $type) use ($byCompany, $companies, $suppressed) {
             $paying = $byCompany->filter(fn (Collection $rows) => $rows->contains(fn (SurveySalaryRow $row) => (float) $row->{"allowance_{$type}"} > 0));
@@ -203,8 +207,8 @@ class SurveyAnalytics
                 'label' => $label,
                 'companies' => $paying->count(),
                 'prevalence' => $suppressed || $companies === 0 ? null : round($paying->count() / $companies * 100, 1),
-                'average' => $suppressed || $paying->count() < $this->cycle->min_companies ? null : self::average($amounts),
-                'median' => $suppressed || $paying->count() < $this->cycle->min_companies ? null : self::percentile($amounts, 50),
+                'average' => $suppressed || $paying->count() < $this->minCompanies ? null : self::average($amounts),
+                'median' => $suppressed || $paying->count() < $this->minCompanies ? null : self::percentile($amounts, 50),
             ];
         })->values()->all();
 
@@ -221,7 +225,7 @@ class SurveyAnalytics
     public function benefits(): array
     {
         $answers = SurveyBenefit::query()->whereIn('survey_participant_id', $this->participants->modelKeys())->get()->groupBy('item');
-        $min = $this->cycle->min_companies;
+        $min = $this->minCompanies;
 
         return collect(SurveyWorkbook::BENEFIT_ITEMS)->values()->map(function (array $item) use ($answers, $min) {
             [$key, $label] = $item;
@@ -264,7 +268,7 @@ class SurveyAnalytics
         $records = SurveyAttrition::query()->whereIn('survey_participant_id', $this->participants->modelKeys())->get();
         $companies = $records->count();
 
-        if ($companies < $this->cycle->min_companies) {
+        if ($companies < $this->minCompanies) {
             return ['companies' => $companies, 'suppressed' => true];
         }
 
@@ -320,7 +324,7 @@ class SurveyAnalytics
     {
         $rows = $this->salaryRows();
 
-        if ($rows->pluck('survey_participant_id')->unique()->count() < $this->cycle->min_companies) {
+        if ($rows->pluck('survey_participant_id')->unique()->count() < $this->minCompanies) {
             return ['suppressed' => true];
         }
 
