@@ -1,0 +1,238 @@
+{
+    "lookups": {
+        "IndustryList": [
+            "Manufacturing",
+            "Retail & Trade",
+            "Financial Services",
+            "Technology / IT",
+            "Professional Services",
+            "Construction & Property",
+            "Healthcare",
+            "Education",
+            "Logistics & Transportation",
+            "F&B / Hospitality",
+            "Oil & Gas / Energy",
+            "Mining",
+            "Airlines",
+            "Marine",
+            "Automotive",
+            "fitness",
+            "Fashion",
+            "Testing/Inspection & Certification",
+            "Advertising or Marketing",
+            "Animation",
+            "Recycling Precious Metals",
+            "Cruise",
+            "Music Industry",
+            "Amusement, theme park",
+            "Direct Selling",
+            "Other"
+        ],
+        "StateList": [
+            "Johor",
+            "Kedah",
+            "Kelantan",
+            "Melaka",
+            "Negeri Sembilan",
+            "Pahang",
+            "Penang",
+            "Perak",
+            "Perlis",
+            "Sabah",
+            "Sarawak",
+            "Selangor",
+            "Terengganu",
+            "Kuala Lumpur",
+            "Labuan",
+            "Putrajaya"
+        ],
+        "EmployeeBandList": [
+            "1-49",
+            "50-99",
+            "100-199",
+            "200-499",
+            "500-999",
+            "1,000+"
+        ],
+        "RevenueBandList": [
+            "Below RM3 million",
+            "RM3 million - RM20 million",
+            "RM20 million - RM50 million",
+            "RM50 million - RM250 million",
+            "Above RM250 million",
+            "Prefer not to say"
+        ],
+        "YesNoUnsure": ["Yes", "No", "Not sure"],
+        "YesNo": ["Yes", "No"],
+        "JobLevelList": [
+            "Entry / Non-Executive",
+            "Executive",
+            "Senior Executive / Manager",
+            "Senior Manager / Head",
+            "C-Suite / Top Management"
+        ],
+        "JobFamilyList": [
+            "Human Resources",
+            "Finance & Accounting",
+            "Sales & Marketing",
+            "Operations & Production",
+            "Information Technology",
+            "Administration & Clerical Support",
+            "Customer Service",
+            "Supply Chain & Logistics",
+            "Engineering & Technical",
+            "Legal & Compliance",
+            "General Management",
+            "Quality & Safety",
+            "Skilled Trades & Maintenance",
+            "Retail & Merchandising",
+            "Financial Services (Banking, Insurance, Investment)",
+            "Product Management",
+            "Research, Audit & Advisory",
+            "Construction & Property Services",
+            "Healthcare & Medical Services",
+            "Education & Training",
+            "Hospitality & Food Service",
+            "Mining Operations",
+            "Aviation Operations",
+            "Marine & Shipping Operations",
+            "Automotive Sales & Service",
+            "Fitness & Wellness Services",
+            "Fashion & Apparel",
+            "Testing, Inspection & Certification",
+            "Advertising & Creative Services",
+            "Animation & Digital Content Production",
+            "Recycling & Materials Recovery",
+            "Cruise Operations & Hospitality",
+            "Music & Entertainment",
+            "Amusement & Leisure Operations",
+            "Direct Selling / MLM Operations",
+            "Other"
+        ],
+        "OwnershipTypeList": [
+            "Local / Malaysian-owned",
+            "MNC / Foreign-owned",
+            "Government-Linked Company (GLC)",
+            "Joint Venture"
+        ],
+        "ListedStatusList": [
+            "Public Listed (Bursa Malaysia or other exchange)",
+            "Private"
+        ],
+        "HeadcountPlanList": ["Growing", "Stable", "Reducing"],
+        "RetrenchmentDriverList": [
+            "Restructuring / reorganisation",
+            "Cost reduction",
+            "Automation / technology",
+            "Business closure",
+            "Merger / acquisition",
+            "Other"
+        ],
+        "YesNoNA": [
+            "Yes",
+            "No",
+            "Not applicable (no retrenchment in the last 12 months)"
+        ],
+        "ExperienceRequiredList": ["<2 yrs", "2-4 yrs", "5-9 yrs", "10+ yrs"]
+    },
+    "jobs": [
+        {
+            "code": "HRF01",
+            "industry": "All Industries",
+            "job_family": "Human Resources",
+            "title": "HR Executive",
+            "typical_level": "Executive"
+        },
+        {
+            "code": "HRF02",
+            "industry": "All Industries",
+            "job_family": "Human Resources",
+            "title": "HR Manager",
+            "typical_level": "Senior Executive / Manager"
+        },
+        {
+            "code": "FIN01",
+            "industry": "All Industries",
+            "job_family": "Finance & Accounting",
+            "title": "Accounts Executive",
+            "typical_level": "Executive"
+        },
+        {
+            "code": "FIN02",
+            "industry": "All Industries",
+            "job_family": "Finance & Accounting",
+            "title": "Finance Manager",
+            "typical_level": "Senior Executive / Manager"
+        },
+        {
+            "code": "SAL01",
+            "industry": "All Industries",
+            "job_family": "Sales & Marketing",
+            "title": "Sales Executive",
+            "typical_level": "Executive"
+        },
+        {
+            "code": "SAL03",
+            "industry": "All Industries",
+            "job_family": "Sales & Marketing",
+            "title": "Marketing Executive",
+            "typical_level": "Executive"
+        },
+        {
+            "code": "ITF02",
+            "industry": "All Industries",
+            "job_family": "Information Technology",
+            "title": "Software Engineer",
+            "typical_level": "Executive"
+        },
+        {
+            "code": "ITF03",
+            "industry": "All Industries",
+            "job_family": "Information Technology",
+            "title": "IT Manager",
+            "typical_level": "Senior Executive / Manager"
+        },
+        {
+            "code": "CSV01",
+            "industry": "All Industries",
+            "job_family": "Customer Service",
+            "title": "Customer Service Executive",
+            "typical_level": "Executive"
+        },
+        {
+            "code": "SCM01",
+            "industry": "All Industries",
+            "job_family": "Supply Chain & Logistics",
+            "title": "Logistics Executive",
+            "typical_level": "Executive"
+        },
+        {
+            "code": "MFG05",
+            "industry": "Manufacturing",
+            "job_family": "Quality & Safety",
+            "title": "Quality Assurance Executive",
+            "typical_level": "Executive"
+        },
+        {
+            "code": "MFG07",
+            "industry": "Manufacturing",
+            "job_family": "Skilled Trades & Maintenance",
+            "title": "Maintenance Technician",
+            "typical_level": "Entry / Non-Executive"
+        },
+        {
+            "code": "MFG10",
+            "industry": "Manufacturing",
+            "job_family": "Supply Chain & Logistics",
+            "title": "Warehouse Assistant",
+            "typical_level": "Entry / Non-Executive"
+        },
+        {
+            "code": "MFG13",
+            "industry": "Manufacturing",
+            "job_family": "Engineering & Technical",
+            "title": "Process Engineer",
+            "typical_level": "Executive"
+        }
+    ]
+}

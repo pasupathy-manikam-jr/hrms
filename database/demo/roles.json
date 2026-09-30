@@ -638,7 +638,11 @@
         "view-training-types",
         "view-trips",
         "view-users",
-        "view-warnings"
+        "view-warnings",
+        "manage-benchmark-survey",
+        "upload-benchmark-survey",
+        "delete-benchmark-survey",
+        "export-benchmark-survey"
     ],
     "hr": [
         "acknowledge-document-acknowledgments",

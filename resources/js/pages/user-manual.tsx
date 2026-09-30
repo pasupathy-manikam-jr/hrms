@@ -12,6 +12,7 @@ import {
     LifeBuoy,
     Rocket,
     Settings,
+    ChartBar,
     UserCog,
     UserPlus,
     Users,
@@ -273,6 +274,30 @@ const CHAPTERS: Chapter[] = [
             {
                 title: 'Employee contracts',
                 body: 'Create contracts per employee with dates and salary. The ⋯ menu lets you view, edit, update the status (Draft, Pending Approval, Active, Expired, Terminated, Renewed) or delete a contract.',
+            },
+        ],
+    },
+    {
+        id: 'benchmark',
+        title: 'Salary Benchmark Survey',
+        icon: ChartBar,
+        intro: 'Pool the Salary & Benefits Benchmark Survey workbooks that participating companies send in, and cut the results any way you need. Company role only.',
+        topics: [
+            {
+                title: 'Survey cycles',
+                body: 'Create one cycle per survey edition (for example 2025/2026) and upload its blank Excel template. The template’s hidden Lookups sheet supplies the standard job catalogue and every answer list used to check submissions. “Min. companies per figure” is the confidentiality rule: a statistic is hidden unless at least that many companies contribute to it.',
+            },
+            {
+                title: 'Uploading completed workbooks',
+                body: 'On Participants, choose Upload Workbooks and select one or many completed .xlsx files. Each file is read and checked: files with errors (no consent, unknown job title, male + female not equal to the total, min above median, answers not in the lists) are rejected with the reasons listed; warnings are imported and flagged. Uploading the same company again is skipped unless you tick “Replace existing submissions”.',
+            },
+            {
+                title: 'Each company’s results',
+                body: 'Every company is stored separately. Its page shows the whole submission, its median pay per role against the market median, and lets you download the original workbook.',
+            },
+            {
+                title: 'Analytics and reports',
+                body: 'Analytics pools all companies in the cycle. Filter by industry, state, company size, revenue, ownership, listing, union, job family, title, level and gender, and switch between company-weighted and incumbent-weighted figures. Views: salary benchmarks (P25, median, P75, average, allowances, bonus, total cash), gender pay, allowances, benefits, attrition & hiring, workforce and participants. Export the current cut to Excel or a PDF report.',
             },
         ],
     },

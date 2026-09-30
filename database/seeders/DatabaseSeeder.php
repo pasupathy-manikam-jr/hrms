@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
         'Database\\Seeders\\Modules\\MediaSeeder',
         'Database\\Seeders\\Modules\\MeetingExtrasSeeder',
         'Database\\Seeders\\Modules\\SystemExtrasSeeder',
+        'Database\\Seeders\\Modules\\BenchmarkSurveySeeder',
         // Must stay last: earlier seeders match people by the demo's original names and emails.
         'Database\\Seeders\\Modules\\MalaysianNamesSeeder',
     ];

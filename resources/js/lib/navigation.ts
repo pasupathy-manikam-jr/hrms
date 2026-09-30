@@ -7,6 +7,7 @@ import {
     ChartNoAxesColumn,
     Clock,
     Banknote,
+    ChartBar,
     FileText,
     Globe,
     Image,
@@ -18,6 +19,7 @@ import {
     Users,
 } from 'lucide-react';
 import { dashboard, mediaLibrary, settings, userManual } from '@/routes';
+import benchmark from '@/routes/benchmark';
 import calendar from '@/routes/calendar';
 import career from '@/routes/career';
 import contacts from '@/routes/contacts';
@@ -432,6 +434,37 @@ export const navigation: NavSection[] = [
                         title: 'Asset Types',
                         href: hr.assetTypes.index(),
                         permission: 'manage-asset-types',
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        title: 'Benchmark Survey',
+        items: [
+            {
+                title: 'Salary Benchmark',
+                icon: ChartBar,
+                children: [
+                    {
+                        title: 'Analytics',
+                        href: benchmark.analytics.index(),
+                        permission: 'manage-benchmark-survey',
+                    },
+                    {
+                        title: 'Participants',
+                        href: benchmark.participants.index(),
+                        permission: 'manage-benchmark-survey',
+                    },
+                    {
+                        title: 'Survey Cycles',
+                        href: benchmark.cycles.index(),
+                        permission: 'manage-benchmark-survey',
+                    },
+                    {
+                        title: 'Job Catalogue',
+                        href: benchmark.jobs.index(),
+                        permission: 'manage-benchmark-survey',
                     },
                 ],
             },

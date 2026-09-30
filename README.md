@@ -120,6 +120,19 @@ Built with Laravel 13, Inertia 3, React 19, Tailwind CSS 4 and shadcn/ui.
 - Document templates and contract templates with placeholders, preview for any employee and PDF download.
 - Contract types and employee contracts (draft, pending approval, active, expired, terminated, renewed).
 
+### Salary & Benefits Benchmark Survey
+
+- Survey cycles built from the survey's blank Excel template (job catalogue and answer lists read from it).
+- Bulk upload of the completed workbooks that participating companies send in. Each file is checked (consent,
+  job titles, headcount and tenure totals, salary ranges, dropdown answers) with a per-file report; re-uploads
+  replace a company's previous submission.
+- Each company's data kept separately, with its own page: pay per role against the market median, benefits,
+  attrition and the original file.
+- Analytics explorer sliced by industry, state, company size, revenue, ownership, listing, union, job family,
+  title, level and gender: salary P25 / median / P75 / average (company- or incumbent-weighted), total cash,
+  gender pay gap, allowances, benefits, attrition & hiring, workforce profile.
+- Confidentiality threshold (minimum companies per figure) and Excel / PDF report export.
+
 ### Website & system
 
 - Public landing page (editable sections), custom pages and newsletter subscribers.

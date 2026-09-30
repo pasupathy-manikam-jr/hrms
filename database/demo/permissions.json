@@ -3880,5 +3880,29 @@
         "name": "view-training-assessments",
         "label": "View Training Assessments",
         "description": "Can view training assessments"
+    },
+    {
+        "module": "benchmark-survey",
+        "name": "manage-benchmark-survey",
+        "label": "Manage Benchmark Survey",
+        "description": "Can view benchmark survey cycles, participants and analytics"
+    },
+    {
+        "module": "benchmark-survey",
+        "name": "upload-benchmark-survey",
+        "label": "Upload Benchmark Survey",
+        "description": "Can upload completed survey workbooks"
+    },
+    {
+        "module": "benchmark-survey",
+        "name": "delete-benchmark-survey",
+        "label": "Delete Benchmark Survey",
+        "description": "Can delete survey cycles and participants"
+    },
+    {
+        "module": "benchmark-survey",
+        "name": "export-benchmark-survey",
+        "label": "Export Benchmark Survey",
+        "description": "Can export benchmark analytics"
     }
 ]
