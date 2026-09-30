@@ -131,6 +131,7 @@ Built with Laravel 13, Inertia 3, React 19, Tailwind CSS 4 and shadcn/ui.
 - Analytics explorer sliced by industry, state, company size, revenue, ownership, listing, union, job family,
   title, level and gender: salary P25 / median / P75 / average (company- or incumbent-weighted), total cash,
   gender pay gap, allowances, benefits, attrition & hiring, workforce profile.
+- Side-by-side comparison of two cuts (e.g. Manufacturing vs Technology / IT, or a cut vs the whole market).
 - Confidentiality threshold (minimum companies per figure) and Excel / PDF report export.
 
 ### Website & system

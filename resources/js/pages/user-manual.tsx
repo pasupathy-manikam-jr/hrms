@@ -347,6 +347,7 @@ const CHAPTERS: Chapter[] = [
                     'Job filters: job family, standard job title, job level.',
                     'Gender: shows average male or female pay instead of the median.',
                     'Weighting: company-weighted (default — each company counts once) or incumbent-weighted (larger employers count more, by headcount).',
+                    'Compare with: put a second cut beside the first. It uses the same filters except the ones you change here — for example set Industry to Technology / IT to compare Manufacturing against IT, or pick “Whole market” to compare your cut with everyone. Salary Benchmarks then adds the compared median and the difference for each role.',
                 ],
             },
             {

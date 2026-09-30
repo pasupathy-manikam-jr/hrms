@@ -61,6 +61,22 @@ type BenefitStat = Suppressible & {
     notes?: string[];
 };
 
+/** The second cut ("Compare with"): its size and each role's median. */
+type Comparison = {
+    overview: Report['overview'];
+    salaries: Record<
+        string,
+        { median: number | null; companies: number; suppressed: boolean }
+    >;
+};
+
+const COMPARE_FILTERS = [
+    ['industry', 'Industry'],
+    ['state', 'State'],
+    ['employee_band', 'Company Size'],
+    ['ownership_type', 'Ownership'],
+] as const;
+
 type Ranked = { name: string; score: number; mentions: number };
 
 type Report = {
@@ -221,12 +237,14 @@ export default function BenchmarkAnalytics({
     filters,
     options,
     report,
+    comparison,
 }: {
     cycles: { id: number; name: string }[];
     cycle: { id: number; name: string; min_companies: number } | null;
     filters: TableFilters;
     options: Record<string, string[]>;
     report: Report | null;
+    comparison: Comparison | null;
 }) {
     const { t } = useTranslation();
     const { money } = useFormat();
@@ -277,6 +295,7 @@ export default function BenchmarkAnalytics({
                     'Allowances',
                     'Bonus (months)',
                     'Total Monthly Cash',
+                    ...(comparison ? ['Compared Median', 'Difference'] : []),
                 ]}
             >
                 {report.salaries.map((row) => (
@@ -319,6 +338,17 @@ export default function BenchmarkAnalytics({
                                     {rm(row.total_cash)}
                                 </Cell>
                             </>
+                        )}
+                        {comparison && (
+                            <CompareCells
+                                median={row.suppressed ? null : row.median}
+                                other={
+                                    comparison.salaries[
+                                        `${row.job_title}|${row.job_level}`
+                                    ]
+                                }
+                                format={rm}
+                            />
                         )}
                     </tr>
                 ))}
@@ -610,12 +640,19 @@ export default function BenchmarkAnalytics({
                 />
 
                 <div className="flex flex-wrap items-center gap-2 rounded-xl border bg-card p-4 shadow-sm">
+                    {/* No ?cycle= means the newest cycle, so it is the blank choice. */}
                     <FilterSelect
                         url={url}
-                        filters={filters}
+                        filters={{
+                            ...filters,
+                            cycle:
+                                String(filters.cycle) === String(cycles[0]?.id)
+                                    ? ''
+                                    : filters.cycle,
+                        }}
                         name="cycle"
-                        label={cycle.name}
-                        options={cycles.filter((c) => c.id !== cycle.id)}
+                        label={cycles[0]?.name ?? cycle.name}
+                        options={cycles.slice(1)}
                     />
                     {PROFILE_FILTERS.map(([name, label]) => (
                         <FilterSelect
@@ -664,6 +701,35 @@ export default function BenchmarkAnalytics({
                     >
                         {t('Clear Filters')}
                     </Button>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 rounded-xl border border-dashed bg-card p-4 shadow-sm">
+                    <span className="me-2 text-sm font-medium">
+                        {t('Compare with')}
+                    </span>
+                    {COMPARE_FILTERS.map(([name, label]) => (
+                        <FilterSelect
+                            key={name}
+                            url={url}
+                            filters={filters}
+                            name={`vs_${name}`}
+                            label={`${t(label)}: ${t('as above')}`}
+                            options={[
+                                { id: '*', name: t('Whole market') },
+                                ...(options[name] ?? []).map((value) => ({
+                                    id: value,
+                                    name: value,
+                                })),
+                            ]}
+                        />
+                    ))}
+                    {comparison && (
+                        <span className="text-sm text-muted-foreground">
+                            {t(':n companies in the comparison', {
+                                n: comparison.overview.companies,
+                            })}
+                        </span>
+                    )}
                 </div>
 
                 <StatCards
@@ -733,6 +799,47 @@ export default function BenchmarkAnalytics({
                     )}
                 </div>
             </div>
+        </>
+    );
+}
+
+/** The compared cut's median for a role and how far the main cut sits from it. */
+function CompareCells({
+    median,
+    other,
+    format,
+}: {
+    median: number | null | undefined;
+    other: Comparison['salaries'][string] | undefined;
+    format: (value: number | null | undefined) => string;
+}) {
+    if (!other || other.suppressed || other.median === null) {
+        return (
+            <td colSpan={2} className="border-b px-2 py-2 align-top">
+                <Hidden />
+            </td>
+        );
+    }
+
+    const diff =
+        median !== null && median !== undefined
+            ? ((median - other.median) / other.median) * 100
+            : null;
+
+    return (
+        <>
+            <Cell className="whitespace-nowrap">{format(other.median)}</Cell>
+            <Cell
+                className={cn(
+                    'font-medium whitespace-nowrap',
+                    diff !== null &&
+                        (diff >= 0 ? 'text-emerald-600' : 'text-red-600'),
+                )}
+            >
+                {diff === null
+                    ? '-'
+                    : `${diff > 0 ? '+' : ''}${diff.toFixed(1)}%`}
+            </Cell>
         </>
     );
 }

@@ -120,6 +120,14 @@ class BenchmarkSurveyTest extends TestCase
             ->where('report.attrition.hardest_to_hire.0.name', 'Engineering & Technical')
             ->where('report.attrition.hardest_to_hire.0.score', 9));
 
+        // Side-by-side: the comparison overrides the main filters; "*" means the whole market.
+        $this->get(route('benchmark.analytics.index', ['industry' => 'Technology / IT', 'vs_industry' => '*']))
+            ->assertInertia(fn ($page) => $page
+                ->where('report.overview.companies', 0)
+                ->where('comparison.overview.companies', 3)
+                ->where('comparison.salaries.Process Engineer|Executive.median', 5000));
+        $this->get(route('benchmark.analytics.index'))->assertInertia(fn ($page) => $page->where('comparison', null));
+
         // A cut with fewer companies than the threshold shows nothing.
         $this->get(route('benchmark.analytics.index', ['industry' => 'Technology / IT']))
             ->assertInertia(fn ($page) => $page->where('report.overview.companies', 0));

@@ -23,17 +23,27 @@ class SurveyAnalyticsController extends Controller
 {
     private const FILTERS = [...SurveyAnalytics::PROFILE_FILTERS, ...SurveyAnalytics::JOB_FILTERS, 'gender', 'weighting'];
 
+    /** Profile filters the comparison may override, sent as vs_<filter>; "*" removes the filter (whole market). */
+    private const COMPARE_FILTERS = ['industry', 'state', 'employee_band', 'ownership_type'];
+
     public function index(Request $request): Response
     {
         $cycle = SurveyCycleController::current($request);
-        $analytics = $cycle ? new SurveyAnalytics($cycle, $this->filters($request)) : null;
+        $filters = $this->filters($request);
+        $analytics = $cycle ? new SurveyAnalytics($cycle, $filters) : null;
+        $overrides = collect(self::COMPARE_FILTERS)
+            ->mapWithKeys(fn (string $field) => [$field => $request->string("vs_{$field}")->toString()])
+            ->filter(fn (string $value) => $value !== '');
 
         return Inertia::render('benchmark/analytics/index', [
             'cycles' => SurveyCycle::query()->latest('id')->get(['id', 'name']),
             'cycle' => $cycle?->only('id', 'name', 'min_companies'),
-            'filters' => $request->only(['cycle', 'view', ...self::FILTERS]),
+            'filters' => $request->only(['cycle', 'view', ...self::FILTERS, ...array_map(fn (string $field) => "vs_{$field}", self::COMPARE_FILTERS)]),
             'options' => $cycle ? $this->options($cycle) : [],
             'report' => $analytics ? $this->report($analytics) : null,
+            'comparison' => $cycle && $overrides->isNotEmpty()
+                ? $this->comparison(new SurveyAnalytics($cycle, array_filter([...$filters, ...$overrides->all()], fn (string $value) => $value !== '*')))
+                : null,
         ]);
     }
 
@@ -101,6 +111,21 @@ class SurveyAnalyticsController extends Controller
             'attrition' => $analytics->attrition(),
             'workforce' => $analytics->workforce(),
             'mix' => $analytics->participantMix(),
+        ];
+    }
+
+    /**
+     * The second cut for side-by-side comparison: its size and salary medians by "title|level".
+     *
+     * @return array{overview: array<string, mixed>, salaries: array<string, array<string, mixed>>}
+     */
+    private function comparison(SurveyAnalytics $analytics): array
+    {
+        return [
+            'overview' => $analytics->overview(),
+            'salaries' => collect($analytics->salaries())->mapWithKeys(fn (array $row) => [
+                $row['job_title'].'|'.$row['job_level'] => ['median' => $row['median'] ?? null, 'companies' => $row['companies'], 'suppressed' => $row['suppressed']],
+            ])->all(),
         ];
     }
 
