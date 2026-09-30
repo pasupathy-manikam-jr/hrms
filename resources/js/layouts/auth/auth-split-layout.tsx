@@ -171,7 +171,7 @@ export default function AuthSplitLayout({
                                         {t('Payroll Processed')}
                                     </div>
                                     <div className="text-3xl font-bold text-primary">
-                                        $58,400
+                                        RM 58,400
                                     </div>
                                     <div className="flex items-center text-xs text-gray-500">
                                         <TrendingUp className="mr-1 size-3 text-primary" />

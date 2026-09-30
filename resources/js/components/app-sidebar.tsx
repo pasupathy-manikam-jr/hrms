@@ -40,7 +40,7 @@ export function AppSidebar() {
                         onChange={(e) => setQuery(e.target.value)}
                         placeholder={t('Search menu...')}
                         aria-label={t('Search menu...')}
-                        className="h-9 ps-8"
+                        className="h-9 ps-8 text-foreground placeholder:text-muted-foreground"
                     />
                 </div>
             </SidebarHeader>
