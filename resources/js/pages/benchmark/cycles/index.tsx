@@ -277,10 +277,7 @@ export default function SurveyCycles({
                     </div>
                     <div className="grid gap-2">
                         <Label htmlFor="cycle-template">
-                            {t('Blank Survey Template (.xlsx)')}
-                            {!editing && (
-                                <span className="text-destructive">*</span>
-                            )}
+                            {t('Blank Survey Template (optional)')}
                         </Label>
                         <Input
                             id="cycle-template"
@@ -294,12 +291,12 @@ export default function SurveyCycles({
                             }
                         />
                         <p className="text-xs text-muted-foreground">
-                            {editing
+                            {editing?.template_name
                                 ? t('Leave empty to keep :name.', {
-                                      name: editing.template_name ?? '',
+                                      name: editing.template_name,
                                   })
                                 : t(
-                                      'Its Lookups sheet supplies the job catalogue and answer lists.',
+                                      'Not needed with completed workbooks, which carry the same job catalogue and lists. Adding it also cleans out remarks left as the template’s guidance text.',
                                   )}
                         </p>
                         <InputError message={form.errors.template} />
@@ -307,7 +304,7 @@ export default function SurveyCycles({
                     {!editing && (
                         <div className="grid gap-2 sm:col-span-2">
                             <Label htmlFor="cycle-files">
-                                {t('Completed Workbooks (optional)')}
+                                {t('Completed Workbooks')}
                             </Label>
                             <WorkbookPicker
                                 id="cycle-files"
@@ -318,7 +315,7 @@ export default function SurveyCycles({
                             />
                             <p className="text-xs text-muted-foreground">
                                 {t(
-                                    'The companies’ filled-in workbooks. You can also upload more later from Participants.',
+                                    'The companies’ filled-in workbooks (or at least the blank template above). More can be uploaded later from Participants.',
                                 )}
                             </p>
                             <InputError

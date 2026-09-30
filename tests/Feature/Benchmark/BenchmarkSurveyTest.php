@@ -76,6 +76,29 @@ class BenchmarkSurveyTest extends TestCase
         $this->assertSame(['alpha'], SurveyCycle::firstOrFail()->participants()->pluck('company_key')->all());
     }
 
+    public function test_a_cycle_can_be_created_from_completed_workbooks_alone_and_the_blank_template_added_later()
+    {
+        $this->actingAs($this->userWithRole());
+
+        $this->post(route('benchmark.cycles.store'), ['name' => '2025/2026', 'status' => 'open', 'min_companies' => 3])
+            ->assertSessionHasErrors('template');
+        $this->post(route('benchmark.cycles.store'), [
+            // The form sends the unused template field as an empty value.
+            'name' => '2025/2026', 'status' => 'open', 'min_companies' => 3, 'template' => '',
+            'files' => [$this->workbook('Alpha', file: 'alpha.xlsx', remarks: 'Statutory minimum is 12% (13% if monthly wage <= RM5,000)')],
+        ])->assertSessionHasNoErrors()->assertInertiaFlash('benchmarkUpload.0.status', 'imported');
+
+        $cycle = SurveyCycle::firstOrFail();
+        $this->assertNull($cycle->template_path);
+        $this->assertSame(2, $cycle->jobs()->count(), 'catalogue read from the workbook');
+        $remarks = fn () => $cycle->participants()->firstOrFail()->benefits()->where('item', 'epf_employer_rate')->value('remarks');
+        $this->assertNotNull($remarks(), 'without the blank template, guidance text cannot be recognised');
+
+        $this->put(route('benchmark.cycles.update', $cycle), ['name' => '2025/2026', 'status' => 'open', 'min_companies' => 3, 'template' => $this->workbook(template: true)])
+            ->assertSessionHasNoErrors();
+        $this->assertNull($remarks(), 'adding the blank template clears unchanged guidance text');
+    }
+
     public function test_workbooks_are_imported_rejected_skipped_and_replaced()
     {
         $cycle = $this->cycle();
@@ -208,7 +231,7 @@ class BenchmarkSurveyTest extends TestCase
      *
      * @param  list<array<string, mixed>>|null  $salary
      */
-    private function workbook(string $company = 'Alpha Sdn Bhd', bool $template = false, ?array $salary = null, string $consent = 'Yes', int $median = 4500, ?string $file = null): UploadedFile
+    private function workbook(string $company = 'Alpha Sdn Bhd', bool $template = false, ?array $salary = null, string $consent = 'Yes', int $median = 4500, ?string $file = null, ?string $remarks = null): UploadedFile
     {
         $book = new Spreadsheet;
         $sheet = fn (string $name) => $book->addSheet(new Worksheet($book, $name));
@@ -252,6 +275,9 @@ class BenchmarkSurveyTest extends TestCase
             }
 
             $benefits->fromArray(['EPF', 'Yes', 13], null, 'A5');
+            if ($remarks !== null) {
+                $benefits->setCellValue('F5', $remarks);
+            }
             $benefits->fromArray(['Outpatient', 'Yes', 'Yes'], null, 'A11');
             $attrition->fromArray([[12.5], [20], [0], [1], [0], ['Engineering & Technical'], ['Human Resources'], [null], [45], ['Growing']], null, 'B3');
             $consentSheet->fromArray([[$consent], ['Aina'], ['HR Manager'], ['30/09/2026']], null, 'B5');

@@ -1,6 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import { ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     Collapsible,
     CollapsibleContent,
@@ -98,6 +98,30 @@ export function NavMain({
                     item.children?.some((child) => isCurrentUrl(child.href)),
                 )?.title ?? null,
     );
+
+    // On load, scroll the sidebar so the current page's entry sits in the middle, not below the fold.
+    useEffect(() => {
+        const frame = requestAnimationFrame(() => {
+            const active = document.querySelector<HTMLElement>(
+                '[data-sidebar="content"] [data-active="true"]',
+            );
+            const container = active?.closest<HTMLElement>(
+                '[data-sidebar="content"]',
+            );
+
+            if (active && container) {
+                const offset =
+                    active.getBoundingClientRect().top -
+                    container.getBoundingClientRect().top;
+                container.scrollTop +=
+                    offset -
+                    container.clientHeight / 2 +
+                    active.offsetHeight / 2;
+            }
+        });
+
+        return () => cancelAnimationFrame(frame);
+    }, []);
 
     return visible.map((section) => (
         <SidebarGroup key={section.title} className="px-2 py-1">

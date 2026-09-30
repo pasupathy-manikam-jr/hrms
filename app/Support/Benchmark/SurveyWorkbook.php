@@ -82,7 +82,7 @@ class SurveyWorkbook
      *
      * @return array{lookups: array<string, list<string>>, jobs: list<array<string, string|null>>}
      */
-    public static function readTemplate(string $path): array
+    public static function readTemplate(string $path, bool $blank = true): array
     {
         $book = self::load($path, [self::LOOKUPS, self::BENEFITS, self::SALARY]);
         self::assertTemplate($book);
@@ -119,11 +119,12 @@ class SurveyWorkbook
             ];
         }
 
+        // In a completed workbook the Remarks column holds the company's answers, not the template's guidance.
         $benefits = $book->getSheetByNameOrThrow(self::BENEFITS);
-        $lookups['_benefit_guidance'] = array_values(array_filter(array_map(
+        $lookups['_benefit_guidance'] = $blank ? array_values(array_filter(array_map(
             fn (int $row) => self::text($benefits->getCell("F{$row}")->getValue()),
             array_keys(self::BENEFIT_ITEMS),
-        )));
+        ))) : [];
         $book->disconnectWorksheets();
 
         return ['lookups' => $lookups, 'jobs' => $jobs];
@@ -343,7 +344,6 @@ class SurveyWorkbook
      */
     private function readBenefits(Worksheet $sheet, SurveyCycle $cycle): array
     {
-        $guidance = array_map(fn (string $text) => self::squash($text), $cycle->lookup('_benefit_guidance'));
         $benefits = [];
 
         foreach (self::BENEFIT_ITEMS as $row => [$key, $label]) {
@@ -352,7 +352,7 @@ class SurveyWorkbook
             $remarks = $cell('F');
 
             // Remarks left as the template's own guidance text aren't the company's answer.
-            if ($remarks !== null && in_array(self::squash($remarks), $guidance, true)) {
+            if ($remarks !== null && self::isGuidance($remarks, $cycle)) {
                 $remarks = null;
             }
 
@@ -543,6 +543,14 @@ class SurveyWorkbook
         $text = trim((string) $value);
 
         return $text === '' || str_starts_with($text, '=') ? null : $text;
+    }
+
+    /**
+     * Whether a remark is just the blank template's guidance text, left unchanged by the company.
+     */
+    public static function isGuidance(string $remarks, SurveyCycle $cycle): bool
+    {
+        return in_array(self::squash($remarks), array_map(fn (string $text) => self::squash($text), $cycle->lookup('_benefit_guidance')), true);
     }
 
     /**

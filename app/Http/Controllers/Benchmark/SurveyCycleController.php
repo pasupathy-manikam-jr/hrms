@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Benchmark;
 
 use App\Http\Controllers\Controller;
 use App\Models\Benchmark\BenchmarkJob;
+use App\Models\Benchmark\SurveyBenefit;
 use App\Models\Benchmark\SurveyCycle;
 use App\Models\Benchmark\SurveyParticipant;
 use App\Support\Benchmark\SurveyWorkbook;
@@ -42,9 +43,12 @@ class SurveyCycleController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $data = $this->validated($request, true);
-        /** @var UploadedFile $file */
         $file = $request->file('template');
-        $template = $this->readTemplate($file);
+        $file = $file instanceof UploadedFile ? $file : null;
+        /** @var list<UploadedFile> $workbooks */
+        $workbooks = $request->file('files', []);
+        // Every completed workbook carries the template's Lookups sheet, so the blank template is optional.
+        $template = $file ? $this->readTemplate($file) : $this->readTemplate($workbooks[0], 'files', blank: false);
 
         $cycle = DB::transaction(function () use ($request, $data, $file, $template) {
             $cycle = SurveyCycle::create([...$data, 'created_by' => $request->user()?->id]);
@@ -52,10 +56,6 @@ class SurveyCycleController extends Controller
 
             return $cycle;
         });
-
-        // Completed workbooks may come with the template, so a new cycle is set up in one go.
-        /** @var list<UploadedFile> $workbooks */
-        $workbooks = $request->file('files', []);
 
         return $workbooks === []
             ? $this->done(__('Survey cycle created successfully.'))
@@ -74,6 +74,7 @@ class SurveyCycleController extends Controller
 
             if ($file && $template) {
                 $this->saveTemplate($cycle, $file, $template);
+                $this->clearGuidanceRemarks($cycle);
             }
         });
 
@@ -139,7 +140,7 @@ class SurveyCycleController extends Controller
             'name' => ['required', 'string', 'max:100', Rule::unique('survey_cycles')->ignore($cycle)],
             'status' => ['required', Rule::in(SurveyCycle::STATUSES)],
             'min_companies' => ['required', 'integer', 'min:1', 'max:20'],
-            'template' => [$creating ? 'required' : 'nullable', 'file', 'extensions:xlsx', 'max:20480'],
+            'template' => [$creating ? 'required_without:files' : 'nullable', 'nullable', 'file', 'extensions:xlsx', 'max:20480'],
             'files' => ['nullable', 'array', 'max:50'],
             'files.*' => ['file', 'extensions:xlsx', 'max:10240'],
         ], attributes: ['files.*' => __('file')]);
@@ -151,16 +152,16 @@ class SurveyCycleController extends Controller
     /**
      * @return array{lookups: array<string, list<string>>, jobs: list<array<string, string|null>>}
      */
-    private function readTemplate(UploadedFile $file): array
+    private function readTemplate(UploadedFile $file, string $field = 'template', bool $blank = true): array
     {
         try {
-            $template = SurveyWorkbook::readTemplate($file->getRealPath());
+            $template = SurveyWorkbook::readTemplate($file->getRealPath(), $blank);
         } catch (Throwable $e) {
-            throw ValidationException::withMessages(['template' => $e->getMessage()]);
+            throw ValidationException::withMessages([$field => $e->getMessage()]);
         }
 
         if ($template['jobs'] === [] || ($template['lookups']['JobLevelList'] ?? []) === []) {
-            throw ValidationException::withMessages(['template' => __('The template has no job catalogue or dropdown lists (Lookups sheet).')]);
+            throw ValidationException::withMessages([$field => __('The workbook has no job catalogue or dropdown lists (Lookups sheet).')]);
         }
 
         return $template;
@@ -169,12 +170,12 @@ class SurveyCycleController extends Controller
     /**
      * @param  array{lookups: array<string, list<string>>, jobs: list<array<string, string|null>>}  $template
      */
-    private function saveTemplate(SurveyCycle $cycle, UploadedFile $file, array $template): void
+    private function saveTemplate(SurveyCycle $cycle, ?UploadedFile $file, array $template): void
     {
         $old = $cycle->template_path;
         $cycle->update([
-            'template_path' => $file->store(self::TEMPLATE_DIRECTORY, 'local') ?: throw new \RuntimeException('Could not store the template.'),
-            'template_name' => $file->getClientOriginalName(),
+            'template_path' => $file ? ($file->store(self::TEMPLATE_DIRECTORY, 'local') ?: throw new \RuntimeException('Could not store the template.')) : $old,
+            'template_name' => $file ? $file->getClientOriginalName() : $cycle->template_name,
             'lookups' => $template['lookups'],
         ]);
 
@@ -183,8 +184,21 @@ class SurveyCycleController extends Controller
             BenchmarkJob::insert(array_map(fn (array $job) => [...$job, 'survey_cycle_id' => $cycle->id], $chunk));
         }
 
-        if ($old) {
+        if ($old && $file) {
             Storage::disk('local')->delete($old);
         }
+    }
+
+    /**
+     * Clears remarks that are just the (newly uploaded) blank template's guidance text.
+     */
+    private function clearGuidanceRemarks(SurveyCycle $cycle): void
+    {
+        SurveyBenefit::query()
+            ->whereIn('survey_participant_id', $cycle->participants()->select('id'))
+            ->whereNotNull('remarks')
+            ->get()
+            ->filter(fn (SurveyBenefit $benefit) => SurveyWorkbook::isGuidance((string) $benefit->remarks, $cycle))
+            ->each(fn (SurveyBenefit $benefit) => $benefit->update(['remarks' => null]));
     }
 }
