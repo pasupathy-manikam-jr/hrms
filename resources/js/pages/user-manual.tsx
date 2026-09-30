@@ -22,7 +22,8 @@ import { PageHeader } from '@/components/page-header';
 import { useTranslation } from '@/hooks/use-translation';
 import { dashboard, userManual } from '@/routes';
 
-type Topic = { title: string; body: string };
+/** A topic's explanation, optionally followed by numbered steps. */
+type Topic = { title: string; body: string; steps?: string[] };
 
 type Chapter = {
     id: string;
@@ -281,23 +282,97 @@ const CHAPTERS: Chapter[] = [
         id: 'benchmark',
         title: 'Salary Benchmark Survey',
         icon: ChartBar,
-        intro: 'Pool the Salary & Benefits Benchmark Survey workbooks that participating companies send in, and cut the results any way you need. Company role only.',
+        intro: 'Turn the Salary & Benefits Benchmark Survey workbooks that participating companies send in into pooled market data you can cut by industry, state, size, job and more. There is no online form: companies fill in the Excel workbook and you upload it. Menu: Benchmark Survey → Salary Benchmark (Company role only).',
         topics: [
             {
-                title: 'Survey cycles',
-                body: 'Create one cycle per survey edition (for example 2025/2026) and upload its blank Excel template. The template’s hidden Lookups sheet supplies the standard job catalogue and every answer list used to check submissions. “Min. companies per figure” is the confidentiality rule: a statistic is hidden unless at least that many companies contribute to it.',
+                title: '1. How it works',
+                body: 'Every survey edition is a cycle. A cycle is built from the blank survey template, which supplies the standard job catalogue and every answer list. You then upload each company’s completed workbook into the cycle. Each company’s answers are stored separately and kept private; Analytics pools them into market figures.',
+                steps: [
+                    'Create the cycle and upload the blank template (once per edition).',
+                    'Upload the completed workbooks as they arrive; fix and re-upload any that are rejected.',
+                    'Open Analytics, choose your filters and read or export the results.',
+                ],
             },
             {
-                title: 'Uploading completed workbooks',
-                body: 'On Participants, choose Upload Workbooks and select one or many completed .xlsx files. Each file is read and checked: files with errors (no consent, unknown job title, male + female not equal to the total, min above median, answers not in the lists) are rejected with the reasons listed; warnings are imported and flagged. Uploading the same company again is skipped unless you tick “Replace existing submissions”.',
+                title: '2. Create a survey cycle',
+                body: 'Go to Salary Benchmark → Survey Cycles and choose Add Cycle.',
+                steps: [
+                    'Name: the edition, for example 2025/2026.',
+                    'Status: Open while you are collecting workbooks, Closed when the edition is final.',
+                    'Min. Companies per Figure: the confidentiality rule (3 is the usual choice). A salary, percentage or median is hidden unless at least this many companies contribute to it.',
+                    'Blank Survey Template: the unfilled .xlsx the companies were sent. The system reads its hidden Lookups sheet — the 420 standard job titles and every dropdown list — and shows the job count in the list.',
+                    'Save. To use a corrected template later, edit the cycle and upload it again; the catalogue and lists are replaced.',
+                ],
             },
             {
-                title: 'Each company’s results',
-                body: 'Every company is stored separately. Its page shows the whole submission, its median pay per role against the market median, and lets you download the original workbook.',
+                title: '3. Upload completed workbooks',
+                body: 'Go to Participants, check that the right cycle is selected in the Cycle filter, and choose Upload Workbooks. You can select one file or many at once (up to 50 files, 10 MB each). Each file gets a result:',
+                steps: [
+                    'Imported — the company has been added to the cycle.',
+                    'Replaced — the company was already in the cycle and “Replace existing submissions” was ticked, so its previous data was overwritten.',
+                    'Skipped — the company is already in the cycle. Tick “Replace existing submissions” and upload again if this file is a correction.',
+                    'Rejected — the file has errors (listed under it) and nothing was saved. Ask the company to fix them, or fix them yourself, and upload again.',
+                ],
             },
             {
-                title: 'Analytics and reports',
-                body: 'Analytics pools all companies in the cycle. Filter by industry, state, company size, revenue, ownership, listing, union, job family, title, level and gender, and switch between company-weighted and incumbent-weighted figures. Views: salary benchmarks (P25, median, P75, average, allowances, bonus, total cash), gender pay, allowances, benefits, attrition & hiring, workforce and participants. Export the current cut to Excel or a PDF report.',
+                title: '4. What the upload checks',
+                body: 'Companies are recognised by name, ignoring case and endings like Sdn Bhd, Berhad or (M), so “Client A Sdn Bhd” and “CLIENT A SDN. BHD.” are the same company. The template’s “Ex.” example row and its own formula columns are ignored; averages and totals are recalculated. A file is rejected when:',
+                steps: [
+                    'It is not the survey workbook, or consent in “5. Consent & Submission” is not “Yes”.',
+                    'Company name, industry, state or number of employees is missing, or an answer is not one of the dropdown options.',
+                    'A salary row uses a Standard Job Title that is not in the catalogue, or has no job level or median salary.',
+                    'Male + Female does not equal Total Headcount, or the tenure columns do not add up to it.',
+                    'Minimum salary is above the median, maximum is below it, or a number is negative or not a number.',
+                    'The same job title and level appear twice.',
+                ],
+            },
+            {
+                title: '5. Warnings',
+                body: 'Warnings do not stop a file; it is imported and the warning count shows in the Participants list and on the company’s page. Examples: an average male or female salary missing although there are staff of that gender, more than 6 months of guaranteed bonus, an attrition rate above 100%, the same job family ranked twice, or retrenchment “Yes” without a driver. Remarks left as the template’s grey guidance text are cleaned out automatically.',
+            },
+            {
+                title: '6. Each company’s results',
+                body: 'Participants lists every company in the cycle with its industry, state, size, number of roles and staff. Filter by industry, state or size, or search by name. The eye icon opens the company’s page:',
+                steps: [
+                    'Salary Data: each role’s median base pay next to the market median for the same job and level, and how far above or below the market it is. The market figure only appears once enough companies report that role.',
+                    'Benefits, Attrition & Hiring and Company Profile: everything the company answered, plus any warnings.',
+                    'Original Workbook downloads the file exactly as it was uploaded. Delete removes the company and its file from the cycle.',
+                ],
+            },
+            {
+                title: '7. Analytics — slice and dice',
+                body: 'Analytics pools every company in the chosen cycle. Every filter applies to every view, so you can combine them freely (for example Manufacturing + Selangor + Executive level). Clear Filters resets everything except the cycle.',
+                steps: [
+                    'Company filters: industry, state, company size, revenue band, ownership, listed status, unionised workforce.',
+                    'Job filters: job family, standard job title, job level.',
+                    'Gender: shows average male or female pay instead of the median.',
+                    'Weighting: company-weighted (default — each company counts once) or incumbent-weighted (larger employers count more, by headcount).',
+                ],
+            },
+            {
+                title: '8. The analytics views',
+                body: 'The cards at the top show how many companies, roles and employees are in your cut, and the confidentiality rule. The tabs:',
+                steps: [
+                    'Salary Benchmarks: per job and level — companies, incumbents, P25, median, P75 and average base pay, average allowances, guaranteed bonus months and total monthly cash (median + allowances + bonus ÷ 12).',
+                    'Gender Pay: average male and female pay by job level and job family, the pay gap (positive = women paid less) and the female share of staff.',
+                    'Allowances: for each of the eight allowance types, the share of companies paying it and the average and median amount where paid, plus the “other” allowances described.',
+                    'Benefits: the share of companies offering each benefit (overall and by tier) and median values such as leave days, EPF rate, medical limits and bonus months.',
+                    'Attrition & Hiring: median attrition rates, exits per 100 staff, time to fill, the hardest job families to hire and retain (ranked 1st = 3 points, 2nd = 2, 3rd = 1), headcount plans, pay as a reason for leaving and retrenchment.',
+                    'Workforce: tenure mix, experience required to hire, headcount by level and the share of shift-based roles.',
+                    'Participants: how many companies are in each industry, state, size and ownership type.',
+                ],
+            },
+            {
+                title: '9. “Insufficient data”',
+                body: 'When fewer companies than the cycle’s minimum contribute to a figure, it shows “Insufficient data” instead of a number, so no single company’s pay can be worked out. Narrow cuts hide more figures; widen the filters or collect more workbooks. You can change the minimum on the cycle, but keep it at 3 or more for anything shared outside your team.',
+            },
+            {
+                title: '10. Exporting reports',
+                body: 'Export Excel downloads the current cut as a workbook with one sheet per view. PDF Report downloads a landscape report with a cover page (sample size, confidentiality rule and weighting), the filters used, and every view as a table. Both follow the filters currently selected and apply the same confidentiality rule.',
+            },
+            {
+                title: '11. Job Catalogue',
+                body: 'Job Catalogue lists the standard job titles of the selected cycle with their code, job family, industry, typical level and MASCO reference. Use it to answer companies’ questions about which Standard Job Title to choose.',
             },
         ],
     },
@@ -411,6 +486,23 @@ export default function UserManual() {
                                                 </dt>
                                                 <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">
                                                     {t(topic.body)}
+                                                    {topic.steps && (
+                                                        <ol className="mt-2 grid list-decimal gap-1 ps-5">
+                                                            {topic.steps.map(
+                                                                (step) => (
+                                                                    <li
+                                                                        key={
+                                                                            step
+                                                                        }
+                                                                    >
+                                                                        {t(
+                                                                            step,
+                                                                        )}
+                                                                    </li>
+                                                                ),
+                                                            )}
+                                                        </ol>
+                                                    )}
                                                 </dd>
                                             </div>
                                         ))}

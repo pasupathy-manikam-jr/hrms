@@ -124,6 +124,7 @@ class SurveyWorkbook
             fn (int $row) => self::text($benefits->getCell("F{$row}")->getValue()),
             array_keys(self::BENEFIT_ITEMS),
         )));
+        $book->disconnectWorksheets();
 
         return ['lookups' => $lookups, 'jobs' => $jobs];
     }
@@ -149,7 +150,7 @@ class SurveyWorkbook
         $participant = $this->readProfile($book->getSheetByNameOrThrow(self::PROFILE), $cycle)
             + $this->readConsent($book->getSheetByNameOrThrow(self::CONSENT));
 
-        return [
+        $result = [
             'participant' => $participant,
             'salaryRows' => $this->readSalaries($book->getSheetByNameOrThrow(self::SALARY), $cycle, $catalogue),
             'benefits' => $this->readBenefits($book->getSheetByNameOrThrow(self::BENEFITS), $cycle),
@@ -157,6 +158,10 @@ class SurveyWorkbook
             'errors' => $this->errors,
             'warnings' => $this->warnings,
         ];
+        // Workbooks hold circular references; free each one so a multi-file upload stays within memory_limit.
+        $book->disconnectWorksheets();
+
+        return $result;
     }
 
     /**
@@ -506,6 +511,7 @@ class SurveyWorkbook
         $reader = IOFactory::createReader('Xlsx');
         $reader->setReadDataOnly(true);
         $reader->setLoadSheetsOnly($sheets);
+        $reader->setReadEmptyCells(false);
 
         return $reader->load($path);
     }
