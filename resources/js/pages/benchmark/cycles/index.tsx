@@ -1,6 +1,12 @@
 import { Head, Link, router, useForm } from '@inertiajs/react';
 import { CalendarDays, Download, Plus, SquarePen, Trash2 } from 'lucide-react';
 import { useState } from 'react';
+import {
+    allImported,
+    UploadReport,
+    useUploadReport,
+    WorkbookPicker,
+} from '@/components/benchmark-upload';
 import { ConfirmDialog } from '@/components/confirm-dialog';
 import { DataTable } from '@/components/data-table';
 import type { Column } from '@/components/data-table';
@@ -36,6 +42,7 @@ const blank = {
     status: 'open' as Cycle['status'],
     min_companies: '3',
     template: null as File | null,
+    files: [] as File[],
 };
 
 export default function SurveyCycles({
@@ -52,9 +59,11 @@ export default function SurveyCycles({
     const [formOpen, setFormOpen] = useState(false);
     const [deleting, setDeleting] = useState<Cycle | null>(null);
     const form = useForm(blank);
+    const [results, setResults] = useUploadReport();
 
     const openForm = (cycle: Cycle | null) => {
         setEditing(cycle);
+        setResults(null);
         form.clearErrors();
         form.setData(
             cycle
@@ -63,6 +72,7 @@ export default function SurveyCycles({
                       status: cycle.status,
                       min_companies: String(cycle.min_companies),
                       template: null,
+                      files: [],
                   }
                 : blank,
         );
@@ -78,7 +88,11 @@ export default function SurveyCycles({
             {
                 forceFormData: true,
                 preserveScroll: true,
-                onSuccess: () => setFormOpen(false),
+                // Stay open only to show why a workbook was rejected or skipped.
+                onSuccess: (page) =>
+                    allImported(page.flash)
+                        ? setFormOpen(false)
+                        : form.setData('files', []),
             },
         );
 
@@ -290,6 +304,38 @@ export default function SurveyCycles({
                         </p>
                         <InputError message={form.errors.template} />
                     </div>
+                    {!editing && (
+                        <div className="grid gap-2 sm:col-span-2">
+                            <Label htmlFor="cycle-files">
+                                {t('Completed Workbooks (optional)')}
+                            </Label>
+                            <WorkbookPicker
+                                id="cycle-files"
+                                files={form.data.files}
+                                onChange={(files) =>
+                                    form.setData('files', files)
+                                }
+                            />
+                            <p className="text-xs text-muted-foreground">
+                                {t(
+                                    'The companies’ filled-in workbooks. You can also upload more later from Participants.',
+                                )}
+                            </p>
+                            <InputError
+                                message={
+                                    form.errors.files ??
+                                    Object.entries(form.errors).find(([key]) =>
+                                        key.startsWith('files.'),
+                                    )?.[1]
+                                }
+                            />
+                        </div>
+                    )}
+                    {results && (
+                        <div className="sm:col-span-2">
+                            <UploadReport results={results} />
+                        </div>
+                    )}
                 </div>
             </FormDialog>
 

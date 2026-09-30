@@ -8,13 +8,18 @@ import {
     Trash2,
     TriangleAlert,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import {
+    allImported,
+    UploadReport,
+    useUploadReport,
+    WorkbookPicker,
+} from '@/components/benchmark-upload';
 import { ConfirmDialog } from '@/components/confirm-dialog';
 import { DataTable } from '@/components/data-table';
 import type { Column } from '@/components/data-table';
 import InputError from '@/components/input-error';
 import { PageHeader } from '@/components/page-header';
-import { StatusBadge } from '@/components/status-badge';
 import { FilterSelect } from '@/components/table-filters';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -25,7 +30,6 @@ import {
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { useCan } from '@/hooks/use-can';
@@ -52,14 +56,6 @@ type Participant = {
 
 type Cycle = { id: number; name: string; status: string };
 
-type UploadResult = {
-    file: string;
-    company: string | null;
-    status: 'imported' | 'replaced' | 'rejected' | 'skipped';
-    errors: string[];
-    warnings: string[];
-};
-
 const options = (values: string[]) =>
     values.map((value) => ({ id: value, name: value }));
 
@@ -80,7 +76,7 @@ export default function SurveyParticipants({
     const { date } = useFormat();
     const can = useCan();
     const [uploadOpen, setUploadOpen] = useState(false);
-    const [results, setResults] = useState<UploadResult[] | null>(null);
+    const [results, setResults] = useUploadReport();
     const [deleting, setDeleting] = useState<Participant | null>(null);
     const form = useForm<{
         cycle_id: number | '';
@@ -90,19 +86,6 @@ export default function SurveyParticipants({
     const url = participantRoutes.index();
     // Keep the shown cycle in every filter/sort/search link.
     const current = cycle ? { ...filters, cycle: String(cycle.id) } : filters;
-
-    useEffect(
-        () =>
-            router.on('flash', (event) => {
-                const report = (event as CustomEvent).detail?.flash
-                    ?.benchmarkUpload as UploadResult[] | undefined;
-
-                if (report) {
-                    setResults(report);
-                }
-            }),
-        [],
-    );
 
     const closeUpload = (open: boolean) => {
         setUploadOpen(open);
@@ -297,7 +280,11 @@ export default function SurveyParticipants({
                             form.post(participantRoutes.upload.url(), {
                                 forceFormData: true,
                                 preserveScroll: true,
-                                onSuccess: () => form.setData('files', []),
+                                // Stay open only to show why a workbook was rejected or skipped.
+                                onSuccess: (page) =>
+                                    allImported(page.flash)
+                                        ? closeUpload(false)
+                                        : form.setData('files', []),
                             });
                         }}
                     >
@@ -313,16 +300,11 @@ export default function SurveyParticipants({
                                 {t('Workbooks (.xlsx)')}
                                 <span className="text-destructive">*</span>
                             </Label>
-                            <Input
+                            <WorkbookPicker
                                 id="upload-files"
-                                type="file"
-                                accept=".xlsx"
-                                multiple
-                                onChange={(e) =>
-                                    form.setData(
-                                        'files',
-                                        Array.from(e.target.files ?? []),
-                                    )
+                                files={form.data.files}
+                                onChange={(files) =>
+                                    form.setData('files', files)
                                 }
                             />
                             <InputError
@@ -353,49 +335,7 @@ export default function SurveyParticipants({
                             )}
                         </div>
 
-                        {results && (
-                            <ul className="grid gap-3">
-                                {results.map((result, index) => (
-                                    <li
-                                        key={index}
-                                        className="grid gap-1 rounded-lg border p-3 text-sm"
-                                    >
-                                        <div className="flex items-center justify-between gap-3">
-                                            <div className="min-w-0">
-                                                <div className="truncate font-medium">
-                                                    {result.company ??
-                                                        result.file}
-                                                </div>
-                                                <div className="truncate text-xs text-muted-foreground">
-                                                    {result.file}
-                                                </div>
-                                            </div>
-                                            <StatusBadge
-                                                status={result.status}
-                                            />
-                                        </div>
-                                        {result.errors.length > 0 && (
-                                            <ul className="max-h-40 list-disc overflow-y-auto ps-5 text-destructive">
-                                                {result.errors.map((error) => (
-                                                    <li key={error}>{error}</li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                        {result.warnings.length > 0 && (
-                                            <ul className="max-h-32 list-disc overflow-y-auto ps-5 text-amber-600">
-                                                {result.warnings.map(
-                                                    (warning) => (
-                                                        <li key={warning}>
-                                                            {warning}
-                                                        </li>
-                                                    ),
-                                                )}
-                                            </ul>
-                                        )}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
+                        {results && <UploadReport results={results} />}
 
                         <DialogFooter>
                             <Button
@@ -413,7 +353,11 @@ export default function SurveyParticipants({
                                 }
                             >
                                 {form.processing && <Spinner />}
-                                {t('Upload')}
+                                {form.data.files.length > 1
+                                    ? t('Upload :n files', {
+                                          n: form.data.files.length,
+                                      })
+                                    : t('Upload')}
                             </Button>
                         </DialogFooter>
                     </form>

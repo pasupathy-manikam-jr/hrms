@@ -301,6 +301,7 @@ const CHAPTERS: Chapter[] = [
                     'Status: Open while you are collecting workbooks, Closed when the edition is final.',
                     'Min. Companies per Figure: the confidentiality rule (3 is the usual choice). A salary, percentage or median is hidden unless at least this many companies contribute to it.',
                     'Blank Survey Template: the unfilled .xlsx the companies were sent. The system reads its hidden Lookups sheet — the 420 standard job titles and every dropdown list — and shows the job count in the list.',
+                    'Completed Workbooks (optional): add the companies’ filled-in workbooks here too, to set up the cycle in one go. Each file’s result is shown before you close the dialog.',
                     'Save. To use a corrected template later, edit the cycle and upload it again; the catalogue and lists are replaced.',
                 ],
             },

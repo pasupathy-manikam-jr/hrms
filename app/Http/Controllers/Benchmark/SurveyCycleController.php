@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Benchmark;
 use App\Http\Controllers\Controller;
 use App\Models\Benchmark\BenchmarkJob;
 use App\Models\Benchmark\SurveyCycle;
+use App\Models\Benchmark\SurveyParticipant;
 use App\Support\Benchmark\SurveyWorkbook;
 use App\Support\TableQuery;
 use Illuminate\Http\RedirectResponse;
@@ -45,12 +46,20 @@ class SurveyCycleController extends Controller
         $file = $request->file('template');
         $template = $this->readTemplate($file);
 
-        DB::transaction(function () use ($request, $data, $file, $template) {
+        $cycle = DB::transaction(function () use ($request, $data, $file, $template) {
             $cycle = SurveyCycle::create([...$data, 'created_by' => $request->user()?->id]);
             $this->saveTemplate($cycle, $file, $template);
+
+            return $cycle;
         });
 
-        return $this->done(__('Survey cycle created successfully.'));
+        // Completed workbooks may come with the template, so a new cycle is set up in one go.
+        /** @var list<UploadedFile> $workbooks */
+        $workbooks = $request->file('files', []);
+
+        return $workbooks === []
+            ? $this->done(__('Survey cycle created successfully.'))
+            : $this->uploadReport(SurveyParticipant::importWorkbooks($cycle, $workbooks, false, $request->user()?->id));
     }
 
     public function update(Request $request, SurveyCycle $cycle): RedirectResponse
@@ -131,8 +140,10 @@ class SurveyCycleController extends Controller
             'status' => ['required', Rule::in(SurveyCycle::STATUSES)],
             'min_companies' => ['required', 'integer', 'min:1', 'max:20'],
             'template' => [$creating ? 'required' : 'nullable', 'file', 'extensions:xlsx', 'max:20480'],
-        ]);
-        unset($data['template']);
+            'files' => ['nullable', 'array', 'max:50'],
+            'files.*' => ['file', 'extensions:xlsx', 'max:10240'],
+        ], attributes: ['files.*' => __('file')]);
+        unset($data['template'], $data['files']);
 
         return $data;
     }

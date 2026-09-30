@@ -2,12 +2,14 @@
 
 namespace App\Models\Benchmark;
 
+use App\Support\Benchmark\SurveyWorkbook;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -64,6 +66,49 @@ class SurveyParticipant extends Model
             ->replaceMatches('/[^a-z0-9]+/', ' ');
 
         return trim((string) $name);
+    }
+
+    /**
+     * Reads, checks and saves completed workbooks into the cycle. Files with errors are rejected; a company
+     * already in the cycle is skipped unless $replace. Returns one report entry per file.
+     *
+     * @param  list<UploadedFile>  $files
+     * @return list<array{file: string, company: string|null, status: string, errors: list<string>, warnings: list<string>}>
+     */
+    public static function importWorkbooks(SurveyCycle $cycle, array $files, bool $replace, ?int $userId): array
+    {
+        $catalogue = $cycle->jobs()->get()->keyBy(fn (BenchmarkJob $job) => mb_strtolower($job->title))->map->toArray()->all();
+        $reader = new SurveyWorkbook;
+        $report = [];
+
+        foreach ($files as $file) {
+            $data = $reader->read($file->getRealPath(), $cycle, $catalogue);
+            $company = $data['participant']['company_name'] ?? null;
+            $entry = ['file' => $file->getClientOriginalName(), 'company' => $company, 'errors' => $data['errors'], 'warnings' => $data['warnings']];
+
+            if ($data['errors'] !== []) {
+                $report[] = [...$entry, 'status' => 'rejected'];
+
+                continue;
+            }
+
+            $exists = self::query()->where('survey_cycle_id', $cycle->id)->where('company_key', self::keyFor((string) $company))->exists();
+
+            if ($exists && ! $replace) {
+                $report[] = [...$entry, 'status' => 'skipped', 'errors' => [__('This company has already been uploaded to this cycle. Tick "Replace existing submissions" to overwrite it.')]];
+
+                continue;
+            }
+
+            self::record($cycle, $data, [
+                'file_path' => $file->store(self::UPLOAD_DIRECTORY, 'local') ?: throw new \RuntimeException('Could not store the workbook.'),
+                'file_name' => $file->getClientOriginalName(),
+                'uploaded_by' => $userId,
+            ]);
+            $report[] = [...$entry, 'status' => $exists ? 'replaced' : 'imported'];
+        }
+
+        return $report;
     }
 
     /**

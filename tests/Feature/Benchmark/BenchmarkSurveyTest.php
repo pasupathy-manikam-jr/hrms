@@ -61,6 +61,21 @@ class BenchmarkSurveyTest extends TestCase
             ->where('cycles.data.0.jobs_count', 2));
     }
 
+    public function test_completed_workbooks_can_be_uploaded_with_a_new_cycle()
+    {
+        $this->actingAs($this->userWithRole());
+
+        $this->post(route('benchmark.cycles.store'), [
+            'name' => '2025/2026', 'status' => 'open', 'min_companies' => 3, 'template' => $this->workbook(template: true),
+            'files' => [$this->workbook('Alpha', file: 'alpha.xlsx'), $this->workbook('Beta', file: 'beta.xlsx', consent: 'No')],
+        ])
+            ->assertSessionHasNoErrors()
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'imported')
+            ->assertInertiaFlash('benchmarkUpload.1.status', 'rejected');
+
+        $this->assertSame(['alpha'], SurveyCycle::firstOrFail()->participants()->pluck('company_key')->all());
+    }
+
     public function test_workbooks_are_imported_rejected_skipped_and_replaced()
     {
         $cycle = $this->cycle();

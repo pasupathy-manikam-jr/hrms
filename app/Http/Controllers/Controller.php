@@ -21,4 +21,17 @@ abstract class Controller
     {
         return $this->toast('success', $message);
     }
+
+    /**
+     * Flash a Benchmark Survey upload report (shown per file by the page) and toast the totals.
+     *
+     * @param  list<array{status: string}>  $report
+     */
+    protected function uploadReport(array $report): RedirectResponse
+    {
+        Inertia::flash('benchmarkUpload', $report);
+        $saved = collect($report)->whereIn('status', ['imported', 'replaced'])->count();
+
+        return $this->toast($saved === count($report) ? 'success' : 'warning', __(':saved of :total files imported.', ['saved' => $saved, 'total' => count($report)]));
+    }
 }

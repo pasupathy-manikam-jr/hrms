@@ -58,43 +58,11 @@ class SurveyParticipantController extends Controller
             'replace' => ['boolean'],
         ], attributes: ['files.*' => __('file')]);
 
-        $cycle = SurveyCycle::findOrFail($request->integer('cycle_id'));
-        $catalogue = $cycle->jobs()->get()->keyBy(fn ($job) => mb_strtolower($job->title))->map->toArray()->all();
-        $reader = new SurveyWorkbook;
-        $report = [];
+        /** @var list<UploadedFile> $files */
+        $files = $request->file('files');
+        $report = SurveyParticipant::importWorkbooks(SurveyCycle::findOrFail($request->integer('cycle_id')), $files, $request->boolean('replace'), $request->user()?->id);
 
-        /** @var UploadedFile $file */
-        foreach ($request->file('files') as $file) {
-            $data = $reader->read($file->getRealPath(), $cycle, $catalogue);
-            $company = $data['participant']['company_name'] ?? null;
-            $entry = ['file' => $file->getClientOriginalName(), 'company' => $company, 'errors' => $data['errors'], 'warnings' => $data['warnings']];
-
-            if ($data['errors'] !== []) {
-                $report[] = $entry + ['status' => 'rejected'];
-
-                continue;
-            }
-
-            $exists = SurveyParticipant::query()->where('survey_cycle_id', $cycle->id)->where('company_key', SurveyParticipant::keyFor((string) $company))->exists();
-
-            if ($exists && ! $request->boolean('replace')) {
-                $report[] = ['errors' => [__('This company has already been uploaded to this cycle. Tick "Replace existing submissions" to overwrite it.')]] + $entry + ['status' => 'skipped'];
-
-                continue;
-            }
-
-            SurveyParticipant::record($cycle, $data, [
-                'file_path' => $file->store(SurveyParticipant::UPLOAD_DIRECTORY, 'local') ?: throw new \RuntimeException('Could not store the workbook.'),
-                'file_name' => $file->getClientOriginalName(),
-                'uploaded_by' => $request->user()?->id,
-            ]);
-            $report[] = $entry + ['status' => $exists ? 'replaced' : 'imported'];
-        }
-
-        Inertia::flash('benchmarkUpload', $report);
-        $saved = collect($report)->whereIn('status', ['imported', 'replaced'])->count();
-
-        return $this->toast($saved === count($report) ? 'success' : 'warning', __(':saved of :total files imported.', ['saved' => $saved, 'total' => count($report)]));
+        return $this->uploadReport($report);
     }
 
     public function show(SurveyParticipant $participant): Response
