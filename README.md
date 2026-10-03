@@ -20,7 +20,9 @@ Built with Laravel 13, Inertia 3, React 19, Tailwind CSS 4 and shadcn/ui.
 ### Made for Malaysia
 
 - Amounts in Ringgit (RM), dates as dd/mm/yyyy, Asia/Kuala_Lumpur time zone, weeks starting Monday.
-- Statutory payroll components: **EPF (KWSP)**, **SOCSO (PERKESO)**, **EIS (SIP)** and **PCB** monthly tax deduction.
+- Statutory payroll calculated from the official 2026 rules: **EPF (KWSP)** Third Schedule (citizens, PRs, foreign workers, 60+),
+  **SOCSO (PERKESO)** with Lindung 24 Jam, **EIS (SIP)** and **PCB** by LHDN's computerised formula — employee and employer shares
+  on every payslip.
 - **MyKad (NRIC)** numbers for citizens and PRs — validated and formatted as `YYMMDD-PB-####` — or passport numbers for foreign staff.
 - Branch-specific public holidays, Malaysian addresses and postcodes, LHDN income tax numbers.
 - Four interface languages: **English, Bahasa Melayu, 中文 and العربية** (with right-to-left layout).

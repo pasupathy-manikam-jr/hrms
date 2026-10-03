@@ -214,11 +214,23 @@ const CHAPTERS: Chapter[] = [
         topics: [
             {
                 title: 'Salary components',
-                body: 'Components are earnings (Housing, Transport, Cost of Living allowances…) or deductions (EPF/KWSP, SOCSO/PERKESO, EIS/SIP, PCB). Each is a fixed amount or a percentage of basic salary, and can be switched off with the lock icon.',
+                body: 'Components are earnings (Housing, Transport, Cost of Living allowances…) or deductions such as a loan repayment. Each is a fixed amount or a percentage of basic salary, and can be switched off with the lock icon. Mark an earning taxable when it counts as wages: taxable earnings plus basic salary are the wages for EPF, SOCSO, EIS and PCB.',
+            },
+            {
+                title: 'Statutory deductions (EPF, SOCSO, EIS, PCB)',
+                body: 'These are worked out automatically on every payslip from the official tables, so they are not salary components:',
+                steps: [
+                    'EPF (KWSP): the Third Schedule — 11% employee and 13% employer (12% above RM5,000) in wage bands, rounded up to the next ringgit; citizens aged 60+ pay nothing with 4% from the employer; permanent residents 60+ pay 5.5% (employer 6.5% / 6%); foreign workers 2% each.',
+                    'SOCSO (PERKESO): the Act 4 table up to the RM6,000 wage ceiling — First Category below 60, Second Category (employer only) from 60 and for foreign workers — plus the Lindung 24 Jam (SKBBK) employee share from June 2026 wages unless the employee opted out (foreign workers cannot).',
+                    'EIS (SIP): the Act 800 table, the same amount from employer and employee, for citizens and permanent residents below 60.',
+                    'PCB: LHDN’s computerised formula for 2026, using the employee’s category (single; married with a non-working spouse; married with a working spouse, divorced or widowed), child relief units and what earlier payslips this year already paid. Non-residents pay a flat 30%. Amounts are rounded up to 5 sen and not deducted below RM10.',
+                    'Fill in each employee’s details on the Banking & Statutory step of the employee form: EPF member number, citizenship, marital status, spouse working, child relief units, tax residence and Lindung 24 Jam opt-out.',
+                    'Not yet included: zakat, Form TP1 reliefs, Form TP3 (earnings from a previous employer this year), disability reliefs and the separate PCB formula for bonuses.',
+                ],
             },
             {
                 title: 'Employee salaries',
-                body: 'Give each employee a basic salary and the components that apply to them. The chart icon opens the Payroll Calculation page with that month’s earnings, deductions and attendance summary.',
+                body: 'Give each employee a basic salary and the components that apply to them. The chart icon opens the Payroll Calculation page with that month’s earnings, deductions, the employer’s EPF/SOCSO/EIS contributions and the attendance summary.',
             },
             {
                 title: 'Payroll runs and payslips',

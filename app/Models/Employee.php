@@ -20,6 +20,13 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $date_of_birth
  * @property Carbon|null $date_of_joining
  * @property string $employee_status
+ * @property string|null $id_type
+ * @property string|null $citizenship
+ * @property string|null $marital_status
+ * @property bool $spouse_working
+ * @property int $tax_children
+ * @property bool $tax_resident
+ * @property bool $lindung24_opt_out
  */
 #[Fillable([
     'user_id', 'employee_id', 'phone', 'date_of_birth', 'gender',
@@ -27,6 +34,7 @@ use Illuminate\Support\Carbon;
     'address_line_1', 'address_line_2', 'city', 'state', 'country', 'postal_code',
     'emergency_contact_name', 'emergency_contact_relationship', 'emergency_contact_number',
     'bank_name', 'account_holder_name', 'account_number', 'bank_identifier_code', 'bank_branch', 'tax_payer_id', 'id_type', 'id_number',
+    'citizenship', 'marital_status', 'spouse_working', 'tax_children', 'tax_resident', 'epf_number', 'lindung24_opt_out',
 ])]
 class Employee extends Model
 {
@@ -52,6 +60,8 @@ class Employee extends Model
 
     public const EMPLOYMENT_TYPES = ['Full-time', 'Part-time', 'Contract', 'Temporary'];
 
+    public const MARITAL_STATUSES = ['single', 'married', 'divorced', 'widowed'];
+
     /**
      * @return array<string, string>
      */
@@ -65,6 +75,10 @@ class Employee extends Model
             'shift_id' => 'integer',
             'date_of_birth' => 'date:Y-m-d',
             'date_of_joining' => 'date:Y-m-d',
+            'spouse_working' => 'boolean',
+            'tax_children' => 'integer',
+            'tax_resident' => 'boolean',
+            'lindung24_opt_out' => 'boolean',
         ];
     }
 

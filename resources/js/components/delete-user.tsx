@@ -11,6 +11,7 @@ import {
     DialogContent,
     DialogDescription,
     DialogFooter,
+    DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
@@ -44,15 +45,18 @@ export default function DeleteUser() {
                         </Button>
                     </DialogTrigger>
                     <DialogContent>
-                        <DialogTitle>
-                            Are you sure you want to delete your account?
-                        </DialogTitle>
-                        <DialogDescription>
-                            Once your account is deleted, all of its resources
-                            and data will also be permanently deleted. Please
-                            enter your password to confirm you would like to
-                            permanently delete your account.
-                        </DialogDescription>
+                        <DialogHeader>
+                            <DialogTitle>
+                                Are you sure you want to delete your account?
+                            </DialogTitle>
+                            <DialogDescription>
+                                Once your account is deleted, all of its
+                                resources and data will also be permanently
+                                deleted. Please enter your password to confirm
+                                you would like to permanently delete your
+                                account.
+                            </DialogDescription>
+                        </DialogHeader>
 
                         <Form
                             noValidate
@@ -85,7 +89,7 @@ export default function DeleteUser() {
                                         <InputError message={errors.password} />
                                     </div>
 
-                                    <DialogFooter className="gap-2">
+                                    <DialogFooter>
                                         <DialogClose asChild>
                                             <Button
                                                 variant="secondary"

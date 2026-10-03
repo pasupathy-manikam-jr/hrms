@@ -2,6 +2,7 @@ import { Head, Link, router } from '@inertiajs/react';
 import {
     ArrowLeft,
     Banknote,
+    Building2,
     Calculator,
     Clock,
     TrendingDown,
@@ -57,6 +58,8 @@ export default function PayrollCalculation({
         net_pay: string;
         earnings: Line[];
         deductions: Line[];
+        /** Sen; null on payslips generated before statutory calculation. */
+        statutory: Record<string, number> | null;
     };
     attendance: Attendance;
 }) {
@@ -283,13 +286,39 @@ export default function PayrollCalculation({
                         'text-emerald-600',
                     )}
                     {lines(
-                        'Component Deductions',
+                        'Deductions',
                         TrendingDown,
                         payslip.deductions,
                         'Total Deductions',
                         payslip.total_deductions,
                         'text-red-600',
                     )}
+                    {payslip.statutory &&
+                        lines(
+                            'Employer Contributions',
+                            Building2,
+                            (
+                                [
+                                    ['EPF (KWSP)', 'epf_employer'],
+                                    ['SOCSO (PERKESO)', 'socso_employer'],
+                                    ['EIS (SIP)', 'eis_employer'],
+                                ] as const
+                            ).map(([name, key]) => ({
+                                name: t(name),
+                                amount: (payslip.statutory![key] / 100).toFixed(
+                                    2,
+                                ),
+                            })),
+                            'Total Employer Cost',
+                            (
+                                (Number(payslip.gross_pay) * 100 +
+                                    payslip.statutory.epf_employer +
+                                    payslip.statutory.socso_employer +
+                                    payslip.statutory.eis_employer) /
+                                100
+                            ).toFixed(2),
+                            'text-blue-600',
+                        )}
                 </div>
             </div>
         </>

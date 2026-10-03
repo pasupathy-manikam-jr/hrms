@@ -38,6 +38,13 @@ type Employee = {
     bank_identifier_code: string | null;
     bank_branch: string | null;
     tax_payer_id: string | null;
+    epf_number: string | null;
+    citizenship: 'citizen' | 'permanent_resident' | 'foreigner' | null;
+    marital_status: string | null;
+    spouse_working: boolean;
+    tax_children: number;
+    tax_resident: boolean;
+    lindung24_opt_out: boolean;
     id_type: 'mykad' | 'passport' | null;
     id_number: string | null;
     documents: {
@@ -193,7 +200,7 @@ export default function EmployeeShow({
             />,
         ],
         Banking: [
-            'Banking Information',
+            'Banking & Statutory',
             <Fields
                 key="banking"
                 items={[
@@ -203,6 +210,44 @@ export default function EmployeeShow({
                     ['Bank Identifier Code', e.bank_identifier_code],
                     ['Bank Branch', e.bank_branch],
                     ['Income Tax No.', e.tax_payer_id],
+                    ['EPF Member No.', e.epf_number],
+                    [
+                        'Citizenship',
+                        t(
+                            {
+                                citizen: 'Malaysian citizen',
+                                permanent_resident: 'Permanent resident',
+                                foreigner: 'Foreign worker',
+                            }[
+                                e.citizenship ??
+                                    (e.id_type === 'passport'
+                                        ? 'foreigner'
+                                        : 'citizen')
+                            ],
+                        ),
+                    ],
+                    [
+                        'Marital Status',
+                        t(
+                            (e.marital_status ?? 'single').replace(/^./, (c) =>
+                                c.toUpperCase(),
+                            ),
+                        ),
+                    ],
+                    ...(e.marital_status === 'married'
+                        ? ([
+                              [
+                                  'Spouse Working',
+                                  t(e.spouse_working ? 'Yes' : 'No'),
+                              ],
+                          ] as [string, string][])
+                        : []),
+                    ['Child Relief Units', e.tax_children],
+                    ['Tax Resident', t(e.tax_resident ? 'Yes' : 'No')],
+                    [
+                        'Lindung 24 Jam (SOCSO)',
+                        t(e.lindung24_opt_out ? 'Opted out' : 'Contributing'),
+                    ],
                 ]}
             />,
         ],

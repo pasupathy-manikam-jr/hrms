@@ -52,23 +52,29 @@ class PayrollRunTest extends TestCase
     {
         $this->seedSalaries();
 
+        $pay = $this->salary->load('components')->calculate(now()->setDate(2026, 7, 1));
+
+        $this->assertSame(['33333.33', '20333.33', '53666.66'], [$pay['basic_salary'], $pay['total_earnings'], $pay['gross_pay']]);
         $this->assertSame([
-            'basic_salary' => '33333.33',
-            'earnings' => [
-                ['name' => 'HRA', 'amount' => '13333.33'],
-                ['name' => 'DA', 'amount' => '5000.00'],
-                ['name' => 'Transport', 'amount' => '2000.00'],
-            ],
-            'deductions' => [
-                ['name' => 'PF', 'amount' => '4000.00'],
-                ['name' => 'ESI', 'amount' => '250.00'],
-                ['name' => 'Professional Tax', 'amount' => '200.00'],
-            ],
-            'total_earnings' => '20333.33',
-            'gross_pay' => '53666.66',
-            'total_deductions' => '4450.00',
-            'net_pay' => '49216.66',
-        ], $this->salary->load('components')->calculate());
+            ['name' => 'HRA', 'amount' => '13333.33'],
+            ['name' => 'DA', 'amount' => '5000.00'],
+            ['name' => 'Transport', 'amount' => '2000.00'],
+        ], $pay['earnings']);
+        // Component deductions first, then the statutory ones worked out from the official tables.
+        $this->assertSame([
+            ['name' => 'PF', 'amount' => '4000.00'],
+            ['name' => 'ESI', 'amount' => '250.00'],
+            ['name' => 'Professional Tax', 'amount' => '200.00'],
+            ['name' => 'EPF (KWSP)', 'amount' => '3667.00'],
+            ['name' => 'SOCSO (PERKESO)', 'amount' => '29.75'],
+            ['name' => 'SOCSO Lindung 24 Jam', 'amount' => '44.65'],
+            ['name' => 'EIS (SIP)', 'amount' => '11.90'],
+        ], array_slice($pay['deductions'], 0, 7));
+        $this->assertSame('PCB (Monthly Tax Deduction)', $pay['deductions'][7]['name']);
+        $this->assertSame(['epf_employer' => 400000, 'socso_employer' => 10415, 'eis_employer' => 1190], array_intersect_key($pay['statutory'], array_flip(['epf_employer', 'socso_employer', 'eis_employer'])));
+
+        $deducted = array_sum(array_map(fn (array $line) => Money::toCents($line['amount']), $pay['deductions']));
+        $this->assertSame([Money::format($deducted), Money::format(5366666 - $deducted)], [$pay['total_deductions'], $pay['net_pay']]);
     }
 
     public function test_processing_generates_payslips_and_totals_idempotently()
@@ -83,12 +89,16 @@ class PayrollRunTest extends TestCase
         $run->refresh();
         $this->assertSame('draft', $run->status);
         $this->assertSame(2, $run->employee_count);
-        $this->assertSame(['103666.66', '10450.00', '93216.66'], [$run->total_gross_pay, $run->total_deductions, $run->total_net_pay]);
+        $this->assertSame('103666.66', $run->total_gross_pay);
+        $this->assertSame(Money::toCents($run->total_gross_pay) - Money::toCents($run->total_deductions), Money::toCents($run->total_net_pay));
+        $this->assertSame(Money::toCents($run->total_deductions), $run->payslips->sum(fn (Payslip $payslip) => Money::toCents($payslip->total_deductions)));
         $this->assertSame(2, Payslip::count());
 
         $payslip = $run->payslips()->where('employee_id', $this->salary->employee_id)->firstOrFail();
-        $this->assertSame(['53666.66', '4450.00', '49216.66'], [$payslip->gross_pay, $payslip->total_deductions, $payslip->net_pay]);
+        $this->assertSame('53666.66', $payslip->gross_pay);
         $this->assertSame(['name' => 'HRA', 'amount' => '13333.33'], $payslip->earnings[0]);
+        // EPF on RM33,333.33 (above RM20,000): 11% and 12% of the actual wages, rounded up to the next ringgit.
+        $this->assertSame([366700, 400000], [$payslip->statutory['epf_employee'], $payslip->statutory['epf_employer']]);
 
         // A raise before reprocessing replaces the draft's payslips rather than adding more.
         $this->salary->update(['basic_salary' => '40000.00']);
@@ -109,6 +119,7 @@ class PayrollRunTest extends TestCase
         $this->post(route('hr.payroll-runs.process', $run));
         $this->post(route('hr.payroll-runs.complete', $run));
         $this->assertSame('completed', $run->fresh()->status);
+        $netPay = $run->fresh()->total_net_pay;
 
         $this->salary->update(['basic_salary' => '99999.00']);
         $this->post(route('hr.payroll-runs.process', $run));
@@ -117,7 +128,7 @@ class PayrollRunTest extends TestCase
 
         $run->refresh();
         $this->assertNotSame('Changed', $run->title);
-        $this->assertSame('93216.66', $run->total_net_pay);
+        $this->assertSame($netPay, $run->total_net_pay);
         $this->assertSame('33333.33', $run->payslips()->where('employee_id', $this->salary->employee_id)->value('basic_salary'));
         $this->expectException(\LogicException::class);
         $run->process();

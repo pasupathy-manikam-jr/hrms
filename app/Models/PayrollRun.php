@@ -73,14 +73,14 @@ class PayrollRun extends Model
                 ->where('is_active', true)
                 ->whereHas('employee', fn ($q) => $q->where('employee_status', 'active')
                     ->where(fn ($q) => $q->whereNull('date_of_joining')->orWhere('date_of_joining', '<=', $this->pay_period_end->toDateString())))
-                ->with('components')
+                ->with(['components', 'employee'])
                 ->orderBy('employee_id')
                 ->get();
 
             $totals = ['gross_pay' => 0, 'total_deductions' => 0, 'net_pay' => 0];
 
             foreach ($salaries as $salary) {
-                $pay = $salary->calculate();
+                $pay = $salary->calculate($this->pay_period_start);
 
                 $this->payslips()->create([
                     ...$pay,

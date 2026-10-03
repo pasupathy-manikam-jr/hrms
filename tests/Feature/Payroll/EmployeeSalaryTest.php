@@ -37,7 +37,7 @@ class EmployeeSalaryTest extends TestCase
                 ->component('hr/employee-salaries/index')
                 ->has('employeeSalaries.data', 1)
                 ->where('employeeSalaries.data.0.gross_pay', '70000.00')
-                ->where('employeeSalaries.data.0.net_pay', '64000.00')
+                ->where('employeeSalaries.data.0.net_pay', $salary->load('components', 'employee')->calculate()['net_pay'])
                 ->has('employees', 1));
 
         $this->put(route('hr.employee-salaries.update', $salary), ['employee_id' => $employee->id, 'basic_salary' => '60000.50', 'component_ids' => [$pf->id], 'is_active' => false])

@@ -37,8 +37,13 @@ export function FormDialog({
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="max-h-[90dvh] overflow-y-auto sm:max-w-2xl">
-                <form noValidate onSubmit={onSubmit} className="grid gap-6">
+            {/* Header and footer stay put; only the fields scroll on long forms. */}
+            <DialogContent className="flex max-h-[90dvh] flex-col sm:max-w-2xl">
+                <form
+                    noValidate
+                    onSubmit={onSubmit}
+                    className="flex min-h-0 flex-1 flex-col gap-4"
+                >
                     <DialogHeader>
                         <DialogTitle>{t(title)}</DialogTitle>
                         {description && (
@@ -47,7 +52,9 @@ export function FormDialog({
                             </DialogDescription>
                         )}
                     </DialogHeader>
-                    <div className="grid gap-4">{children}</div>
+                    <div className="-mx-6 grid min-h-0 flex-1 gap-4 overflow-y-auto px-6 py-1">
+                        {children}
+                    </div>
                     <DialogFooter>
                         <Button
                             type="button"

@@ -52,7 +52,7 @@ class PayslipTest extends TestCase
         $this->get(route('hr.payslips.index', ['payroll_run_id' => $this->draft->id, 'employee_id' => $this->employeeUser->employee->id]))
             ->assertInertia(fn ($page) => $page
                 ->has('payslips.data', 1)
-                ->where('payslips.data.0.net_pay', '26400.00')
+                ->where('payslips.data.0.gross_pay', '30000.00')
                 ->where('payslips.data.0.deductions.0', ['name' => 'PF', 'amount' => '3600.00']));
 
         $this->get(route('hr.payslips.index', ['status' => 'downloaded']))

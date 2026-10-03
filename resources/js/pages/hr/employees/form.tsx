@@ -32,7 +32,7 @@ type EmployeeDocument = {
     file_name: string;
 };
 
-type Employee = Record<string, string | number | null> & {
+type Employee = Record<string, string | number | boolean | null> & {
     id: number;
     user: {
         id: number;
@@ -81,6 +81,13 @@ const blank = {
     bank_identifier_code: '',
     bank_branch: '',
     tax_payer_id: '',
+    citizenship: '',
+    marital_status: 'single',
+    spouse_working: '1',
+    tax_children: '0',
+    tax_resident: '1',
+    epf_number: '',
+    lindung24_opt_out: '0',
 };
 
 type Field = keyof typeof blank;
@@ -142,7 +149,7 @@ const STEPS: {
     },
     {
         title: 'Banking',
-        heading: 'Banking Information',
+        heading: 'Banking & Statutory',
         icon: Banknote,
         fields: [
             'bank_name',
@@ -151,6 +158,13 @@ const STEPS: {
             'bank_identifier_code',
             'bank_branch',
             'tax_payer_id',
+            'citizenship',
+            'marital_status',
+            'spouse_working',
+            'tax_children',
+            'tax_resident',
+            'epf_number',
+            'lindung24_opt_out',
         ],
     },
     {
@@ -196,6 +210,13 @@ export default function EmployeeForm({
             reports_to_id: employee.user.reports_to_id ?? '',
             password: '',
             id_type: (employee.id_type as string | null) ?? 'mykad',
+            marital_status:
+                (employee.marital_status as string | null) ?? 'single',
+            tax_children: String(employee.tax_children ?? 0),
+            // Yes/No selects hold '1' / '0'.
+            spouse_working: employee.spouse_working === false ? '0' : '1',
+            tax_resident: employee.tax_resident === false ? '0' : '1',
+            lindung24_opt_out: employee.lindung24_opt_out ? '1' : '0',
         }),
         photo: null as File | null,
         documents: {} as Record<number, File>,
@@ -319,6 +340,10 @@ export default function EmployeeForm({
             { required },
         );
 
+    const yesNo = [
+        { value: '1', label: t('Yes') },
+        { value: '0', label: t('No') },
+    ];
     const toOptions = (items: Option[]) =>
         items.map((item) => ({ value: item.id, label: item.name }));
     const numeric = (key: Field) => (value: string) =>
@@ -530,6 +555,60 @@ export default function EmployeeForm({
             {text('tax_payer_id', 'Income Tax No.', {
                 placeholder: 'e.g. IG12345678090',
             })}
+            <h3 className="mt-2 font-medium sm:col-span-2">
+                {t('Statutory (EPF, SOCSO, EIS, PCB)')}
+            </h3>
+            {text('epf_number', 'EPF Member No.', {
+                placeholder: 'e.g. 12345678',
+            })}
+            {select(
+                'citizenship',
+                'Citizenship',
+                [
+                    { value: 'citizen', label: t('Malaysian citizen') },
+                    {
+                        value: 'permanent_resident',
+                        label: t('Permanent resident'),
+                    },
+                    { value: 'foreigner', label: t('Foreign worker') },
+                ],
+                {
+                    required: false,
+                    empty: t('From identity document'),
+                },
+            )}
+            {select(
+                'marital_status',
+                'Marital Status',
+                [
+                    { value: 'single', label: t('Single') },
+                    { value: 'married', label: t('Married') },
+                    { value: 'divorced', label: t('Divorced') },
+                    { value: 'widowed', label: t('Widowed') },
+                ],
+                { required: false },
+            )}
+            {form.data.marital_status === 'married' &&
+                select('spouse_working', 'Spouse Working', yesNo, {
+                    required: false,
+                })}
+            {form.data.marital_status !== 'single' &&
+                text('tax_children', 'Child Relief Units', {
+                    type: 'number',
+                    hint: 'Per LHDN: 1 per child under 18; 4 for a child 18+ in diploma/degree study or a disabled child; 8 for a disabled child in higher study.',
+                })}
+            {select('tax_resident', 'Tax Resident', yesNo, {
+                required: false,
+            })}
+            {select(
+                'lindung24_opt_out',
+                'Lindung 24 Jam (SOCSO)',
+                [
+                    { value: '0', label: t('Contributing') },
+                    { value: '1', label: t('Opted out') },
+                ],
+                { required: false },
+            )}
         </>,
         <>
             {documentTypes.length === 0 && (

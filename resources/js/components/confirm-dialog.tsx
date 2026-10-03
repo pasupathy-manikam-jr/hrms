@@ -1,3 +1,4 @@
+import { TriangleAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -30,11 +31,16 @@ export function ConfirmDialog({
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>{t(title)}</DialogTitle>
-                    <DialogDescription>{t(description)}</DialogDescription>
-                </DialogHeader>
+            <DialogContent className="sm:max-w-md">
+                <div className="flex gap-4">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-destructive/10 text-destructive">
+                        <TriangleAlert className="size-5" />
+                    </span>
+                    <DialogHeader className="m-0 border-0 p-0">
+                        <DialogTitle>{t(title)}</DialogTitle>
+                        <DialogDescription>{t(description)}</DialogDescription>
+                    </DialogHeader>
+                </div>
                 <DialogFooter>
                     <Button
                         variant="outline"

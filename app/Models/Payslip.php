@@ -18,10 +18,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $net_pay
  * @property list<array{name: string, amount: string}> $earnings
  * @property list<array{name: string, amount: string}> $deductions
+ * @property array<string, int>|null $statutory employee and employer EPF/SOCSO/EIS/PCB amounts in sen (see Statutory\Contributions)
  */
 #[Fillable([
     'payroll_run_id', 'employee_id', 'payslip_number', 'basic_salary', 'total_earnings', 'gross_pay',
-    'total_deductions', 'net_pay', 'earnings', 'deductions', 'status',
+    'total_deductions', 'net_pay', 'earnings', 'deductions', 'statutory', 'status',
 ])]
 class Payslip extends Model
 {
@@ -45,6 +46,7 @@ class Payslip extends Model
             'net_pay' => 'decimal:2',
             'earnings' => 'array',
             'deductions' => 'array',
+            'statutory' => 'array',
         ];
     }
 

@@ -7,6 +7,7 @@ import {
     DialogContent,
     DialogDescription,
     DialogFooter,
+    DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
@@ -68,13 +69,15 @@ export default function PasskeyItem({ passkey, onDelete }: Props) {
                     </Button>
                 </DialogTrigger>
                 <DialogContent>
-                    <DialogTitle>Remove passkey</DialogTitle>
-                    <DialogDescription>
-                        Are you sure you want to remove the "{passkey.name}"
-                        passkey? You will no longer be able to use it to sign
-                        in.
-                    </DialogDescription>
-                    <DialogFooter className="gap-2">
+                    <DialogHeader>
+                        <DialogTitle>Remove passkey</DialogTitle>
+                        <DialogDescription>
+                            Are you sure you want to remove the "{passkey.name}"
+                            passkey? You will no longer be able to use it to
+                            sign in.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
                         <DialogClose asChild>
                             <Button variant="secondary">Cancel</Button>
                         </DialogClose>

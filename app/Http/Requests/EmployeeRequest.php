@@ -6,6 +6,7 @@ use App\Models\DocumentType;
 use App\Models\Employee;
 use App\Models\EmployeeDocument;
 use App\Models\User;
+use App\Support\Statutory\Epf;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
@@ -99,6 +100,9 @@ class EmployeeRequest extends FormRequest
             'id_type' => __('identity document'),
             'id_number' => __('MyKad / passport number'),
             'tax_payer_id' => __('income tax number'),
+            'epf_number' => __('EPF member number'),
+            'tax_children' => __('child relief units'),
+            'lindung24_opt_out' => __('Lindung 24 Jam'),
             'photo' => __('profile image'),
         ];
     }
@@ -167,6 +171,14 @@ class EmployeeRequest extends FormRequest
             'bank_identifier_code' => ['nullable', 'string', 'max:50'],
             'bank_branch' => ['nullable', 'string', 'max:255'],
             'tax_payer_id' => ['nullable', 'string', 'max:50'],
+            // Statutory payroll: optional so imports keep the defaults (citizen per MyKad, single, tax resident).
+            'citizenship' => ['nullable', Rule::in(Epf::CITIZENSHIPS)],
+            'marital_status' => ['nullable', Rule::in(Employee::MARITAL_STATUSES)],
+            'spouse_working' => ['sometimes', 'boolean'],
+            'tax_children' => ['sometimes', 'integer', 'min:0', 'max:99'],
+            'tax_resident' => ['sometimes', 'boolean'],
+            'epf_number' => ['nullable', 'string', 'regex:/^\d{5,20}$/'],
+            'lindung24_opt_out' => ['sometimes', 'boolean'],
         ];
     }
 }

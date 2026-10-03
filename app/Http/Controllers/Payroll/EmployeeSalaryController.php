@@ -30,7 +30,7 @@ class EmployeeSalaryController extends Controller
 
         $query = EmployeeSalary::query()
             ->visibleTo($user)
-            ->with(['employee:id,user_id,employee_id,gender', 'employee.user:id,name,email,avatar_path', 'components'])
+            ->with(['employee:id,user_id,employee_id,gender,date_of_birth,id_type,citizenship,marital_status,spouse_working,tax_children,tax_resident,lindung24_opt_out', 'employee.user:id,name,email,avatar_path', 'components'])
             ->when($request->integer('employee_id'), fn ($q, $id) => $q->where('employee_id', $id))
             ->when($search, fn ($q) => $q->whereHas('employee', fn ($e) => $e
                 ->where('employee_id', 'like', "%{$search}%")
@@ -115,7 +115,7 @@ class EmployeeSalaryController extends Controller
             'employeeName' => $employee->user->name,
             'payrollRuns' => $runs,
             'selectedRunId' => $run->id,
-            'payslip' => $payslip->only('basic_salary', 'total_earnings', 'gross_pay', 'total_deductions', 'net_pay', 'earnings', 'deductions'),
+            'payslip' => $payslip->only('basic_salary', 'total_earnings', 'gross_pay', 'total_deductions', 'net_pay', 'earnings', 'deductions', 'statutory'),
             'attendance' => [
                 'working_days' => LeaveApplication::workingDaysBetween($run->pay_period_start, $run->pay_period_end, $employee->branch_id),
                 'full_present_days' => $count('present'),
