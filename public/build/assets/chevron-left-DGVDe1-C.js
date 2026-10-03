@@ -1,0 +1,1 @@
+import{r as e}from"./wayfinder-v_aO0W71.js";var t=e(`ChevronLeft`,[[`path`,{d:`m15 18-6-6 6-6`,key:`1wnfg3`}]]);export{t};
