@@ -1,14 +1,5 @@
 import { Form, Head } from '@inertiajs/react';
-import {
-    Briefcase,
-    Building2,
-    Copy,
-    Lock,
-    Mail,
-    User,
-    Users,
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import { Lock, Mail } from 'lucide-react';
 import { useState } from 'react';
 import InputError from '@/components/input-error';
 import PasskeyVerify from '@/components/passkey-verify';
@@ -18,34 +9,32 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Spinner } from '@/components/ui/spinner';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
 import { useTranslation } from '@/hooks/use-translation';
 
+type DemoLogin = { name: string; email: string; password: string };
+
 type Props = {
     status?: string;
     canResetPassword: boolean;
-    demo: boolean;
+    demoLogins: DemoLogin[];
 };
 
-// Mirrors DatabaseSeeder.
-const demoAccounts: { role: string; email: string; icon: LucideIcon }[] = [
-    { role: 'Company', email: 'company@example.com', icon: Building2 },
-    { role: 'HR', email: 'hr@example.com', icon: Briefcase },
-    { role: 'Employee', email: 'employee@example.com', icon: User },
-];
-const demoPassword = 'Zx123456';
-
-export default function Login({ status, canResetPassword, demo }: Props) {
-    const [email, setEmail] = useState(demo ? demoAccounts[0].email : '');
-    const [password, setPassword] = useState(demo ? demoPassword : '');
+export default function Login({ status, canResetPassword, demoLogins }: Props) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const { t } = useTranslation();
 
-    const fillAccount = (accountEmail: string) => {
-        setEmail(accountEmail);
-        setPassword(demoPassword);
-        void navigator.clipboard?.writeText(accountEmail);
+    const fill = (loginEmail: string) => {
+        const login = demoLogins.find((l) => l.email === loginEmail);
+
+        if (login) {
+            setEmail(login.email);
+            setPassword(login.password);
+        }
     };
 
     return (
@@ -68,6 +57,35 @@ export default function Login({ status, canResetPassword, demo }: Props) {
             >
                 {({ processing, errors }) => (
                     <>
+                        {demoLogins.length > 0 && (
+                            <div className="grid gap-3 rounded-lg border bg-muted/50 p-4">
+                                <Label id="quick-login">
+                                    {t('Quick login')}
+                                </Label>
+                                <RadioGroup
+                                    aria-labelledby="quick-login"
+                                    onValueChange={fill}
+                                >
+                                    {demoLogins.map((login) => (
+                                        <Label
+                                            key={login.email}
+                                            className="flex cursor-pointer items-center gap-3 font-normal"
+                                        >
+                                            <RadioGroupItem
+                                                value={login.email}
+                                            />
+                                            <span className="font-medium">
+                                                {t(login.name)}
+                                            </span>
+                                            <span className="truncate text-muted-foreground">
+                                                {login.email}
+                                            </span>
+                                        </Label>
+                                    ))}
+                                </RadioGroup>
+                            </div>
+                        )}
+
                         <div>
                             <Label htmlFor="email" className="mb-2">
                                 {t('Email address')}
@@ -154,86 +172,6 @@ export default function Login({ status, canResetPassword, demo }: Props) {
                     </>
                 )}
             </Form>
-
-            {demo && (
-                <div className="mt-6 border-t border-gray-100 pt-4 dark:border-gray-700">
-                    <div className="rounded-xl border border-gray-100 bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-                        <div className="mb-2 flex items-center gap-2">
-                            <div className="flex size-6 items-center justify-center rounded-full bg-primary/10">
-                                <Users className="size-3.5 text-primary" />
-                            </div>
-                            <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
-                                {t('Demo Login Credentials')}
-                            </h3>
-                        </div>
-                        <div className="overflow-hidden rounded-lg border border-gray-100 dark:border-gray-700">
-                            <table className="w-full table-fixed text-start text-xs [&_th]:text-start">
-                                <thead className="bg-primary/5">
-                                    <tr className="border-b border-gray-100 text-gray-900 dark:border-gray-700 dark:text-gray-100">
-                                        <th className="w-[30%] py-2 ps-2 font-semibold">
-                                            {t('Role')}
-                                        </th>
-                                        <th className="w-[40%] py-2 font-semibold">
-                                            {t('Email')}
-                                        </th>
-                                        <th className="w-[20%] py-2 font-semibold">
-                                            {t('Password')}
-                                        </th>
-                                        <th className="w-[10%] py-2 pe-3">
-                                            <span className="sr-only">Use</span>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
-                                    {demoAccounts.map(
-                                        ({
-                                            role,
-                                            email: accountEmail,
-                                            icon: Icon,
-                                        }) => (
-                                            <tr key={accountEmail}>
-                                                <td className="py-1.5 ps-2">
-                                                    <div className="flex items-center gap-2 font-medium text-gray-900 dark:text-gray-100">
-                                                        <span className="hidden size-5 shrink-0 items-center justify-center rounded-full bg-primary/10 sm:flex">
-                                                            <Icon className="size-3 text-primary" />
-                                                        </span>
-                                                        <span className="truncate">
-                                                            {t(role)}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td
-                                                    className="truncate py-1.5 pe-2 text-gray-600 dark:text-gray-300"
-                                                    title={accountEmail}
-                                                >
-                                                    {accountEmail}
-                                                </td>
-                                                <td className="truncate py-1.5 font-mono text-sm text-gray-600 dark:text-gray-300">
-                                                    {demoPassword}
-                                                </td>
-                                                <td className="py-1.5 pe-3 text-end">
-                                                    <button
-                                                        type="button"
-                                                        onClick={() =>
-                                                            fillAccount(
-                                                                accountEmail,
-                                                            )
-                                                        }
-                                                        className="inline-flex cursor-pointer items-center justify-center rounded bg-primary/10 p-1.5 hover:opacity-80"
-                                                        aria-label={`${t('Use')} ${t(role)}`}
-                                                    >
-                                                        <Copy className="size-3.5 text-primary" />
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ),
-                                    )}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            )}
         </>
     );
 }

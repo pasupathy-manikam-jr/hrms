@@ -46,12 +46,12 @@ return [
     | Demo Mode
     |--------------------------------------------------------------------------
     |
-    | Shows the demo login credentials on the login screen. Never enable
-    | this on a real installation.
+    | Offers the seeded demo accounts as one-click logins on the login page.
+    | Local and demo servers only: it publishes those passwords.
     |
     */
 
-    'demo' => (bool) env('APP_DEMO', false),
+    'demo_logins' => (bool) env('DEMO_LOGINS', false),
 
     /*
     |--------------------------------------------------------------------------

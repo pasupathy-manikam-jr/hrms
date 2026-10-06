@@ -8,6 +8,18 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
+     * Demo accounts. With DEMO_LOGINS=true the login page also offers them as
+     * one-click logins, so never enable that flag on a live server.
+     *
+     * @var list<array{name: string, email: string, password: string, role: string}>
+     */
+    public const LOGINS = [
+        ['name' => 'Company', 'email' => 'company@example.com', 'password' => 'Zx123456', 'role' => 'company'],
+        ['name' => 'HR', 'email' => 'hr@example.com', 'password' => 'Zx123456', 'role' => 'hr'],
+        ['name' => 'Employee', 'email' => 'employee@example.com', 'password' => 'Zx123456', 'role' => 'employee'],
+    ];
+
+    /**
      * Module seeders in dependency order; each loads the WorkDo demo's records
      * from database/demo/*.json. Modules not built yet are skipped.
      *
@@ -53,13 +65,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([RolesSeeder::class, SettingsSeeder::class]);
 
-        // Demo accounts shown on the login screen when APP_DEMO=true.
-        foreach (['Company' => 'company', 'HR' => 'hr', 'Employee' => 'employee'] as $name => $role) {
+        foreach (self::LOGINS as $login) {
             User::factory()->create([
-                'name' => $name, // renamed by MalaysianNamesSeeder
-                'email' => "{$role}@example.com",
-                'password' => 'Zx123456',
-            ])->assignRole($role);
+                'name' => $login['name'], // renamed by MalaysianNamesSeeder
+                'email' => $login['email'],
+                'password' => $login['password'],
+            ])->assignRole($login['role']);
         }
 
         $this->call(array_values(array_filter(self::MODULES, 'class_exists')));
