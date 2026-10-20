@@ -55,3 +55,10 @@ router.on('success', (event) => {
         document.documentElement.style.setProperty('--ring', color);
     }
 });
+
+// Sidebar links prefetch pages for 30s; after any save, drop those copies so the next page shows the new data.
+router.on('finish', (event) => {
+    if (event.detail.visit.method !== 'get' && event.detail.visit.completed) {
+        router.flushAll();
+    }
+});
