@@ -51,6 +51,8 @@ class SurveyAnalytics
         $this->minCompanies = ($filters['confidentiality'] ?? null) === 'on' ? $cycle->min_companies : 1;
         $this->participants = SurveyParticipant::query()
             ->where('survey_cycle_id', $cycle->id)
+            // Submissions that still have errors wait for a clean re-upload.
+            ->whereNull('errors')
             ->where(function (Builder $query) {
                 foreach (self::PROFILE_FILTERS as $field) {
                     if (filled($this->filters[$field] ?? null)) {

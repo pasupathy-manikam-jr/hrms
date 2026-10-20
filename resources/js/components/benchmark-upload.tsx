@@ -9,12 +9,12 @@ import { useTranslation } from '@/hooks/use-translation';
 export type UploadResult = {
     file: string;
     company: string | null;
-    status: 'imported' | 'replaced' | 'rejected' | 'skipped';
+    status: 'imported' | 'replaced' | 'needs_fixing' | 'rejected' | 'skipped';
     errors: string[];
     warnings: string[];
 };
 
-/** True when a visit's flashed upload report (if any) saved every file — the dialog can close. */
+/** True when a visit's flashed upload report (if any) saved every file without errors — the dialog can close. */
 export function allImported(flash: Record<string, unknown>) {
     const report = flash.benchmarkUpload as UploadResult[] | undefined;
 
@@ -134,40 +134,92 @@ export function WorkbookPicker({
 
 /** Per-file outcome of an upload: company, status, errors and warnings. */
 export function UploadReport({ results }: { results: UploadResult[] }) {
+    const { t } = useTranslation();
+    const count = (status: UploadResult['status']) =>
+        results.filter((result) => result.status === status).length;
+    const toFix = count('needs_fixing');
+    const notSaved = count('rejected') + count('skipped');
+
     return (
-        <ul className="grid min-w-0 gap-3">
-            {results.map((result, index) => (
-                <li
-                    key={index}
-                    className="grid min-w-0 gap-1 rounded-lg border p-3 text-sm [overflow-wrap:anywhere]"
-                >
-                    <div className="flex items-center justify-between gap-3">
-                        <div className="min-w-0">
-                            <div className="truncate font-medium">
-                                {result.company ?? result.file}
+        <div className="grid min-w-0 gap-3">
+            <p className="text-sm font-medium">
+                {t(':saved of :total files saved.', {
+                    saved: results.length - notSaved,
+                    total: results.length,
+                })}{' '}
+                {toFix > 0 &&
+                    t(
+                        ':n need fixing: their issues are kept on each company’s Issues tab and in Participants → Export Issues.',
+                        { n: toFix },
+                    )}
+            </p>
+            <ul className="grid min-w-0 gap-2">
+                {results.map((result, index) => (
+                    <li
+                        key={index}
+                        className="grid min-w-0 gap-1 rounded-lg border p-3 text-sm [overflow-wrap:anywhere]"
+                    >
+                        <div className="flex items-center justify-between gap-3">
+                            <div className="min-w-0">
+                                <div className="truncate font-medium">
+                                    {result.company ?? result.file}
+                                </div>
+                                <div className="truncate text-xs text-muted-foreground">
+                                    {result.file}
+                                </div>
                             </div>
-                            <div className="truncate text-xs text-muted-foreground">
-                                {result.file}
-                            </div>
+                            <StatusBadge status={result.status} />
                         </div>
-                        <StatusBadge status={result.status} />
-                    </div>
-                    {result.errors.length > 0 && (
-                        <ul className="max-h-40 list-disc overflow-y-auto ps-5 text-destructive">
-                            {result.errors.map((error) => (
-                                <li key={error}>{error}</li>
-                            ))}
-                        </ul>
-                    )}
-                    {result.warnings.length > 0 && (
-                        <ul className="max-h-32 list-disc overflow-y-auto ps-5 text-amber-600">
-                            {result.warnings.map((warning) => (
-                                <li key={warning}>{warning}</li>
-                            ))}
-                        </ul>
-                    )}
-                </li>
-            ))}
-        </ul>
+                        {result.errors.length + result.warnings.length > 0 && (
+                            // A file that wasn't saved shows why at once; a saved one keeps its list folded.
+                            <details
+                                open={
+                                    result.status === 'rejected' ||
+                                    result.status === 'skipped'
+                                }
+                            >
+                                <summary className="cursor-pointer text-muted-foreground select-none">
+                                    {result.errors.length > 0 && (
+                                        <span className="text-destructive">
+                                            {t(':n errors', {
+                                                n: result.errors.length,
+                                            })}
+                                        </span>
+                                    )}
+                                    {result.errors.length > 0 &&
+                                        result.warnings.length > 0 &&
+                                        ' · '}
+                                    {result.warnings.length > 0 && (
+                                        <span className="text-amber-600">
+                                            {t(':n warnings', {
+                                                n: result.warnings.length,
+                                            })}
+                                        </span>
+                                    )}
+                                </summary>
+                                <ol className="mt-1 max-h-60 list-decimal overflow-y-auto ps-5">
+                                    {result.errors.map((error, i) => (
+                                        <li
+                                            key={`e${i}`}
+                                            className="text-destructive"
+                                        >
+                                            {error}
+                                        </li>
+                                    ))}
+                                    {result.warnings.map((warning, i) => (
+                                        <li
+                                            key={`w${i}`}
+                                            className="text-amber-600"
+                                        >
+                                            {warning}
+                                        </li>
+                                    ))}
+                                </ol>
+                            </details>
+                        )}
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 }

@@ -240,6 +240,7 @@ class SurveyWorkbook
             if ($title === null) {
                 if (($own = self::text($cell('D'))) !== null || self::text($cell('F')) !== null || self::text($cell($pay['median'])) !== null) {
                     $this->errors[] = __('Salary Data row :row (:title): Standard Job Title is missing; choose one from the catalogue.', ['row' => $row - 5, 'title' => $own ?? '—']);
+                    $untitled = true;
                 }
 
                 continue;
@@ -296,7 +297,7 @@ class SurveyWorkbook
             $rows[] = self::withTotals($data);
         }
 
-        if ($rows === []) {
+        if ($rows === [] && ! isset($untitled)) {
             $this->errors[] = __('Salary Data › No job rows were filled in.');
         }
 

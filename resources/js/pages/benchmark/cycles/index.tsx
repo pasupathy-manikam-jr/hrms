@@ -16,6 +16,13 @@ import { PageHeader } from '@/components/page-header';
 import { SelectField } from '@/components/select-field';
 import { StatusBadge } from '@/components/status-badge';
 import { Button } from '@/components/ui/button';
+import {
+    Dialog,
+    DialogContent,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useCan } from '@/hooks/use-can';
@@ -88,11 +95,8 @@ export default function SurveyCycles({
             {
                 forceFormData: true,
                 preserveScroll: true,
-                // Stay open only to show why a workbook was rejected or skipped.
-                onSuccess: (page) =>
-                    allImported(page.flash)
-                        ? setFormOpen(false)
-                        : form.setData('files', []),
+                // The cycle is saved either way; any per-file report opens in its own dialog.
+                onSuccess: () => setFormOpen(false),
             },
         );
 
@@ -330,13 +334,38 @@ export default function SurveyCycles({
                             />
                         </div>
                     )}
-                    {results && (
-                        <div className="sm:col-span-2">
-                            <UploadReport results={results} />
-                        </div>
-                    )}
                 </div>
             </FormDialog>
+
+            <Dialog
+                open={
+                    results !== null &&
+                    !allImported({ benchmarkUpload: results })
+                }
+                onOpenChange={(open) => !open && setResults(null)}
+            >
+                <DialogContent className="flex max-h-[90dvh] flex-col sm:max-w-2xl">
+                    <DialogHeader>
+                        <DialogTitle>{t('Upload Results')}</DialogTitle>
+                    </DialogHeader>
+                    <div className="-mx-6 min-h-0 flex-1 overflow-y-auto px-6">
+                        {results && <UploadReport results={results} />}
+                    </div>
+                    <DialogFooter>
+                        <Button
+                            variant="outline"
+                            onClick={() => setResults(null)}
+                        >
+                            {t('Close')}
+                        </Button>
+                        <Button asChild>
+                            <Link href={participantRoutes.index()}>
+                                {t('Go to Participants')}
+                            </Link>
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
 
             <ConfirmDialog
                 open={deleting !== null}

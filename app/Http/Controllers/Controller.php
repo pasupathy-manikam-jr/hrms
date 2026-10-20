@@ -30,8 +30,11 @@ abstract class Controller
     protected function uploadReport(array $report): RedirectResponse
     {
         Inertia::flash('benchmarkUpload', $report);
-        $saved = collect($report)->whereIn('status', ['imported', 'replaced'])->count();
+        $clean = collect($report)->whereIn('status', ['imported', 'replaced'])->count();
+        $toFix = collect($report)->where('status', 'needs_fixing')->count();
+        $message = __(':saved of :total files imported.', ['saved' => $clean + $toFix, 'total' => count($report)])
+            .($toFix > 0 ? ' '.__(':count need fixing before they count in the analytics.', ['count' => $toFix]) : '');
 
-        return $this->toast($saved === count($report) ? 'success' : 'warning', __(':saved of :total files imported.', ['saved' => $saved, 'total' => count($report)]));
+        return $this->toast($clean === count($report) ? 'success' : 'warning', $message);
     }
 }

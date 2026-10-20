@@ -4,6 +4,7 @@ import {
     CalendarDays,
     Download,
     Factory,
+    FileDown,
     MapPin,
     UserCheck,
     Users,
@@ -15,7 +16,9 @@ import {
     SummaryIcon,
     TextBlock,
 } from '@/components/detail-page';
+import { StatusBadge } from '@/components/status-badge';
 import { Button } from '@/components/ui/button';
+import { useCan } from '@/hooks/use-can';
 import { useFormat } from '@/hooks/use-format';
 import { useTranslation } from '@/hooks/use-translation';
 import { cn } from '@/lib/utils';
@@ -31,7 +34,7 @@ type SalaryRow = {
     headcount: number;
     male: number;
     female: number;
-    median_salary: string;
+    median_salary: string | null;
     avg_overall: string | null;
     guaranteed_bonus_months: string | null;
     total_allowances: string;
@@ -54,9 +57,9 @@ type Attrition = Record<string, string | number | boolean | null>;
 type Participant = {
     id: number;
     company_name: string;
-    industry: string;
-    state: string;
-    employee_band: string;
+    industry: string | null;
+    state: string | null;
+    employee_band: string | null;
     revenue_band: string | null;
     ownership_type: string | null;
     locations: number | null;
@@ -66,6 +69,7 @@ type Participant = {
     authorised_designation: string | null;
     consent_date: string | null;
     file_name: string | null;
+    errors: string[] | null;
     warnings: string[] | null;
     created_at: string;
     cycle: { id: number; name: string; min_companies: number };
@@ -86,6 +90,7 @@ export default function SurveyParticipantShow({
 }) {
     const { t } = useTranslation();
     const { date, money } = useFormat();
+    const can = useCan();
     const a = p.attrition ?? {};
 
     const salaryTable = (
@@ -114,9 +119,12 @@ export default function SurveyParticipantShow({
                 </thead>
                 <tbody>
                     {salaryRows.map((row) => {
-                        const median = Number(row.median_salary);
+                        const median =
+                            row.median_salary === null
+                                ? null
+                                : Number(row.median_salary);
                         const diff =
-                            row.market_median !== null
+                            row.market_median !== null && median !== null
                                 ? ((median - row.market_median) /
                                       row.market_median) *
                                   100
@@ -141,7 +149,7 @@ export default function SurveyParticipantShow({
                                     </span>
                                 </td>
                                 <td className="px-2 py-2 whitespace-nowrap">
-                                    {money(median)}
+                                    {median === null ? '-' : money(median)}
                                 </td>
                                 <td className="px-2 py-2 whitespace-nowrap">
                                     {row.market_median !== null ? (
@@ -246,7 +254,11 @@ export default function SurveyParticipantShow({
                             subtitle={p.industry}
                             facts={[
                                 [MapPin, p.state],
-                                [Users, `${p.employee_band} ${t('employees')}`],
+                                [
+                                    Users,
+                                    p.employee_band &&
+                                        `${p.employee_band} ${t('employees')}`,
+                                ],
                                 [Factory, p.ownership_type],
                                 [
                                     UserCheck,
@@ -261,6 +273,13 @@ export default function SurveyParticipantShow({
                                 ],
                             ]}
                         />
+                        <div className="mt-4">
+                            <StatusBadge
+                                status={
+                                    p.errors?.length ? 'needs_fixing' : 'ready'
+                                }
+                            />
+                        </div>
                         {hasFile && (
                             <Button variant="outline" className="mt-5" asChild>
                                 <a
@@ -274,6 +293,66 @@ export default function SurveyParticipantShow({
                     </>
                 }
                 tabs={[
+                    ...(p.errors?.length || p.warnings?.length
+                        ? [
+                              {
+                                  label: 'Issues',
+                                  heading: p.errors?.length
+                                      ? 'Needs fixing before it counts in the analytics'
+                                      : 'Warnings',
+                                  content: (
+                                      <div className="grid gap-4 text-sm">
+                                          {can('export-benchmark-survey') && (
+                                              <div>
+                                                  <Button
+                                                      variant="outline"
+                                                      asChild
+                                                  >
+                                                      <a
+                                                          href={participantRoutes.issues.url(
+                                                              {
+                                                                  query: {
+                                                                      cycle: p
+                                                                          .cycle
+                                                                          .id,
+                                                                      participant:
+                                                                          p.id,
+                                                                  },
+                                                              },
+                                                          )}
+                                                          download
+                                                      >
+                                                          <FileDown />{' '}
+                                                          {t(
+                                                              'Download Issues (CSV)',
+                                                          )}
+                                                      </a>
+                                                  </Button>
+                                              </div>
+                                          )}
+                                          {!!p.errors?.length && (
+                                              <IssueList
+                                                  title={t(':n errors', {
+                                                      n: p.errors.length,
+                                                  })}
+                                                  issues={p.errors}
+                                                  className="border-red-200 bg-red-50 text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200"
+                                              />
+                                          )}
+                                          {!!p.warnings?.length && (
+                                              <IssueList
+                                                  title={t(':n warnings', {
+                                                      n: p.warnings.length,
+                                                  })}
+                                                  issues={p.warnings}
+                                                  className="border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200"
+                                              />
+                                          )}
+                                      </div>
+                                  ),
+                              },
+                          ]
+                        : []),
                     {
                         label: 'Salary Data',
                         heading: 'Salary Data vs Market',
@@ -392,24 +471,34 @@ export default function SurveyParticipantShow({
                                         ['Uploaded at', date(p.created_at)],
                                     ]}
                                 />
-                                {!!p.warnings?.length && (
-                                    <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200">
-                                        <div className="mb-1 font-semibold">
-                                            {t('Warnings')}
-                                        </div>
-                                        <ul className="list-disc ps-5">
-                                            {p.warnings.map((warning) => (
-                                                <li key={warning}>{warning}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
                             </div>
                         ),
                     },
                 ]}
             />
         </>
+    );
+}
+
+/** One coloured box of errors or warnings, in the order the workbook lists them. */
+function IssueList({
+    title,
+    issues,
+    className,
+}: {
+    title: string;
+    issues: string[];
+    className: string;
+}) {
+    return (
+        <div className={cn('rounded-lg border p-3', className)}>
+            <div className="mb-1 font-semibold">{title}</div>
+            <ol className="list-decimal ps-5 [overflow-wrap:anywhere]">
+                {issues.map((issue, index) => (
+                    <li key={index}>{issue}</li>
+                ))}
+            </ol>
+        </div>
     );
 }
 

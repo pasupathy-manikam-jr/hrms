@@ -301,7 +301,7 @@ const CHAPTERS: Chapter[] = [
                 body: 'Every survey edition is a cycle. A cycle is built from the blank survey template, which supplies the standard job catalogue and every answer list. You then upload each company’s completed workbook into the cycle. Each company’s answers are stored separately and kept private; Analytics pools them into market figures.',
                 steps: [
                     'Create the cycle and upload the blank template (once per edition).',
-                    'Upload the completed workbooks as they arrive; fix and re-upload any that are rejected.',
+                    'Upload the completed workbooks as they arrive. Files with errors are kept as “Needs fixing”; export their issues, send them to the company and upload the corrected file.',
                     'Open Analytics, choose your filters and read or export the results.',
                 ],
             },
@@ -324,14 +324,16 @@ const CHAPTERS: Chapter[] = [
                     'Imported — the company has been added to the cycle.',
                     'Replaced — the company was already in the cycle and “Replace existing submissions” was ticked, so its previous data was overwritten.',
                     'Skipped — the company is already in the cycle. Tick “Replace existing submissions” and upload again if this file is a correction.',
-                    'Rejected — the file has errors (listed under it) and nothing was saved. Ask the company to fix them, or fix them yourself, and upload again.',
+                    'Needs fixing — the file was saved but has errors (listed under it). It stays out of Analytics until the corrected file is uploaded; that upload replaces it automatically, without ticking “Replace”.',
+                    'Rejected — the file is not the survey workbook or has no company name, so nothing was saved.',
                 ],
             },
             {
                 title: '4. What the upload checks',
-                body: 'Companies are recognised by name, ignoring case and endings like Sdn Bhd, Berhad or (M), so “Client A Sdn Bhd” and “CLIENT A SDN. BHD.” are the same company. The template’s “Ex.” example row and its own formula columns are ignored; averages and totals are recalculated. A file is rejected when:',
+                body: 'Companies are recognised by name, ignoring case and endings like Sdn Bhd, Berhad or (M), so “Client A Sdn Bhd” and “CLIENT A SDN. BHD.” are the same company. The template’s “Ex.” example row and its own formula columns are ignored; averages and totals are recalculated. A file is marked “Needs fixing” when:',
                 steps: [
-                    'It is not the survey workbook, or consent in “5. Consent & Submission” is not “Yes”.',
+                    'A survey sheet is missing or renamed, or consent in “5. Consent & Submission” is not “Yes”.',
+                    'A cell holds a formula or text (such as “-” or “30 days”) where a figure is expected.',
                     'Company name, industry, state or number of employees is missing, or an answer is not one of the dropdown options.',
                     'A salary row uses a Standard Job Title that is not in the catalogue, or has no job level or median salary.',
                     'Male + Female does not equal Total Headcount, or the tenure columns do not add up to it.',
@@ -340,11 +342,15 @@ const CHAPTERS: Chapter[] = [
                 ],
             },
             {
-                title: '5. Warnings',
+                title: '5. Following up files that need fixing',
+                body: 'In Participants, filter Status to “Needs fixing” to see every company still to follow up. Export Issues downloads one spreadsheet with every error and warning in the cycle (company, file, issue), ready to send. A company’s page has an Issues tab listing its own errors and warnings, with Download Issues (CSV) for just that company. When the company returns the corrected workbook, upload it: it replaces the old one and, once it has no errors, counts in Analytics.',
+            },
+            {
+                title: '6. Warnings',
                 body: 'Warnings do not stop a file; it is imported and the warning count shows in the Participants list and on the company’s page. Examples: an average male or female salary missing although there are staff of that gender, more than 6 months of guaranteed bonus, an attrition rate above 100%, the same job family ranked twice, or retrenchment “Yes” without a driver. Remarks left as the template’s grey guidance text are cleaned out automatically.',
             },
             {
-                title: '6. Each company’s results',
+                title: '7. Each company’s results',
                 body: 'Participants lists every company in the cycle with its industry, state, size, number of roles and staff. Filter by industry, state or size, or search by name. The eye icon opens the company’s page:',
                 steps: [
                     'Salary Data: each role’s median base pay next to the market median for the same job and level, and how far above or below the market it is. The market figure only appears once enough companies report that role.',
@@ -353,7 +359,7 @@ const CHAPTERS: Chapter[] = [
                 ],
             },
             {
-                title: '7. Analytics — slice and dice',
+                title: '8. Analytics — slice and dice',
                 body: 'Analytics pools every company in the chosen cycle. Every filter applies to every view, so you can combine them freely (for example Manufacturing + Selangor + Executive level). Clear Filters resets everything except the cycle.',
                 steps: [
                     'Company filters: industry, state, company size, revenue band, ownership, listed status, unionised workforce.',
@@ -364,7 +370,7 @@ const CHAPTERS: Chapter[] = [
                 ],
             },
             {
-                title: '8. The analytics views',
+                title: '9. The analytics views',
                 body: 'The cards at the top show how many companies, roles and employees are in your cut, and the confidentiality rule. The tabs:',
                 steps: [
                     'Salary Benchmarks: per job and level — companies, incumbents, P25, median, P75 and average base pay, average allowances, guaranteed bonus months and total monthly cash (median + allowances + bonus ÷ 12).',
@@ -377,15 +383,15 @@ const CHAPTERS: Chapter[] = [
                 ],
             },
             {
-                title: '9. Confidentiality and “Insufficient data”',
+                title: '10. Confidentiality and “Insufficient data”',
                 body: 'Analytics shows every figure by default, even one that comes from a single company, because it is your own working view. Before sharing results outside your team, set the last filter to “Hide figures from < N companies” (N is the cycle’s Min. Companies per Figure, usually 3). Figures reported by fewer companies then read “Insufficient data”, so no single company’s pay can be worked out, and Excel and PDF exports follow the same setting.',
             },
             {
-                title: '10. Exporting reports',
+                title: '11. Exporting reports',
                 body: 'Export Excel downloads the current cut as a workbook with one sheet per view. PDF Report downloads a landscape report with a cover page (sample size, confidentiality rule and weighting), the filters used, and every view as a table. Both follow the filters currently selected and apply the same confidentiality rule.',
             },
             {
-                title: '11. Job Catalogue',
+                title: '12. Job Catalogue',
                 body: 'Job Catalogue lists the standard job titles of the selected cycle with their code, job family, industry, typical level and MASCO reference. Use it to answer companies’ questions about which Standard Job Title to choose.',
             },
         ],

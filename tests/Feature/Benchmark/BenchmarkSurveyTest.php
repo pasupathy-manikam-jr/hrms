@@ -71,9 +71,9 @@ class BenchmarkSurveyTest extends TestCase
         ])
             ->assertSessionHasNoErrors()
             ->assertInertiaFlash('benchmarkUpload.0.status', 'imported')
-            ->assertInertiaFlash('benchmarkUpload.1.status', 'rejected');
+            ->assertInertiaFlash('benchmarkUpload.1.status', 'needs_fixing');
 
-        $this->assertSame(['alpha'], SurveyCycle::firstOrFail()->participants()->pluck('company_key')->all());
+        $this->assertSame(['alpha', 'beta'], SurveyCycle::firstOrFail()->participants()->orderBy('company_key')->pluck('company_key')->all());
     }
 
     public function test_a_cycle_can_be_created_from_completed_workbooks_alone_and_the_blank_template_added_later()
@@ -104,8 +104,8 @@ class BenchmarkSurveyTest extends TestCase
         $cycle = $this->cycle();
         $this->actingAs($this->userWithRole());
 
-        $bad = $this->workbook('Faulty Bhd', salary: [['title' => 'Astronaut', 'male' => 3, 'female' => 1, 'headcount' => 5]], consent: 'No');
-        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$this->workbook('Alpha Sdn Bhd'), $bad]])
+        $notSurvey = UploadedFile::fake()->create('notes.xlsx', 5);
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$this->workbook('Alpha Sdn Bhd'), $notSurvey]])
             ->assertSessionHasNoErrors()
             ->assertInertiaFlash('benchmarkUpload.0.status', 'imported')
             ->assertInertiaFlash('benchmarkUpload.1.status', 'rejected');
@@ -132,7 +132,7 @@ class BenchmarkSurveyTest extends TestCase
         $this->assertEquals(5000, SurveyParticipant::firstOrFail()->salaryRows()->where('job_title', 'Process Engineer')->value('median_salary'));
     }
 
-    public function test_a_workbook_missing_a_sheet_is_rejected_with_the_rest_of_its_errors()
+    public function test_a_workbook_missing_a_sheet_is_reported_with_the_rest_of_its_errors()
     {
         $cycle = $this->cycle();
         $this->actingAs($this->userWithRole());
@@ -140,24 +140,24 @@ class BenchmarkSurveyTest extends TestCase
         $file = $this->workbook(without: '5. Consent & Submission', salary: [['title' => 'Astronaut', 'headcount' => 1, 'male' => 1, 'female' => 0]]);
         $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$file]])
             ->assertSessionHasNoErrors()
-            ->assertInertiaFlash('benchmarkUpload.0.status', 'rejected')
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'needs_fixing')
             ->assertInertiaFlash('benchmarkUpload.0.errors.0', 'The workbook is missing the sheet(s): 5. Consent & Submission. Use the survey template without renaming or deleting sheets.')
             ->assertInertiaFlash('benchmarkUpload.0.errors.1', 'Salary Data row 1 (Astronaut): "Astronaut" is not a Standard Job Title in the catalogue.');
 
-        $this->assertSame(0, SurveyParticipant::count());
+        $this->assertCount(2, SurveyParticipant::firstOrFail()->errors ?? []);
     }
 
-    public function test_a_formula_in_place_of_a_figure_is_rejected_with_a_clear_reason()
+    public function test_a_formula_in_place_of_a_figure_is_reported_with_a_clear_reason()
     {
         $cycle = $this->cycle();
         $this->actingAs($this->userWithRole());
 
         $file = $this->workbook(salary: [['title' => 'Process Engineer', 'headcount' => 4, 'male' => 3, 'female' => 1, 'median' => '=(R6-Q6)/2+Q6']]);
         $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$file]])
-            ->assertInertiaFlash('benchmarkUpload.0.status', 'rejected')
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'needs_fixing')
             ->assertInertiaFlash('benchmarkUpload.0.errors', ['Salary Data row 1 (Process Engineer) › Median Base Salary: contains a formula ("=(R6-Q6)/2+Q6"); type the actual figure instead.']);
 
-        $this->assertSame(0, SurveyParticipant::count());
+        $this->assertNull(SurveyParticipant::firstOrFail()->salaryRows()->value('median_salary'));
     }
 
     public function test_salary_columns_are_found_by_heading_in_older_template_versions()
@@ -178,8 +178,37 @@ class BenchmarkSurveyTest extends TestCase
 
         $file = $this->workbook(salary: [['title' => null, 'headcount' => 1, 'male' => 1, 'female' => 0]]);
         $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$file]])
-            ->assertInertiaFlash('benchmarkUpload.0.status', 'rejected')
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'needs_fixing')
             ->assertInertiaFlash('benchmarkUpload.0.errors.0', 'Salary Data row 1 (—): Standard Job Title is missing; choose one from the catalogue.');
+    }
+
+    public function test_a_workbook_with_errors_is_kept_for_follow_up_until_a_clean_file_replaces_it()
+    {
+        $cycle = $this->cycle();
+        $this->actingAs($this->userWithRole());
+        $this->upload($cycle, ['Alpha' => 4000]);
+
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$this->workbook('Beta', consent: 'No', median: 9000)]])
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'needs_fixing');
+        $beta = SurveyParticipant::where('company_key', 'beta')->firstOrFail();
+        $this->assertSame(['Consent & Submission › The company has not consented (must be "Yes").'], $beta->errors);
+        Storage::disk('local')->assertExists((string) $beta->file_path);
+
+        $this->get(route('benchmark.participants.index', ['status' => 'needs_fixing']))
+            ->assertInertia(fn ($page) => $page->where('participants.total', 1)->where('participants.data.0.company_name', 'Beta'));
+        $this->get(route('benchmark.analytics.index'))
+            ->assertInertia(fn ($page) => $page->where('report.overview.companies', 1));
+
+        $csv = $this->get(route('benchmark.participants.issues', ['cycle' => $cycle->id]))->assertOk()->streamedContent();
+        $this->assertStringContainsString('Beta,survey.xlsx,Error,"Consent & Submission › The company has not consented (must be ""Yes"").', $csv);
+        $this->assertStringNotContainsString('Alpha,alpha.xlsx,Error', $csv);
+
+        // The corrected file replaces it without ticking "Replace", and it then counts.
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$this->workbook('Beta', median: 9000)]])
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'replaced');
+        $this->assertNull(SurveyParticipant::where('company_key', 'beta')->firstOrFail()->errors);
+        $this->get(route('benchmark.analytics.index'))
+            ->assertInertia(fn ($page) => $page->where('report.overview.companies', 2));
     }
 
     public function test_analytics_hide_figures_below_the_threshold_and_pool_the_rest()

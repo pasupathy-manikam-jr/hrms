@@ -4,6 +4,7 @@ import {
     CalendarDays,
     Download,
     Eye,
+    FileDown,
     FileUp,
     Trash2,
     TriangleAlert,
@@ -20,6 +21,7 @@ import { DataTable } from '@/components/data-table';
 import type { Column } from '@/components/data-table';
 import InputError from '@/components/input-error';
 import { PageHeader } from '@/components/page-header';
+import { StatusBadge } from '@/components/status-badge';
 import { FilterSelect } from '@/components/table-filters';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -43,11 +45,12 @@ import type { Paginated, TableFilters } from '@/types';
 type Participant = {
     id: number;
     company_name: string;
-    industry: string;
-    state: string;
-    employee_band: string;
+    industry: string | null;
+    state: string | null;
+    employee_band: string | null;
     ownership_type: string | null;
     file_name: string | null;
+    errors: string[] | null;
     warnings: string[] | null;
     salary_rows_count: number;
     salary_rows_sum_headcount: number | null;
@@ -134,17 +137,26 @@ export default function SurveyParticipants({
             ),
         },
         {
-            key: 'warnings',
-            label: 'Warnings',
-            render: (p) =>
-                p.warnings?.length ? (
-                    <span className="flex items-center gap-1 text-amber-600">
-                        <TriangleAlert className="size-4" />
-                        {p.warnings.length}
-                    </span>
-                ) : (
-                    '-'
-                ),
+            key: 'status',
+            label: 'Status',
+            render: (p) => (
+                <div className="flex flex-wrap items-center gap-2">
+                    <StatusBadge
+                        status={p.errors?.length ? 'needs_fixing' : 'ready'}
+                    />
+                    {p.errors?.length ? (
+                        <span className="text-destructive">
+                            {t(':n errors', { n: p.errors.length })}
+                        </span>
+                    ) : null}
+                    {p.warnings?.length ? (
+                        <span className="flex items-center gap-1 text-amber-600">
+                            <TriangleAlert className="size-4" />
+                            {p.warnings.length}
+                        </span>
+                    ) : null}
+                </div>
+            ),
         },
         {
             key: 'created_at',
@@ -167,11 +179,26 @@ export default function SurveyParticipants({
                     title="Participants"
                     description="Companies whose completed survey workbooks have been uploaded. Each company's answers are kept separately."
                     action={
-                        can('upload-benchmark-survey') &&
                         cycle && (
-                            <Button onClick={() => setUploadOpen(true)}>
-                                <FileUp /> {t('Upload Workbooks')}
-                            </Button>
+                            <div className="flex flex-wrap gap-2">
+                                {can('export-benchmark-survey') && (
+                                    <Button variant="outline" asChild>
+                                        <a
+                                            href={participantRoutes.issues.url({
+                                                query: { cycle: cycle.id },
+                                            })}
+                                            download
+                                        >
+                                            <FileDown /> {t('Export Issues')}
+                                        </a>
+                                    </Button>
+                                )}
+                                {can('upload-benchmark-survey') && (
+                                    <Button onClick={() => setUploadOpen(true)}>
+                                        <FileUp /> {t('Upload Workbooks')}
+                                    </Button>
+                                )}
+                            </div>
                         )
                     }
                 />
@@ -201,6 +228,19 @@ export default function SurveyParticipants({
                                     name="cycle"
                                     label="Cycle"
                                     options={cycles}
+                                />
+                                <FilterSelect
+                                    url={url}
+                                    filters={current}
+                                    name="status"
+                                    label="All Statuses"
+                                    options={[
+                                        {
+                                            id: 'needs_fixing',
+                                            name: 'Needs fixing',
+                                        },
+                                        { id: 'ready', name: 'Ready' },
+                                    ]}
                                 />
                                 <FilterSelect
                                     url={url}
@@ -280,7 +320,7 @@ export default function SurveyParticipants({
                             form.post(participantRoutes.upload.url(), {
                                 forceFormData: true,
                                 preserveScroll: true,
-                                // Stay open only to show why a workbook was rejected or skipped.
+                                // Stay open only to show the errors of files that need fixing, were rejected or skipped.
                                 onSuccess: (page) =>
                                     allImported(page.flash)
                                         ? closeUpload(false)
@@ -331,7 +371,7 @@ export default function SurveyParticipants({
 
                         <div className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-blue-800 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-200">
                             {t(
-                                'Each file is checked against the cycle template. Files with errors are not imported; fix them and upload again. Warnings are imported and flagged.',
+                                'Each file is checked against the cycle template and saved with its errors and warnings. Files with errors are marked "Needs fixing" and left out of the analytics until the corrected file is uploaded, which replaces it. Use Export Issues to send each company its list.',
                             )}
                         </div>
 

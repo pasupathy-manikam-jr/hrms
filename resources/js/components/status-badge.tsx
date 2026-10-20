@@ -43,6 +43,8 @@ const statusStyles: Record<string, string> = {
     imported: 'border-emerald-200 bg-emerald-50 text-emerald-700',
     replaced: 'border-sky-200 bg-sky-50 text-sky-700',
     skipped: 'border-amber-200 bg-amber-50 text-amber-700',
+    needs_fixing: 'border-amber-200 bg-amber-50 text-amber-700',
+    ready: 'border-emerald-200 bg-emerald-50 text-emerald-700',
     in_progress: 'border-blue-200 bg-blue-50 text-blue-700',
     not_started: 'border-gray-200 bg-gray-50 text-gray-600',
     overdue: 'border-red-200 bg-red-50 text-red-700',

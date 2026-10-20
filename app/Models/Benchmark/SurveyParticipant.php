@@ -13,6 +13,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Throwable;
 
 /**
  * One company's completed workbook for a cycle. Its answers are kept separately per company and only
@@ -28,12 +29,13 @@ use Illuminate\Support\Str;
  * @property string|null $file_path
  * @property string|null $file_name
  * @property list<string>|null $warnings
+ * @property list<string>|null $errors set while the workbook still has errors; such submissions are left out of the analytics
  * @property CarbonInterface|null $consent_date
  */
 #[Fillable([
     'survey_cycle_id', 'company_name', 'company_key', 'industry', 'state', 'employee_band', 'revenue_band',
     'ownership_type', 'locations', 'listed_status', 'unionised', 'authorised_name', 'authorised_designation',
-    'consent_date', 'file_path', 'file_name', 'warnings', 'uploaded_by',
+    'consent_date', 'file_path', 'file_name', 'errors', 'warnings', 'uploaded_by',
 ])]
 class SurveyParticipant extends Model
 {
@@ -52,7 +54,7 @@ class SurveyParticipant extends Model
      */
     protected function casts(): array
     {
-        return ['warnings' => 'array', 'consent_date' => 'date:Y-m-d', 'locations' => 'integer'];
+        return ['errors' => 'array', 'warnings' => 'array', 'consent_date' => 'date:Y-m-d', 'locations' => 'integer'];
     }
 
     /**
@@ -69,7 +71,8 @@ class SurveyParticipant extends Model
     }
 
     /**
-     * Reads, checks and saves completed workbooks into the cycle. Files with errors are rejected; a company
+     * Reads, checks and saves completed workbooks into the cycle. A workbook with errors is still saved, with its
+     * errors, so it can be followed up; it stays out of the analytics until a clean re-upload replaces it. A company
      * already in the cycle is skipped unless $replace. Returns one report entry per file.
      *
      * @param  list<UploadedFile>  $files
@@ -86,26 +89,39 @@ class SurveyParticipant extends Model
             $company = $data['participant']['company_name'] ?? null;
             $entry = ['file' => $file->getClientOriginalName(), 'company' => $company, 'errors' => $data['errors'], 'warnings' => $data['warnings']];
 
-            if ($data['errors'] !== []) {
+            // Only a file that isn't the survey workbook, or has no company name, can't be kept for follow-up.
+            if ($company === null) {
                 $report[] = [...$entry, 'status' => 'rejected'];
 
                 continue;
             }
 
-            $exists = self::query()->where('survey_cycle_id', $cycle->id)->where('company_key', self::keyFor((string) $company))->exists();
+            $existing = self::query()->where('survey_cycle_id', $cycle->id)->where('company_key', self::keyFor($company))->first(['id', 'errors']);
+            $exists = $existing !== null;
 
-            if ($exists && ! $replace) {
+            // A submission still waiting for fixes is always replaced by the company's next file.
+            if ($exists && ! $replace && $existing->errors === null) {
                 $report[] = [...$entry, 'status' => 'skipped', 'errors' => [__('This company has already been uploaded to this cycle. Tick "Replace existing submissions" to overwrite it.')]];
 
                 continue;
             }
 
-            self::record($cycle, $data, [
-                'file_path' => $file->store(self::UPLOAD_DIRECTORY, 'local') ?: throw new \RuntimeException('Could not store the workbook.'),
-                'file_name' => $file->getClientOriginalName(),
-                'uploaded_by' => $userId,
-            ]);
-            $report[] = [...$entry, 'status' => $exists ? 'replaced' : 'imported'];
+            $path = $file->store(self::UPLOAD_DIRECTORY, 'local') ?: throw new \RuntimeException('Could not store the workbook.');
+            try {
+                self::record($cycle, $data, ['file_path' => $path, 'file_name' => $file->getClientOriginalName(), 'uploaded_by' => $userId]);
+            } catch (Throwable $e) {
+                // One unsavable file (e.g. an answer too long for its column) must not stop the rest of the batch.
+                report($e);
+                Storage::disk('local')->delete($path);
+                $report[] = [...$entry, 'status' => 'rejected', 'errors' => [...$data['errors'], __('The workbook could not be saved; check for unusually long or malformed answers.')]];
+
+                continue;
+            }
+            $report[] = [...$entry, 'status' => match (true) {
+                $data['errors'] !== [] => 'needs_fixing',
+                $exists => 'replaced',
+                default => 'imported',
+            }];
         }
 
         return $report;
@@ -115,7 +131,7 @@ class SurveyParticipant extends Model
      * Saves one company's answers (as read by SurveyWorkbook) into the cycle, replacing that company's
      * previous submission if there is one.
      *
-     * @param  array{participant: array<string, mixed>, salaryRows: array<int, array<string, mixed>>, benefits: array<int, array<string, mixed>>, attrition: array<string, mixed>, warnings: array<int, string>}  $data
+     * @param  array{participant: array<string, mixed>, salaryRows: array<int, array<string, mixed>>, benefits: array<int, array<string, mixed>>, attrition: array<string, mixed>, errors?: array<int, string>, warnings: array<int, string>}  $data
      * @param  array{file_path?: string|null, file_name?: string|null, uploaded_by?: int|null}  $file
      */
     public static function record(SurveyCycle $cycle, array $data, array $file = []): self
@@ -130,6 +146,7 @@ class SurveyParticipant extends Model
                 ...$file,
                 'survey_cycle_id' => $cycle->id,
                 'company_key' => $key,
+                'errors' => ($data['errors'] ?? []) ?: null,
                 'warnings' => $data['warnings'],
             ]);
 
