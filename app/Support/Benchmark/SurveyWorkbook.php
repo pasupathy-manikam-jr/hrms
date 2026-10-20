@@ -219,12 +219,26 @@ class SurveyWorkbook
     {
         $rows = [];
         $seen = [];
+        // Template versions differ in the order of Min / Max / Median, so find them by their headings.
+        $pay = ['min' => 'Q', 'max' => 'R', 'median' => 'S'];
+        foreach (['Q', 'R', 'S'] as $column) {
+            $heading = mb_strtolower((string) self::text($sheet->getCell("{$column}4")->getValue()));
+            foreach (array_keys($pay) as $key) {
+                if (str_starts_with($heading, $key)) {
+                    $pay[$key] = $column;
+                }
+            }
+        }
 
         for ($row = self::SALARY_ROWS[0]; $row <= self::SALARY_ROWS[1]; $row++) {
             $cell = fn (string $column) => $sheet->getCell("{$column}{$row}")->getValue();
             $title = self::text($cell('C'));
 
             if ($title === null) {
+                if (($own = self::text($cell('D'))) !== null || self::text($cell('F')) !== null || self::text($cell($pay['median'])) !== null) {
+                    $this->errors[] = __('Salary Data row :row (:title): Standard Job Title is missing; choose one from the catalogue.', ['row' => $row - 5, 'title' => $own ?? '—']);
+                }
+
                 continue;
             }
 
@@ -253,9 +267,9 @@ class SurveyWorkbook
                 'tenure_5_plus' => $count('M', 'Tenure 5+ yrs'),
                 'experience_required' => $this->choice(self::text($cell('O')), $cycle->lookup('ExperienceRequiredList'), "{$at} › Typical Experience"),
                 'shift_based' => ($shift = $this->choice(self::text($cell('P')), $cycle->lookup('YesNo'), "{$at} › Shift-Based")) === null ? null : $shift === 'Yes',
-                'min_salary' => $number('Q', 'Min Base Salary'),
-                'max_salary' => $number('R', 'Max Base Salary'),
-                'median_salary' => $number('S', 'Median Base Salary'),
+                'min_salary' => $number($pay['min'], 'Min Base Salary'),
+                'max_salary' => $number($pay['max'], 'Max Base Salary'),
+                'median_salary' => $number($pay['median'], 'Median Base Salary'),
                 'avg_male' => $number('T', 'Avg. Male Base Salary'),
                 'avg_female' => $number('U', 'Avg. Female Base Salary'),
                 'guaranteed_bonus_months' => $number('W', 'Guaranteed Annual Bonus'),

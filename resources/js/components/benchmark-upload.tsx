@@ -135,11 +135,11 @@ export function WorkbookPicker({
 /** Per-file outcome of an upload: company, status, errors and warnings. */
 export function UploadReport({ results }: { results: UploadResult[] }) {
     return (
-        <ul className="grid gap-3">
+        <ul className="grid min-w-0 gap-3">
             {results.map((result, index) => (
                 <li
                     key={index}
-                    className="grid gap-1 rounded-lg border p-3 text-sm"
+                    className="grid min-w-0 gap-1 rounded-lg border p-3 text-sm [overflow-wrap:anywhere]"
                 >
                     <div className="flex items-center justify-between gap-3">
                         <div className="min-w-0">

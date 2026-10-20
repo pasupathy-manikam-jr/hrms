@@ -157,6 +157,28 @@ class BenchmarkSurveyTest extends TestCase
         $this->assertSame(0, SurveyParticipant::count());
     }
 
+    public function test_salary_columns_are_found_by_heading_in_older_template_versions()
+    {
+        $cycle = $this->cycle();
+        $this->actingAs($this->userWithRole());
+
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$this->workbook(median: 4800, medianBeforeMax: true)]])
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'imported');
+
+        $this->assertEquals(4800, SurveyParticipant::firstOrFail()->salaryRows()->where('job_title', 'Process Engineer')->value('median_salary'));
+    }
+
+    public function test_a_filled_row_without_a_standard_job_title_is_reported()
+    {
+        $cycle = $this->cycle();
+        $this->actingAs($this->userWithRole());
+
+        $file = $this->workbook(salary: [['title' => null, 'headcount' => 1, 'male' => 1, 'female' => 0]]);
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$file]])
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'rejected')
+            ->assertInertiaFlash('benchmarkUpload.0.errors.0', 'Salary Data row 1 (—): Standard Job Title is missing; choose one from the catalogue.');
+    }
+
     public function test_analytics_hide_figures_below_the_threshold_and_pool_the_rest()
     {
         $cycle = $this->cycle();
@@ -262,7 +284,7 @@ class BenchmarkSurveyTest extends TestCase
      *
      * @param  list<array<string, mixed>>|null  $salary
      */
-    private function workbook(string $company = 'Alpha Sdn Bhd', bool $template = false, ?array $salary = null, string $consent = 'Yes', int $median = 4500, ?string $file = null, ?string $remarks = null, ?string $without = null): UploadedFile
+    private function workbook(string $company = 'Alpha Sdn Bhd', bool $template = false, ?array $salary = null, string $consent = 'Yes', int $median = 4500, ?string $file = null, ?string $remarks = null, ?string $without = null, bool $medianBeforeMax = false): UploadedFile
     {
         $book = new Spreadsheet;
         $sheet = fn (string $name) => $book->addSheet(new Worksheet($book, $name));
@@ -276,6 +298,7 @@ class BenchmarkSurveyTest extends TestCase
         $lookups = $sheet('Lookups');
 
         $salarySheet->setCellValue('C4', 'Standard Job Title');
+        $salarySheet->fromArray($medianBeforeMax ? ["Min\nBase Salary", "Median\nBase Salary", "Max\nBase Salary"] : ["Min\nBase Salary", "Max\nBase Salary", "Median\nBase Salary"], null, 'Q4');
         $salarySheet->fromArray(['Ex.', '=formula', 'HR Executive', 'Example', 'Executive', 99], null, 'A5');
         $benefits->setCellValue('F5', 'Statutory minimum is 12% (13% if monthly wage <= RM5,000)');
 
@@ -300,7 +323,7 @@ class BenchmarkSurveyTest extends TestCase
             foreach ($rows as $index => $row) {
                 $salarySheet->fromArray([
                     $index + 1, '=1+1', $row['title'], null, 'Executive', $row['headcount'], $row['male'], $row['female'], '=1+1',
-                    $row['headcount'], 0, 0, 0, '=1+1', '2-4 yrs', 'No', null, null, $row['median'] ?? 4000,
+                    $row['headcount'], 0, 0, 0, '=1+1', '2-4 yrs', 'No', null, $medianBeforeMax ? ($row['median'] ?? 4000) : null, $medianBeforeMax ? null : ($row['median'] ?? 4000),
                     $row['avg_male'] ?? null, $row['avg_female'] ?? null, '=1+1', 1, 200, 0,
                 ], null, 'A'.($index + 6));
             }
