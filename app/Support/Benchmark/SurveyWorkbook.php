@@ -142,8 +142,12 @@ class SurveyWorkbook
         $this->warnings = [];
 
         try {
-            $book = self::load($path, [self::PROFILE, self::SALARY, self::BENEFITS, self::ATTRITION, self::CONSENT]);
+            $sheets = [self::PROFILE, self::SALARY, self::BENEFITS, self::ATTRITION, self::CONSENT];
+            $book = self::load($path, $sheets);
             self::assertTemplate($book);
+            if ($missing = array_diff($sheets, $book->getSheetNames())) {
+                throw new \RuntimeException(__('The workbook is missing the sheet(s): :sheets. Use the survey template without renaming or deleting sheets.', ['sheets' => implode(', ', $missing)]));
+            }
         } catch (Throwable $e) {
             return ['participant' => [], 'salaryRows' => [], 'benefits' => [], 'attrition' => [], 'errors' => [$e->getMessage()], 'warnings' => []];
         }

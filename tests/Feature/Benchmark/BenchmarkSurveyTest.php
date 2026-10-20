@@ -132,6 +132,18 @@ class BenchmarkSurveyTest extends TestCase
         $this->assertEquals(5000, SurveyParticipant::firstOrFail()->salaryRows()->where('job_title', 'Process Engineer')->value('median_salary'));
     }
 
+    public function test_a_workbook_missing_a_sheet_is_rejected_not_an_error()
+    {
+        $cycle = $this->cycle();
+        $this->actingAs($this->userWithRole());
+
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$this->workbook(without: '5. Consent & Submission')]])
+            ->assertSessionHasNoErrors()
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'rejected');
+
+        $this->assertSame(0, SurveyParticipant::count());
+    }
+
     public function test_analytics_hide_figures_below_the_threshold_and_pool_the_rest()
     {
         $cycle = $this->cycle();
@@ -237,7 +249,7 @@ class BenchmarkSurveyTest extends TestCase
      *
      * @param  list<array<string, mixed>>|null  $salary
      */
-    private function workbook(string $company = 'Alpha Sdn Bhd', bool $template = false, ?array $salary = null, string $consent = 'Yes', int $median = 4500, ?string $file = null, ?string $remarks = null): UploadedFile
+    private function workbook(string $company = 'Alpha Sdn Bhd', bool $template = false, ?array $salary = null, string $consent = 'Yes', int $median = 4500, ?string $file = null, ?string $remarks = null, ?string $without = null): UploadedFile
     {
         $book = new Spreadsheet;
         $sheet = fn (string $name) => $book->addSheet(new Worksheet($book, $name));
@@ -287,6 +299,10 @@ class BenchmarkSurveyTest extends TestCase
             $benefits->fromArray(['Outpatient', 'Yes', 'Yes'], null, 'A11');
             $attrition->fromArray([[12.5], [20], [0], [1], [0], ['Engineering & Technical'], ['Human Resources'], [null], [45], ['Growing']], null, 'B3');
             $consentSheet->fromArray([[$consent], ['Aina'], ['HR Manager'], ['30/09/2026']], null, 'B5');
+        }
+
+        if ($without !== null) {
+            $book->removeSheetByIndex($book->getIndex($book->getSheetByNameOrThrow($without)));
         }
 
         $path = tempnam(sys_get_temp_dir(), 'survey').'.xlsx';
