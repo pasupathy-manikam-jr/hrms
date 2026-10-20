@@ -70,7 +70,8 @@ class SurveyParticipantController extends Controller
 
     public function show(SurveyParticipant $participant): Response
     {
-        $participant->load(['cycle', 'salaryRows', 'benefits', 'attrition']);
+        $participant->load(['cycle', 'salaryRows' => fn ($q) => $q->orderBy('line')->orderBy('id'), 'benefits', 'attrition', 'editor:id,name']);
+        $cycle = $participant->cycle;
         $market = (new SurveyAnalytics($participant->cycle))->marketMedians();
 
         return Inertia::render('benchmark/participants/show', [
@@ -82,6 +83,10 @@ class SurveyParticipantController extends Controller
                 'market_companies' => $market[$row->job_title.'|'.$row->job_level]['companies'] ?? 0,
             ]),
             'benefitLabels' => collect(SurveyWorkbook::BENEFIT_ITEMS)->mapWithKeys(fn (array $item) => [$item[0] => $item[1]]),
+            // Dropdown lists and job titles for correcting the submission online.
+            'lookups' => collect(['IndustryList', 'StateList', 'EmployeeBandList', 'RevenueBandList', 'OwnershipTypeList', 'ListedStatusList', 'YesNo', 'JobLevelList', 'ExperienceRequiredList', 'JobFamilyList', 'HeadcountPlanList', 'YesNoUnsure', 'RetrenchmentDriverList', 'YesNoNA'])
+                ->mapWithKeys(fn (string $name) => [$name => $cycle->lookup($name)]),
+            'jobTitles' => $cycle->jobs()->orderBy('title')->pluck('title'),
         ]);
     }
 

@@ -1,21 +1,23 @@
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 import {
-    Building2,
-    CalendarDays,
     Download,
-    Factory,
     FileDown,
-    MapPin,
-    UserCheck,
-    Users,
+    Pencil,
+    Plus,
+    SquarePen,
+    Trash2,
 } from 'lucide-react';
+import { useState } from 'react';
+import type { ReactNode } from 'react';
 import {
-    DetailPage,
-    Fields,
-    Summary,
-    SummaryIcon,
-    TextBlock,
-} from '@/components/detail-page';
+    AttritionDialog,
+    BenefitsDialog,
+    ProfileDialog,
+    SalaryRowDialog,
+} from '@/components/benchmark-corrections';
+import type { Lookups } from '@/components/benchmark-corrections';
+import { ConfirmDialog } from '@/components/confirm-dialog';
+import { DetailPage, Fields, TextBlock } from '@/components/detail-page';
 import { StatusBadge } from '@/components/status-badge';
 import { Button } from '@/components/ui/button';
 import { useCan } from '@/hooks/use-can';
@@ -24,9 +26,11 @@ import { useTranslation } from '@/hooks/use-translation';
 import { cn } from '@/lib/utils';
 import { dashboard } from '@/routes';
 import participantRoutes from '@/routes/benchmark/participants';
+import rowRoutes from '@/routes/benchmark/participants/rows';
 
 type SalaryRow = {
     id: number;
+    line: number | null;
     job_family: string;
     job_title: string;
     own_title: string | null;
@@ -68,7 +72,10 @@ type Participant = {
     authorised_name: string | null;
     authorised_designation: string | null;
     consent_date: string | null;
+    consented: boolean | null;
     file_name: string | null;
+    edited_at: string | null;
+    editor: { id: number; name: string } | null;
     errors: string[] | null;
     warnings: string[] | null;
     created_at: string;
@@ -82,16 +89,41 @@ export default function SurveyParticipantShow({
     hasFile,
     salaryRows,
     benefitLabels,
+    lookups,
+    jobTitles,
 }: {
     participant: Participant;
     hasFile: boolean;
     salaryRows: SalaryRow[];
     benefitLabels: Record<string, string>;
+    lookups: Lookups;
+    jobTitles: string[];
 }) {
     const { t } = useTranslation();
     const { date, money } = useFormat();
     const can = useCan();
     const a = p.attrition ?? {};
+    const canEdit = can('upload-benchmark-survey');
+    // Which correction dialog is open: a section, a salary row, or a new row.
+    const [editing, setEditing] = useState<
+        'profile' | 'benefits' | 'attrition' | 'new-row' | SalaryRow | null
+    >(null);
+    const [deletingRow, setDeletingRow] = useState<SalaryRow | null>(null);
+    const close = (open: boolean) => !open && setEditing(null);
+    const toolbar = (label: string, onClick: () => void, add = false) =>
+        canEdit && (
+            <div>
+                <Button variant="outline" size="sm" onClick={onClick}>
+                    {add ? <Plus /> : <Pencil />} {t(label)}
+                </Button>
+            </div>
+        );
+    const section = (bar: ReactNode, content: ReactNode) => (
+        <div className="grid gap-4">
+            {bar}
+            {content}
+        </div>
+    );
 
     const salaryTable = (
         <div className="overflow-x-auto">
@@ -107,6 +139,7 @@ export default function SurveyParticipantShow({
                             'vs Market',
                             'Allowances',
                             'Bonus (months)',
+                            ...(canEdit ? [''] : []),
                         ].map((label) => (
                             <th
                                 key={label}
@@ -134,7 +167,16 @@ export default function SurveyParticipantShow({
                             <tr key={row.id} className="border-b align-top">
                                 <td className="px-2 py-2">
                                     <div className="font-medium">
-                                        {row.job_title}
+                                        {row.line !== null && (
+                                            <span className="me-1 text-muted-foreground">
+                                                #{row.line}
+                                            </span>
+                                        )}
+                                        {row.job_title || (
+                                            <span className="text-destructive">
+                                                {t('No Standard Job Title')}
+                                            </span>
+                                        )}
                                     </div>
                                     <div className="text-xs text-muted-foreground">
                                         {row.own_title ?? row.job_family}
@@ -182,6 +224,26 @@ export default function SurveyParticipantShow({
                                 <td className="px-2 py-2">
                                     {row.guaranteed_bonus_months ?? '-'}
                                 </td>
+                                {canEdit && (
+                                    <td className="px-2 py-1 whitespace-nowrap">
+                                        <Button
+                                            variant="ghost"
+                                            size="icon"
+                                            aria-label={t('Edit')}
+                                            onClick={() => setEditing(row)}
+                                        >
+                                            <SquarePen />
+                                        </Button>
+                                        <Button
+                                            variant="ghost"
+                                            size="icon"
+                                            aria-label={t('Delete')}
+                                            onClick={() => setDeletingRow(row)}
+                                        >
+                                            <Trash2 />
+                                        </Button>
+                                    </td>
+                                )}
                             </tr>
                         );
                     })}
@@ -246,52 +308,6 @@ export default function SurveyParticipantShow({
                     cycle: p.cycle.name,
                 })}
                 back={participantRoutes.index({ query: { cycle: p.cycle.id } })}
-                summary={
-                    <>
-                        <Summary
-                            media={<SummaryIcon icon={Building2} />}
-                            title={p.company_name}
-                            subtitle={p.industry}
-                            facts={[
-                                [MapPin, p.state],
-                                [
-                                    Users,
-                                    p.employee_band &&
-                                        `${p.employee_band} ${t('employees')}`,
-                                ],
-                                [Factory, p.ownership_type],
-                                [
-                                    UserCheck,
-                                    joined(
-                                        p.authorised_name,
-                                        p.authorised_designation,
-                                    ),
-                                ],
-                                [
-                                    CalendarDays,
-                                    p.consent_date && date(p.consent_date),
-                                ],
-                            ]}
-                        />
-                        <div className="mt-4">
-                            <StatusBadge
-                                status={
-                                    p.errors?.length ? 'needs_fixing' : 'ready'
-                                }
-                            />
-                        </div>
-                        {hasFile && (
-                            <Button variant="outline" className="mt-5" asChild>
-                                <a
-                                    href={participantRoutes.download.url(p.id)}
-                                    download
-                                >
-                                    <Download /> {t('Original Workbook')}
-                                </a>
-                            </Button>
-                        )}
-                    </>
-                }
                 tabs={[
                     ...(p.errors?.length || p.warnings?.length
                         ? [
@@ -364,15 +380,31 @@ export default function SurveyParticipantShow({
                                         { min: p.cycle.min_companies },
                                     )}
                                 </p>
+                                {toolbar(
+                                    'Add Row',
+                                    () => setEditing('new-row'),
+                                    true,
+                                )}
                                 {salaryTable}
                             </div>
                         ),
                     },
-                    { label: 'Benefits', content: benefitsTable },
+                    {
+                        label: 'Benefits',
+                        content: section(
+                            toolbar('Edit Benefits', () =>
+                                setEditing('benefits'),
+                            ),
+                            benefitsTable,
+                        ),
+                    },
                     {
                         label: 'Attrition & Hiring',
                         content: (
                             <div className="grid gap-6">
+                                {toolbar('Edit Attrition & Hiring', () =>
+                                    setEditing('attrition'),
+                                )}
                                 <Fields
                                     items={[
                                         ['Attrition rate %', a.attrition_rate],
@@ -454,6 +486,37 @@ export default function SurveyParticipantShow({
                         label: 'Company Profile',
                         content: (
                             <div className="grid gap-6">
+                                <div className="flex flex-wrap items-center gap-2">
+                                    <StatusBadge
+                                        status={
+                                            p.errors?.length
+                                                ? 'needs_fixing'
+                                                : 'ready'
+                                        }
+                                    />
+                                    <div className="ms-auto flex flex-wrap gap-2">
+                                        {hasFile && (
+                                            <Button
+                                                variant="outline"
+                                                size="sm"
+                                                asChild
+                                            >
+                                                <a
+                                                    href={participantRoutes.download.url(
+                                                        p.id,
+                                                    )}
+                                                    download
+                                                >
+                                                    <Download />{' '}
+                                                    {t('Original Workbook')}
+                                                </a>
+                                            </Button>
+                                        )}
+                                        {toolbar('Edit Profile & Consent', () =>
+                                            setEditing('profile'),
+                                        )}
+                                    </div>
+                                </div>
                                 <Fields
                                     items={[
                                         ['Industry', p.industry],
@@ -467,14 +530,94 @@ export default function SurveyParticipantShow({
                                         ['Operating locations', p.locations],
                                         ['Listed status', p.listed_status],
                                         ['Unionised workforce', p.unionised],
+                                        [
+                                            'Authorised person',
+                                            joined(
+                                                p.authorised_name,
+                                                p.authorised_designation,
+                                            ),
+                                        ],
+                                        [
+                                            'Consent date',
+                                            p.consent_date &&
+                                                date(p.consent_date),
+                                        ],
+                                        [
+                                            'Consent given',
+                                            p.consented === null
+                                                ? null
+                                                : t(p.consented ? 'Yes' : 'No'),
+                                        ],
                                         ['Uploaded file', p.file_name],
                                         ['Uploaded at', date(p.created_at)],
+                                        [
+                                            'Last corrected online',
+                                            p.edited_at &&
+                                                `${date(p.edited_at)}${p.editor ? ` · ${p.editor.name}` : ''}`,
+                                        ],
                                     ]}
                                 />
                             </div>
                         ),
                     },
                 ]}
+            />
+
+            {editing === 'profile' && (
+                <ProfileDialog
+                    open
+                    onOpenChange={close}
+                    participantId={p.id}
+                    answers={p}
+                    lookups={lookups}
+                />
+            )}
+            {(editing === 'new-row' || typeof editing === 'object') &&
+                editing !== null && (
+                    <SalaryRowDialog
+                        open
+                        onOpenChange={close}
+                        participantId={p.id}
+                        row={editing === 'new-row' ? null : editing}
+                        lookups={lookups}
+                        jobTitles={jobTitles}
+                    />
+                )}
+            {editing === 'benefits' && (
+                <BenefitsDialog
+                    open
+                    onOpenChange={close}
+                    participantId={p.id}
+                    benefits={p.benefits}
+                    labels={benefitLabels}
+                />
+            )}
+            {editing === 'attrition' && (
+                <AttritionDialog
+                    open
+                    onOpenChange={close}
+                    participantId={p.id}
+                    answers={a}
+                    lookups={lookups}
+                />
+            )}
+            <ConfirmDialog
+                open={deletingRow !== null}
+                onOpenChange={(open) => !open && setDeletingRow(null)}
+                description="This salary row will be removed from the submission."
+                onConfirm={() =>
+                    deletingRow &&
+                    router.delete(
+                        rowRoutes.destroy.url({
+                            participant: p.id,
+                            salaryRow: deletingRow.id,
+                        }),
+                        {
+                            preserveScroll: true,
+                            onSuccess: () => setDeletingRow(null),
+                        },
+                    )
+                }
             />
         </>
     );

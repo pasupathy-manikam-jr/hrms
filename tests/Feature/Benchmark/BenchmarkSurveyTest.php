@@ -278,6 +278,64 @@ class BenchmarkSurveyTest extends TestCase
         Storage::disk('local')->assertMissing($participant->file_path);
     }
 
+    public function test_a_submission_can_be_corrected_online_until_it_counts()
+    {
+        $cycle = $this->cycle();
+        $user = $this->userWithRole();
+        $this->actingAs($user);
+        $this->upload($cycle, ['Alpha' => 4000]);
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [
+            $this->workbook('Beta', consent: 'No', salary: [['title' => 'Astronaut', 'headcount' => 2, 'male' => 1, 'female' => 1]]),
+        ]])->assertInertiaFlash('benchmarkUpload.0.status', 'needs_fixing');
+        $beta = SurveyParticipant::where('company_key', 'beta')->firstOrFail();
+        $row = $beta->salaryRows()->firstOrFail();
+        $this->assertSame(1, $row->line);
+
+        $profile = ['company_name' => 'Beta Sdn Bhd', 'industry' => 'Manufacturing', 'state' => 'Selangor', 'employee_band' => '50-99', 'consented' => true];
+        $this->put(route('benchmark.participants.profile', $beta), [...$profile, 'industry' => 'Engineering'])->assertSessionHasErrors('industry');
+        $this->put(route('benchmark.participants.profile', $beta), [...$profile, 'company_name' => 'ALPHA'])->assertSessionHasErrors('company_name');
+        $this->put(route('benchmark.participants.profile', $beta), $profile)->assertSessionHasNoErrors();
+        $this->assertSame(['Salary Data row 1 (Astronaut): "Astronaut" is not a Standard Job Title in the catalogue.'], $beta->fresh()?->errors);
+
+        $fixed = [...$this->rowAnswers(), 'job_title' => 'process engineer'];
+        $this->put(route('benchmark.participants.rows.update', [$beta, $row]), $fixed)->assertRedirect()->assertSessionHasNoErrors();
+        $beta->refresh();
+        $this->assertNull($beta->errors);
+        $this->assertSame($user->id, $beta->edited_by);
+        $this->assertSame(['Process Engineer', 'ENG01', 'Engineering & Technical'], array_values($row->fresh()?->only('job_title', 'job_code', 'job_family') ?? []));
+        $this->get(route('benchmark.analytics.index'))->assertInertia(fn ($page) => $page->where('report.overview.companies', 2));
+
+        // A duplicate row added online is flagged again; deleting it clears it.
+        $this->post(route('benchmark.participants.rows.store', $beta), $fixed)->assertRedirect()->assertSessionHasNoErrors();
+        $added = $beta->salaryRows()->latest('id')->firstOrFail();
+        $this->assertSame(2, $added->line);
+        $this->assertSame(['Salary Data row 2 (Process Engineer): Process Engineer at Executive is listed more than once.'], $beta->fresh()?->errors);
+        $this->delete(route('benchmark.participants.rows.destroy', [$beta, $added]))->assertRedirect()->assertSessionHasNoErrors();
+        $this->assertNull($beta->fresh()?->errors);
+
+        $this->put(route('benchmark.participants.benefits', $beta), ['benefits' => [['item' => 'outpatient_coverage', 'same_for_all' => true, 'company_value' => 'Yes'], ['item' => 'dental_coverage']]])
+            ->assertSessionHasNoErrors();
+        $this->assertSame(['outpatient_coverage'], $beta->benefits()->pluck('item')->all());
+        $this->put(route('benchmark.participants.attrition', $beta), ['attrition_rate' => 150, 'headcount_plan' => 'Growing'])->assertSessionHasNoErrors();
+        $this->assertSame(['Attrition & Hiring › Overall staff attrition rate of 150% is above 100%.'], $beta->fresh()?->warnings);
+
+        // Another company's row can't be reached through this submission.
+        $alphaRow = SurveyParticipant::where('company_key', 'alpha')->firstOrFail()->salaryRows()->firstOrFail();
+        $this->put(route('benchmark.participants.rows.update', [$beta, $alphaRow]), $fixed)->assertNotFound();
+    }
+
+    public function test_only_uploaders_can_correct_a_submission()
+    {
+        $cycle = $this->cycle();
+        $this->upload($cycle, ['Alpha' => 4000]);
+        $alpha = SurveyParticipant::firstOrFail();
+
+        $this->actingAs($this->userWithRole('hr'));
+        $this->put(route('benchmark.participants.profile', $alpha), ['company_name' => 'Changed', 'consented' => true])->assertForbidden();
+        $this->post(route('benchmark.participants.rows.store', $alpha), $this->rowAnswers())->assertForbidden();
+        $this->assertSame('Alpha', $alpha->fresh()?->company_name);
+    }
+
     public function test_only_the_company_role_can_use_the_benchmark_survey()
     {
         $cycle = $this->cycle();
@@ -290,6 +348,18 @@ class BenchmarkSurveyTest extends TestCase
         }
 
         $this->assertSame(0, SurveyParticipant::count());
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function rowAnswers(): array
+    {
+        return [
+            'job_title' => 'Process Engineer', 'job_level' => 'Executive', 'headcount' => 2, 'male' => 1, 'female' => 1,
+            'tenure_under_1' => 0, 'tenure_1_2' => 2, 'tenure_3_4' => 0, 'tenure_5_plus' => 0,
+            'median_salary' => 4200, 'avg_male' => 4100, 'avg_female' => 4300,
+        ];
     }
 
     private function cycle(): SurveyCycle

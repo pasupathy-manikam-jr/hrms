@@ -2,6 +2,7 @@
 
 namespace App\Models\Benchmark;
 
+use App\Models\User;
 use App\Support\Benchmark\SurveyWorkbook;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -31,11 +32,13 @@ use Throwable;
  * @property list<string>|null $warnings
  * @property list<string>|null $errors set while the workbook still has errors; such submissions are left out of the analytics
  * @property CarbonInterface|null $consent_date
+ * @property bool|null $consented
+ * @property CarbonInterface|null $edited_at
  */
 #[Fillable([
     'survey_cycle_id', 'company_name', 'company_key', 'industry', 'state', 'employee_band', 'revenue_band',
     'ownership_type', 'locations', 'listed_status', 'unionised', 'authorised_name', 'authorised_designation',
-    'consent_date', 'file_path', 'file_name', 'errors', 'warnings', 'uploaded_by',
+    'consented', 'consent_date', 'file_path', 'file_name', 'errors', 'warnings', 'edited_at', 'edited_by', 'uploaded_by',
 ])]
 class SurveyParticipant extends Model
 {
@@ -54,7 +57,7 @@ class SurveyParticipant extends Model
      */
     protected function casts(): array
     {
-        return ['errors' => 'array', 'warnings' => 'array', 'consent_date' => 'date:Y-m-d', 'locations' => 'integer'];
+        return ['errors' => 'array', 'warnings' => 'array', 'consented' => 'boolean', 'edited_at' => 'datetime', 'consent_date' => 'date:Y-m-d', 'locations' => 'integer'];
     }
 
     /**
@@ -80,7 +83,7 @@ class SurveyParticipant extends Model
      */
     public static function importWorkbooks(SurveyCycle $cycle, array $files, bool $replace, ?int $userId): array
     {
-        $catalogue = $cycle->jobs()->get()->keyBy(fn (BenchmarkJob $job) => mb_strtolower($job->title))->map->toArray()->all();
+        $catalogue = $cycle->catalogue();
         $reader = new SurveyWorkbook;
         $report = [];
 
@@ -156,6 +159,29 @@ class SurveyParticipant extends Model
 
             return $participant;
         });
+    }
+
+    /**
+     * Records an online correction and re-checks the whole submission from its saved answers, so it becomes
+     * ready for the analytics once nothing is left to fix.
+     */
+    public function corrected(?int $userId): void
+    {
+        $result = (new SurveyWorkbook)->check($this, $this->cycle->catalogue());
+        $this->update([
+            'errors' => $result['errors'] ?: null,
+            'warnings' => $result['warnings'],
+            'edited_at' => now(),
+            'edited_by' => $userId,
+        ]);
+    }
+
+    /**
+     * @return BelongsTo<User, $this>
+     */
+    public function editor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'edited_by');
     }
 
     /**

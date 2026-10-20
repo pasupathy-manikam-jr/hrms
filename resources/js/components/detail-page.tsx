@@ -15,7 +15,7 @@ export type DetailTab = { label: string; heading?: string; content: ReactNode };
 
 /**
  * The shared record page (as hr/employees/show): header with a Back button, a left
- * summary card and right-hand tabs.
+ * summary card (optional) and right-hand tabs.
  */
 export function DetailPage({
     title,
@@ -27,7 +27,7 @@ export function DetailPage({
     title: string;
     description: string;
     back: LinkComponentBaseProps['href'];
-    summary: ReactNode;
+    summary?: ReactNode;
     tabs: DetailTab[];
 }) {
     const { t } = useTranslation();
@@ -48,10 +48,17 @@ export function DetailPage({
                 }
             />
 
-            <div className="grid items-start gap-6 rounded-xl border bg-muted/20 p-4 md:p-6 lg:grid-cols-[18rem_1fr]">
-                <aside className="flex flex-col items-center rounded-xl border bg-card p-6 text-center shadow-sm">
-                    {summary}
-                </aside>
+            <div
+                className={cn(
+                    'grid items-start gap-6 rounded-xl border bg-muted/20 p-4 md:p-6',
+                    summary && 'lg:grid-cols-[18rem_1fr]',
+                )}
+            >
+                {summary && (
+                    <aside className="flex flex-col items-center rounded-xl border bg-card p-6 text-center shadow-sm">
+                        {summary}
+                    </aside>
+                )}
 
                 <div className="grid min-w-0 gap-4">
                     {tabs.length > 1 && (

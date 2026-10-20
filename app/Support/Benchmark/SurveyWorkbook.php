@@ -3,6 +3,7 @@
 namespace App\Support\Benchmark;
 
 use App\Models\Benchmark\SurveyCycle;
+use App\Models\Benchmark\SurveyParticipant;
 use Carbon\CarbonImmutable;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -61,7 +62,7 @@ class SurveyWorkbook
     ];
 
     /** Attrition & Hiring column B rows => field. */
-    private const ATTRITION_FIELDS = [
+    public const ATTRITION_FIELDS = [
         3 => 'attrition_rate', 4 => 'new_hire_attrition_rate', 5 => 'retirements', 6 => 'involuntary_terminations',
         7 => 'contract_non_renewals', 8 => 'hardest_to_hire_1', 9 => 'hardest_to_hire_2', 10 => 'hardest_to_hire_3',
         11 => 'time_to_fill_days', 12 => 'headcount_plan', 13 => 'hardest_to_retain_1', 14 => 'hardest_to_retain_2',
@@ -203,11 +204,11 @@ class SurveyWorkbook
      */
     private function readConsent(Worksheet $sheet): array
     {
-        if (strcasecmp((string) self::text($sheet->getCell('B5')->getValue()), 'Yes') !== 0) {
-            $this->errors[] = __('Consent & Submission › The company has not consented (must be "Yes").');
-        }
+        $consented = strcasecmp((string) self::text($sheet->getCell('B5')->getValue()), 'Yes') === 0;
+        $this->checkConsent($consented);
 
         return [
+            'consented' => $consented,
             'authorised_name' => self::text($sheet->getCell('B6')->getValue()),
             'authorised_designation' => self::text($sheet->getCell('B7')->getValue()),
             'consent_date' => $this->date($sheet->getCell('B8')->getValue()),
@@ -237,29 +238,22 @@ class SurveyWorkbook
             $cell = fn (string $column) => $sheet->getCell("{$column}{$row}")->getValue();
             $title = self::text($cell('C'));
 
-            if ($title === null) {
-                if (($own = self::text($cell('D'))) !== null || self::text($cell('F')) !== null || self::text($cell($pay['median'])) !== null) {
-                    $this->errors[] = __('Salary Data row :row (:title): Standard Job Title is missing; choose one from the catalogue.', ['row' => $row - 5, 'title' => $own ?? '—']);
-                    $untitled = true;
-                }
-
+            // A filled row without a Standard Job Title is kept (and flagged) so it can be corrected online.
+            if ($title === null && self::text($cell('D')) === null && self::text($cell('F')) === null && self::text($cell($pay['median'])) === null) {
                 continue;
             }
 
-            $at = __('Salary Data row :row (:title)', ['row' => $row - 5, 'title' => $title]);
-            $job = $catalogue[mb_strtolower($title)] ?? null;
-            if ($job === null) {
-                $this->errors[] = __(':at: ":title" is not a Standard Job Title in the catalogue.', ['at' => $at, 'title' => $title]);
-            }
-
+            $at = self::rowLabel($row - 5, $title ?? self::text($cell('D')));
+            $job = $this->checkTitle((string) $title, $at, $catalogue);
             $level = $this->choice(self::text($cell('E')), $cycle->lookup('JobLevelList'), "{$at} › Job Level", required: true);
             $number = fn (string $column, string $label) => $this->number($cell($column), "{$at} › {$label}");
             $count = fn (string $column, string $label) => (int) ($this->number($cell($column), "{$at} › {$label}") ?? 0);
 
             $data = [
+                'line' => $row - 5,
                 'job_code' => $job['code'] ?? null,
                 'job_family' => $job['job_family'] ?? '',
-                'job_title' => $job['title'] ?? $title,
+                'job_title' => $job['title'] ?? (string) $title,
                 'own_title' => self::text($cell('D')),
                 'job_level' => $level ?? '',
                 'headcount' => $count('F', 'Total Headcount'),
@@ -289,19 +283,118 @@ class SurveyWorkbook
             ];
 
             $this->checkSalaryRow($data, $at, trim((string) $cell($pay['median'])) !== '');
-            $key = mb_strtolower($data['job_title'].'|'.$data['job_level']);
-            if (isset($seen[$key])) {
-                $this->errors[] = __(':at: :title at :level is listed more than once.', ['at' => $at, 'title' => $data['job_title'], 'level' => $data['job_level']]);
-            }
-            $seen[$key] = true;
+            $this->checkDuplicate($data, $at, $seen);
             $rows[] = self::withTotals($data);
         }
 
-        if ($rows === [] && ! isset($untitled)) {
+        if ($rows === []) {
             $this->errors[] = __('Salary Data › No job rows were filled in.');
         }
 
         return $rows;
+    }
+
+    /**
+     * Re-checks a saved submission (after it was corrected online) with the rules an upload applies to the same
+     * answers. Answers that weren't valid were saved empty, so they surface here as missing.
+     *
+     * @param  array<string, array<string, mixed>>  $catalogue  lower-cased job title => catalogue entry
+     * @return array{errors: list<string>, warnings: list<string>}
+     */
+    public function check(SurveyParticipant $participant, array $catalogue): array
+    {
+        $this->errors = [];
+        $this->warnings = [];
+
+        if (blank($participant->company_name)) {
+            $this->errors[] = __('Company Profile › Company Name is missing.');
+        }
+        foreach (['industry' => 'Industry', 'state' => 'State', 'employee_band' => 'Number of Employees'] as $field => $label) {
+            if (blank($participant->{$field})) {
+                $this->errors[] = __(':field is missing.', ['field' => "Company Profile › {$label}"]);
+            }
+        }
+        $this->checkConsent($participant->consented === true);
+
+        $seen = [];
+        $rows = $participant->salaryRows()->orderBy('line')->orderBy('id')->get();
+        foreach ($rows as $index => $saved) {
+            $row = [
+                ...$saved->only(['job_title', 'job_level', 'guaranteed_bonus_months']),
+                ...array_map('intval', $saved->only(['headcount', 'male', 'female', 'tenure_under_1', 'tenure_1_2', 'tenure_3_4', 'tenure_5_plus'])),
+                ...array_map(fn ($value) => $value === null ? null : (float) $value, $saved->only(['min_salary', 'max_salary', 'median_salary', 'avg_male', 'avg_female'])),
+            ];
+            $at = self::rowLabel($saved->line ?? $index + 1, $row['job_title'] ?: $saved->own_title);
+            $this->checkTitle($row['job_title'], $at, $catalogue);
+            if (blank($row['job_level'])) {
+                $this->errors[] = __(':field is missing.', ['field' => "{$at} › Job Level"]);
+            }
+            $this->checkSalaryRow($row, $at, false);
+            $this->checkDuplicate($row, $at, $seen);
+        }
+        if ($rows->isEmpty()) {
+            $this->errors[] = __('Salary Data › No job rows were filled in.');
+        }
+
+        if ($attrition = $participant->attrition) {
+            foreach (['attrition_rate' => 'Overall staff attrition rate', 'new_hire_attrition_rate' => 'New-hire attrition rate'] as $field => $label) {
+                if ((float) $attrition->{$field} > 100) {
+                    $this->warnings[] = __(':field of :value% is above 100%.', ['field' => "Attrition & Hiring › {$label}", 'value' => (float) $attrition->{$field}]);
+                }
+            }
+            $this->checkAttrition($attrition->toArray());
+        }
+
+        return ['errors' => $this->errors, 'warnings' => $this->warnings];
+    }
+
+    private static function rowLabel(int $line, ?string $title): string
+    {
+        return __('Salary Data row :row (:title)', ['row' => $line, 'title' => $title ?: '—']);
+    }
+
+    private function checkConsent(bool $consented): void
+    {
+        if (! $consented) {
+            $this->errors[] = __('Consent & Submission › The company has not consented (must be "Yes").');
+        }
+    }
+
+    /**
+     * @param  array<string, array<string, mixed>>  $catalogue
+     * @return array<string, mixed>|null the catalogue entry
+     */
+    private function checkTitle(string $title, string $at, array $catalogue): ?array
+    {
+        if ($title === '') {
+            $this->errors[] = __(':at: Standard Job Title is missing; choose one from the catalogue.', ['at' => $at]);
+
+            return null;
+        }
+
+        $job = $catalogue[mb_strtolower($title)] ?? null;
+        if ($job === null) {
+            $this->errors[] = __(':at: ":title" is not a Standard Job Title in the catalogue.', ['at' => $at, 'title' => $title]);
+        }
+
+        return $job;
+    }
+
+    /**
+     * @param  array<string, mixed>  $row
+     * @param  array<string, true>  $seen  job title|level pairs listed so far
+     */
+    private function checkDuplicate(array $row, string $at, array &$seen): void
+    {
+        if ($row['job_title'] === '') {
+            return;
+        }
+
+        $key = mb_strtolower($row['job_title'].'|'.$row['job_level']);
+        if (isset($seen[$key])) {
+            $this->errors[] = __(':at: :title at :level is listed more than once.', ['at' => $at, 'title' => $row['job_title'], 'level' => $row['job_level']]);
+        }
+        $seen[$key] = true;
     }
 
     /**
@@ -424,18 +517,26 @@ class SurveyWorkbook
             };
         }
 
+        $this->checkAttrition($answers);
+
+        return $answers;
+    }
+
+    /**
+     * @param  array<string, mixed>  $answers
+     */
+    private function checkAttrition(array $answers): void
+    {
         foreach (['hardest_to_hire', 'hardest_to_retain'] as $group) {
-            $ranked = array_filter([$answers["{$group}_1"], $answers["{$group}_2"], $answers["{$group}_3"]]);
+            $ranked = array_filter([$answers["{$group}_1"] ?? null, $answers["{$group}_2"] ?? null, $answers["{$group}_3"] ?? null]);
             if (count($ranked) !== count(array_unique($ranked))) {
                 $this->warnings[] = __('Attrition & Hiring › The same job function is ranked more than once (:group).', ['group' => str_replace('_', ' ', $group)]);
             }
         }
 
-        if ($answers['retrenched'] === true && $answers['retrenchment_driver'] === null) {
+        if (($answers['retrenched'] ?? null) === true && ($answers['retrenchment_driver'] ?? null) === null) {
             $this->warnings[] = __('Attrition & Hiring › Retrenchment is "Yes" but no driver was given.');
         }
-
-        return $answers;
     }
 
     /**

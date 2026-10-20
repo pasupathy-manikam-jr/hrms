@@ -51,6 +51,16 @@ class SurveyCycle extends Model
     }
 
     /**
+     * The job catalogue keyed by lower-cased Standard Job Title, for matching a company's answers.
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    public function catalogue(): array
+    {
+        return $this->jobs()->get()->keyBy(fn (BenchmarkJob $job) => mb_strtolower($job->title))->map->toArray()->all();
+    }
+
+    /**
      * One of the template's dropdown lists (e.g. "IndustryList").
      *
      * @return list<string>
