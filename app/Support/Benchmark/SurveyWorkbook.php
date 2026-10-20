@@ -145,21 +145,24 @@ class SurveyWorkbook
             $sheets = [self::PROFILE, self::SALARY, self::BENEFITS, self::ATTRITION, self::CONSENT];
             $book = self::load($path, $sheets);
             self::assertTemplate($book);
-            if ($missing = array_diff($sheets, $book->getSheetNames())) {
-                throw new \RuntimeException(__('The workbook is missing the sheet(s): :sheets. Use the survey template without renaming or deleting sheets.', ['sheets' => implode(', ', $missing)]));
-            }
         } catch (Throwable $e) {
             return ['participant' => [], 'salaryRows' => [], 'benefits' => [], 'attrition' => [], 'errors' => [$e->getMessage()], 'warnings' => []];
         }
 
-        $participant = $this->readProfile($book->getSheetByNameOrThrow(self::PROFILE), $cycle)
-            + $this->readConsent($book->getSheetByNameOrThrow(self::CONSENT));
+        // A missing sheet is one error; the sheets that are there are still checked, so the report lists everything to fix.
+        if ($missing = array_diff($sheets, $book->getSheetNames())) {
+            $this->errors[] = __('The workbook is missing the sheet(s): :sheets. Use the survey template without renaming or deleting sheets.', ['sheets' => implode(', ', $missing)]);
+        }
+        $sheet = fn (string $name, callable $read, mixed $empty) => ($found = $book->getSheetByName($name)) ? $read($found) : $empty;
+
+        $participant = $sheet(self::PROFILE, fn (Worksheet $found) => $this->readProfile($found, $cycle), [])
+            + $sheet(self::CONSENT, fn (Worksheet $found) => $this->readConsent($found), []);
 
         $result = [
             'participant' => $participant,
             'salaryRows' => $this->readSalaries($book->getSheetByNameOrThrow(self::SALARY), $cycle, $catalogue),
-            'benefits' => $this->readBenefits($book->getSheetByNameOrThrow(self::BENEFITS), $cycle),
-            'attrition' => $this->readAttrition($book->getSheetByNameOrThrow(self::ATTRITION), $cycle),
+            'benefits' => $sheet(self::BENEFITS, fn (Worksheet $found) => $this->readBenefits($found, $cycle), []),
+            'attrition' => $sheet(self::ATTRITION, fn (Worksheet $found) => $this->readAttrition($found, $cycle), []),
             'errors' => $this->errors,
             'warnings' => $this->warnings,
         ];
@@ -284,7 +287,7 @@ class SurveyWorkbook
                 'other_allowance_note' => self::text($cell('AF')),
             ];
 
-            $this->checkSalaryRow($data, $at);
+            $this->checkSalaryRow($data, $at, trim((string) $cell($pay['median'])) !== '');
             $key = mb_strtolower($data['job_title'].'|'.$data['job_level']);
             if (isset($seen[$key])) {
                 $this->errors[] = __(':at: :title at :level is listed more than once.', ['at' => $at, 'title' => $data['job_title'], 'level' => $data['job_level']]);
@@ -304,8 +307,9 @@ class SurveyWorkbook
      * The workbook's own Check columns and sanity rules.
      *
      * @param  array<string, mixed>  $row
+     * @param  bool  $medianFilled  false when the cell is empty; a filled but invalid cell is already reported
      */
-    private function checkSalaryRow(array $row, string $at): void
+    private function checkSalaryRow(array $row, string $at, bool $medianFilled): void
     {
         if ($row['headcount'] < 1) {
             $this->errors[] = __(':at: Total Headcount must be at least 1.', ['at' => $at]);
@@ -317,7 +321,7 @@ class SurveyWorkbook
         if ($tenure !== $row['headcount']) {
             $this->errors[] = __(':at: Tenure headcounts (:sum) must equal Total Headcount (:total).', ['at' => $at, 'sum' => $tenure, 'total' => $row['headcount']]);
         }
-        if ($row['median_salary'] === null || $row['median_salary'] <= 0) {
+        if ($row['median_salary'] === null ? ! $medianFilled : $row['median_salary'] <= 0) {
             $this->errors[] = __(':at: Median Base Salary is required.', ['at' => $at]);
         }
         if ($row['min_salary'] !== null && $row['median_salary'] !== null && $row['min_salary'] > $row['median_salary']) {
@@ -469,18 +473,19 @@ class SurveyWorkbook
             return null;
         }
 
+        $typed = $value;
         if (is_string($value)) {
             $value = str_replace([',', 'RM', 'rm', ' '], '', $value);
         }
 
         if (is_string($value) && str_starts_with($value, '=')) {
-            $this->errors[] = __(':field: contains a formula (":value"); type the actual figure instead.', ['field' => $field, 'value' => $value]);
+            $this->errors[] = __(':field: contains a formula (":value"); type the actual figure instead.', ['field' => $field, 'value' => $typed]);
 
             return null;
         }
 
         if (! is_numeric($value)) {
-            $this->errors[] = __(':field: ":value" is not a number.', ['field' => $field, 'value' => $value]);
+            $this->errors[] = __(':field: ":value" is not a number.', ['field' => $field, 'value' => $typed]);
 
             return null;
         }

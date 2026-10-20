@@ -132,14 +132,17 @@ class BenchmarkSurveyTest extends TestCase
         $this->assertEquals(5000, SurveyParticipant::firstOrFail()->salaryRows()->where('job_title', 'Process Engineer')->value('median_salary'));
     }
 
-    public function test_a_workbook_missing_a_sheet_is_rejected_not_an_error()
+    public function test_a_workbook_missing_a_sheet_is_rejected_with_the_rest_of_its_errors()
     {
         $cycle = $this->cycle();
         $this->actingAs($this->userWithRole());
 
-        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$this->workbook(without: '5. Consent & Submission')]])
+        $file = $this->workbook(without: '5. Consent & Submission', salary: [['title' => 'Astronaut', 'headcount' => 1, 'male' => 1, 'female' => 0]]);
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$file]])
             ->assertSessionHasNoErrors()
-            ->assertInertiaFlash('benchmarkUpload.0.status', 'rejected');
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'rejected')
+            ->assertInertiaFlash('benchmarkUpload.0.errors.0', 'The workbook is missing the sheet(s): 5. Consent & Submission. Use the survey template without renaming or deleting sheets.')
+            ->assertInertiaFlash('benchmarkUpload.0.errors.1', 'Salary Data row 1 (Astronaut): "Astronaut" is not a Standard Job Title in the catalogue.');
 
         $this->assertSame(0, SurveyParticipant::count());
     }
@@ -152,7 +155,7 @@ class BenchmarkSurveyTest extends TestCase
         $file = $this->workbook(salary: [['title' => 'Process Engineer', 'headcount' => 4, 'male' => 3, 'female' => 1, 'median' => '=(R6-Q6)/2+Q6']]);
         $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$file]])
             ->assertInertiaFlash('benchmarkUpload.0.status', 'rejected')
-            ->assertInertiaFlash('benchmarkUpload.0.errors.0', 'Salary Data row 1 (Process Engineer) › Median Base Salary: contains a formula ("=(R6-Q6)/2+Q6"); type the actual figure instead.');
+            ->assertInertiaFlash('benchmarkUpload.0.errors', ['Salary Data row 1 (Process Engineer) › Median Base Salary: contains a formula ("=(R6-Q6)/2+Q6"); type the actual figure instead.']);
 
         $this->assertSame(0, SurveyParticipant::count());
     }
