@@ -277,7 +277,9 @@ export default function SurveyCycles({
                     </div>
                     <div className="grid gap-2">
                         <Label htmlFor="cycle-template">
-                            {t('Blank Survey Template (optional)')}
+                            {t(
+                                'Blank Survey Template (or add workbooks below)',
+                            )}
                         </Label>
                         <Input
                             id="cycle-template"

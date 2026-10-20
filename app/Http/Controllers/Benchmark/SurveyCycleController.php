@@ -143,7 +143,7 @@ class SurveyCycleController extends Controller
             'template' => [$creating ? 'required_without:files' : 'nullable', 'nullable', 'file', 'extensions:xlsx', 'max:20480'],
             'files' => ['nullable', 'array', 'max:50'],
             'files.*' => ['file', 'extensions:xlsx', 'max:10240'],
-        ], attributes: ['files.*' => __('file')]);
+        ], ['template.required_without' => __('Add the blank survey template or at least one completed workbook.')], ['files.*' => __('file')]);
         unset($data['template'], $data['files']);
 
         return $data;
