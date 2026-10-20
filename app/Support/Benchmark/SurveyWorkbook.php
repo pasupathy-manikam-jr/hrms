@@ -463,7 +463,10 @@ class SurveyWorkbook
             return $value;
         }
 
-        $this->errors[] = __(':field: ":value" is not one of the allowed options.', ['field' => $field, 'value' => $value]);
+        // Name the options so the company can fix it from the issues list alone; long lists stay in the workbook's dropdown.
+        $this->errors[] = count($options) <= 30
+            ? __(':field: ":value" is not one of the allowed options. Choose one of: :options.', ['field' => $field, 'value' => $value, 'options' => implode('; ', $options)])
+            : __(':field: ":value" is not one of the allowed options. Choose one from the dropdown in the workbook.', ['field' => $field, 'value' => $value]);
 
         return null;
     }
