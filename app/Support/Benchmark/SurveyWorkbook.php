@@ -4,6 +4,7 @@ namespace App\Support\Benchmark;
 
 use App\Models\Benchmark\SurveyCycle;
 use Carbon\CarbonImmutable;
+use PhpOffice\PhpSpreadsheet\Cell\Cell;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Shared\Date as ExcelDate;
@@ -91,14 +92,14 @@ class SurveyWorkbook
         $lookups = [];
         $lastColumn = Coordinate::columnIndexFromString($sheet->getHighestColumn());
         for ($column = 12; $column <= $lastColumn; $column++) {
-            $name = self::text($sheet->getCell([$column, 1])->getValue());
+            $name = self::text(self::value($sheet->getCell([$column, 1])));
             // Per-industry title lists repeat the catalogue, which is stored in full below.
             if ($name === null || str_starts_with($name, 'Titles_') || $name === 'JobTitleList') {
                 continue;
             }
             $values = [];
             for ($row = 2; $row <= $sheet->getHighestRow(); $row++) {
-                if (($value = self::text($sheet->getCell([$column, $row])->getValue())) !== null) {
+                if (($value = self::text(self::value($sheet->getCell([$column, $row])))) !== null) {
                     $values[] = $value;
                 }
             }
@@ -107,11 +108,11 @@ class SurveyWorkbook
 
         $jobs = [];
         for ($row = 2; $row <= $sheet->getHighestRow(); $row++) {
-            $code = self::text($sheet->getCell([1, $row])->getValue());
+            $code = self::text(self::value($sheet->getCell([1, $row])));
             if ($code === null) {
                 continue;
             }
-            $cell = fn (int $column) => self::text($sheet->getCell([$column, $row])->getValue());
+            $cell = fn (int $column) => self::text(self::value($sheet->getCell([$column, $row])));
             $jobs[] = [
                 'code' => $code, 'industry' => $cell(2), 'job_family' => $cell(3), 'title' => $cell(4),
                 'typical_level' => $cell(5), 'summary' => $cell(6), 'responsibilities' => $cell(7),
@@ -122,7 +123,7 @@ class SurveyWorkbook
         // In a completed workbook the Remarks column holds the company's answers, not the template's guidance.
         $benefits = $book->getSheetByNameOrThrow(self::BENEFITS);
         $lookups['_benefit_guidance'] = $blank ? array_values(array_filter(array_map(
-            fn (int $row) => self::text($benefits->getCell("F{$row}")->getValue()),
+            fn (int $row) => self::text(self::value($benefits->getCell("F{$row}"))),
             array_keys(self::BENEFIT_ITEMS),
         ))) : [];
         $book->disconnectWorksheets();
@@ -174,16 +175,16 @@ class SurveyWorkbook
      */
     private function readProfile(Worksheet $sheet, SurveyCycle $cycle): array
     {
-        $value = fn (int $row) => self::text($sheet->getCell("B{$row}")->getValue());
+        $value = fn (int $row) => self::text(self::value($sheet->getCell("B{$row}")));
 
         $profile = [
             'company_name' => $value(3),
             'industry' => $this->choice($value(4), $cycle->lookup('IndustryList'), 'Company Profile › Industry', required: true),
             'state' => $this->choice($value(5), $cycle->lookup('StateList'), 'Company Profile › State', required: true),
-            'employee_band' => $this->choice($value(6), $cycle->lookup('EmployeeBandList'), 'Company Profile › Number of Employees', required: true),
+            'employee_band' => $this->choice($this->band($value(6), $cycle->lookup('EmployeeBandList'), 'Company Profile › Number of Employees'), $cycle->lookup('EmployeeBandList'), 'Company Profile › Number of Employees', required: true),
             'revenue_band' => $this->choice($value(7), $cycle->lookup('RevenueBandList'), 'Company Profile › Annual Revenue Band'),
             'ownership_type' => $this->choice($value(8), $cycle->lookup('OwnershipTypeList'), 'Company Profile › Ownership Type'),
-            'locations' => $this->integer($sheet->getCell('B9')->getValue(), 'Company Profile › Operating Locations'),
+            'locations' => $this->integer(self::value($sheet->getCell('B9')), 'Company Profile › Operating Locations'),
             'listed_status' => $this->choice($value(10), $cycle->lookup('ListedStatusList'), 'Company Profile › Listed Status'),
             'unionised' => $this->choice($value(11), $cycle->lookup('YesNo'), 'Company Profile › Unionised Workforce'),
         ];
@@ -200,14 +201,14 @@ class SurveyWorkbook
      */
     private function readConsent(Worksheet $sheet): array
     {
-        if (strcasecmp((string) self::text($sheet->getCell('B5')->getValue()), 'Yes') !== 0) {
+        if (strcasecmp((string) self::text(self::value($sheet->getCell('B5'))), 'Yes') !== 0) {
             $this->errors[] = __('Consent & Submission › The company has not consented (must be "Yes").');
         }
 
         return [
-            'authorised_name' => self::text($sheet->getCell('B6')->getValue()),
-            'authorised_designation' => self::text($sheet->getCell('B7')->getValue()),
-            'consent_date' => $this->date($sheet->getCell('B8')->getValue()),
+            'authorised_name' => self::text(self::value($sheet->getCell('B6'))),
+            'authorised_designation' => self::text(self::value($sheet->getCell('B7'))),
+            'consent_date' => $this->date(self::value($sheet->getCell('B8'))),
         ];
     }
 
@@ -221,7 +222,7 @@ class SurveyWorkbook
         $seen = [];
 
         for ($row = self::SALARY_ROWS[0]; $row <= self::SALARY_ROWS[1]; $row++) {
-            $cell = fn (string $column) => $sheet->getCell("{$column}{$row}")->getValue();
+            $cell = fn (string $column) => self::value($sheet->getCell("{$column}{$row}"));
             $title = self::text($cell('C'));
 
             if ($title === null) {
@@ -351,7 +352,7 @@ class SurveyWorkbook
         $benefits = [];
 
         foreach (self::BENEFIT_ITEMS as $row => [$key, $label]) {
-            $cell = fn (string $column) => self::text($sheet->getCell("{$column}{$row}")->getValue());
+            $cell = fn (string $column) => self::text(self::value($sheet->getCell("{$column}{$row}")));
             $same = $this->choice($cell('B'), $cycle->lookup('YesNo'), "Benefits › {$label} › Same for all job levels?");
             $remarks = $cell('F');
 
@@ -384,7 +385,7 @@ class SurveyWorkbook
      */
     private function readAttrition(Worksheet $sheet, SurveyCycle $cycle): array
     {
-        $value = fn (int $row) => $sheet->getCell("B{$row}")->getValue();
+        $value = fn (int $row) => self::value($sheet->getCell("B{$row}"));
         $families = $cycle->lookup('JobFamilyList');
         /** @var array<string, mixed> $answers */
         $answers = [];
@@ -528,9 +529,49 @@ class SurveyWorkbook
         $names = $book->getSheetNames();
         $salary = $book->getSheetByName(self::SALARY);
 
-        if (! in_array(self::SALARY, $names, true) || $salary === null || self::text($salary->getCell('C4')->getValue()) === null
-            || ! str_contains((string) $salary->getCell('C4')->getValue(), 'Standard Job Title')) {
+        if (! in_array(self::SALARY, $names, true) || $salary === null || self::text(self::value($salary->getCell('C4'))) === null
+            || ! str_contains((string) self::value($salary->getCell('C4')), 'Standard Job Title')) {
             throw new \RuntimeException(__('This file is not the Salary & Benefits Benchmark Survey workbook.'));
+        }
+    }
+
+    /**
+     * A plain head count (e.g. "25") typed where a band was expected becomes the band that holds it.
+     *
+     * @param  list<string>  $bands  e.g. "1-49", "1,000+"
+     */
+    private function band(?string $value, array $bands, string $field): ?string
+    {
+        if ($value === null || ! is_numeric($count = str_replace(',', '', $value))) {
+            return $value;
+        }
+
+        foreach ($bands as $band) {
+            if (preg_match('/^([\d,]+)\s*(?:-\s*([\d,]+)|\+)$/', str_replace(' ', '', $band), $range)
+                && $count >= (int) str_replace(',', '', $range[1])
+                && (! isset($range[2]) || $count <= (int) str_replace(',', '', $range[2]))) {
+                $this->warnings[] = __(':field: ":value" was read as the band ":band".', ['field' => $field, 'value' => $value, 'band' => $band]);
+
+                return $band;
+            }
+        }
+
+        return $value;
+    }
+
+    /**
+     * A cell's answer; for a formula, the result Excel saved with the file rather than the formula text.
+     */
+    private static function value(Cell $cell): mixed
+    {
+        if (! $cell->isFormula()) {
+            return $cell->getValue();
+        }
+
+        try {
+            return $cell->getOldCalculatedValue() ?? $cell->getCalculatedValue();
+        } catch (Throwable) {
+            return null;
         }
     }
 

@@ -144,6 +144,20 @@ class BenchmarkSurveyTest extends TestCase
         $this->assertSame(0, SurveyParticipant::count());
     }
 
+    public function test_formula_answers_and_a_plain_head_count_are_read_as_values()
+    {
+        $cycle = $this->cycle();
+        $this->actingAs($this->userWithRole());
+
+        $file = $this->workbook(employees: '75', salary: [['title' => 'Process Engineer', 'headcount' => 4, 'male' => 3, 'female' => 1, 'median' => '=2000+2500']]);
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [$file]])
+            ->assertInertiaFlash('benchmarkUpload.0.status', 'imported');
+
+        $participant = SurveyParticipant::firstOrFail();
+        $this->assertSame('50-99', $participant->employee_band);
+        $this->assertEquals(4500, $participant->salaryRows()->value('median_salary'));
+    }
+
     public function test_analytics_hide_figures_below_the_threshold_and_pool_the_rest()
     {
         $cycle = $this->cycle();
@@ -249,7 +263,7 @@ class BenchmarkSurveyTest extends TestCase
      *
      * @param  list<array<string, mixed>>|null  $salary
      */
-    private function workbook(string $company = 'Alpha Sdn Bhd', bool $template = false, ?array $salary = null, string $consent = 'Yes', int $median = 4500, ?string $file = null, ?string $remarks = null, ?string $without = null): UploadedFile
+    private function workbook(string $company = 'Alpha Sdn Bhd', bool $template = false, ?array $salary = null, string $consent = 'Yes', int $median = 4500, ?string $file = null, ?string $remarks = null, ?string $without = null, string $employees = '200-499'): UploadedFile
     {
         $book = new Spreadsheet;
         $sheet = fn (string $name) => $book->addSheet(new Worksheet($book, $name));
@@ -278,7 +292,7 @@ class BenchmarkSurveyTest extends TestCase
         }
 
         if (! $template) {
-            $profile->fromArray([[$company], ['Manufacturing'], ['Selangor'], ['200-499'], ['RM20 million - RM50 million'], ['Local / Malaysian-owned'], [2], ['Private'], ['No']], null, 'B3');
+            $profile->fromArray([[$company], ['Manufacturing'], ['Selangor'], [$employees], ['RM20 million - RM50 million'], ['Local / Malaysian-owned'], [2], ['Private'], ['No']], null, 'B3');
 
             $rows = $salary ?? [
                 ['title' => 'Process Engineer', 'headcount' => 4, 'male' => 3, 'female' => 1, 'median' => $median],
