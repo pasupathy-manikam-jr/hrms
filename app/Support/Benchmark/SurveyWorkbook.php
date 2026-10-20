@@ -404,15 +404,17 @@ class SurveyWorkbook
         $answers = [];
 
         foreach (self::ATTRITION_FIELDS as $row => $field) {
+            // Name the question as the company sees it in column A.
+            $label = 'Attrition & Hiring › '.(self::text($sheet->getCell("A{$row}")->getValue()) ?? str_replace('_', ' ', $field));
             $answers[$field] = match ($field) {
-                'attrition_rate', 'new_hire_attrition_rate' => $this->percent($value($row), "Attrition & Hiring › {$field}"),
-                'retirements', 'involuntary_terminations', 'contract_non_renewals', 'time_to_fill_days' => $this->integer($value($row), "Attrition & Hiring › {$field}"),
-                'hardest_to_hire_1', 'hardest_to_hire_2', 'hardest_to_hire_3', 'hardest_to_retain_1', 'hardest_to_retain_2', 'hardest_to_retain_3' => $this->choice(self::text($value($row)), $families, 'Attrition & Hiring › '.str_replace('_', ' ', $field)),
-                'headcount_plan' => $this->choice(self::text($value($row)), $cycle->lookup('HeadcountPlanList'), 'Attrition & Hiring › Headcount plan'),
-                'pay_reason_for_leaving' => $this->choice(self::text($value($row)), $cycle->lookup('YesNoUnsure'), 'Attrition & Hiring › Pay as a reason for leaving'),
-                'retrenched' => ($retrenched = $this->choice(self::text($value($row)), $cycle->lookup('YesNo'), 'Attrition & Hiring › Retrenchment')) === null ? null : $retrenched === 'Yes',
-                'retrenchment_driver' => $this->choice(self::text($value($row)), $cycle->lookup('RetrenchmentDriverList'), 'Attrition & Hiring › Retrenchment driver'),
-                'retrenchment_above_statutory' => $this->choice(self::text($value($row)), $cycle->lookup('YesNoNA'), 'Attrition & Hiring › Retrenchment benefits above statutory'),
+                'attrition_rate', 'new_hire_attrition_rate' => $this->percent($value($row), $label),
+                'retirements', 'involuntary_terminations', 'contract_non_renewals', 'time_to_fill_days' => $this->integer($value($row), $label),
+                'hardest_to_hire_1', 'hardest_to_hire_2', 'hardest_to_hire_3', 'hardest_to_retain_1', 'hardest_to_retain_2', 'hardest_to_retain_3' => $this->choice(self::text($value($row)), $families, $label),
+                'headcount_plan' => $this->choice(self::text($value($row)), $cycle->lookup('HeadcountPlanList'), $label),
+                'pay_reason_for_leaving' => $this->choice(self::text($value($row)), $cycle->lookup('YesNoUnsure'), $label),
+                'retrenched' => ($retrenched = $this->choice(self::text($value($row)), $cycle->lookup('YesNo'), $label)) === null ? null : $retrenched === 'Yes',
+                'retrenchment_driver' => $this->choice(self::text($value($row)), $cycle->lookup('RetrenchmentDriverList'), $label),
+                'retrenchment_above_statutory' => $this->choice(self::text($value($row)), $cycle->lookup('YesNoNA'), $label),
                 default => self::text($value($row)),
             };
         }
