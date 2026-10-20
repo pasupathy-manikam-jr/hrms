@@ -152,6 +152,7 @@ class OfferTest extends TestCase
 
         $this->withoutVite()->actingAs($hr)
             ->get(route('hr.recruitment.offers.show', $offer))
-            ->assertInertia(fn ($page) => $page->where('letter', "Siti Hajar|{$hr->name}|{$offer->job->location->name}|01/12/2026"));
+            // Values are HTML-escaped into the template (Faker names can contain apostrophes).
+            ->assertInertia(fn ($page) => $page->where('letter', 'Siti Hajar|'.e($hr->name).'|'.e($offer->job->location->name).'|01/12/2026'));
     }
 }
