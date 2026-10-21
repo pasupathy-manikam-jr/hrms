@@ -37,6 +37,7 @@ Route::middleware(['auth', 'verified', 'permission:manage-benchmark-survey'])
                 Route::delete('salary-rows/{salaryRow}', 'destroyRow')->name('rows.destroy');
                 Route::put('benefits', 'benefits')->name('benefits');
                 Route::put('attrition', 'attrition')->name('attrition');
+                Route::post('accept', 'accept')->name('accept');
             });
 
         Route::controller(SurveyAnalyticsController::class)->prefix('analytics')->name('analytics.')->group(function () {

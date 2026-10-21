@@ -115,6 +115,21 @@ class SurveyAnalytics
                     'row' => $row,
                 ])->filter(fn (array $point) => $point['value'] > 0 && $point['weight'] > 0);
 
+                // A company may list a role more than once (e.g. per site); company weighting still counts it once,
+                // at the headcount-weighted average of its rows.
+                if (! $byIncumbent) {
+                    $points = $points->groupBy(fn (array $point) => $point['row']->survey_participant_id)
+                        ->map(function (Collection $own) {
+                            $headcount = $own->sum(fn (array $point) => max(1, $point['row']->headcount));
+
+                            return [
+                                'value' => $own->sum(fn (array $point) => $point['value'] * max(1, $point['row']->headcount)) / $headcount,
+                                'weight' => 1,
+                                'row' => $own->first()['row'],
+                            ];
+                        })->values();
+                }
+
                 $companies = $points->pluck('row.survey_participant_id')->unique()->count();
                 $stats = [
                     'job_family' => $first->job_family,

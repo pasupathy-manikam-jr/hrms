@@ -30,7 +30,10 @@ use Throwable;
  * @property string|null $file_path
  * @property string|null $file_name
  * @property list<string>|null $warnings
- * @property list<string>|null $errors set while the workbook still has errors; such submissions are left out of the analytics
+ * @property list<string>|null $errors open (not accepted) errors; while set, the submission is left out of the analytics
+ * @property list<array{type: string, message: string, target: string|null, rule: string|null}>|null $issues every finding, with what it is about
+ * @property array<string, array{value: string, message: string, rule: string|null}>|null $raw_answers answers that failed a check, as typed ("target.field" => value)
+ * @property list<string>|null $accepted_issues keys of findings accepted as they stand (see SurveyWorkbook::issueKey())
  * @property CarbonInterface|null $consent_date
  * @property bool|null $consented
  * @property CarbonInterface|null $edited_at
@@ -38,7 +41,7 @@ use Throwable;
 #[Fillable([
     'survey_cycle_id', 'company_name', 'company_key', 'industry', 'state', 'employee_band', 'revenue_band',
     'ownership_type', 'locations', 'listed_status', 'unionised', 'authorised_name', 'authorised_designation',
-    'consented', 'consent_date', 'file_path', 'file_name', 'errors', 'warnings', 'edited_at', 'edited_by', 'uploaded_by',
+    'consented', 'consent_date', 'file_path', 'file_name', 'errors', 'warnings', 'issues', 'accepted_issues', 'raw_answers', 'edited_at', 'edited_by', 'uploaded_by',
 ])]
 class SurveyParticipant extends Model
 {
@@ -57,7 +60,7 @@ class SurveyParticipant extends Model
      */
     protected function casts(): array
     {
-        return ['errors' => 'array', 'warnings' => 'array', 'consented' => 'boolean', 'edited_at' => 'datetime', 'consent_date' => 'date:Y-m-d', 'locations' => 'integer'];
+        return ['errors' => 'array', 'warnings' => 'array', 'issues' => 'array', 'accepted_issues' => 'array', 'raw_answers' => 'array', 'consented' => 'boolean', 'edited_at' => 'datetime', 'consent_date' => 'date:Y-m-d', 'locations' => 'integer'];
     }
 
     /**
@@ -134,7 +137,7 @@ class SurveyParticipant extends Model
      * Saves one company's answers (as read by SurveyWorkbook) into the cycle, replacing that company's
      * previous submission if there is one.
      *
-     * @param  array{participant: array<string, mixed>, salaryRows: array<int, array<string, mixed>>, benefits: array<int, array<string, mixed>>, attrition: array<string, mixed>, errors?: array<int, string>, warnings: array<int, string>}  $data
+     * @param  array{participant: array<string, mixed>, salaryRows: array<int, array<string, mixed>>, benefits: array<int, array<string, mixed>>, attrition: array<string, mixed>, issues?: list<array{type: string, message: string, target: string|null, rule: string|null}>, raw?: array<string, array{value: string, message: string, rule: string|null}>, errors?: array<int, string>, warnings: array<int, string>}  $data
      * @param  array{file_path?: string|null, file_name?: string|null, uploaded_by?: int|null}  $file
      */
     public static function record(SurveyCycle $cycle, array $data, array $file = []): self
@@ -149,6 +152,9 @@ class SurveyParticipant extends Model
                 ...$file,
                 'survey_cycle_id' => $cycle->id,
                 'company_key' => $key,
+                'issues' => $data['issues'] ?? [],
+                'accepted_issues' => null,
+                'raw_answers' => ($data['raw'] ?? []) ?: null,
                 'errors' => ($data['errors'] ?? []) ?: null,
                 'warnings' => $data['warnings'],
             ]);
@@ -167,13 +173,38 @@ class SurveyParticipant extends Model
      */
     public function corrected(?int $userId): void
     {
-        $result = (new SurveyWorkbook)->check($this, $this->cycle->catalogue());
         $this->update([
-            'errors' => $result['errors'] ?: null,
-            'warnings' => $result['warnings'],
+            'issues' => (new SurveyWorkbook)->check($this, $this->cycle->catalogue())['issues'],
             'edited_at' => now(),
             'edited_by' => $userId,
         ]);
+        $this->refreshOpenIssues();
+    }
+
+    /**
+     * Accepts (or un-accepts) findings as they stand. Only keys of this submission's acceptable findings count.
+     *
+     * @param  list<string>  $keys
+     */
+    public function accept(array $keys, bool $accepted, ?int $userId): void
+    {
+        $keys = array_intersect($keys, array_filter(array_map(SurveyWorkbook::issueKey(...), $this->issues ?? [])));
+        $current = $this->accepted_issues ?? [];
+        $this->update([
+            'accepted_issues' => array_values($accepted ? array_unique([...$current, ...$keys]) : array_diff($current, $keys)) ?: null,
+            'edited_at' => now(),
+            'edited_by' => $userId,
+        ]);
+        $this->refreshOpenIssues();
+    }
+
+    /**
+     * Errors and warnings are the findings not accepted; with no errors open, the submission counts in the analytics.
+     */
+    private function refreshOpenIssues(): void
+    {
+        $open = SurveyWorkbook::summary($this->issues ?? [], $this->accepted_issues ?? []);
+        $this->update(['errors' => $open['errors'] ?: null, 'warnings' => $open['warnings']]);
     }
 
     /**

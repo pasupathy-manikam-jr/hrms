@@ -77,6 +77,12 @@ class SurveyParticipantController extends Controller
         return Inertia::render('benchmark/participants/show', [
             'participant' => $participant,
             'hasFile' => $participant->file_path !== null,
+            // Every finding with what it's about, whether it can be accepted (key) and whether it was.
+            'issues' => array_map(fn (array $issue) => [
+                ...$issue,
+                'key' => $key = SurveyWorkbook::issueKey($issue),
+                'accepted' => $key !== null && in_array($key, $participant->accepted_issues ?? [], true),
+            ], $participant->issues ?? []),
             'salaryRows' => $participant->salaryRows->map(fn ($row) => [
                 ...$row->toArray(),
                 'market_median' => $market[$row->job_title.'|'.$row->job_level]['median'] ?? null,

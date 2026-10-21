@@ -71,11 +71,24 @@ class SurveyWorkbook
         21 => 'retrenchment_above_statutory', 22 => 'retrenchment_above_note', 23 => 'comments',
     ];
 
-    /** @var list<string> */
-    private array $errors = [];
+    /**
+     * Rules whose finding can be accepted as it stands: consistency checks and every warning. Missing or invalid
+     * answers can't be, since the analytics can't use the row without them.
+     */
+    public const ACCEPTABLE_RULES = ['gender_total', 'tenure_total', 'min_above_median', 'max_below_median'];
 
-    /** @var list<string> */
-    private array $warnings = [];
+    /** @var list<array{type: string, message: string, target: string|null, rule: string|null}> */
+    private array $issues = [];
+
+    /**
+     * Answers that failed a check, kept as the company typed them (the column is saved empty), keyed "target.field".
+     *
+     * @var array<string, array{value: string, message: string, rule: string|null}>
+     */
+    private array $raw = [];
+
+    /** What the next issue is about: "row:7" (Salary Data line), "salary", "benefit:<item>", "attrition:<field>", "profile" or "consent". */
+    private ?string $target = null;
 
     /**
      * The blank template's dropdown lists, job catalogue and the Benefits sheet's guidance text
@@ -135,24 +148,25 @@ class SurveyWorkbook
      * One company's completed workbook, checked against the cycle's lists and catalogue.
      *
      * @param  array<string, array<string, mixed>>  $catalogue  job title => catalogue entry (code, job_family, title)
-     * @return array{participant: array<string, mixed>, salaryRows: list<array<string, mixed>>, benefits: list<array<string, mixed>>, attrition: array<string, mixed>, errors: list<string>, warnings: list<string>}
+     * @return array{participant: array<string, mixed>, salaryRows: list<array<string, mixed>>, benefits: list<array<string, mixed>>, attrition: array<string, mixed>, issues: list<array{type: string, message: string, target: string|null, rule: string|null}>, raw: array<string, array{value: string, message: string, rule: string|null}>, errors: list<string>, warnings: list<string>}
      */
     public function read(string $path, SurveyCycle $cycle, array $catalogue): array
     {
-        $this->errors = [];
-        $this->warnings = [];
+        $this->issues = [];
+        $this->raw = [];
+        $this->target = null;
 
         try {
             $sheets = [self::PROFILE, self::SALARY, self::BENEFITS, self::ATTRITION, self::CONSENT];
             $book = self::load($path, $sheets);
             self::assertTemplate($book);
         } catch (Throwable $e) {
-            return ['participant' => [], 'salaryRows' => [], 'benefits' => [], 'attrition' => [], 'errors' => [$e->getMessage()], 'warnings' => []];
+            return ['participant' => [], 'salaryRows' => [], 'benefits' => [], 'attrition' => [], 'issues' => [], 'raw' => [], 'errors' => [$e->getMessage()], 'warnings' => []];
         }
 
         // A missing sheet is one error; the sheets that are there are still checked, so the report lists everything to fix.
         if ($missing = array_diff($sheets, $book->getSheetNames())) {
-            $this->errors[] = __('The workbook is missing the sheet(s): :sheets. Use the survey template without renaming or deleting sheets.', ['sheets' => implode(', ', $missing)]);
+            $this->fail(__('The workbook is missing the sheet(s): :sheets. Use the survey template without renaming or deleting sheets.', ['sheets' => implode(', ', $missing)]));
         }
         $sheet = fn (string $name, callable $read, mixed $empty) => ($found = $book->getSheetByName($name)) ? $read($found) : $empty;
 
@@ -164,8 +178,9 @@ class SurveyWorkbook
             'salaryRows' => $this->readSalaries($book->getSheetByNameOrThrow(self::SALARY), $cycle, $catalogue),
             'benefits' => $sheet(self::BENEFITS, fn (Worksheet $found) => $this->readBenefits($found, $cycle), []),
             'attrition' => $sheet(self::ATTRITION, fn (Worksheet $found) => $this->readAttrition($found, $cycle), []),
-            'errors' => $this->errors,
-            'warnings' => $this->warnings,
+            'issues' => $this->issues,
+            'raw' => $this->raw,
+            ...self::summary($this->issues),
         ];
         // Workbooks hold circular references; free each one so a multi-file upload stays within memory_limit.
         $book->disconnectWorksheets();
@@ -178,22 +193,23 @@ class SurveyWorkbook
      */
     private function readProfile(Worksheet $sheet, SurveyCycle $cycle): array
     {
+        $this->target = 'profile';
         $value = fn (int $row) => self::text($sheet->getCell("B{$row}")->getValue());
 
         $profile = [
             'company_name' => $value(3),
-            'industry' => $this->choice($value(4), $cycle->lookup('IndustryList'), 'Company Profile › Industry', required: true),
-            'state' => $this->choice($value(5), $cycle->lookup('StateList'), 'Company Profile › State', required: true),
-            'employee_band' => $this->choice($value(6), $cycle->lookup('EmployeeBandList'), 'Company Profile › Number of Employees', required: true),
-            'revenue_band' => $this->choice($value(7), $cycle->lookup('RevenueBandList'), 'Company Profile › Annual Revenue Band'),
-            'ownership_type' => $this->choice($value(8), $cycle->lookup('OwnershipTypeList'), 'Company Profile › Ownership Type'),
-            'locations' => $this->integer($sheet->getCell('B9')->getValue(), 'Company Profile › Operating Locations'),
-            'listed_status' => $this->choice($value(10), $cycle->lookup('ListedStatusList'), 'Company Profile › Listed Status'),
-            'unionised' => $this->choice($value(11), $cycle->lookup('YesNo'), 'Company Profile › Unionised Workforce'),
+            'industry' => $this->choice($value(4), $cycle->lookup('IndustryList'), 'Company Profile › Industry', required: true, key: 'industry'),
+            'state' => $this->choice($value(5), $cycle->lookup('StateList'), 'Company Profile › State', required: true, key: 'state'),
+            'employee_band' => $this->choice($value(6), $cycle->lookup('EmployeeBandList'), 'Company Profile › Number of Employees', required: true, key: 'employee_band'),
+            'revenue_band' => $this->choice($value(7), $cycle->lookup('RevenueBandList'), 'Company Profile › Annual Revenue Band', key: 'revenue_band'),
+            'ownership_type' => $this->choice($value(8), $cycle->lookup('OwnershipTypeList'), 'Company Profile › Ownership Type', key: 'ownership_type'),
+            'locations' => $this->integer($sheet->getCell('B9')->getValue(), 'Company Profile › Operating Locations', key: 'locations'),
+            'listed_status' => $this->choice($value(10), $cycle->lookup('ListedStatusList'), 'Company Profile › Listed Status', key: 'listed_status'),
+            'unionised' => $this->choice($value(11), $cycle->lookup('YesNo'), 'Company Profile › Unionised Workforce', key: 'unionised'),
         ];
 
         if ($profile['company_name'] === null) {
-            $this->errors[] = __('Company Profile › Company Name is missing.');
+            $this->fail(__('Company Profile › Company Name is missing.'));
         }
 
         return $profile;
@@ -204,6 +220,7 @@ class SurveyWorkbook
      */
     private function readConsent(Worksheet $sheet): array
     {
+        $this->target = 'consent';
         $consented = strcasecmp((string) self::text($sheet->getCell('B5')->getValue()), 'Yes') === 0;
         $this->checkConsent($consented);
 
@@ -211,7 +228,7 @@ class SurveyWorkbook
             'consented' => $consented,
             'authorised_name' => self::text($sheet->getCell('B6')->getValue()),
             'authorised_designation' => self::text($sheet->getCell('B7')->getValue()),
-            'consent_date' => $this->date($sheet->getCell('B8')->getValue()),
+            'consent_date' => $this->date($sheet->getCell('B8')->getValue(), key: 'consent_date'),
         ];
     }
 
@@ -222,7 +239,6 @@ class SurveyWorkbook
     private function readSalaries(Worksheet $sheet, SurveyCycle $cycle, array $catalogue): array
     {
         $rows = [];
-        $seen = [];
         // Template versions differ in the order of Min / Max / Median, so find them by their headings.
         $pay = ['min' => 'Q', 'max' => 'R', 'median' => 'S'];
         foreach (['Q', 'R', 'S'] as $column) {
@@ -243,11 +259,12 @@ class SurveyWorkbook
                 continue;
             }
 
+            $this->target = 'row:'.($row - 5);
             $at = self::rowLabel($row - 5, $title ?? self::text($cell('D')));
             $job = $this->checkTitle((string) $title, $at, $catalogue);
-            $level = $this->choice(self::text($cell('E')), $cycle->lookup('JobLevelList'), "{$at} › Job Level", required: true);
-            $number = fn (string $column, string $label) => $this->number($cell($column), "{$at} › {$label}");
-            $count = fn (string $column, string $label) => (int) ($this->number($cell($column), "{$at} › {$label}") ?? 0);
+            $level = $this->choice(self::text($cell('E')), $cycle->lookup('JobLevelList'), "{$at} › Job Level", required: true, key: 'job_level');
+            $number = fn (string $column, string $label, string $key) => $this->number($cell($column), "{$at} › {$label}", $key);
+            $count = fn (string $column, string $label, string $key) => (int) ($this->number($cell($column), "{$at} › {$label}", $key) ?? 0);
 
             $data = [
                 'line' => $row - 5,
@@ -256,39 +273,39 @@ class SurveyWorkbook
                 'job_title' => $job['title'] ?? (string) $title,
                 'own_title' => self::text($cell('D')),
                 'job_level' => $level ?? '',
-                'headcount' => $count('F', 'Total Headcount'),
-                'male' => $count('G', 'Male'),
-                'female' => $count('H', 'Female'),
-                'tenure_under_1' => $count('J', 'Tenure <1 yr'),
-                'tenure_1_2' => $count('K', 'Tenure 1-2 yrs'),
-                'tenure_3_4' => $count('L', 'Tenure 3-4 yrs'),
-                'tenure_5_plus' => $count('M', 'Tenure 5+ yrs'),
-                'experience_required' => $this->choice(self::text($cell('O')), $cycle->lookup('ExperienceRequiredList'), "{$at} › Typical Experience"),
-                'shift_based' => ($shift = $this->choice(self::text($cell('P')), $cycle->lookup('YesNo'), "{$at} › Shift-Based")) === null ? null : $shift === 'Yes',
-                'min_salary' => $number($pay['min'], 'Min Base Salary'),
-                'max_salary' => $number($pay['max'], 'Max Base Salary'),
-                'median_salary' => $number($pay['median'], 'Median Base Salary'),
-                'avg_male' => $number('T', 'Avg. Male Base Salary'),
-                'avg_female' => $number('U', 'Avg. Female Base Salary'),
-                'guaranteed_bonus_months' => $number('W', 'Guaranteed Annual Bonus'),
-                'allowance_transport' => $number('X', 'Transport'),
-                'allowance_meal' => $number('Y', 'Meal'),
-                'allowance_housing' => $number('Z', 'Housing'),
-                'allowance_shift' => $number('AA', 'Shift / Night Differential'),
-                'allowance_phone' => $number('AB', 'Phone / Internet'),
-                'allowance_overtime' => $number('AC', 'Overtime'),
-                'allowance_outstation' => $number('AD', 'Outstation / Travel'),
-                'allowance_other' => $number('AE', 'Other Allowance'),
+                'headcount' => $count('F', 'Total Headcount', 'headcount'),
+                'male' => $count('G', 'Male', 'male'),
+                'female' => $count('H', 'Female', 'female'),
+                'tenure_under_1' => $count('J', 'Tenure <1 yr', 'tenure_under_1'),
+                'tenure_1_2' => $count('K', 'Tenure 1-2 yrs', 'tenure_1_2'),
+                'tenure_3_4' => $count('L', 'Tenure 3-4 yrs', 'tenure_3_4'),
+                'tenure_5_plus' => $count('M', 'Tenure 5+ yrs', 'tenure_5_plus'),
+                'experience_required' => $this->choice(self::text($cell('O')), $cycle->lookup('ExperienceRequiredList'), "{$at} › Typical Experience", key: 'experience_required'),
+                'shift_based' => ($shift = $this->choice(self::text($cell('P')), $cycle->lookup('YesNo'), "{$at} › Shift-Based", key: 'shift_based')) === null ? null : $shift === 'Yes',
+                'min_salary' => $number($pay['min'], 'Min Base Salary', 'min_salary'),
+                'max_salary' => $number($pay['max'], 'Max Base Salary', 'max_salary'),
+                'median_salary' => $number($pay['median'], 'Median Base Salary', 'median_salary'),
+                'avg_male' => $number('T', 'Avg. Male Base Salary', 'avg_male'),
+                'avg_female' => $number('U', 'Avg. Female Base Salary', 'avg_female'),
+                'guaranteed_bonus_months' => $number('W', 'Guaranteed Annual Bonus', 'guaranteed_bonus_months'),
+                'allowance_transport' => $number('X', 'Transport', 'allowance_transport'),
+                'allowance_meal' => $number('Y', 'Meal', 'allowance_meal'),
+                'allowance_housing' => $number('Z', 'Housing', 'allowance_housing'),
+                'allowance_shift' => $number('AA', 'Shift / Night Differential', 'allowance_shift'),
+                'allowance_phone' => $number('AB', 'Phone / Internet', 'allowance_phone'),
+                'allowance_overtime' => $number('AC', 'Overtime', 'allowance_overtime'),
+                'allowance_outstation' => $number('AD', 'Outstation / Travel', 'allowance_outstation'),
+                'allowance_other' => $number('AE', 'Other Allowance', 'allowance_other'),
                 'other_allowance_note' => self::text($cell('AF')),
             ];
 
             $this->checkSalaryRow($data, $at, trim((string) $cell($pay['median'])) !== '');
-            $this->checkDuplicate($data, $at, $seen);
             $rows[] = self::withTotals($data);
         }
 
+        $this->target = 'salary';
         if ($rows === []) {
-            $this->errors[] = __('Salary Data › No job rows were filled in.');
+            $this->fail(__('Salary Data › No job rows were filled in.'));
         }
 
         return $rows;
@@ -299,24 +316,28 @@ class SurveyWorkbook
      * answers. Answers that weren't valid were saved empty, so they surface here as missing.
      *
      * @param  array<string, array<string, mixed>>  $catalogue  lower-cased job title => catalogue entry
-     * @return array{errors: list<string>, warnings: list<string>}
+     * @return array{issues: list<array{type: string, message: string, target: string|null, rule: string|null}>, errors: list<string>, warnings: list<string>}
      */
     public function check(SurveyParticipant $participant, array $catalogue): array
     {
-        $this->errors = [];
-        $this->warnings = [];
+        $this->issues = [];
+        $this->raw = [];
+        $this->target = null;
 
+        // Answers still as the company typed them are reported again, and stand in for "missing" on their field.
+        $raw = $participant->raw_answers ?? [];
+        $this->target = 'profile';
         if (blank($participant->company_name)) {
-            $this->errors[] = __('Company Profile › Company Name is missing.');
+            $this->fail(__('Company Profile › Company Name is missing.'));
         }
         foreach (['industry' => 'Industry', 'state' => 'State', 'employee_band' => 'Number of Employees'] as $field => $label) {
-            if (blank($participant->{$field})) {
-                $this->errors[] = __(':field is missing.', ['field' => "Company Profile › {$label}"]);
+            if (blank($participant->{$field}) && ! isset($raw["profile.{$field}"])) {
+                $this->fail(__(':field is missing.', ['field' => "Company Profile › {$label}"]));
             }
         }
+        $this->target = 'consent';
         $this->checkConsent($participant->consented === true);
 
-        $seen = [];
         $rows = $participant->salaryRows()->orderBy('line')->orderBy('id')->get();
         foreach ($rows as $index => $saved) {
             $row = [
@@ -324,28 +345,88 @@ class SurveyWorkbook
                 ...array_map('intval', $saved->only(['headcount', 'male', 'female', 'tenure_under_1', 'tenure_1_2', 'tenure_3_4', 'tenure_5_plus'])),
                 ...array_map(fn ($value) => $value === null ? null : (float) $value, $saved->only(['min_salary', 'max_salary', 'median_salary', 'avg_male', 'avg_female'])),
             ];
+            $this->target = 'row:'.($saved->line ?? $index + 1);
             $at = self::rowLabel($saved->line ?? $index + 1, $row['job_title'] ?: $saved->own_title);
             $this->checkTitle($row['job_title'], $at, $catalogue);
-            if (blank($row['job_level'])) {
-                $this->errors[] = __(':field is missing.', ['field' => "{$at} › Job Level"]);
+            if (blank($row['job_level']) && ! isset($raw["{$this->target}.job_level"])) {
+                $this->fail(__(':field is missing.', ['field' => "{$at} › Job Level"]));
             }
-            $this->checkSalaryRow($row, $at, false);
-            $this->checkDuplicate($row, $at, $seen);
+            $this->checkSalaryRow($row, $at, isset($raw["{$this->target}.median_salary"]));
         }
+        $this->target = 'salary';
         if ($rows->isEmpty()) {
-            $this->errors[] = __('Salary Data › No job rows were filled in.');
+            $this->fail(__('Salary Data › No job rows were filled in.'));
         }
 
         if ($attrition = $participant->attrition) {
             foreach (['attrition_rate' => 'Overall staff attrition rate', 'new_hire_attrition_rate' => 'New-hire attrition rate'] as $field => $label) {
+                $this->target = "attrition:{$field}";
                 if ((float) $attrition->{$field} > 100) {
-                    $this->warnings[] = __(':field of :value% is above 100%.', ['field' => "Attrition & Hiring › {$label}", 'value' => (float) $attrition->{$field}]);
+                    $this->warn(__(':field of :value% is above 100%.', ['field' => "Attrition & Hiring › {$label}", 'value' => (float) $attrition->{$field}]), 'over_100');
                 }
             }
             $this->checkAttrition($attrition->toArray());
         }
 
-        return ['errors' => $this->errors, 'warnings' => $this->warnings];
+        foreach ($raw as $key => $answer) {
+            $this->target = substr($key, 0, (int) strrpos($key, '.'));
+            $answer['rule'] === null ? $this->fail($answer['message']) : $this->warn($answer['message'], $answer['rule']);
+        }
+
+        return ['issues' => $this->issues, ...self::summary($this->issues)];
+    }
+
+    /**
+     * The key an accepted finding is stored under ("rule|target"), or null when it can't be accepted.
+     *
+     * @param  array{type: string, rule: string|null, target: string|null}  $issue
+     */
+    public static function issueKey(array $issue): ?string
+    {
+        $acceptable = $issue['type'] === 'warning' || in_array($issue['rule'], self::ACCEPTABLE_RULES, true);
+
+        return $acceptable && $issue['rule'] !== null && $issue['target'] !== null ? "{$issue['rule']}|{$issue['target']}" : null;
+    }
+
+    /**
+     * The messages still open once accepted findings are set aside.
+     *
+     * @param  list<array{type: string, message: string, target: string|null, rule: string|null}>  $issues
+     * @param  list<string>  $accepted  issue keys
+     * @return array{errors: list<string>, warnings: list<string>}
+     */
+    public static function summary(array $issues, array $accepted = []): array
+    {
+        $open = array_filter($issues, fn (array $issue) => ! in_array(self::issueKey($issue), $accepted, true));
+        $messages = fn (string $type) => array_values(array_map(
+            fn (array $issue) => $issue['message'],
+            array_filter($open, fn (array $issue) => $issue['type'] === $type),
+        ));
+
+        return ['errors' => $messages('error'), 'warnings' => $messages('warning')];
+    }
+
+    /**
+     * An answer that failed a check: reported, and kept as typed so it can be shown and corrected. A rule makes it a
+     * warning (the answer is only doubtful), otherwise it is an error.
+     */
+    private function invalid(string $message, ?string $key, mixed $value, ?string $rule = null): void
+    {
+        $rule === null ? $this->fail($message) : $this->warn($message, $rule);
+
+        if ($key !== null && $this->target !== null) {
+            $this->raw["{$this->target}.{$key}"] = ['value' => (string) $value, 'message' => $message, 'rule' => $rule];
+        }
+    }
+
+    private function fail(string $message, ?string $rule = null): void
+    {
+        $this->issues[] = ['type' => 'error', 'message' => $message, 'target' => $this->target, 'rule' => $rule];
+    }
+
+    private function warn(string $message, ?string $rule = null): void
+    {
+        $this->issues[] = ['type' => 'warning', 'message' => $message, 'target' => $this->target, 'rule' => $rule];
     }
 
     private static function rowLabel(int $line, ?string $title): string
@@ -356,7 +437,7 @@ class SurveyWorkbook
     private function checkConsent(bool $consented): void
     {
         if (! $consented) {
-            $this->errors[] = __('Consent & Submission › The company has not consented (must be "Yes").');
+            $this->fail(__('Consent & Submission › The company has not consented (must be "Yes").'));
         }
     }
 
@@ -367,34 +448,17 @@ class SurveyWorkbook
     private function checkTitle(string $title, string $at, array $catalogue): ?array
     {
         if ($title === '') {
-            $this->errors[] = __(':at: Standard Job Title is missing; choose one from the catalogue.', ['at' => $at]);
+            $this->fail(__(':at: Standard Job Title is missing; choose one from the catalogue.', ['at' => $at]));
 
             return null;
         }
 
         $job = $catalogue[mb_strtolower($title)] ?? null;
         if ($job === null) {
-            $this->errors[] = __(':at: ":title" is not a Standard Job Title in the catalogue.', ['at' => $at, 'title' => $title]);
+            $this->fail(__(':at: ":title" is not a Standard Job Title in the catalogue.', ['at' => $at, 'title' => $title]));
         }
 
         return $job;
-    }
-
-    /**
-     * @param  array<string, mixed>  $row
-     * @param  array<string, true>  $seen  job title|level pairs listed so far
-     */
-    private function checkDuplicate(array $row, string $at, array &$seen): void
-    {
-        if ($row['job_title'] === '') {
-            return;
-        }
-
-        $key = mb_strtolower($row['job_title'].'|'.$row['job_level']);
-        if (isset($seen[$key])) {
-            $this->errors[] = __(':at: :title at :level is listed more than once.', ['at' => $at, 'title' => $row['job_title'], 'level' => $row['job_level']]);
-        }
-        $seen[$key] = true;
     }
 
     /**
@@ -406,32 +470,32 @@ class SurveyWorkbook
     private function checkSalaryRow(array $row, string $at, bool $medianFilled): void
     {
         if ($row['headcount'] < 1) {
-            $this->errors[] = __(':at: Total Headcount must be at least 1.', ['at' => $at]);
+            $this->fail(__(':at: Total Headcount must be at least 1.', ['at' => $at]));
         }
         if ($row['headcount'] !== $row['male'] + $row['female']) {
-            $this->errors[] = __(':at: Male + Female (:sum) must equal Total Headcount (:total).', ['at' => $at, 'sum' => $row['male'] + $row['female'], 'total' => $row['headcount']]);
+            $this->fail(__(':at: Male + Female (:sum) must equal Total Headcount (:total).', ['at' => $at, 'sum' => $row['male'] + $row['female'], 'total' => $row['headcount']]), 'gender_total');
         }
         $tenure = $row['tenure_under_1'] + $row['tenure_1_2'] + $row['tenure_3_4'] + $row['tenure_5_plus'];
         if ($tenure !== $row['headcount']) {
-            $this->errors[] = __(':at: Tenure headcounts (:sum) must equal Total Headcount (:total).', ['at' => $at, 'sum' => $tenure, 'total' => $row['headcount']]);
+            $this->fail(__(':at: Tenure headcounts (:sum) must equal Total Headcount (:total).', ['at' => $at, 'sum' => $tenure, 'total' => $row['headcount']]), 'tenure_total');
         }
         if ($row['median_salary'] === null ? ! $medianFilled : $row['median_salary'] <= 0) {
-            $this->errors[] = __(':at: Median Base Salary is required.', ['at' => $at]);
+            $this->fail(__(':at: Median Base Salary is required.', ['at' => $at]));
         }
         if ($row['min_salary'] !== null && $row['median_salary'] !== null && $row['min_salary'] > $row['median_salary']) {
-            $this->errors[] = __(':at: Min Base Salary is above the Median.', ['at' => $at]);
+            $this->fail(__(':at: Min Base Salary is above the Median.', ['at' => $at]), 'min_above_median');
         }
         if ($row['max_salary'] !== null && $row['median_salary'] !== null && $row['max_salary'] < $row['median_salary']) {
-            $this->errors[] = __(':at: Max Base Salary is below the Median.', ['at' => $at]);
+            $this->fail(__(':at: Max Base Salary is below the Median.', ['at' => $at]), 'max_below_median');
         }
         if ($row['male'] > 0 && $row['avg_male'] === null) {
-            $this->warnings[] = __(':at: Avg. Male Base Salary is missing although there are male employees.', ['at' => $at]);
+            $this->warn(__(':at: Avg. Male Base Salary is missing although there are male employees.', ['at' => $at]), 'avg_male');
         }
         if ($row['female'] > 0 && $row['avg_female'] === null) {
-            $this->warnings[] = __(':at: Avg. Female Base Salary is missing although there are female employees.', ['at' => $at]);
+            $this->warn(__(':at: Avg. Female Base Salary is missing although there are female employees.', ['at' => $at]), 'avg_female');
         }
         if (($row['guaranteed_bonus_months'] ?? 0) > 6) {
-            $this->warnings[] = __(':at: Guaranteed bonus of :months months looks high.', ['at' => $at, 'months' => $row['guaranteed_bonus_months']]);
+            $this->warn(__(':at: Guaranteed bonus of :months months looks high.', ['at' => $at, 'months' => $row['guaranteed_bonus_months']]), 'bonus_high');
         }
     }
 
@@ -463,8 +527,9 @@ class SurveyWorkbook
         $benefits = [];
 
         foreach (self::BENEFIT_ITEMS as $row => [$key, $label]) {
+            $this->target = "benefit:{$key}";
             $cell = fn (string $column) => self::text($sheet->getCell("{$column}{$row}")->getValue());
-            $same = $this->choice($cell('B'), $cycle->lookup('YesNo'), "Benefits › {$label} › Same for all job levels?");
+            $same = $this->choice($cell('B'), $cycle->lookup('YesNo'), "Benefits › {$label} › Same for all job levels?", key: 'same_for_all');
             $remarks = $cell('F');
 
             // Remarks left as the template's own guidance text aren't the company's answer.
@@ -502,17 +567,18 @@ class SurveyWorkbook
         $answers = [];
 
         foreach (self::ATTRITION_FIELDS as $row => $field) {
+            $this->target = "attrition:{$field}";
             // Name the question as the company sees it in column A.
             $label = 'Attrition & Hiring › '.(self::text($sheet->getCell("A{$row}")->getValue()) ?? str_replace('_', ' ', $field));
             $answers[$field] = match ($field) {
-                'attrition_rate', 'new_hire_attrition_rate' => $this->percent($value($row), $label),
-                'retirements', 'involuntary_terminations', 'contract_non_renewals', 'time_to_fill_days' => $this->integer($value($row), $label),
-                'hardest_to_hire_1', 'hardest_to_hire_2', 'hardest_to_hire_3', 'hardest_to_retain_1', 'hardest_to_retain_2', 'hardest_to_retain_3' => $this->choice(self::text($value($row)), $families, $label),
-                'headcount_plan' => $this->choice(self::text($value($row)), $cycle->lookup('HeadcountPlanList'), $label),
-                'pay_reason_for_leaving' => $this->choice(self::text($value($row)), $cycle->lookup('YesNoUnsure'), $label),
-                'retrenched' => ($retrenched = $this->choice(self::text($value($row)), $cycle->lookup('YesNo'), $label)) === null ? null : $retrenched === 'Yes',
-                'retrenchment_driver' => $this->choice(self::text($value($row)), $cycle->lookup('RetrenchmentDriverList'), $label),
-                'retrenchment_above_statutory' => $this->choice(self::text($value($row)), $cycle->lookup('YesNoNA'), $label),
+                'attrition_rate', 'new_hire_attrition_rate' => $this->percent($value($row), $label, $field),
+                'retirements', 'involuntary_terminations', 'contract_non_renewals', 'time_to_fill_days' => $this->integer($value($row), $label, $field),
+                'hardest_to_hire_1', 'hardest_to_hire_2', 'hardest_to_hire_3', 'hardest_to_retain_1', 'hardest_to_retain_2', 'hardest_to_retain_3' => $this->choice(self::text($value($row)), $families, $label, key: $field),
+                'headcount_plan' => $this->choice(self::text($value($row)), $cycle->lookup('HeadcountPlanList'), $label, key: $field),
+                'pay_reason_for_leaving' => $this->choice(self::text($value($row)), $cycle->lookup('YesNoUnsure'), $label, key: $field),
+                'retrenched' => ($retrenched = $this->choice(self::text($value($row)), $cycle->lookup('YesNo'), $label, key: $field)) === null ? null : $retrenched === 'Yes',
+                'retrenchment_driver' => $this->choice(self::text($value($row)), $cycle->lookup('RetrenchmentDriverList'), $label, key: $field),
+                'retrenchment_above_statutory' => $this->choice(self::text($value($row)), $cycle->lookup('YesNoNA'), $label, key: $field),
                 default => self::text($value($row)),
             };
         }
@@ -528,14 +594,16 @@ class SurveyWorkbook
     private function checkAttrition(array $answers): void
     {
         foreach (['hardest_to_hire', 'hardest_to_retain'] as $group) {
+            $this->target = "attrition:{$group}";
             $ranked = array_filter([$answers["{$group}_1"] ?? null, $answers["{$group}_2"] ?? null, $answers["{$group}_3"] ?? null]);
             if (count($ranked) !== count(array_unique($ranked))) {
-                $this->warnings[] = __('Attrition & Hiring › The same job function is ranked more than once (:group).', ['group' => str_replace('_', ' ', $group)]);
+                $this->warn(__('Attrition & Hiring › The same job function is ranked more than once (:group).', ['group' => str_replace('_', ' ', $group)]), 'ranked_twice');
             }
         }
 
+        $this->target = 'attrition:retrenchment_driver';
         if (($answers['retrenched'] ?? null) === true && ($answers['retrenchment_driver'] ?? null) === null) {
-            $this->warnings[] = __('Attrition & Hiring › Retrenchment is "Yes" but no driver was given.');
+            $this->warn(__('Attrition & Hiring › Retrenchment is "Yes" but no driver was given.'), 'retrenchment_driver');
         }
     }
 
@@ -544,11 +612,11 @@ class SurveyWorkbook
      *
      * @param  list<string>  $options
      */
-    private function choice(?string $value, array $options, string $field, bool $required = false): ?string
+    private function choice(?string $value, array $options, string $field, bool $required = false, ?string $key = null): ?string
     {
         if ($value === null) {
             if ($required) {
-                $this->errors[] = __(':field is missing.', ['field' => $field]);
+                $this->fail(__(':field is missing.', ['field' => $field]));
             }
 
             return null;
@@ -565,14 +633,14 @@ class SurveyWorkbook
         }
 
         // Name the options so the company can fix it from the issues list alone; long lists stay in the workbook's dropdown.
-        $this->errors[] = count($options) <= 30
+        $this->invalid(count($options) <= 30
             ? __(':field: ":value" is not one of the allowed options. Choose one of: :options.', ['field' => $field, 'value' => $value, 'options' => implode('; ', $options)])
-            : __(':field: ":value" is not one of the allowed options. Choose one from the dropdown in the workbook.', ['field' => $field, 'value' => $value]);
+            : __(':field: ":value" is not one of the allowed options. Choose one from the dropdown in the workbook.', ['field' => $field, 'value' => $value]), $key, $value);
 
         return null;
     }
 
-    private function number(mixed $value, string $field): ?float
+    private function number(mixed $value, string $field, ?string $key = null): ?float
     {
         if ($value === null || $value === '') {
             return null;
@@ -584,19 +652,19 @@ class SurveyWorkbook
         }
 
         if (is_string($value) && str_starts_with($value, '=')) {
-            $this->errors[] = __(':field: contains a formula (":value"); type the actual figure instead.', ['field' => $field, 'value' => $typed]);
+            $this->invalid(__(':field: contains a formula (":value"); type the actual figure instead.', ['field' => $field, 'value' => $typed]), $key, $typed);
 
             return null;
         }
 
         if (! is_numeric($value)) {
-            $this->errors[] = __(':field: ":value" is not a number.', ['field' => $field, 'value' => $typed]);
+            $this->invalid(__(':field: ":value" is not a number.', ['field' => $field, 'value' => $typed]), $key, $typed);
 
             return null;
         }
 
         if ((float) $value < 0) {
-            $this->errors[] = __(':field cannot be negative.', ['field' => $field]);
+            $this->invalid(__(':field cannot be negative.', ['field' => $field]), $key, $typed);
 
             return null;
         }
@@ -604,25 +672,25 @@ class SurveyWorkbook
         return round((float) $value, 2);
     }
 
-    private function integer(mixed $value, string $field): ?int
+    private function integer(mixed $value, string $field, ?string $key = null): ?int
     {
-        $number = $this->number($value, $field);
+        $number = $this->number($value, $field, $key);
 
         return $number === null ? null : (int) round($number);
     }
 
-    private function percent(mixed $value, string $field): ?float
+    private function percent(mixed $value, string $field, ?string $key = null): ?float
     {
-        $number = $this->number(is_string($value) ? rtrim($value, '%') : $value, $field);
+        $number = $this->number(is_string($value) ? rtrim($value, '%') : $value, $field, $key);
 
         if ($number !== null && $number > 100) {
-            $this->warnings[] = __(':field of :value% is above 100%.', ['field' => $field, 'value' => $number]);
+            $this->warn(__(':field of :value% is above 100%.', ['field' => $field, 'value' => $number]), 'over_100');
         }
 
         return $number;
     }
 
-    private function date(mixed $value): ?string
+    private function date(mixed $value, ?string $key = null): ?string
     {
         if ($value === null || $value === '') {
             return null;
@@ -633,7 +701,7 @@ class SurveyWorkbook
                 ? CarbonImmutable::instance(ExcelDate::excelToDateTimeObject((float) $value))->toDateString()
                 : CarbonImmutable::createFromFormat('d/m/Y', trim((string) $value))?->toDateString();
         } catch (Throwable) {
-            $this->warnings[] = __('Consent & Submission › Date ":value" is not in DD/MM/YYYY format.', ['value' => $value]);
+            $this->invalid(__('Consent & Submission › Date ":value" is not in DD/MM/YYYY format.', ['value' => $value]), $key, $value, 'date_format');
 
             return null;
         }

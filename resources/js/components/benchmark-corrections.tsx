@@ -1,6 +1,7 @@
 import { useForm } from '@inertiajs/react';
 import type { ReactNode } from 'react';
 import { FormDialog } from '@/components/form-dialog';
+import type { TypedAnswers } from '@/components/benchmark-issues';
 import InputError from '@/components/input-error';
 import { SelectField } from '@/components/select-field';
 import { Input } from '@/components/ui/input';
@@ -14,11 +15,25 @@ export type Lookups = Record<string, string[]>;
 
 type Answers = Record<string, unknown>;
 
-/** Online corrections are saved as typed; blank inputs are sent as null and Yes/No selects as booleans. */
-const toForm = (answers: Answers, keys: string[]) =>
+/**
+ * Form values from the saved answers; an answer that failed a check starts as the company typed it, so it can be
+ * seen and corrected (sent back unchanged, it stays as typed and flagged). Blank inputs are sent as null and Yes/No
+ * selects as booleans.
+ */
+const toForm = (
+    answers: Answers,
+    keys: string[],
+    typed: TypedAnswers = {},
+    targetOf: (key: string) => string = () => '',
+) =>
     Object.fromEntries(
         keys.map((key) => {
             const value = answers[key];
+            const asTyped = typed[`${targetOf(key)}.${key}`];
+
+            if (asTyped) {
+                return [key, asTyped.value];
+            }
 
             return [
                 key,
@@ -59,7 +74,7 @@ function Field({
     );
 }
 
-/** A dropdown from one of the cycle's lists, with "—" for no answer. */
+/** A dropdown from one of the cycle's lists, with "—" for no answer and the typed answer if it isn't on the list. */
 function Choice({
     id,
     value,
@@ -71,6 +86,8 @@ function Choice({
     options: string[];
     onChange: (value: string) => void;
 }) {
+    const { t } = useTranslation();
+
     return (
         <SelectField
             id={id}
@@ -78,6 +95,11 @@ function Choice({
             onChange={(e) => onChange(e.target.value)}
         >
             <option value="">—</option>
+            {value !== '' && !options.includes(value) && (
+                <option value={value}>
+                    {value} {t('(not allowed)')}
+                </option>
+            )}
             {options.map((option) => (
                 <option key={option} value={option}>
                     {option}
@@ -108,17 +130,21 @@ const PROFILE_FIELDS: [string, string, string | null][] = [
 export function ProfileDialog({
     participantId,
     answers,
+    typed,
     lookups,
     ...dialog
 }: DialogProps & {
     participantId: number;
     answers: Answers;
+    typed: TypedAnswers;
     lookups: Lookups;
 }) {
     const form = useForm(
         toForm(
             { ...answers, consent_date: answers.consent_date ?? null },
             PROFILE_FIELDS.map(([key]) => key),
+            typed,
+            (key) => (key === 'consent_date' ? 'consent' : 'profile'),
         ),
     );
 
@@ -157,14 +183,18 @@ export function ProfileDialog({
                         ) : (
                             <Input
                                 id={`profile-${key}`}
+                                // A typed date that isn't a real date stays editable as text.
                                 type={
-                                    key === 'locations'
-                                        ? 'number'
-                                        : key === 'consent_date'
-                                          ? 'date'
-                                          : 'text'
+                                    key === 'consent_date' &&
+                                    /^(\d{4}-\d{2}-\d{2})?$/.test(
+                                        form.data[key],
+                                    )
+                                        ? 'date'
+                                        : 'text'
                                 }
-                                min={0}
+                                inputMode={
+                                    key === 'locations' ? 'numeric' : undefined
+                                }
                                 value={form.data[key]}
                                 onChange={(e) =>
                                     form.setData(key, e.target.value)
@@ -223,12 +253,14 @@ const COUNT_FIELDS = [
 export function SalaryRowDialog({
     participantId,
     row,
+    typed,
     lookups,
     jobTitles,
     ...dialog
 }: DialogProps & {
     participantId: number;
-    row: (Answers & { id: number }) | null;
+    row: (Answers & { id: number; line: number | null }) | null;
+    typed: TypedAnswers;
     lookups: Lookups;
     jobTitles: string[];
 }) {
@@ -237,6 +269,8 @@ export function SalaryRowDialog({
         toForm(
             row ?? Object.fromEntries(COUNT_FIELDS.map((key) => [key, 0])),
             ROW_FIELDS.map(([key]) => key),
+            row ? typed : {},
+            () => `row:${row?.line ?? 0}`,
         ),
     );
 
@@ -298,18 +332,17 @@ export function SalaryRowDialog({
                         ) : (
                             <Input
                                 id={`row-${key}`}
-                                type={
+                                // Figures are text inputs so an answer typed as words or a formula can be shown.
+                                inputMode={
                                     TEXT_ROW_FIELDS.includes(key)
-                                        ? 'text'
-                                        : 'number'
+                                        ? undefined
+                                        : 'decimal'
                                 }
                                 list={
                                     key === 'job_title'
                                         ? 'benchmark-job-titles'
                                         : undefined
                                 }
-                                min={0}
-                                step="any"
                                 value={form.data[key]}
                                 onChange={(e) =>
                                     form.setData(key, e.target.value)
@@ -343,11 +376,13 @@ const BENEFIT_COLUMNS = [
 export function BenefitsDialog({
     participantId,
     benefits,
+    typed,
     labels,
     ...dialog
 }: DialogProps & {
     participantId: number;
     benefits: Benefit[];
+    typed: TypedAnswers;
     labels: Record<string, string>;
 }) {
     const { t } = useTranslation();
@@ -358,12 +393,13 @@ export function BenefitsDialog({
             return {
                 item,
                 same_for_all:
-                    saved?.same_for_all === null ||
+                    typed[`benefit:${item}.same_for_all`]?.value ??
+                    (saved?.same_for_all === null ||
                     saved?.same_for_all === undefined
                         ? ''
                         : saved.same_for_all
                           ? 'Yes'
-                          : 'No',
+                          : 'No'),
                 company_value: saved?.company_value ?? '',
                 exec_value: saved?.exec_value ?? '',
                 manager_value: saved?.manager_value ?? '',
@@ -487,17 +523,21 @@ const ATTRITION_FIELDS: [string, string, string][] = [
 export function AttritionDialog({
     participantId,
     answers,
+    typed,
     lookups,
     ...dialog
 }: DialogProps & {
     participantId: number;
     answers: Answers;
+    typed: TypedAnswers;
     lookups: Lookups;
 }) {
     const form = useForm(
         toForm(
             answers,
             ATTRITION_FIELDS.map(([key]) => key),
+            typed,
+            (key) => `attrition:${key}`,
         ),
     );
 
@@ -529,9 +569,9 @@ export function AttritionDialog({
                         {kind === 'number' || kind === 'text' ? (
                             <Input
                                 id={`attrition-${key}`}
-                                type={kind}
-                                min={0}
-                                step="any"
+                                inputMode={
+                                    kind === 'number' ? 'decimal' : undefined
+                                }
                                 value={form.data[key]}
                                 onChange={(e) =>
                                     form.setData(key, e.target.value)

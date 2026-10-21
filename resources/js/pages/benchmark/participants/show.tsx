@@ -16,6 +16,14 @@ import {
     SalaryRowDialog,
 } from '@/components/benchmark-corrections';
 import type { Lookups } from '@/components/benchmark-corrections';
+import {
+    answer,
+    IssueActions,
+    IssueButton,
+    IssuesDialog,
+    Typed,
+} from '@/components/benchmark-issues';
+import type { Issue, TypedAnswers } from '@/components/benchmark-issues';
 import { ConfirmDialog } from '@/components/confirm-dialog';
 import { DetailPage, Fields, TextBlock } from '@/components/detail-page';
 import { StatusBadge } from '@/components/status-badge';
@@ -78,6 +86,7 @@ type Participant = {
     editor: { id: number; name: string } | null;
     errors: string[] | null;
     warnings: string[] | null;
+    raw_answers: TypedAnswers | null;
     created_at: string;
     cycle: { id: number; name: string; min_companies: number };
     benefits: Benefit[];
@@ -87,6 +96,7 @@ type Participant = {
 export default function SurveyParticipantShow({
     participant: p,
     hasFile,
+    issues,
     salaryRows,
     benefitLabels,
     lookups,
@@ -94,6 +104,7 @@ export default function SurveyParticipantShow({
 }: {
     participant: Participant;
     hasFile: boolean;
+    issues: Issue[];
     salaryRows: SalaryRow[];
     benefitLabels: Record<string, string>;
     lookups: Lookups;
@@ -110,6 +121,30 @@ export default function SurveyParticipantShow({
     >(null);
     const [deletingRow, setDeletingRow] = useState<SalaryRow | null>(null);
     const close = (open: boolean) => !open && setEditing(null);
+    // The findings dialog open for one row or field group ("row:7", "benefit:dental_coverage", …).
+    const [showing, setShowing] = useState<{
+        title: string;
+        targets: (target: string | null) => boolean;
+        row?: SalaryRow;
+    } | null>(null);
+    const typed = p.raw_answers ?? {};
+    const issuesFor = (targets: (target: string | null) => boolean) =>
+        issues.filter((issue) => targets(issue.target));
+    const rowTarget = (row: SalaryRow) => `row:${row.line ?? 0}`;
+    const sectionIssues = (targets: (target: string | null) => boolean) => {
+        const found = issuesFor(targets);
+
+        return (
+            found.length > 0 && (
+                <IssueActions
+                    issues={found}
+                    all={issues}
+                    participantId={p.id}
+                    canAccept={canEdit}
+                />
+            )
+        );
+    };
     const toolbar = (label: string, onClick: () => void, add = false) =>
         canEdit && (
             <div>
@@ -139,7 +174,7 @@ export default function SurveyParticipantShow({
                             'vs Market',
                             'Allowances',
                             'Bonus (months)',
-                            ...(canEdit ? [''] : []),
+                            '',
                         ].map((label) => (
                             <th
                                 key={label}
@@ -182,16 +217,38 @@ export default function SurveyParticipantShow({
                                         {row.own_title ?? row.job_family}
                                     </div>
                                 </td>
-                                <td className="px-2 py-2">{row.job_level}</td>
+                                <td className="px-2 py-2">
+                                    {answer(
+                                        typed,
+                                        `${rowTarget(row)}.job_level`,
+                                        row.job_level,
+                                    )}
+                                </td>
                                 <td className="px-2 py-2 whitespace-nowrap">
-                                    {row.headcount}
+                                    {typed[`${rowTarget(row)}.headcount`] ? (
+                                        <Typed
+                                            value={
+                                                typed[
+                                                    `${rowTarget(row)}.headcount`
+                                                ].value
+                                            }
+                                        />
+                                    ) : (
+                                        row.headcount
+                                    )}
                                     <span className="text-xs text-muted-foreground">
                                         {' '}
                                         ({row.male}M / {row.female}F)
                                     </span>
                                 </td>
                                 <td className="px-2 py-2 whitespace-nowrap">
-                                    {median === null ? '-' : money(median)}
+                                    {median === null
+                                        ? (answer(
+                                              typed,
+                                              `${rowTarget(row)}.median_salary`,
+                                              null,
+                                          ) ?? '-')
+                                        : money(median)}
                                 </td>
                                 <td className="px-2 py-2 whitespace-nowrap">
                                     {row.market_median !== null ? (
@@ -224,26 +281,50 @@ export default function SurveyParticipantShow({
                                 <td className="px-2 py-2">
                                     {row.guaranteed_bonus_months ?? '-'}
                                 </td>
-                                {canEdit && (
-                                    <td className="px-2 py-1 whitespace-nowrap">
-                                        <Button
-                                            variant="ghost"
-                                            size="icon"
-                                            aria-label={t('Edit')}
-                                            onClick={() => setEditing(row)}
-                                        >
-                                            <SquarePen />
-                                        </Button>
-                                        <Button
-                                            variant="ghost"
-                                            size="icon"
-                                            aria-label={t('Delete')}
-                                            onClick={() => setDeletingRow(row)}
-                                        >
-                                            <Trash2 />
-                                        </Button>
-                                    </td>
-                                )}
+                                <td className="px-2 py-1 whitespace-nowrap">
+                                    <IssueButton
+                                        issues={issuesFor(
+                                            (target) =>
+                                                target === rowTarget(row),
+                                        )}
+                                        onClick={() =>
+                                            setShowing({
+                                                title: t('Row :line — :title', {
+                                                    line: row.line ?? '',
+                                                    title:
+                                                        row.job_title ||
+                                                        row.own_title ||
+                                                        '—',
+                                                }),
+                                                targets: (target) =>
+                                                    target === rowTarget(row),
+                                                row,
+                                            })
+                                        }
+                                    />
+                                    {canEdit && (
+                                        <>
+                                            <Button
+                                                variant="ghost"
+                                                size="icon"
+                                                aria-label={t('Edit')}
+                                                onClick={() => setEditing(row)}
+                                            >
+                                                <SquarePen />
+                                            </Button>
+                                            <Button
+                                                variant="ghost"
+                                                size="icon"
+                                                aria-label={t('Delete')}
+                                                onClick={() =>
+                                                    setDeletingRow(row)
+                                                }
+                                            >
+                                                <Trash2 />
+                                            </Button>
+                                        </>
+                                    )}
+                                </td>
                             </tr>
                         );
                     })}
@@ -263,6 +344,7 @@ export default function SurveyParticipantShow({
                             'Non-Exec / Executive',
                             'Managerial & Above',
                             'Remarks',
+                            '',
                         ].map((label) => (
                             <th
                                 key={label}
@@ -289,6 +371,23 @@ export default function SurveyParticipantShow({
                             <td className="px-2 py-2 text-muted-foreground">
                                 {b.remarks ?? ''}
                             </td>
+                            <td className="px-2 py-1">
+                                <IssueButton
+                                    issues={issuesFor(
+                                        (target) =>
+                                            target === `benefit:${b.item}`,
+                                    )}
+                                    onClick={() =>
+                                        setShowing({
+                                            title: t(
+                                                benefitLabels[b.item] ?? b.item,
+                                            ),
+                                            targets: (target) =>
+                                                target === `benefit:${b.item}`,
+                                        })
+                                    }
+                                />
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -298,6 +397,23 @@ export default function SurveyParticipantShow({
 
     const joined = (...values: unknown[]) =>
         values.filter(Boolean).join(', ') || null;
+    // An Attrition & Hiring answer, or what the company typed when it failed a check.
+    const at = (field: string) =>
+        answer(typed, `attrition:${field}.${field}`, a[field] as ReactNode);
+    const ranked = (group: string) => {
+        const answers = [1, 2, 3]
+            .map((rank) => at(`${group}_${rank}`))
+            .filter((value) => value !== null && value !== undefined);
+
+        return answers.length === 0
+            ? null
+            : answers.map((value, index) => (
+                  <span key={index}>
+                      {index > 0 && ', '}
+                      {value}
+                  </span>
+              ));
+    };
 
     return (
         <>
@@ -309,7 +425,7 @@ export default function SurveyParticipantShow({
                 })}
                 back={participantRoutes.index({ query: { cycle: p.cycle.id } })}
                 tabs={[
-                    ...(p.errors?.length || p.warnings?.length
+                    ...(issues.length > 0
                         ? [
                               {
                                   label: 'Issues',
@@ -346,24 +462,12 @@ export default function SurveyParticipantShow({
                                                   </Button>
                                               </div>
                                           )}
-                                          {!!p.errors?.length && (
-                                              <IssueList
-                                                  title={t(':n errors', {
-                                                      n: p.errors.length,
-                                                  })}
-                                                  issues={p.errors}
-                                                  className="border-red-200 bg-red-50 text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200"
-                                              />
-                                          )}
-                                          {!!p.warnings?.length && (
-                                              <IssueList
-                                                  title={t(':n warnings', {
-                                                      n: p.warnings.length,
-                                                  })}
-                                                  issues={p.warnings}
-                                                  className="border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200"
-                                              />
-                                          )}
+                                          <IssueActions
+                                              issues={issues}
+                                              all={issues}
+                                              participantId={p.id}
+                                              canAccept={canEdit}
+                                          />
                                       </div>
                                   ),
                               },
@@ -385,6 +489,15 @@ export default function SurveyParticipantShow({
                                     () => setEditing('new-row'),
                                     true,
                                 )}
+                                {sectionIssues(
+                                    (target) =>
+                                        target === 'salary' ||
+                                        (!!target?.startsWith('row:') &&
+                                            !salaryRows.some(
+                                                (row) =>
+                                                    rowTarget(row) === target,
+                                            )),
+                                )}
                                 {salaryTable}
                             </div>
                         ),
@@ -392,9 +505,19 @@ export default function SurveyParticipantShow({
                     {
                         label: 'Benefits',
                         content: section(
-                            toolbar('Edit Benefits', () =>
-                                setEditing('benefits'),
-                            ),
+                            <>
+                                {toolbar('Edit Benefits', () =>
+                                    setEditing('benefits'),
+                                )}
+                                {sectionIssues(
+                                    (target) =>
+                                        !!target?.startsWith('benefit') &&
+                                        !p.benefits.some(
+                                            (b) =>
+                                                target === `benefit:${b.item}`,
+                                        ),
+                                )}
+                            </>,
                             benefitsTable,
                         ),
                     },
@@ -405,46 +528,48 @@ export default function SurveyParticipantShow({
                                 {toolbar('Edit Attrition & Hiring', () =>
                                     setEditing('attrition'),
                                 )}
+                                {sectionIssues(
+                                    (target) =>
+                                        !!target?.startsWith('attrition'),
+                                )}
                                 <Fields
                                     items={[
-                                        ['Attrition rate %', a.attrition_rate],
+                                        [
+                                            'Attrition rate %',
+                                            at('attrition_rate'),
+                                        ],
                                         [
                                             'New-hire attrition rate %',
-                                            a.new_hire_attrition_rate,
+                                            at('new_hire_attrition_rate'),
                                         ],
-                                        ['Retirements', a.retirements],
+                                        ['Retirements', at('retirements')],
                                         [
                                             'Involuntary terminations',
-                                            a.involuntary_terminations,
+                                            at('involuntary_terminations'),
                                         ],
                                         [
                                             'Contract non-renewals',
-                                            a.contract_non_renewals,
+                                            at('contract_non_renewals'),
                                         ],
                                         [
                                             'Time to fill (days)',
-                                            a.time_to_fill_days,
+                                            at('time_to_fill_days'),
                                         ],
                                         [
                                             'Hardest to hire',
-                                            joined(
-                                                a.hardest_to_hire_1,
-                                                a.hardest_to_hire_2,
-                                                a.hardest_to_hire_3,
-                                            ),
+                                            ranked('hardest_to_hire'),
                                         ],
                                         [
                                             'Hardest to retain',
-                                            joined(
-                                                a.hardest_to_retain_1,
-                                                a.hardest_to_retain_2,
-                                                a.hardest_to_retain_3,
-                                            ),
+                                            ranked('hardest_to_retain'),
                                         ],
-                                        ['Headcount plan', a.headcount_plan],
+                                        [
+                                            'Headcount plan',
+                                            at('headcount_plan'),
+                                        ],
                                         [
                                             'Pay a reason for leaving',
-                                            a.pay_reason_for_leaving,
+                                            at('pay_reason_for_leaving'),
                                         ],
                                         [
                                             'Retrenched',
@@ -459,11 +584,11 @@ export default function SurveyParticipantShow({
                                         ],
                                         [
                                             'Retrenchment driver',
-                                            a.retrenchment_driver,
+                                            at('retrenchment_driver'),
                                         ],
                                         [
                                             'Above statutory benefits',
-                                            a.retrenchment_above_statutory,
+                                            at('retrenchment_above_statutory'),
                                         ],
                                     ]}
                                 />
@@ -517,19 +642,77 @@ export default function SurveyParticipantShow({
                                         )}
                                     </div>
                                 </div>
+                                {sectionIssues(
+                                    (target) =>
+                                        target === 'profile' ||
+                                        target === 'consent',
+                                )}
                                 <Fields
                                     items={[
-                                        ['Industry', p.industry],
-                                        ['State (HQ)', p.state],
+                                        [
+                                            'Industry',
+                                            answer(
+                                                typed,
+                                                'profile.industry',
+                                                p.industry,
+                                            ),
+                                        ],
+                                        [
+                                            'State (HQ)',
+                                            answer(
+                                                typed,
+                                                'profile.state',
+                                                p.state,
+                                            ),
+                                        ],
                                         [
                                             'Number of employees',
-                                            p.employee_band,
+                                            answer(
+                                                typed,
+                                                'profile.employee_band',
+                                                p.employee_band,
+                                            ),
                                         ],
-                                        ['Annual revenue', p.revenue_band],
-                                        ['Ownership', p.ownership_type],
-                                        ['Operating locations', p.locations],
-                                        ['Listed status', p.listed_status],
-                                        ['Unionised workforce', p.unionised],
+                                        [
+                                            'Annual revenue',
+                                            answer(
+                                                typed,
+                                                'profile.revenue_band',
+                                                p.revenue_band,
+                                            ),
+                                        ],
+                                        [
+                                            'Ownership',
+                                            answer(
+                                                typed,
+                                                'profile.ownership_type',
+                                                p.ownership_type,
+                                            ),
+                                        ],
+                                        [
+                                            'Operating locations',
+                                            answer(
+                                                typed,
+                                                'profile.locations',
+                                                p.locations,
+                                            ),
+                                        ],
+                                        [
+                                            'Listed status',
+                                            answer(
+                                                typed,
+                                                'profile.listed_status',
+                                                p.listed_status,
+                                            ),
+                                        ],
+                                        [
+                                            'Unionised workforce',
+                                            answer(
+                                                typed,
+                                                'profile.unionised',
+                                                p.unionised,
+                                            ),
+                                        ],
                                         [
                                             'Authorised person',
                                             joined(
@@ -539,8 +722,12 @@ export default function SurveyParticipantShow({
                                         ],
                                         [
                                             'Consent date',
-                                            p.consent_date &&
-                                                date(p.consent_date),
+                                            answer(
+                                                typed,
+                                                'consent.consent_date',
+                                                p.consent_date &&
+                                                    date(p.consent_date),
+                                            ),
                                         ],
                                         [
                                             'Consent given',
@@ -563,12 +750,31 @@ export default function SurveyParticipantShow({
                 ]}
             />
 
+            {showing && (
+                <IssuesDialog
+                    title={showing.title}
+                    issues={issuesFor(showing.targets)}
+                    all={issues}
+                    participantId={p.id}
+                    canAccept={canEdit}
+                    onClose={() => setShowing(null)}
+                    onEdit={
+                        canEdit
+                            ? () => {
+                                  setEditing(showing.row ?? 'benefits');
+                                  setShowing(null);
+                              }
+                            : undefined
+                    }
+                />
+            )}
             {editing === 'profile' && (
                 <ProfileDialog
                     open
                     onOpenChange={close}
                     participantId={p.id}
                     answers={p}
+                    typed={typed}
                     lookups={lookups}
                 />
             )}
@@ -579,6 +785,7 @@ export default function SurveyParticipantShow({
                         onOpenChange={close}
                         participantId={p.id}
                         row={editing === 'new-row' ? null : editing}
+                        typed={typed}
                         lookups={lookups}
                         jobTitles={jobTitles}
                     />
@@ -589,6 +796,7 @@ export default function SurveyParticipantShow({
                     onOpenChange={close}
                     participantId={p.id}
                     benefits={p.benefits}
+                    typed={typed}
                     labels={benefitLabels}
                 />
             )}
@@ -598,6 +806,7 @@ export default function SurveyParticipantShow({
                     onOpenChange={close}
                     participantId={p.id}
                     answers={a}
+                    typed={typed}
                     lookups={lookups}
                 />
             )}
@@ -620,28 +829,6 @@ export default function SurveyParticipantShow({
                 }
             />
         </>
-    );
-}
-
-/** One coloured box of errors or warnings, in the order the workbook lists them. */
-function IssueList({
-    title,
-    issues,
-    className,
-}: {
-    title: string;
-    issues: string[];
-    className: string;
-}) {
-    return (
-        <div className={cn('rounded-lg border p-3', className)}>
-            <div className="mb-1 font-semibold">{title}</div>
-            <ol className="list-decimal ps-5 [overflow-wrap:anywhere]">
-                {issues.map((issue, index) => (
-                    <li key={index}>{issue}</li>
-                ))}
-            </ol>
-        </div>
     );
 }
 

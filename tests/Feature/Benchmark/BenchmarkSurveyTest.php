@@ -305,13 +305,13 @@ class BenchmarkSurveyTest extends TestCase
         $this->assertSame(['Process Engineer', 'ENG01', 'Engineering & Technical'], array_values($row->fresh()?->only('job_title', 'job_code', 'job_family') ?? []));
         $this->get(route('benchmark.analytics.index'))->assertInertia(fn ($page) => $page->where('report.overview.companies', 2));
 
-        // A duplicate row added online is flagged again; deleting it clears it.
+        // The same title and level on another row (e.g. another site) is fine; rows can be added and removed.
         $this->post(route('benchmark.participants.rows.store', $beta), $fixed)->assertRedirect()->assertSessionHasNoErrors();
         $added = $beta->salaryRows()->latest('id')->firstOrFail();
         $this->assertSame(2, $added->line);
-        $this->assertSame(['Salary Data row 2 (Process Engineer): Process Engineer at Executive is listed more than once.'], $beta->fresh()?->errors);
-        $this->delete(route('benchmark.participants.rows.destroy', [$beta, $added]))->assertRedirect()->assertSessionHasNoErrors();
         $this->assertNull($beta->fresh()?->errors);
+        $this->delete(route('benchmark.participants.rows.destroy', [$beta, $added]))->assertRedirect()->assertSessionHasNoErrors();
+        $this->assertSame(1, $beta->salaryRows()->count());
 
         $this->put(route('benchmark.participants.benefits', $beta), ['benefits' => [['item' => 'outpatient_coverage', 'same_for_all' => true, 'company_value' => 'Yes'], ['item' => 'dental_coverage']]])
             ->assertSessionHasNoErrors();
@@ -322,6 +322,46 @@ class BenchmarkSurveyTest extends TestCase
         // Another company's row can't be reached through this submission.
         $alphaRow = SurveyParticipant::where('company_key', 'alpha')->firstOrFail()->salaryRows()->firstOrFail();
         $this->put(route('benchmark.participants.rows.update', [$beta, $alphaRow]), $fixed)->assertNotFound();
+    }
+
+    public function test_answers_that_fail_a_check_are_kept_as_typed_and_findings_can_be_accepted()
+    {
+        $cycle = $this->cycle();
+        $this->actingAs($this->userWithRole());
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [
+            $this->workbook('Beta', salary: [['title' => 'Process Engineer', 'headcount' => 4, 'male' => 3, 'female' => 0, 'median' => '=(R6-Q6)/2+Q6']]),
+        ]])->assertInertiaFlash('benchmarkUpload.0.status', 'needs_fixing');
+        $beta = SurveyParticipant::firstOrFail();
+        $row = $beta->salaryRows()->firstOrFail();
+        $formula = 'Salary Data row 1 (Process Engineer) › Median Base Salary: contains a formula ("=(R6-Q6)/2+Q6"); type the actual figure instead.';
+        $gender = 'Salary Data row 1 (Process Engineer): Male + Female (3) must equal Total Headcount (4).';
+
+        $this->assertSame('=(R6-Q6)/2+Q6', $beta->raw_answers['row:1.median_salary']['value'] ?? null);
+        $this->get(route('benchmark.participants.show', $beta))->assertInertia(fn ($page) => $page
+            ->where('participant.raw_answers', fn ($raw) => $raw['row:1.median_salary']['value'] === '=(R6-Q6)/2+Q6')
+            ->where('issues', fn ($issues) => collect($issues)->contains(fn ($issue) => $issue['key'] === 'gender_total|row:1' && $issue['target'] === 'row:1')
+                && collect($issues)->firstWhere('message', $formula)['key'] === null));
+
+        // Only acceptable findings can be accepted; accepting the headcount mismatch leaves the formula open.
+        $this->post(route('benchmark.participants.accept', $beta), ['keys' => ['gender_total|row:1', 'nonsense|row:1'], 'accepted' => true])->assertRedirect();
+        $this->assertSame(['gender_total|row:1'], $beta->fresh()?->accepted_issues);
+        $this->assertSame([$formula], $beta->fresh()?->errors);
+
+        // Saving the row with the formula unchanged keeps it (still flagged); the acceptance survives the re-check.
+        $answers = [...$this->rowAnswers(), 'headcount' => 4, 'male' => 3, 'female' => 0, 'tenure_1_2' => 4, 'median_salary' => '=(R6-Q6)/2+Q6'];
+        $this->put(route('benchmark.participants.rows.update', [$beta, $row]), $answers)->assertSessionHasNoErrors();
+        $this->assertSame([$formula], $beta->fresh()?->errors);
+        $this->assertNull($row->fresh()?->median_salary);
+
+        // Typing the figure replaces it; nothing is left open, so it counts.
+        $this->put(route('benchmark.participants.rows.update', [$beta, $row]), [...$answers, 'median_salary' => 4200])->assertSessionHasNoErrors();
+        $beta->refresh();
+        $this->assertNull($beta->errors);
+        $this->assertNull($beta->raw_answers);
+        $this->get(route('benchmark.analytics.index'))->assertInertia(fn ($page) => $page->where('report.overview.companies', 1));
+
+        $this->post(route('benchmark.participants.accept', $beta), ['keys' => ['gender_total|row:1'], 'accepted' => false])->assertRedirect();
+        $this->assertSame([$gender], $beta->fresh()?->errors);
     }
 
     public function test_only_uploaders_can_correct_a_submission()
