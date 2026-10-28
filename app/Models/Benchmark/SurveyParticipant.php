@@ -173,11 +173,16 @@ class SurveyParticipant extends Model
      */
     public function corrected(?int $userId): void
     {
-        $this->update([
-            'issues' => (new SurveyWorkbook)->check($this, $this->cycle->catalogue())['issues'],
-            'edited_at' => now(),
-            'edited_by' => $userId,
-        ]);
+        $this->update(['edited_at' => now(), 'edited_by' => $userId]);
+        $this->recheck();
+    }
+
+    /**
+     * Re-checks the submission from its saved answers (e.g. after the cycle's Job Catalogue changed).
+     */
+    public function recheck(): void
+    {
+        $this->update(['issues' => (new SurveyWorkbook)->check($this, $this->cycle->catalogue())['issues']]);
         $this->refreshOpenIssues();
     }
 

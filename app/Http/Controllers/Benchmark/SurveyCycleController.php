@@ -106,23 +106,6 @@ class SurveyCycleController extends Controller
     /**
      * The standard job catalogue of a cycle (from its template).
      */
-    public function jobs(Request $request): Response
-    {
-        $cycle = self::current($request);
-        $query = BenchmarkJob::query()->where('survey_cycle_id', $cycle?->id)
-            ->when($request->input('industry'), fn ($q, $industry) => $q->where('industry', $industry))
-            ->when($request->input('job_family'), fn ($q, $family) => $q->where('job_family', $family));
-
-        return Inertia::render('benchmark/jobs/index', [
-            'jobs' => TableQuery::paginate($query, $request, ['code', 'title', 'job_family', 'summary'], ['code', 'title', 'job_family', 'industry'], 'code'),
-            'filters' => TableQuery::filters($request, ['cycle', 'industry', 'job_family']),
-            'cycles' => SurveyCycle::query()->latest('id')->get(['id', 'name']),
-            'cycle' => $cycle?->only('id', 'name'),
-            'industries' => $cycle?->lookup('IndustryList') ?? [],
-            'families' => $cycle?->lookup('JobFamilyList') ?? [],
-        ]);
-    }
-
     /**
      * The cycle picked with ?cycle=, else the newest one.
      */

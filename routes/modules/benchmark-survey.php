@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Benchmark\BenchmarkJobController;
 use App\Http\Controllers\Benchmark\SurveyAnalyticsController;
 use App\Http\Controllers\Benchmark\SurveyCorrectionController;
 use App\Http\Controllers\Benchmark\SurveyCycleController;
@@ -18,7 +19,12 @@ Route::middleware(['auth', 'verified', 'permission:manage-benchmark-survey'])
             Route::get('{cycle}/template', 'template')->name('template');
         });
 
-        Route::get('jobs', [SurveyCycleController::class, 'jobs'])->name('jobs.index');
+        Route::controller(BenchmarkJobController::class)->prefix('jobs')->name('jobs.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/', 'store')->middleware('permission:upload-benchmark-survey')->name('store');
+            Route::put('{job}', 'update')->middleware('permission:upload-benchmark-survey')->name('update');
+            Route::delete('{job}', 'destroy')->middleware('permission:delete-benchmark-survey')->name('destroy');
+        });
 
         Route::controller(SurveyParticipantController::class)->prefix('participants')->name('participants.')->group(function () {
             Route::get('/', 'index')->name('index');

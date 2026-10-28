@@ -364,6 +364,44 @@ class BenchmarkSurveyTest extends TestCase
         $this->assertSame([$gender], $beta->fresh()?->errors);
     }
 
+    public function test_the_job_catalogue_can_be_edited_and_changes_carry_through_to_submissions()
+    {
+        $cycle = $this->cycle();
+        $this->actingAs($this->userWithRole());
+        $this->get(route('benchmark.jobs.index'))->assertInertia(fn ($page) => $page->component('benchmark/jobs/index')->where('jobs.total', 2));
+
+        $this->post(route('benchmark.participants.upload'), ['cycle_id' => $cycle->id, 'files' => [
+            $this->workbook('Beta', salary: [['title' => 'Astronaut', 'headcount' => 1, 'male' => 1, 'female' => 0]]),
+        ]])->assertInertiaFlash('benchmarkUpload.0.status', 'needs_fixing');
+        $beta = SurveyParticipant::firstOrFail();
+
+        $job = ['survey_cycle_id' => $cycle->id, 'code' => 'SPC01', 'title' => 'Astronaut', 'industry' => 'All', 'job_family' => 'Engineering & Technical'];
+        $this->post(route('benchmark.jobs.store'), [...$job, 'code' => 'ENG01'])->assertSessionHasErrors('code');
+        $this->post(route('benchmark.jobs.store'), [...$job, 'title' => 'process engineer'])->assertSessionHasErrors('title');
+
+        // Adding the missing title links the company's row to it, and the submission no longer needs fixing.
+        $this->post(route('benchmark.jobs.store'), $job)->assertSessionHasNoErrors();
+        $this->assertSame(['SPC01', 'Engineering & Technical'], array_values($beta->salaryRows()->firstOrFail()->only('job_code', 'job_family')));
+        $this->assertNull($beta->fresh()?->errors);
+
+        // Renaming (and recoding) the job renames it on the rows that use it.
+        $astronaut = $cycle->jobs()->where('code', 'SPC01')->firstOrFail();
+        $this->put(route('benchmark.jobs.update', $astronaut), [...$job, 'code' => 'SPC02', 'title' => 'Space Engineer'])->assertSessionHasNoErrors();
+        $this->assertSame(['Space Engineer', 'SPC02'], array_values($beta->salaryRows()->firstOrFail()->only('job_title', 'job_code')));
+        $this->assertNull($beta->fresh()?->errors);
+
+        // A job in use can't be deleted; an unused one can.
+        $this->delete(route('benchmark.jobs.destroy', $astronaut))->assertRedirect();
+        $this->assertModelExists($astronaut);
+        $hr = $cycle->jobs()->where('code', 'HR01')->firstOrFail();
+        $this->delete(route('benchmark.jobs.destroy', $hr))->assertRedirect();
+        $this->assertModelMissing($hr);
+
+        $this->actingAs($this->userWithRole('hr'));
+        $this->post(route('benchmark.jobs.store'), [...$job, 'code' => 'X1', 'title' => 'Other'])->assertForbidden();
+        $this->delete(route('benchmark.jobs.destroy', $astronaut))->assertForbidden();
+    }
+
     public function test_only_uploaders_can_correct_a_submission()
     {
         $cycle = $this->cycle();
