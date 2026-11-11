@@ -39,6 +39,7 @@ type Employee = {
     bank_branch: string | null;
     tax_payer_id: string | null;
     epf_number: string | null;
+    socso_number: string | null;
     citizenship: 'citizen' | 'permanent_resident' | 'foreigner' | null;
     marital_status: string | null;
     spouse_working: boolean;
@@ -211,6 +212,7 @@ export default function EmployeeShow({
                     ['Bank Branch', e.bank_branch],
                     ['Income Tax No.', e.tax_payer_id],
                     ['EPF Member No.', e.epf_number],
+                    ['SOCSO Foreign Worker No.', e.socso_number],
                     [
                         'Citizenship',
                         t(

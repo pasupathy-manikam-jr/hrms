@@ -101,6 +101,7 @@ class EmployeeRequest extends FormRequest
             'id_number' => __('MyKad / passport number'),
             'tax_payer_id' => __('income tax number'),
             'epf_number' => __('EPF member number'),
+            'socso_number' => __('SOCSO foreign worker number'),
             'tax_children' => __('child relief units'),
             'lindung24_opt_out' => __('Lindung 24 Jam'),
             'photo' => __('profile image'),
@@ -178,6 +179,7 @@ class EmployeeRequest extends FormRequest
             'tax_children' => ['sometimes', 'integer', 'min:0', 'max:99'],
             'tax_resident' => ['sometimes', 'boolean'],
             'epf_number' => ['nullable', 'string', 'regex:/^\d{5,20}$/'],
+            'socso_number' => ['nullable', 'string', 'alpha_num:ascii', 'max:12'],
             'lindung24_opt_out' => ['sometimes', 'boolean'],
         ];
     }

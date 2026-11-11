@@ -87,6 +87,7 @@ const blank = {
     tax_children: '0',
     tax_resident: '1',
     epf_number: '',
+    socso_number: '',
     lindung24_opt_out: '0',
 };
 
@@ -164,6 +165,7 @@ const STEPS: {
             'tax_children',
             'tax_resident',
             'epf_number',
+            'socso_number',
             'lindung24_opt_out',
         ],
     },
@@ -560,6 +562,9 @@ export default function EmployeeForm({
             </h3>
             {text('epf_number', 'EPF Member No.', {
                 placeholder: 'e.g. 12345678',
+            })}
+            {text('socso_number', 'SOCSO Foreign Worker No.', {
+                hint: 'SSFW / SSFDW number for foreign workers. Leave blank for MyKad holders.',
             })}
             {select(
                 'citizenship',

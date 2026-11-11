@@ -34,7 +34,7 @@ use Illuminate\Support\Carbon;
     'address_line_1', 'address_line_2', 'city', 'state', 'country', 'postal_code',
     'emergency_contact_name', 'emergency_contact_relationship', 'emergency_contact_number',
     'bank_name', 'account_holder_name', 'account_number', 'bank_identifier_code', 'bank_branch', 'tax_payer_id', 'id_type', 'id_number',
-    'citizenship', 'marital_status', 'spouse_working', 'tax_children', 'tax_resident', 'epf_number', 'lindung24_opt_out',
+    'citizenship', 'marital_status', 'spouse_working', 'tax_children', 'tax_resident', 'epf_number', 'socso_number', 'lindung24_opt_out',
 ])]
 class Employee extends Model
 {

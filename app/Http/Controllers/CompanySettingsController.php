@@ -125,6 +125,24 @@ class CompanySettingsController extends Controller
         return $this->save(['workingDays' => $days], 'Working days saved.');
     }
 
+    public function updateStatutory(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            // PERKESO verifies the code's check digit itself; e.g. E1300001111G.
+            'employerSocsoCode' => ['nullable', 'string', 'regex:/^[A-Za-z0-9]{12}$/'],
+            'employerRegistrationNumber' => ['nullable', 'string', 'max:20'],
+            'employerEpfNumber' => ['nullable', 'string', 'regex:/^\d{5,20}$/'],
+            'employerTaxNumber' => ['nullable', 'string', 'max:20'],
+        ], [], [
+            'employerSocsoCode' => __('SOCSO employer code'),
+            'employerRegistrationNumber' => __('SSM registration number'),
+            'employerEpfNumber' => __('EPF employer number'),
+            'employerTaxNumber' => __('LHDN employer number'),
+        ]);
+
+        return $this->save(array_map(fn ($value) => strtoupper(trim((string) $value)), $validated), 'Statutory settings saved.');
+    }
+
     public function storeIpRestriction(Request $request): RedirectResponse
     {
         IpRestriction::create($request->validate([

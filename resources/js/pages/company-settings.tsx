@@ -2,6 +2,7 @@ import { Head, Link, router, useForm, usePage } from '@inertiajs/react';
 import {
     CalendarDays,
     Banknote,
+    Landmark,
     Mail,
     Network,
     Palette,
@@ -26,6 +27,7 @@ import {
     brand,
     currency,
     email,
+    statutory,
     system,
     workingDays as workingDaysRoute,
 } from '@/routes/settings';
@@ -49,6 +51,10 @@ type Settings = GlobalSettings & {
     mailEncryption: 'tls' | 'ssl' | 'none';
     mailFromAddress: string;
     mailFromName: string;
+    employerSocsoCode: string;
+    employerRegistrationNumber: string;
+    employerEpfNumber: string;
+    employerTaxNumber: string;
 };
 
 type Props = {
@@ -67,6 +73,7 @@ const SECTIONS: { id: string; title: string; icon: LucideIcon }[] = [
     { id: 'currency', title: 'Currency Settings', icon: Banknote },
     { id: 'email', title: 'Email Settings', icon: Mail },
     { id: 'working-days', title: 'Working Days Settings', icon: CalendarDays },
+    { id: 'statutory', title: 'Statutory Settings', icon: Landmark },
     { id: 'ip-restriction', title: 'IP Restriction Settings', icon: Network },
 ];
 
@@ -713,6 +720,50 @@ function WorkingDaysSection({ settings }: Props) {
     );
 }
 
+function StatutorySection({ settings }: Props) {
+    const form = useForm({
+        employerSocsoCode: settings.employerSocsoCode,
+        employerRegistrationNumber: settings.employerRegistrationNumber,
+        employerEpfNumber: settings.employerEpfNumber,
+        employerTaxNumber: settings.employerTaxNumber,
+    });
+    const fields: [keyof typeof form.data, string, string][] = [
+        ['employerSocsoCode', 'SOCSO Employer Code', 'e.g. E1300001111G'],
+        [
+            'employerRegistrationNumber',
+            'SSM Registration No.',
+            'e.g. 202001012345',
+        ],
+        ['employerEpfNumber', 'EPF Employer No.', 'e.g. 12345678'],
+        ['employerTaxNumber', 'LHDN Employer No. (E)', 'e.g. E1234567890'],
+    ];
+
+    return (
+        <Section
+            id="statutory"
+            title="Statutory Settings"
+            description="Employer registration numbers used on the PERKESO, KWSP and LHDN submission files"
+            onSubmit={(e) => {
+                e.preventDefault();
+                form.submit(statutory(), { preserveScroll: true });
+            }}
+            processing={form.processing}
+        >
+            <div className="grid gap-5 md:grid-cols-2">
+                {fields.map(([key, label, placeholder]) => (
+                    <Field key={key} label={label} error={form.errors[key]}>
+                        <Input
+                            value={form.data[key]}
+                            placeholder={placeholder}
+                            onChange={(e) => form.setData(key, e.target.value)}
+                        />
+                    </Field>
+                ))}
+            </div>
+        </Section>
+    );
+}
+
 function IpRestrictionSection({ settings, ipRestrictions }: Props) {
     const { t } = useTranslation();
     const form = useForm({ ip_address: '' });
@@ -831,6 +882,7 @@ export default function CompanySettings(props: Props) {
                         <CurrencySection {...props} />
                         <EmailSection {...props} />
                         <WorkingDaysSection {...props} />
+                        <StatutorySection {...props} />
                         <IpRestrictionSection {...props} />
                     </div>
                 </div>

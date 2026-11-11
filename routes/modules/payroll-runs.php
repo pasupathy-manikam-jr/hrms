@@ -12,6 +12,7 @@ Route::middleware(['auth', 'verified', 'permission:manage-payroll-runs'])
         Route::get('export', 'export')->middleware('permission:export-payroll-runs')->name('export');
         Route::get('download-template', 'template')->middleware('permission:import-payroll-runs')->name('download.template');
         Route::post('import', 'import')->middleware(['permission:import-payroll-runs', 'throttle:10,1'])->name('import');
+        Route::get('{payrollRun}/perkeso', 'perkeso')->whereNumber('payrollRun')->middleware('permission:export-payroll-runs')->name('perkeso');
         Route::get('{payrollRun}', 'show')->whereNumber('payrollRun')->name('show');
         Route::post('/', 'store')->middleware('permission:create-payroll-runs')->name('store');
         Route::put('{payrollRun}', 'update')->middleware('permission:edit-payroll-runs')->name('update');

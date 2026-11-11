@@ -6,6 +6,8 @@ use App\Models\Designation;
 use App\Models\Employee;
 use App\Models\EmployeeSalary;
 use App\Models\PayrollRun;
+use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -87,5 +89,69 @@ class StatutoryPayrollTest extends TestCase
         // A Malaysian who opted out pays no Lindung 24 Jam but still SOCSO and EIS.
         $this->assertSame([0, 1], [$local['skbbk'], $local['socso_category']]);
         $this->assertGreaterThan(0, $local['eis_employee']);
+    }
+
+    /**
+     * Row 6 of PERKESO's sample file (Combine SOCSO + EIS text file format v2.1): RM4,431.78 in June 2026.
+     */
+    public function test_perkeso_file_matches_the_official_sample_row()
+    {
+        $user = $this->userWithRole();
+        $ali = Employee::factory()->create([
+            'user_id' => User::factory()->create(['name' => 'Ali bin Abu'])->id,
+            'date_of_birth' => '2000-10-04', 'id_type' => 'mykad', 'id_number' => '001004-01-2345',
+        ]);
+        EmployeeSalary::factory()->create(['employee_id' => $ali->id, 'basic_salary' => '4431.78']);
+        $run = $this->processRun('2026-06-01');
+        $this->actingAs($user);
+
+        $this->get(route('hr.payroll-runs.perkeso', $run))->assertSessionHas('inertia.flash_data.toast.type', 'error');
+
+        Setting::put(['employerSocsoCode' => 'E1300001111G']);
+        $file = $this->get(route('hr.payroll-runs.perkeso', $run))
+            ->assertOk()
+            ->assertHeader('Content-Disposition', 'attachment; filename="perkeso-2026-06.txt"')
+            ->getContent();
+
+        $line = rtrim($file, "\r\n");
+        $this->assertSame(278, strlen($line));
+        $this->assertSame('E1300001111G', substr($line, 0, 12));
+        $this->assertSame('001004012345ALI BIN ABU', rtrim(substr($line, 32, 162)));
+        $this->assertSame('062026', substr($line, 194, 6));
+        $this->assertSame('        443178  7785  2225  0890  0890  3335', substr($line, 200, 44));
+    }
+
+    public function test_perkeso_file_needs_every_employees_socso_identity_and_the_export_permission()
+    {
+        $foreigner = Employee::factory()->create(['date_of_birth' => '1995-01-01', 'id_type' => 'passport', 'id_number' => 'A1234567']);
+        EmployeeSalary::factory()->create(['employee_id' => $foreigner->id, 'basic_salary' => '2000.00']);
+        $run = $this->processRun('2026-10-01');
+        Setting::put(['employerSocsoCode' => 'E1300001111G']);
+
+        $this->actingAs($this->userWithRole('employee'))->get(route('hr.payroll-runs.perkeso', $run))->assertForbidden();
+
+        $this->actingAs($this->userWithRole())->get(route('hr.payroll-runs.perkeso', $run))
+            ->assertRedirect()
+            ->assertSessionHas('inertia.flash_data.toast.message', fn ($message) => str_contains($message, $foreigner->user->name));
+
+        $foreigner->update(['socso_number' => 'SSFW1234567']);
+        $line = $this->get(route('hr.payroll-runs.perkeso', $run))->assertOk()->getContent();
+        $this->assertSame('SSFW1234567 ', substr($line, 32, 12));
+        // Foreign worker: no EIS.
+        $this->assertSame('  0000  0000', substr($line, 226, 12));
+    }
+
+    public function test_statutory_employer_numbers_are_validated_and_saved()
+    {
+        $this->actingAs($this->userWithRole());
+
+        $this->put(route('settings.statutory'), ['employerSocsoCode' => 'E13', 'employerEpfNumber' => 'EPF'])
+            ->assertSessionHasErrors(['employerSocsoCode', 'employerEpfNumber']);
+
+        $this->put(route('settings.statutory'), ['employerSocsoCode' => 'e1300001111g', 'employerRegistrationNumber' => '202001012345', 'employerEpfNumber' => '12345678', 'employerTaxNumber' => 'e1234567890'])
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame(['E1300001111G', 'E1234567890'], [Setting::get('employerSocsoCode'), Setting::get('employerTaxNumber')]);
+        $this->actingAs($this->userWithRole('hr'))->put(route('settings.statutory'), ['employerSocsoCode' => 'E1300001111G'])->assertForbidden();
     }
 }

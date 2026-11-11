@@ -3,6 +3,7 @@ import {
     Banknote,
     CalendarDays,
     CheckCircle2,
+    Download,
     FileText,
     Play,
     Users,
@@ -163,6 +164,20 @@ export default function PayrollRunShow({
                                     )}
                                 </>
                             )}
+                            {payslips.length > 0 &&
+                                can('export-payroll-runs') && (
+                                    <Button variant="outline" asChild>
+                                        <a
+                                            href={
+                                                payrollRoutes.perkeso(run.id)
+                                                    .url
+                                            }
+                                        >
+                                            <Download />{' '}
+                                            {t('PERKESO File (SOCSO + EIS)')}
+                                        </a>
+                                    </Button>
+                                )}
                             {payslips.length > 0 && can('manage-payslips') && (
                                 <Button variant="outline" asChild>
                                     <Link

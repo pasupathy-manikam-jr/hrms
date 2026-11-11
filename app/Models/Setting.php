@@ -48,6 +48,11 @@ class Setting extends Model
         'mailFromName' => 'HRM',
         // Working days (0 = Sunday … 6 = Saturday)
         'workingDays' => [1, 2, 3, 4, 5],
+        // Statutory employer registrations (PERKESO, SSM, KWSP, LHDN), used on the agencies' submission files
+        'employerSocsoCode' => '',
+        'employerRegistrationNumber' => '',
+        'employerEpfNumber' => '',
+        'employerTaxNumber' => '',
     ];
 
     /** Preset brand colours; "custom" uses customColor. */

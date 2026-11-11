@@ -33,6 +33,7 @@ Route::middleware(['auth', 'verified', 'permission:manage-settings'])
         Route::put('email', 'updateEmail')->name('.email');
         Route::post('email/test', 'testEmail')->middleware('throttle:6,1')->name('.email.test');
         Route::put('working-days', 'updateWorkingDays')->name('.working-days');
+        Route::put('statutory', 'updateStatutory')->name('.statutory');
         Route::post('ip-restrictions', 'storeIpRestriction')->name('.ip-restrictions.store');
         Route::delete('ip-restrictions/{ipRestriction}', 'destroyIpRestriction')->name('.ip-restrictions.destroy');
     });

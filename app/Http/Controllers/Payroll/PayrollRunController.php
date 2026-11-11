@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Payroll;
 
 use App\Http\Controllers\Controller;
 use App\Models\PayrollRun;
+use App\Models\Setting;
 use App\Support\Csv;
+use App\Support\Statutory\PerkesoFile;
 use App\Support\TableQuery;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
@@ -14,6 +16,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\HttpFoundation\Response as FileResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
@@ -73,6 +76,29 @@ class PayrollRunController extends Controller
             $run->title, $run->payroll_frequency, $run->pay_period_start->toDateString(), $run->pay_period_end->toDateString(), $run->pay_date->toDateString(), $run->notes,
             $run->employee_count, $run->total_gross_pay, $run->total_deductions, $run->total_net_pay, $run->status,
         ]));
+    }
+
+    /**
+     * The run's SOCSO + EIS contribution text file for upload to PERKESO's ASSIST portal.
+     */
+    public function perkeso(PayrollRun $payrollRun): FileResponse|RedirectResponse
+    {
+        if (Setting::get('employerSocsoCode') === '') {
+            return $this->toast('error', __('Set the SOCSO employer code in Settings first.'));
+        }
+
+        if (! $payrollRun->payslips()->whereNotNull('statutory')->exists()) {
+            return $this->toast('error', __('Process the payroll run before exporting it.'));
+        }
+
+        if ($problems = PerkesoFile::problems($payrollRun)) {
+            return $this->toast('error', __('Add a 12-digit MyKad number, or the SOCSO foreign worker number, for: :names', ['names' => implode(', ', $problems)]));
+        }
+
+        return response(PerkesoFile::contents($payrollRun), 200, [
+            'Content-Type' => 'text/plain; charset=US-ASCII',
+            'Content-Disposition' => 'attachment; filename="perkeso-'.$payrollRun->pay_period_start->format('Y-m').'.txt"',
+        ]);
     }
 
     public function template(): StreamedResponse
