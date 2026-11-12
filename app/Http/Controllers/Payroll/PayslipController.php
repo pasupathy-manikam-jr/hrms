@@ -6,12 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use App\Models\PayrollRun;
 use App\Models\Payslip;
+use App\Models\Setting;
 use App\Models\User;
+use App\Support\Statutory\EaForm;
 use App\Support\TableQuery;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\CarbonImmutable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\HttpFoundation\Response as FileResponse;
 
 class PayslipController extends Controller
 {
@@ -59,5 +64,35 @@ class PayslipController extends Controller
             'statusCounts' => ['all' => (int) $counts->sum()] + collect(Payslip::TAB_STATUSES)->mapWithKeys(fn ($status) => [$status => (int) ($counts[$status] ?? 0)])->all(),
             'filters' => TableQuery::filters($request, ['employee_id', 'payroll_run_id', 'status', 'date_from', 'date_to', 'selected_month']),
         ]);
+    }
+
+    /**
+     * An employee's Form EA (C.P.8A) for a year as a PDF. HR picks the employee; others get their own.
+     */
+    public function eaForm(Request $request): FileResponse|RedirectResponse
+    {
+        /** @var User $user */
+        $user = $request->user();
+        $validated = $request->validate([
+            'year' => ['required', 'integer', 'between:2000,'.now()->year],
+            'employee_id' => ['nullable', 'integer'],
+        ]);
+
+        $employee = $user->can('manage-any-payslips')
+            ? Employee::query()->whereKey((int) ($validated['employee_id'] ?? 0))->firstOrFail()
+            : Employee::query()->where('user_id', $user->can('manage-own-payslips') ? $user->id : 0)->firstOrFail();
+        $employee->load(['user:id,name', 'designation:id,name']);
+        $figures = EaForm::figures($employee, (int) $validated['year']);
+
+        if ($figures === null) {
+            return $this->toast('error', __('No completed payroll paid :name in :year.', ['name' => $employee->user->name, 'year' => $validated['year']]));
+        }
+
+        return Pdf::loadView('payroll.ea-form', [
+            'employee' => $employee,
+            'year' => (int) $validated['year'],
+            'figures' => $figures,
+            'employer' => Setting::values(),
+        ])->download('EA-'.$validated['year'].'-'.$employee->employee_id.'.pdf');
     }
 }

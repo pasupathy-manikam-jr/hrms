@@ -6,14 +6,14 @@ namespace App\Support\Statutory;
  * PCB / Monthly Tax Deduction (MTD) by LHDN's "Specification for MTD Calculations Using Computerised Calculation
  * for 2026", formula 1 (normal remuneration):
  *
- *   MTD = [ (P − M) × R + B − (Z + X) ] / (n + 1)
+ *   MTD = [ (P − M) × R + B − (Z + X) ] / (n + 1)        Net MTD = MTD − zakat paid this month
  *   P   = Σ(Y − K) + (Y1 − K1) + (Y2 − K2) × n − (D + S + Q × C + ΣLP + LP1)
  *
  * Calculations keep two decimals (further digits are dropped); the result is rounded up to the next 5 sen and is
  * not deducted when below RM10. Non-residents pay a flat 30%. Amounts in and out are in sen.
  *
- * ponytail: no zakat, disability reliefs or the additional-remuneration (bonus) formula yet; add them with the
- * payroll inputs that would carry them.
+ * ponytail: no disability reliefs or the additional-remuneration (bonus) formula yet; add them with the payroll
+ * inputs that would carry them.
  */
 class Pcb
 {
@@ -24,7 +24,7 @@ class Pcb
 
     private const SPOUSE_RELIEF = 4000;
 
-    private const CHILD_RELIEF = 2000;
+    public const CHILD_RELIEF = 2000;
 
     /** Yearly EPF contributions that qualify for relief (the "total qualifying amount per year"). */
     private const EPF_RELIEF_LIMIT = 4000;
@@ -53,10 +53,13 @@ class Pcb
      * @param  int  $epf  K1: this month's employee EPF (sen)
      * @param  int  $children  C: child relief units
      * @param  int  $otherReliefs  ΣLP + LP1: other allowable deductions claimed this year, e.g. on Form TP1 (sen)
+     * @param  int  $zakatToDate  Z: zakat paid through salary earlier this year (sen)
+     * @param  int  $zakat  zakat paid through salary this month (sen); it comes off this month's MTD
      */
     public static function monthly(
         int $month, int $category, int $children, bool $resident,
         int $grossToDate, int $epfToDate, int $pcbToDate, int $gross, int $epf, int $otherReliefs = 0,
+        int $zakatToDate = 0, int $zakat = 0,
     ): int {
         if (! $resident) {
             return self::finalise($gross * 0.30 / 100);
@@ -76,7 +79,9 @@ class Pcb
 
         $chargeable = self::truncate(($grossToDate / 100 - $k) + ($y1 - $k1) + self::truncate(($y1 - $k2) * $n) - $reliefs);
 
-        return self::finalise((self::tax($chargeable, $category) - $pcbToDate / 100) / ($n + 1));
+        $mtd = self::finalise((self::tax($chargeable, $category) - ($zakatToDate + $pcbToDate) / 100) / ($n + 1));
+
+        return max(0, (int) ceil(($mtd - $zakat) / 5) * 5);
     }
 
     /**

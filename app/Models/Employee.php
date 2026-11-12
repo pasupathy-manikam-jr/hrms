@@ -27,6 +27,9 @@ use Illuminate\Support\Carbon;
  * @property int $tax_children
  * @property bool $tax_resident
  * @property bool $lindung24_opt_out
+ * @property string $zakat_monthly
+ * @property string $cp38_monthly
+ * @property Carbon|null $cp38_until
  */
 #[Fillable([
     'user_id', 'employee_id', 'phone', 'date_of_birth', 'gender',
@@ -34,7 +37,7 @@ use Illuminate\Support\Carbon;
     'address_line_1', 'address_line_2', 'city', 'state', 'country', 'postal_code',
     'emergency_contact_name', 'emergency_contact_relationship', 'emergency_contact_number',
     'bank_name', 'account_holder_name', 'account_number', 'bank_identifier_code', 'bank_branch', 'tax_payer_id', 'id_type', 'id_number',
-    'citizenship', 'marital_status', 'spouse_working', 'tax_children', 'tax_resident', 'epf_number', 'socso_number', 'lindung24_opt_out',
+    'citizenship', 'marital_status', 'spouse_working', 'tax_children', 'tax_resident', 'epf_number', 'socso_number', 'lindung24_opt_out', 'zakat_monthly', 'cp38_monthly', 'cp38_until',
 ])]
 class Employee extends Model
 {
@@ -79,6 +82,9 @@ class Employee extends Model
             'tax_children' => 'integer',
             'tax_resident' => 'boolean',
             'lindung24_opt_out' => 'boolean',
+            'zakat_monthly' => 'decimal:2',
+            'cp38_monthly' => 'decimal:2',
+            'cp38_until' => 'date:Y-m-d',
         ];
     }
 

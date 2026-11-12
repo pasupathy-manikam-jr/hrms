@@ -32,6 +32,13 @@ class EmployeeRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge(['id_number' => self::normalizeIdNumber($this->all())]);
+
+        // Blank or zero zakat / CP38 amounts mean none.
+        foreach (['zakat_monthly', 'cp38_monthly'] as $amount) {
+            if ($this->has($amount) && (blank($this->input($amount)) || (is_numeric($this->input($amount)) && (float) $this->input($amount) === 0.0))) {
+                $this->merge([$amount => 0]);
+            }
+        }
     }
 
     /**
@@ -102,6 +109,9 @@ class EmployeeRequest extends FormRequest
             'tax_payer_id' => __('income tax number'),
             'epf_number' => __('EPF member number'),
             'socso_number' => __('SOCSO foreign worker number'),
+            'zakat_monthly' => __('zakat per month'),
+            'cp38_monthly' => __('CP38 deduction per month'),
+            'cp38_until' => __('CP38 last month'),
             'tax_children' => __('child relief units'),
             'lindung24_opt_out' => __('Lindung 24 Jam'),
             'photo' => __('profile image'),
@@ -180,6 +190,9 @@ class EmployeeRequest extends FormRequest
             'tax_resident' => ['sometimes', 'boolean'],
             'epf_number' => ['nullable', 'string', 'regex:/^\d{5,20}$/'],
             'socso_number' => ['nullable', 'string', 'alpha_num:ascii', 'max:12'],
+            'zakat_monthly' => ['nullable', 'numeric', 'min:0', 'max:99999'],
+            'cp38_monthly' => ['nullable', 'numeric', 'min:0', 'max:99999'],
+            'cp38_until' => ['nullable', 'date', 'required_unless:cp38_monthly,0,null'],
             'lindung24_opt_out' => ['sometimes', 'boolean'],
         ];
     }

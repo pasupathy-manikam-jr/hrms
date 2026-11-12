@@ -1,7 +1,8 @@
 import { Head, router } from '@inertiajs/react';
-import { Eye } from 'lucide-react';
+import { Eye, FileText } from 'lucide-react';
 import { useState } from 'react';
 import { DataTable } from '@/components/data-table';
+import { FormDialog } from '@/components/form-dialog';
 import type { Column } from '@/components/data-table';
 import { PageHeader } from '@/components/page-header';
 import { StatusBadge } from '@/components/status-badge';
@@ -19,6 +20,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
+import { useCan } from '@/hooks/use-can';
 import { useFormat } from '@/hooks/use-format';
 import { useTranslation } from '@/hooks/use-translation';
 import { cn } from '@/lib/utils';
@@ -101,6 +103,13 @@ export default function Payslips({
     const url = payslipRoutes.index();
     const [viewing, setViewing] = useState<Payslip | null>(null);
     const year = selectedMonth.slice(0, 4);
+    const can = useCan();
+    const [ea, setEa] = useState<{ year: string; employee_id: string } | null>(
+        null,
+    );
+    const thisYear = new Date().getFullYear();
+    // Newest first; the EA form defaults to last year, else this year.
+    const eaYears = years.filter((y) => y <= thisYear).reverse();
 
     // Choosing a month leaves a payroll run's own list and starts from page one.
     const pickMonth = (month: string) =>
@@ -198,7 +207,91 @@ export default function Payslips({
                 <PageHeader
                     title="Payslips"
                     description="Browse and download employee payslips."
+                    action={
+                        can('download-payslips') && (
+                            <Button
+                                variant="outline"
+                                onClick={() =>
+                                    setEa({
+                                        year: String(
+                                            eaYears.find((y) => y < thisYear) ??
+                                                thisYear,
+                                        ),
+                                        employee_id: String(
+                                            filters.employee_id ?? '',
+                                        ),
+                                    })
+                                }
+                            >
+                                <FileText /> {t('EA Form')}
+                            </Button>
+                        )
+                    }
                 />
+
+                <FormDialog
+                    open={ea !== null}
+                    onOpenChange={(open) => !open && setEa(null)}
+                    title="EA Form (C.P.8A)"
+                    description="Statement of remuneration for the year, from completed payroll runs paid that year."
+                    submitLabel="Download PDF"
+                    processing={false}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        if (!ea || (employees.length > 0 && !ea.employee_id)) {
+                            return;
+                        }
+                        window.location.href = payslipRoutes.eaForm({
+                            query: {
+                                year: ea.year,
+                                employee_id: ea.employee_id || undefined,
+                            },
+                        }).url;
+                        setEa(null);
+                    }}
+                >
+                    {ea && (
+                        <>
+                            <SelectField
+                                aria-label={t('Year')}
+                                value={ea.year}
+                                onChange={(e) =>
+                                    setEa({ ...ea, year: e.target.value })
+                                }
+                            >
+                                {eaYears.map((y) => (
+                                    <option key={y} value={y}>
+                                        {y}
+                                    </option>
+                                ))}
+                            </SelectField>
+                            {employees.length > 0 && (
+                                <SelectField
+                                    aria-label={t('Employee')}
+                                    value={ea.employee_id}
+                                    onChange={(e) =>
+                                        setEa({
+                                            ...ea,
+                                            employee_id: e.target.value,
+                                        })
+                                    }
+                                >
+                                    <option value="">
+                                        {t('Select employee')}
+                                    </option>
+                                    {employees.map((employee) => (
+                                        <option
+                                            key={employee.id}
+                                            value={employee.id}
+                                        >
+                                            {employee.name}
+                                        </option>
+                                    ))}
+                                </SelectField>
+                            )}
+                        </>
+                    )}
+                </FormDialog>
 
                 <div className="grid grid-cols-4 overflow-hidden rounded-xl border bg-card shadow-sm sm:grid-cols-6 lg:grid-cols-12">
                     {Array.from({ length: 12 }, (_, i) => {

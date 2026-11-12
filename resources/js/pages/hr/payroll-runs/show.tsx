@@ -178,6 +178,15 @@ export default function PayrollRunShow({
                                         </a>
                                     </Button>
                                 )}
+                            {payslips.length > 0 &&
+                                can('export-payroll-runs') && (
+                                    <Button variant="outline" asChild>
+                                        <a href={payrollRoutes.pcb(run.id).url}>
+                                            <Download />{' '}
+                                            {t('LHDN PCB File (CP39)')}
+                                        </a>
+                                    </Button>
+                                )}
                             {payslips.length > 0 && can('manage-payslips') && (
                                 <Button variant="outline" asChild>
                                     <Link

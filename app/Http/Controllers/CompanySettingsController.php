@@ -132,7 +132,8 @@ class CompanySettingsController extends Controller
             'employerSocsoCode' => ['nullable', 'string', 'regex:/^[A-Za-z0-9]{12}$/'],
             'employerRegistrationNumber' => ['nullable', 'string', 'max:20'],
             'employerEpfNumber' => ['nullable', 'string', 'regex:/^\d{5,20}$/'],
-            'employerTaxNumber' => ['nullable', 'string', 'max:20'],
+            // LHDN's E number, e.g. E 1234567890.
+            'employerTaxNumber' => ['nullable', 'string', 'regex:/^E?\s?\d{1,10}$/i'],
         ], [], [
             'employerSocsoCode' => __('SOCSO employer code'),
             'employerRegistrationNumber' => __('SSM registration number'),

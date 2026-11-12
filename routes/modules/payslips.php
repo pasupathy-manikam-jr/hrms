@@ -9,4 +9,5 @@ Route::middleware(['auth', 'verified', 'permission:manage-payslips'])
     ->name('hr.payslips.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('ea-form', 'eaForm')->middleware('permission:download-payslips')->name('ea-form');
     });

@@ -4,17 +4,19 @@ namespace App\Support\Statutory;
 
 use App\Models\Employee;
 use App\Models\Payslip;
+use App\Support\Money;
 use Carbon\CarbonInterface;
 
 /**
  * One employee's statutory deductions and employer contributions for a month: EPF, SOCSO (with Lindung 24 Jam),
- * EIS and PCB. PCB uses what earlier payslips this year already paid. Amounts are in sen.
+ * EIS and PCB, plus zakat through salary (which reduces PCB) and any LHDN CP38 instruction. PCB uses what earlier
+ * payslips this year already paid. Amounts are in sen.
  */
 class Contributions
 {
     /**
      * @param  int  $wages  this month's remuneration subject to contributions and tax (sen)
-     * @return array{wages: int, epf_employee: int, epf_employer: int, socso_category: int, socso_employee: int, socso_employer: int, skbbk: int, eis_employee: int, eis_employer: int, pcb_category: int, pcb: int}
+     * @return array{wages: int, epf_employee: int, epf_employer: int, socso_category: int, socso_employee: int, socso_employer: int, skbbk: int, eis_employee: int, eis_employer: int, pcb_category: int, pcb: int, zakat: int, cp38: int}
      */
     public static function for(Employee $employee, int $wages, CarbonInterface $month): array
     {
@@ -31,6 +33,8 @@ class Contributions
 
         $category = self::taxCategory($employee);
         $earlier = self::earlierThisYear($employee, $month);
+        $zakat = Money::toCents($employee->zakat_monthly);
+        $cp38 = $employee->cp38_until && $employee->cp38_until->gte($month) ? Money::toCents($employee->cp38_monthly) : 0;
 
         return [
             'wages' => $wages,
@@ -46,14 +50,17 @@ class Contributions
             'pcb' => Pcb::monthly(
                 $month->month, $category, (int) $employee->tax_children, (bool) $employee->tax_resident,
                 $earlier['wages'], $earlier['epf'], $earlier['pcb'], $wages, $epf['employee'],
+                zakatToDate: $earlier['zakat'], zakat: $zakat,
             ),
+            'zakat' => $zakat,
+            'cp38' => $cp38,
         ];
     }
 
     /**
      * The employee's lines on the payslip, in the order they appear.
      *
-     * @param  array{epf_employee: int, socso_employee: int, skbbk: int, eis_employee: int, pcb: int}  $statutory
+     * @param  array{epf_employee: int, socso_employee: int, skbbk: int, eis_employee: int, pcb: int, zakat?: int, cp38?: int}  $statutory
      * @return array<string, int>
      */
     public static function deductionLines(array $statutory): array
@@ -64,6 +71,8 @@ class Contributions
             'SOCSO Lindung 24 Jam' => $statutory['skbbk'],
             'EIS (SIP)' => $statutory['eis_employee'],
             'PCB (Monthly Tax Deduction)' => $statutory['pcb'],
+            'CP38 (LHDN Instruction)' => $statutory['cp38'] ?? 0,
+            'Zakat' => $statutory['zakat'] ?? 0,
         ]);
     }
 
@@ -88,13 +97,13 @@ class Contributions
     }
 
     /**
-     * Remuneration, employee EPF and PCB on this employee's payslips for earlier months of the same year.
+     * Remuneration, employee EPF, PCB and zakat on this employee's payslips for earlier months of the same year.
      *
-     * @return array{wages: int, epf: int, pcb: int}
+     * @return array{wages: int, epf: int, pcb: int, zakat: int}
      */
     private static function earlierThisYear(Employee $employee, CarbonInterface $month): array
     {
-        $totals = ['wages' => 0, 'epf' => 0, 'pcb' => 0];
+        $totals = ['wages' => 0, 'epf' => 0, 'pcb' => 0, 'zakat' => 0];
 
         Payslip::query()
             ->where('employee_id', $employee->id)
@@ -107,6 +116,7 @@ class Contributions
                 $totals['wages'] += $statutory['wages'] ?? (int) round((float) $payslip->gross_pay * 100);
                 $totals['epf'] += $statutory['epf_employee'] ?? 0;
                 $totals['pcb'] += $statutory['pcb'] ?? 0;
+                $totals['zakat'] += $statutory['zakat'] ?? 0;
             });
 
         return $totals;

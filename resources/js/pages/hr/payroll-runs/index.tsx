@@ -1,6 +1,7 @@
 import { Head, Link, router, useForm } from '@inertiajs/react';
 import {
     CheckCircle2,
+    Download,
     Eye,
     FileText,
     Play,
@@ -96,6 +97,9 @@ export default function PayrollRuns({
     const [editing, setEditing] = useState<PayrollRun | null>(null);
     const [formOpen, setFormOpen] = useState(false);
     const [confirming, setConfirming] = useState<Confirming | null>(null);
+    // LHDN's C.P.8D is for a year of remuneration; it defaults to last year.
+    const thisYear = new Date().getFullYear();
+    const [cp8dYear, setCp8dYear] = useState<number | null>(null);
     const form = useForm(blank);
 
     const openForm = (run: PayrollRun | null) => {
@@ -216,6 +220,14 @@ export default function PayrollRuns({
                                     })}
                                 />
                             )}
+                            {can('export-payroll-runs') && (
+                                <Button
+                                    variant="outline"
+                                    onClick={() => setCp8dYear(thisYear - 1)}
+                                >
+                                    <Download /> {t('LHDN C.P.8D')}
+                                </Button>
+                            )}
                             {can('import-payroll-runs') && (
                                 <ImportButton
                                     title="Import Payroll Runs from CSV/Excel"
@@ -234,6 +246,34 @@ export default function PayrollRuns({
                         </div>
                     }
                 />
+
+                <FormDialog
+                    open={cp8dYear !== null}
+                    onOpenChange={(open) => !open && setCp8dYear(null)}
+                    title="LHDN C.P.8D"
+                    description="Every employee's remuneration for the year, from completed payroll runs paid that year, for upload to e-Data Praisi / e-CP8D."
+                    submitLabel="Download"
+                    processing={false}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        window.location.href = payrollRoutes.cp8d({
+                            query: { year: cp8dYear },
+                        }).url;
+                        setCp8dYear(null);
+                    }}
+                >
+                    <SelectField
+                        aria-label={t('Year of remuneration')}
+                        value={cp8dYear ?? thisYear - 1}
+                        onChange={(e) => setCp8dYear(+e.target.value)}
+                    >
+                        {[0, 1, 2, 3, 4].map((ago) => (
+                            <option key={ago} value={thisYear - ago}>
+                                {thisYear - ago}
+                            </option>
+                        ))}
+                    </SelectField>
+                </FormDialog>
 
                 <DataTable
                     data={payrollRuns}

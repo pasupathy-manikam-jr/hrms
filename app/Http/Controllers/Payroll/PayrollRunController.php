@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\PayrollRun;
 use App\Models\Setting;
 use App\Support\Csv;
+use App\Support\Statutory\Cp8dFile;
+use App\Support\Statutory\PcbFile;
 use App\Support\Statutory\PerkesoFile;
 use App\Support\TableQuery;
 use Illuminate\Database\Eloquent\Builder;
@@ -88,7 +90,9 @@ class PayrollRunController extends Controller
         }
 
         if (! $payrollRun->payslips()->whereNotNull('statutory')->exists()) {
-            return $this->toast('error', __('Process the payroll run before exporting it.'));
+            return $this->toast('error', $payrollRun->isLocked()
+                ? __('This run\'s payslips have no SOCSO or EIS amounts: they were generated before statutory contributions were calculated.')
+                : __('Process the payroll run before exporting it.'));
         }
 
         if ($problems = PerkesoFile::problems($payrollRun)) {
@@ -98,6 +102,42 @@ class PayrollRunController extends Controller
         return response(PerkesoFile::contents($payrollRun), 200, [
             'Content-Type' => 'text/plain; charset=US-ASCII',
             'Content-Disposition' => 'attachment; filename="perkeso-'.$payrollRun->pay_period_start->format('Y-m').'.txt"',
+        ]);
+    }
+
+    /**
+     * The run's PCB / CP39 text file for upload to LHDN's e-PCB Plus.
+     */
+    public function pcb(PayrollRun $payrollRun): FileResponse|RedirectResponse
+    {
+        if (! PcbFile::hasDeductions($payrollRun)) {
+            return $this->toast('error', __('No PCB was deducted in this payroll run.'));
+        }
+
+        if ($problems = PcbFile::problems($payrollRun)) {
+            return $this->toast('error', $problems[0]);
+        }
+
+        return response(PcbFile::contents($payrollRun), 200, [
+            'Content-Type' => 'text/plain; charset=US-ASCII',
+            'Content-Disposition' => 'attachment; filename="pcb-'.$payrollRun->pay_period_start->format('Y-m').'.txt"',
+        ]);
+    }
+
+    /**
+     * LHDN's C.P.8D for a year of remuneration, for upload through e-Data Praisi / e-CP8D.
+     */
+    public function cp8d(Request $request): FileResponse|RedirectResponse
+    {
+        $year = (int) $request->validate(['year' => ['required', 'integer', 'between:2000,'.now()->year]])['year'];
+
+        if ($problems = Cp8dFile::problems($year)) {
+            return $this->toast('error', $problems[0]);
+        }
+
+        return response(Cp8dFile::contents($year), 200, [
+            'Content-Type' => 'text/plain; charset=US-ASCII',
+            'Content-Disposition' => 'attachment; filename="'.Cp8dFile::filename($year).'"',
         ]);
     }
 

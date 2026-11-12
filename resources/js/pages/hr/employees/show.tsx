@@ -46,6 +46,9 @@ type Employee = {
     tax_children: number;
     tax_resident: boolean;
     lindung24_opt_out: boolean;
+    zakat_monthly: string;
+    cp38_monthly: string;
+    cp38_until: string | null;
     id_type: 'mykad' | 'passport' | null;
     id_number: string | null;
     documents: {
@@ -124,7 +127,7 @@ export default function EmployeeShow({
     contracts: Contract[];
 }) {
     const { t } = useTranslation();
-    const { date, time } = useFormat();
+    const { date, time, money } = useFormat();
     const [tab, setTab] = useState<(typeof TABS)[number]>('Basic Info');
     const e = employee;
 
@@ -249,6 +252,13 @@ export default function EmployeeShow({
                     [
                         'Lindung 24 Jam (SOCSO)',
                         t(e.lindung24_opt_out ? 'Opted out' : 'Contributing'),
+                    ],
+                    ['Zakat per Month', money(Number(e.zakat_monthly))],
+                    [
+                        'CP38 per Month',
+                        Number(e.cp38_monthly) > 0
+                            ? `${money(Number(e.cp38_monthly))} (${t('until')} ${date(e.cp38_until ?? '')})`
+                            : '-',
                     ],
                 ]}
             />,

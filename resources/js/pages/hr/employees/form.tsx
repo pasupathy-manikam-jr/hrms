@@ -89,6 +89,9 @@ const blank = {
     epf_number: '',
     socso_number: '',
     lindung24_opt_out: '0',
+    zakat_monthly: '',
+    cp38_monthly: '',
+    cp38_until: '',
 };
 
 type Field = keyof typeof blank;
@@ -167,6 +170,9 @@ const STEPS: {
             'epf_number',
             'socso_number',
             'lindung24_opt_out',
+            'zakat_monthly',
+            'cp38_monthly',
+            'cp38_until',
         ],
     },
     {
@@ -614,6 +620,19 @@ export default function EmployeeForm({
                 ],
                 { required: false },
             )}
+            {text('zakat_monthly', 'Zakat per Month (RM)', {
+                type: 'number',
+                hint: 'Paid to the zakat authority through salary; it reduces PCB.',
+            })}
+            {text('cp38_monthly', 'CP38 per Month (RM)', {
+                type: 'number',
+                hint: 'Only when LHDN sends a CP38 notice for this employee.',
+            })}
+            {Number(form.data.cp38_monthly) > 0 &&
+                text('cp38_until', 'CP38 Last Month', {
+                    type: 'date',
+                    hint: 'The last month of deductions on the CP38 notice.',
+                })}
         </>,
         <>
             {documentTypes.length === 0 && (

@@ -224,8 +224,43 @@ const CHAPTERS: Chapter[] = [
                     'SOCSO (PERKESO): the Act 4 table up to the RM6,000 wage ceiling — First Category below 60, Second Category (employer only) from 60 and for foreign workers — plus the Lindung 24 Jam (SKBBK) employee share from June 2026 wages unless the employee opted out (foreign workers cannot).',
                     'EIS (SIP): the Act 800 table, the same amount from employer and employee, for citizens and permanent residents below 60.',
                     'PCB: LHDN’s computerised formula for 2026, using the employee’s category (single; married with a non-working spouse; married with a working spouse, divorced or widowed), child relief units and what earlier payslips this year already paid. Non-residents pay a flat 30%. Amounts are rounded up to 5 sen and not deducted below RM10.',
-                    'Fill in each employee’s details on the Banking & Statutory step of the employee form: EPF member number, citizenship, marital status, spouse working, child relief units, tax residence and Lindung 24 Jam opt-out.',
-                    'Not yet included: zakat, Form TP1 reliefs, Form TP3 (earnings from a previous employer this year), disability reliefs and the separate PCB formula for bonuses.',
+                    'Zakat paid through salary comes off that month’s PCB (PCB never goes below zero). CP38 is an extra amount LHDN orders you to deduct; it is shown as its own payslip line and is not part of PCB.',
+                    'Not yet included: bonuses (LHDN’s separate PCB formula for additional remuneration), Form TP1 reliefs, Form TP3 (earnings from a previous employer this year) and disability reliefs.',
+                ],
+            },
+            {
+                title: 'Setting up statutory payroll (once)',
+                body: 'Before the first submission, record the company’s registration numbers and each employee’s statutory details.',
+                steps: [
+                    'Settings → Statutory Settings: enter the SOCSO employer code (12 characters, e.g. E1300001111G), the SSM registration number, the EPF employer number and the LHDN employer number (E number, e.g. E 1234567890), then Save Changes.',
+                    'Employees → Edit → Banking step: enter the Income Tax No. (e.g. IG12345678090) and the EPF Member No.',
+                    'On the same step, under “Statutory (EPF, SOCSO, EIS, PCB)”, set citizenship, marital status, spouse working, child relief units, tax residence and Lindung 24 Jam.',
+                    'Foreign workers: enter their SOCSO Foreign Worker No. (SSFW / SSFDW number). Everyone else is identified by the MyKad number on the Personal step, which must have 12 digits.',
+                    'If the employee pays zakat through salary, enter Zakat per Month (RM).',
+                    'If LHDN sends a CP38 notice for the employee, enter CP38 per Month (RM) and CP38 Last Month from the notice. Deductions stop automatically after that month.',
+                ],
+            },
+            {
+                title: 'Monthly submissions: PERKESO and LHDN PCB',
+                body: 'After processing the month’s payroll run, download the files the agencies ask for and upload them on their portals by the 15th of the following month. The files are plain .txt in each agency’s required format, so open them only to check, never to edit.',
+                steps: [
+                    'Payroll Runs → open the month’s run → Process (again if you changed any employee details), then Complete when the figures are right.',
+                    'Click “PERKESO File (SOCSO + EIS)”. Upload the downloaded perkeso-YYYY-MM.txt in PERKESO ASSIST 2.0 under Contribution → SOCSO + EIS, then pay.',
+                    'Click “LHDN PCB File (CP39)”. Upload the downloaded pcb-YYYY-MM.txt in MyTax → e-PCB Plus (e-Data PCB). The system checks the file first and shows a test report; fix anything marked GAGAL / FAIL, then pay.',
+                    'If a button shows an error instead of a file, it names the missing setting or the employees whose details are missing. Fix them, process the run again and download again.',
+                    'Only employees with PCB or CP38 that month appear in the PCB file.',
+                    'Runs completed before statutory contributions were introduced cannot be exported: their payslips have no SOCSO, EIS or PCB amounts.',
+                ],
+            },
+            {
+                title: 'Year-end: Form EA and C.P.8D',
+                body: 'Both are built from the payslips of completed payroll runs paid in the year (by pay date), so complete every run before running them.',
+                steps: [
+                    'Form EA (by 28 February): Payslips → EA Form → choose the year and the employee → Download PDF. Print or send one to each employee. Employees can download their own from the same button.',
+                    'C.P.8D (by 25 February through e-Data Praisi, or with Form E by 31 March): Payroll Runs → LHDN C.P.8D → choose the year → Download.',
+                    'The file is named P<E number>_<year>.txt as LHDN requires. Upload it in MyTax → ezHASiL Services → e-Data Praisi / e-CP8D.',
+                    'Each line is one employee, with the 22 fields separated by “|”. An empty field (“||”) means nothing to report, such as no benefits in kind.',
+                    'The retirement / end-of-contract date is the leaving date for employees who left that year, otherwise their 60th birthday, so every employee needs a date of birth.',
                 ],
             },
             {
@@ -413,6 +448,10 @@ const CHAPTERS: Chapter[] = [
             {
                 title: 'Currency and email',
                 body: 'Set the default currency (RM) and how amounts are shown, and the mail server used to send notifications. Email Templates let you edit the wording of each notification.',
+            },
+            {
+                title: 'Statutory',
+                body: 'The employer registration numbers printed on the PERKESO, LHDN and KWSP submission files and on Form EA: SOCSO employer code, SSM registration number, EPF employer number and LHDN employer number (E number). See Payroll → Setting up statutory payroll.',
             },
             {
                 title: 'Users and roles',
