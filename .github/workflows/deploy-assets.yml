@@ -70,3 +70,14 @@ jobs:
 
           # deploy is a rebuilt snapshot each run -> force push.
           git push -f origin deploy
+
+      # Sites served at a domain root (e.g. survey.myhroutsource.com) need assets built without the
+      # /hrms prefix: the same commit rebuilt with no APP_PATH_PREFIX, published as `deploy-root`.
+      - name: Build and publish root-path deploy branch
+        run: |
+          git checkout -B deploy-root "$GITHUB_SHA"
+          rm -rf public/build
+          npm run build
+          git add -f public/build
+          git commit --allow-empty -m "deploy-root: build assets for ${GITHUB_SHA::7}"
+          git push -f origin deploy-root
