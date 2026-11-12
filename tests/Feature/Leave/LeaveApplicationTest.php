@@ -227,7 +227,8 @@ class LeaveApplicationTest extends TestCase
         $employee = $this->employeeFor($user);
         $type = LeaveType::factory()->create(['max_days_per_year' => 20]);
         $application = LeaveApplication::factory()->create(['employee_id' => $employee->id, 'leave_type_id' => $type->id]);
-        $approved = LeaveApplication::factory()->create(['employee_id' => $employee->id, 'status' => 'approved']);
+        // Fixed dates: the factory's random week could otherwise overlap the edit below.
+        $approved = LeaveApplication::factory()->create(['employee_id' => $employee->id, 'status' => 'approved', 'start_date' => '2030-06-03', 'end_date' => '2030-06-05']);
         $this->actingAs($user);
 
         $this->put(route('hr.leave-applications.approve', $application))->assertForbidden();
