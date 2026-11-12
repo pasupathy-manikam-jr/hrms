@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Validation\ValidationException;
 
 /**
  * The HR profile of a `users` row (1:1 via user_id).
@@ -168,6 +169,53 @@ class Employee extends Model
     public function todayAttendance(): ?AttendanceRecord
     {
         return $this->attendanceRecords()->whereDate('date', AttendanceRecord::now()->toDateString())->first();
+    }
+
+    /**
+     * Clock in for today (company timezone).
+     *
+     * @throws ValidationException when already clocked in today
+     */
+    public function clockIn(): AttendanceRecord
+    {
+        $now = AttendanceRecord::now();
+
+        if ($this->todayAttendance()) {
+            throw ValidationException::withMessages(['attendance' => __('You have already clocked in today.')]);
+        }
+
+        $record = new AttendanceRecord([
+            'employee_id' => $this->id,
+            'date' => $now->toDateString(),
+            'clock_in' => $now->format('H:i'),
+            'status' => 'present',
+        ]);
+        $record->computeTimes($this->shift)->save();
+
+        return $record;
+    }
+
+    /**
+     * Clock out of the open record from today or yesterday, so a night shift can clock out after midnight.
+     *
+     * @throws ValidationException when there is no open record
+     */
+    public function clockOut(): AttendanceRecord
+    {
+        $now = AttendanceRecord::now();
+
+        $record = $this->attendanceRecords()
+            ->whereNotNull('clock_in')
+            ->whereNull('clock_out')
+            ->whereDate('date', '>=', $now->subDay()->toDateString())
+            ->latest('date')
+            ->first()
+            ?? throw ValidationException::withMessages(['attendance' => __('You have not clocked in today.')]);
+
+        $record->clock_out = $now->format('H:i');
+        $record->computeTimes($this->shift)->save();
+
+        return $record;
     }
 
     /**

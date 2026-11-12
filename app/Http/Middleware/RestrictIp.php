@@ -23,7 +23,7 @@ class RestrictIp
         if (
             $user
             && Setting::get('ipRestrictionEnabled')
-            && ! $request->routeIs('logout')
+            && ! $request->routeIs('logout', 'api.logout')
             && $user->cannot('manage-settings')
             && IpRestriction::query()->where('ip_address', $request->ip())->doesntExist()
         ) {

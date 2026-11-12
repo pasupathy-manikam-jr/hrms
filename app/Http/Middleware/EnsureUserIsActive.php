@@ -10,13 +10,18 @@ use Symfony\Component\HttpFoundation\Response;
 class EnsureUserIsActive
 {
     /**
-     * Sign a deactivated user out on their next request.
+     * Sign a deactivated user out on their next request (API: revoke their tokens).
      *
      * @param  Closure(Request): (Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
         if ($request->user()?->isActive() === false) {
+            if ($request->is('api/*')) {
+                $request->user()->tokens()->delete();
+                abort(401, __('Your account has been deactivated.'));
+            }
+
             Auth::guard('web')->logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
