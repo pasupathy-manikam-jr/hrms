@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'fcm' => [
+        // Path to the Firebase service account JSON (Project settings > Service accounts). Unset = no push.
+        'credentials' => env('FCM_CREDENTIALS'),
+    ],
+
 ];

@@ -4,6 +4,8 @@ namespace Tests\Feature\Api;
 
 use App\Models\Announcement;
 use App\Models\Employee;
+use App\Models\Engagement\EngagementCampaign;
+use App\Models\Engagement\EngagementResponse;
 use App\Models\LeaveApplication;
 use App\Models\LeaveType;
 use App\Models\LoginHistory;
@@ -14,6 +16,7 @@ use App\Models\Shift;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Testing\TestResponse;
 use Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider;
 use Laravel\Fortify\Fortify;
@@ -151,6 +154,71 @@ class MobileApiTest extends TestCase
         $this->getJson(route('api.payslips.show', $mine->id))->assertOk()->assertJsonPath('net_pay', '1000.00');
         $this->getJson(route('api.payslips.show', $draft->id))->assertNotFound();
         $this->getJson(route('api.payslips.show', $theirs->id))->assertNotFound();
+
+        $this->get(route('api.payslips.pdf', $mine->id))->assertOk()->assertHeader('content-type', 'application/pdf');
+        $this->assertSame('downloaded', $mine->fresh()->status);
+        $this->getJson(route('api.payslips.pdf', $theirs->id))->assertNotFound();
+    }
+
+    public function test_employee_answers_an_open_survey_once()
+    {
+        $campaign = EngagementCampaign::create(['name' => 'Pulse', 'status' => 'open', 'min_group_size' => 5]);
+        $campaign->attachActiveStatements();
+        $closed = EngagementCampaign::create(['name' => 'Old', 'status' => 'closed', 'min_group_size' => 5]);
+        $statementIds = $campaign->statements()->pluck('engagement_statements.id');
+        $answers = $statementIds->mapWithKeys(fn ($id) => [$id => 4])->all();
+        $employee = $this->employee();
+        Sanctum::actingAs($employee->user);
+
+        $this->getJson(route('api.surveys.index'))->assertOk()->assertJsonCount(1)->assertJsonPath('0.can_answer', true);
+        $this->getJson(route('api.surveys.show', $campaign->id))->assertOk()
+            ->assertJsonPath('statements.0.id', $statementIds->first())->assertJsonCount(4, 'ratings');
+        $this->getJson(route('api.surveys.show', $closed->id))->assertUnprocessable()->assertJsonValidationErrors('campaign');
+
+        $this->postJson(route('api.surveys.store', $campaign->id), ['answers' => []])->assertUnprocessable();
+        $this->postJson(route('api.surveys.store', $campaign->id), ['answers' => $answers])->assertCreated();
+        $this->postJson(route('api.surveys.store', $campaign->id), ['answers' => $answers])->assertUnprocessable()->assertJsonValidationErrors('campaign');
+
+        $this->assertSame(1, EngagementResponse::query()->count());
+        $this->getJson(route('api.surveys.index'))->assertJsonPath('0.can_answer', false);
+    }
+
+    public function test_registered_devices_get_a_push_when_leave_is_decided_and_lose_it_on_logout()
+    {
+        $key = openssl_pkey_new(['private_key_bits' => 2048]);
+        openssl_pkey_export($key, $privateKey);
+        $path = tempnam(sys_get_temp_dir(), 'fcm');
+        file_put_contents($path, json_encode(['project_id' => 'hrms-test', 'client_email' => 'push@hrms-test.iam.gserviceaccount.com', 'private_key' => $privateKey]));
+        config(['services.fcm.credentials' => $path]);
+        Http::fake([
+            'oauth2.googleapis.com/*' => Http::response(['access_token' => 'google-token']),
+            'fcm.googleapis.com/*' => Http::sequence()->push(['name' => 'sent'])->push(['error' => ['status' => 'NOT_FOUND']], 404),
+        ]);
+        $this->withoutDefer();
+
+        $employee = $this->employee();
+        $token = $employee->user->createToken('Pixel')->plainTextToken;
+        $this->withToken($token)->postJson(route('api.devices.store'), ['token' => 'device-1'])->assertOk();
+        $application = LeaveApplication::factory()->create(['employee_id' => $employee->id]);
+
+        $hr = $this->userWithRole('hr');
+        $this->actingAs($hr)->put(route('hr.leave-applications.approve', $application))->assertSessionHasNoErrors();
+
+        Http::assertSent(fn ($request) => str_contains($request->url(), 'projects/hrms-test/messages:send')
+            && $request['message']['token'] === 'device-1'
+            && $request['message']['notification']['title'] === 'Leave approved'
+            && $request['message']['data'] === ['type' => 'leave', 'id' => (string) $application->id]
+            && $request->hasHeader('Authorization', 'Bearer google-token'));
+
+        // FCM says the token is gone: it is removed.
+        $second = LeaveApplication::factory()->create(['employee_id' => $employee->id]);
+        $this->put(route('hr.leave-applications.reject', $second))->assertSessionHasNoErrors();
+        $this->assertDatabaseCount('device_tokens', 0);
+
+        $this->app['auth']->forgetGuards();
+        $this->withToken($token)->postJson(route('api.devices.store'), ['token' => 'device-2'])->assertOk();
+        $this->withToken($token)->postJson(route('api.logout'))->assertOk();
+        $this->assertDatabaseCount('device_tokens', 0);
     }
 
     public function test_announcements_default_to_active_and_meetings_follow_the_web_visibility()

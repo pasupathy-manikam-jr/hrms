@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Engagement;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use App\Models\Engagement\EngagementCampaign;
 use App\Models\Engagement\EngagementElement;
 use App\Models\Engagement\EngagementStatement;
 use App\Support\Engagement\EngagementReport;
+use App\Support\Push;
 use App\Support\TableQuery;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -56,15 +58,29 @@ class EngagementCampaignController extends Controller
 
         $campaign = EngagementCampaign::create([...$this->validated($request), 'created_by' => $request->user()?->id]);
         $campaign->attachActiveStatements();
+        $this->announceIfOpened($campaign, null);
 
         return $this->done(__('Campaign created with :count statements.', ['count' => $campaign->statements()->count()]));
     }
 
     public function update(Request $request, EngagementCampaign $campaign): RedirectResponse
     {
+        $wasStatus = $campaign->status;
         $campaign->update($this->validated($request));
+        $this->announceIfOpened($campaign, $wasStatus);
 
         return $this->done(__('Campaign updated successfully.'));
+    }
+
+    /**
+     * Tell every employee when a campaign opens for answers.
+     */
+    private function announceIfOpened(EngagementCampaign $campaign, ?string $wasStatus): void
+    {
+        if ($campaign->status === 'open' && $wasStatus !== 'open') {
+            Push::send(Employee::query()->where('employee_status', '!=', 'terminated')->pluck('user_id'),
+                __('New survey'), __(':name is open for your answers.', ['name' => $campaign->name]), ['type' => 'survey', 'id' => $campaign->id]);
+        }
     }
 
     public function destroy(EngagementCampaign $campaign): RedirectResponse

@@ -3,9 +3,11 @@
 use App\Http\Controllers\Api\AnnouncementController;
 use App\Http\Controllers\Api\AttendanceController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DeviceController;
 use App\Http\Controllers\Api\LeaveController;
 use App\Http\Controllers\Api\MeetingController;
 use App\Http\Controllers\Api\PayslipController;
+use App\Http\Controllers\Api\SurveyController;
 use App\Http\Middleware\EnsureUserIsActive;
 use App\Http\Middleware\RestrictIp;
 use Illuminate\Support\Facades\Route;
@@ -39,12 +41,21 @@ Route::prefix('v1')->name('api.')->group(function () {
         Route::controller(PayslipController::class)->prefix('payslips')->name('payslips.')->middleware('permission:manage-payslips')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('{payslip}', 'show')->whereNumber('payslip')->name('show');
+            Route::get('{payslip}/pdf', 'pdf')->whereNumber('payslip')->middleware('permission:download-payslips')->name('pdf');
         });
 
         Route::controller(AnnouncementController::class)->prefix('announcements')->name('announcements.')->middleware('permission:manage-announcements')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('{announcement}', 'show')->whereNumber('announcement')->name('show');
         });
+
+        Route::controller(SurveyController::class)->prefix('surveys')->name('surveys.')->middleware('permission:take-engagement-survey')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('{campaign}', 'show')->whereNumber('campaign')->name('show');
+            Route::post('{campaign}', 'store')->whereNumber('campaign')->middleware('throttle:20,1')->name('store');
+        });
+
+        Route::post('devices', [DeviceController::class, 'store'])->name('devices.store');
 
         Route::get('meetings', [MeetingController::class, 'index'])->middleware('permission:manage-meetings')->name('meetings.index');
     });

@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Support\Csv;
 use App\Support\LeaveBalances;
 use App\Support\LeaveRequests;
+use App\Support\Push;
 use App\Support\TableQuery;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Builder;
@@ -151,6 +152,11 @@ class LeaveApplicationController extends Controller
             'approved_by' => $request->user()?->id,
             'approved_at' => now(),
         ]);
+
+        Push::send([$leaveApplication->employee->user_id],
+            $status === 'approved' ? __('Leave approved') : __('Leave rejected'),
+            __(':type, :from to :to', ['type' => $leaveApplication->leaveType->name, 'from' => $leaveApplication->start_date->toDateString(), 'to' => $leaveApplication->end_date->toDateString()]),
+            ['type' => 'leave', 'id' => $leaveApplication->id]);
     }
 
     /**

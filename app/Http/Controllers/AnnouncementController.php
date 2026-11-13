@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use App\Models\Branch;
 use App\Models\Department;
+use App\Support\Push;
 use App\Support\TableQuery;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
@@ -106,11 +107,16 @@ class AnnouncementController extends Controller
     {
         $data = $this->validated($request);
 
-        DB::transaction(function () use ($data, $request) {
+        $announcement = DB::transaction(function () use ($data, $request) {
             $announcement = (new Announcement([...$data, 'created_by' => $request->user()?->id]))->attachUploadFrom($request);
             $announcement->save();
             $this->syncTargets($announcement, $data);
+
+            return $announcement;
         });
+
+        Push::send($announcement->audience()->where('user_id', '!=', $request->user()?->id)->pluck('user_id'),
+            __('New announcement'), $announcement->title, ['type' => 'announcement', 'id' => $announcement->id]);
 
         return $this->done(__('Announcement created successfully.'));
     }

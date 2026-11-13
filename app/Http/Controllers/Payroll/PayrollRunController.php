@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Payroll;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use App\Models\PayrollRun;
 use App\Models\Setting;
 use App\Support\Csv;
+use App\Support\Push;
 use App\Support\Statutory\Cp8dFile;
 use App\Support\Statutory\PcbFile;
 use App\Support\Statutory\PerkesoFile;
@@ -224,6 +226,9 @@ class PayrollRunController extends Controller
         }
 
         $payrollRun->forceFill(['status' => 'completed'])->save();
+
+        Push::send(Employee::query()->whereIn('id', $payrollRun->payslips()->select('employee_id'))->pluck('user_id'),
+            __('Payslip ready'), $payrollRun->title, ['type' => 'payroll_run', 'id' => $payrollRun->id]);
 
         return $this->done(__('Payroll run completed.'));
     }
