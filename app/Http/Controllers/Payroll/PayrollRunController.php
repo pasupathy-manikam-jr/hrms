@@ -228,7 +228,7 @@ class PayrollRunController extends Controller
         $payrollRun->forceFill(['status' => 'completed'])->save();
 
         Push::send(Employee::query()->whereIn('id', $payrollRun->payslips()->select('employee_id'))->pluck('user_id'),
-            __('Payslip ready'), $payrollRun->title, ['type' => 'payroll_run', 'id' => $payrollRun->id]);
+            'Payslip ready', ':title', ['title' => $payrollRun->title], ['type' => 'payroll_run', 'id' => $payrollRun->id]);
 
         return $this->done(__('Payroll run completed.'));
     }

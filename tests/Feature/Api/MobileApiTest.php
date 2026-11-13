@@ -16,7 +16,6 @@ use App\Models\Shift;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Testing\TestResponse;
 use Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider;
 use Laravel\Fortify\Fortify;
@@ -183,42 +182,33 @@ class MobileApiTest extends TestCase
         $this->getJson(route('api.surveys.index'))->assertJsonPath('0.can_answer', false);
     }
 
-    public function test_registered_devices_get_a_push_when_leave_is_decided_and_lose_it_on_logout()
+    public function test_a_leave_decision_lands_in_the_notification_list_and_the_private_channel_is_signed_for_its_owner()
     {
-        $key = openssl_pkey_new(['private_key_bits' => 2048]);
-        openssl_pkey_export($key, $privateKey);
-        $path = tempnam(sys_get_temp_dir(), 'fcm');
-        file_put_contents($path, json_encode(['project_id' => 'hrms-test', 'client_email' => 'push@hrms-test.iam.gserviceaccount.com', 'private_key' => $privateKey]));
-        config(['services.fcm.credentials' => $path]);
-        Http::fake([
-            'oauth2.googleapis.com/*' => Http::response(['access_token' => 'google-token']),
-            'fcm.googleapis.com/*' => Http::sequence()->push(['name' => 'sent'])->push(['error' => ['status' => 'NOT_FOUND']], 404),
-        ]);
         $this->withoutDefer();
-
         $employee = $this->employee();
-        $token = $employee->user->createToken('Pixel')->plainTextToken;
-        $this->withToken($token)->postJson(route('api.devices.store'), ['token' => 'device-1'])->assertOk();
         $application = LeaveApplication::factory()->create(['employee_id' => $employee->id]);
 
-        $hr = $this->userWithRole('hr');
-        $this->actingAs($hr)->put(route('hr.leave-applications.approve', $application))->assertSessionHasNoErrors();
-
-        Http::assertSent(fn ($request) => str_contains($request->url(), 'projects/hrms-test/messages:send')
-            && $request['message']['token'] === 'device-1'
-            && $request['message']['notification']['title'] === 'Leave approved'
-            && $request['message']['data'] === ['type' => 'leave', 'id' => (string) $application->id]
-            && $request->hasHeader('Authorization', 'Bearer google-token'));
-
-        // FCM says the token is gone: it is removed.
-        $second = LeaveApplication::factory()->create(['employee_id' => $employee->id]);
-        $this->put(route('hr.leave-applications.reject', $second))->assertSessionHasNoErrors();
-        $this->assertDatabaseCount('device_tokens', 0);
-
+        $this->actingAs($this->userWithRole('hr'))->put(route('hr.leave-applications.approve', $application))->assertSessionHasNoErrors();
         $this->app['auth']->forgetGuards();
-        $this->withToken($token)->postJson(route('api.devices.store'), ['token' => 'device-2'])->assertOk();
-        $this->withToken($token)->postJson(route('api.logout'))->assertOk();
-        $this->assertDatabaseCount('device_tokens', 0);
+        Sanctum::actingAs($employee->user);
+
+        $id = $this->getJson(route('api.notifications.index'))->assertOk()
+            ->assertJsonPath('unread_count', 1)
+            ->assertJsonPath('data.0.title', 'Leave approved')
+            ->assertJsonPath('data.0.body', "{$application->leaveType->name}, {$application->start_date->toDateString()} to {$application->end_date->toDateString()}")
+            ->assertJsonPath('data.0.target', ['type' => 'leave', 'id' => $application->id])
+            ->json('data.0.id');
+        $this->postJson(route('api.notifications.read'), ['ids' => [$id]])->assertNoContent();
+        $this->getJson(route('api.notifications.index'))->assertJsonPath('unread_count', 0)->assertJsonPath('data.0.unread', false);
+
+        config(['broadcasting.default' => 'reverb', 'broadcasting.connections.reverb' => [
+            'driver' => 'reverb', 'key' => 'key', 'secret' => 'secret', 'app_id' => '1', 'options' => ['host' => 'localhost'],
+        ]]);
+        require base_path('routes/channels.php'); // register the channel rules on the reverb driver
+        $this->postJson(route('api.broadcasting.auth'), ['socket_id' => '1.1', 'channel_name' => "private-App.Models.User.{$employee->user_id}"])
+            ->assertOk()->assertJsonStructure(['auth']);
+        $this->postJson(route('api.broadcasting.auth'), ['socket_id' => '1.1', 'channel_name' => 'private-App.Models.User.'.($employee->user_id + 1)])
+            ->assertForbidden();
     }
 
     public function test_announcements_default_to_active_and_meetings_follow_the_web_visibility()

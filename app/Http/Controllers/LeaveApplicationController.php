@@ -154,8 +154,9 @@ class LeaveApplicationController extends Controller
         ]);
 
         Push::send([$leaveApplication->employee->user_id],
-            $status === 'approved' ? __('Leave approved') : __('Leave rejected'),
-            __(':type, :from to :to', ['type' => $leaveApplication->leaveType->name, 'from' => $leaveApplication->start_date->toDateString(), 'to' => $leaveApplication->end_date->toDateString()]),
+            $status === 'approved' ? 'Leave approved' : 'Leave rejected',
+            ':type, :from to :to',
+            ['type' => $leaveApplication->leaveType->name, 'from' => $leaveApplication->start_date->toDateString(), 'to' => $leaveApplication->end_date->toDateString()],
             ['type' => 'leave', 'id' => $leaveApplication->id]);
     }
 

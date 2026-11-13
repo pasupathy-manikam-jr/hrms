@@ -79,7 +79,7 @@ class EngagementCampaignController extends Controller
     {
         if ($campaign->status === 'open' && $wasStatus !== 'open') {
             Push::send(Employee::query()->where('employee_status', '!=', 'terminated')->pluck('user_id'),
-                __('New survey'), __(':name is open for your answers.', ['name' => $campaign->name]), ['type' => 'survey', 'id' => $campaign->id]);
+                'New survey', ':name is open for your answers.', ['name' => $campaign->name], ['type' => 'survey', 'id' => $campaign->id]);
         }
     }
 

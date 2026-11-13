@@ -116,7 +116,7 @@ class AnnouncementController extends Controller
         });
 
         Push::send($announcement->audience()->where('user_id', '!=', $request->user()?->id)->pluck('user_id'),
-            __('New announcement'), $announcement->title, ['type' => 'announcement', 'id' => $announcement->id]);
+            'New announcement', ':title', ['title' => $announcement->title], ['type' => 'announcement', 'id' => $announcement->id]);
 
         return $this->done(__('Announcement created successfully.'));
     }

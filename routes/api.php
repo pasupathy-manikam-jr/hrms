@@ -3,13 +3,14 @@
 use App\Http\Controllers\Api\AnnouncementController;
 use App\Http\Controllers\Api\AttendanceController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\DeviceController;
 use App\Http\Controllers\Api\LeaveController;
 use App\Http\Controllers\Api\MeetingController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\PayslipController;
 use App\Http\Controllers\Api\SurveyController;
 use App\Http\Middleware\EnsureUserIsActive;
 use App\Http\Middleware\RestrictIp;
+use Illuminate\Broadcasting\BroadcastController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,7 +56,10 @@ Route::prefix('v1')->name('api.')->group(function () {
             Route::post('{campaign}', 'store')->whereNumber('campaign')->middleware('throttle:20,1')->name('store');
         });
 
-        Route::post('devices', [DeviceController::class, 'store'])->name('devices.store');
+        Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
+        Route::post('notifications/read', [NotificationController::class, 'markRead'])->name('notifications.read');
+        // Signs the private-App.Models.User.{id} subscription for the Pusher client (reverb-hub).
+        Route::post('broadcasting/auth', [BroadcastController::class, 'authenticate'])->name('broadcasting.auth');
 
         Route::get('meetings', [MeetingController::class, 'index'])->middleware('permission:manage-meetings')->name('meetings.index');
     });

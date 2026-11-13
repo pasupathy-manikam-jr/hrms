@@ -70,7 +70,8 @@ class MeetingController extends Controller
         $meeting->attendees()->sync($attendees);
 
         Push::send(collect($attendees)->reject(fn ($id) => (int) $id === $meeting->organizer_id),
-            __('Meeting invitation'), __(':title on :date at :time', ['title' => $meeting->title, 'date' => $meeting->meeting_date->toDateString(), 'time' => substr((string) $meeting->start_time, 0, 5)]),
+            'Meeting invitation', ':title on :date at :time',
+            ['title' => $meeting->title, 'date' => $meeting->meeting_date->toDateString(), 'time' => substr((string) $meeting->start_time, 0, 5)],
             ['type' => 'meeting', 'id' => $meeting->id]);
 
         return $this->done(__('Meeting created successfully.'));
