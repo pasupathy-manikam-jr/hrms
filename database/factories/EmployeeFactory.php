@@ -27,7 +27,8 @@ class EmployeeFactory extends Factory
             'designation_id' => Designation::factory(),
             'department_id' => fn (array $attributes) => Designation::query()->whereKey($attributes['designation_id'])->value('department_id'),
             'branch_id' => fn (array $attributes) => Department::query()->whereKey($attributes['department_id'])->value('branch_id'),
-            'date_of_joining' => fake()->date(),
+            // Fixed range before the 2025-2026 payroll periods the tests run, so those runs always include the employee.
+            'date_of_joining' => fake()->dateTimeBetween('2000-01-01', '2024-12-31')->format('Y-m-d'),
             'employment_type' => 'Full-time',
             'employee_status' => 'active',
         ];
