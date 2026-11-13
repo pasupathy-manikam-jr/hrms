@@ -3904,5 +3904,35 @@
         "name": "export-benchmark-survey",
         "label": "Export Benchmark Survey",
         "description": "Can export benchmark analytics"
+    },
+    {
+        "module": "engagement-survey",
+        "name": "manage-engagement-survey",
+        "label": "Manage Engagement Survey",
+        "description": "Can view engagement campaigns, results and the question bank"
+    },
+    {
+        "module": "engagement-survey",
+        "name": "create-engagement-survey",
+        "label": "Create Engagement Survey",
+        "description": "Can create engagement campaigns and statements"
+    },
+    {
+        "module": "engagement-survey",
+        "name": "edit-engagement-survey",
+        "label": "Edit Engagement Survey",
+        "description": "Can edit engagement campaigns and statements"
+    },
+    {
+        "module": "engagement-survey",
+        "name": "delete-engagement-survey",
+        "label": "Delete Engagement Survey",
+        "description": "Can delete engagement campaigns and statements"
+    },
+    {
+        "module": "engagement-survey",
+        "name": "take-engagement-survey",
+        "label": "Take Engagement Survey",
+        "description": "Can answer open engagement surveys"
     }
 ]

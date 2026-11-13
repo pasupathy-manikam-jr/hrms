@@ -9,6 +9,7 @@ import {
     Banknote,
     ChartBar,
     FileText,
+    HeartHandshake,
     Globe,
     Image,
     LayoutGrid,
@@ -24,6 +25,7 @@ import calendar from '@/routes/calendar';
 import career from '@/routes/career';
 import contacts from '@/routes/contacts';
 import currencies from '@/routes/currencies';
+import engagement from '@/routes/engagement';
 import hr from '@/routes/hr';
 import landingPage from '@/routes/landing-page';
 import meetings from '@/routes/meetings';
@@ -440,7 +442,7 @@ export const navigation: NavSection[] = [
         ],
     },
     {
-        title: 'Benchmark Survey',
+        title: 'Surveys',
         items: [
             {
                 title: 'Salary Benchmark',
@@ -465,6 +467,27 @@ export const navigation: NavSection[] = [
                         title: 'Job Catalogue',
                         href: benchmark.jobs.index(),
                         permission: 'manage-benchmark-survey',
+                    },
+                ],
+            },
+            {
+                title: 'Engagement Survey',
+                icon: HeartHandshake,
+                children: [
+                    {
+                        title: 'Campaigns',
+                        href: engagement.campaigns.index(),
+                        permission: 'manage-engagement-survey',
+                    },
+                    {
+                        title: 'Question Bank',
+                        href: engagement.statements.index(),
+                        permission: 'manage-engagement-survey',
+                    },
+                    {
+                        title: 'My Surveys',
+                        href: engagement.my.index(),
+                        permission: 'take-engagement-survey',
                     },
                 ],
             },

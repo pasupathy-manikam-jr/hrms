@@ -642,7 +642,11 @@
         "manage-benchmark-survey",
         "upload-benchmark-survey",
         "delete-benchmark-survey",
-        "export-benchmark-survey"
+        "export-benchmark-survey",
+        "manage-engagement-survey",
+        "create-engagement-survey",
+        "edit-engagement-survey",
+        "delete-engagement-survey"
     ],
     "hr": [
         "acknowledge-document-acknowledgments",
@@ -1123,7 +1127,12 @@
         "view-training-sessions",
         "view-training-types",
         "view-trips",
-        "view-warnings"
+        "view-warnings",
+        "manage-engagement-survey",
+        "create-engagement-survey",
+        "edit-engagement-survey",
+        "delete-engagement-survey",
+        "take-engagement-survey"
     ],
     "employee": [
         "assign-trainings",
@@ -1303,7 +1312,8 @@
         "view-training-programs",
         "view-training-sessions",
         "view-trips",
-        "view-warnings"
+        "view-warnings",
+        "take-engagement-survey"
     ],
     "manager": [
         "acknowledge-document-acknowledgments",
@@ -1784,6 +1794,7 @@
         "view-training-sessions",
         "view-training-types",
         "view-trips",
-        "view-warnings"
+        "view-warnings",
+        "take-engagement-survey"
     ]
 }

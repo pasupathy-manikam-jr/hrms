@@ -1,0 +1,229 @@
+{
+    "elements": [
+        {
+            "name": "Leadership",
+            "description": "Trust in, and direction from, senior leaders.",
+            "statements": [
+                [
+                    "I have confidence in the decisions our senior leaders make",
+                    false
+                ],
+                [
+                    "Leaders here explain the reasons behind major changes",
+                    false
+                ],
+                ["Senior management acts on feedback from employees", false],
+                [
+                    "I understand where leadership wants the company to go",
+                    false
+                ],
+                ["Our leaders set a good example for the rest of us", false],
+                ["Leaders here are visible and approachable", false],
+                [
+                    "I often feel left in the dark about leadership's plans",
+                    true
+                ],
+                [
+                    "Our leaders genuinely care about the wellbeing of staff",
+                    false
+                ]
+            ]
+        },
+        {
+            "name": "Growth & Development",
+            "description": "Room to learn, stretch and progress.",
+            "statements": [
+                ["My work gives me the chance to build new skills", false],
+                [
+                    "I can see a realistic path for my next career step here",
+                    false
+                ],
+                [
+                    "My targets push me to improve without being unrealistic",
+                    false
+                ],
+                ["I get useful coaching or mentoring when I need it", false],
+                [
+                    "I have had meaningful training in the last twelve months",
+                    false
+                ],
+                ["My talents are not fully used in my current role", true],
+                ["Promotions here are based on merit", false],
+                ["I am encouraged to take on new challenges", false]
+            ]
+        },
+        {
+            "name": "Company Pride",
+            "description": "How employees see and speak about the company.",
+            "statements": [
+                [
+                    "I would recommend this company to a friend looking for a job",
+                    false
+                ],
+                ["I speak positively about the company outside work", false],
+                ["I am proud to tell people where I work", false],
+                [
+                    "Our customers would describe us as a good company to deal with",
+                    false
+                ],
+                ["I see myself still working here in two years", false],
+                ["I would leave if a similar job came up elsewhere", true],
+                ["The company has a good reputation in our industry", false],
+                ["I believe in the products or services we provide", false]
+            ]
+        },
+        {
+            "name": "Ownership",
+            "description": "Feeling responsible for, and able to influence, results.",
+            "statements": [
+                ["I know how my work affects the company's results", false],
+                ["I have the authority I need to do my job well", false],
+                ["I treat problems at work as mine to help solve", false],
+                ["I put in extra effort when the company needs it", false],
+                ["I am trusted to decide how to do my work", false],
+                ["I am held back by too many approvals and rules", true],
+                ["My ideas can make a real difference here", false],
+                [
+                    "I care about the company's success, not just my own tasks",
+                    false
+                ]
+            ]
+        },
+        {
+            "name": "Communication",
+            "description": "Openness and flow of information.",
+            "statements": [
+                [
+                    "I can raise concerns without fear of negative consequences",
+                    false
+                ],
+                ["My manager regularly asks for my views", false],
+                ["I get the information I need to do my job on time", false],
+                ["Communication between departments works well", false],
+                ["I can reach managers above my own when I need to", false],
+                [
+                    "I usually hear about important news through rumours first",
+                    true
+                ],
+                ["Feedback I receive about my work is clear and useful", false],
+                ["Meetings here are a good use of my time", false]
+            ]
+        },
+        {
+            "name": "Culture & Belonging",
+            "description": "Shared values, respect and connection.",
+            "statements": [
+                ["I feel I belong in this company", false],
+                ["I share the values this company stands for", false],
+                [
+                    "People here respect different backgrounds and working styles",
+                    false
+                ],
+                [
+                    "My colleagues support each other when things get busy",
+                    false
+                ],
+                ["I am treated fairly regardless of who I know", false],
+                ["Office politics get in the way of good work here", true],
+                ["I enjoy working with my team", false],
+                ["Mistakes are treated as chances to learn", false]
+            ]
+        },
+        {
+            "name": "Reward & Recognition",
+            "description": "Pay, benefits and appreciation for effort.",
+            "statements": [
+                ["I am paid fairly for the work I do", false],
+                ["My pay compares well with similar jobs elsewhere", false],
+                ["Good work is noticed and appreciated here", false],
+                ["The way performance is rewarded motivates me", false],
+                ["Our benefits meet my needs", false],
+                [
+                    "Extra effort makes little difference to what I receive",
+                    true
+                ],
+                ["My manager thanks me when I do a good job", false],
+                ["Recognition here is given fairly", false]
+            ]
+        },
+        {
+            "name": "Social Responsibility",
+            "description": "The company's contribution to community and environment.",
+            "statements": [
+                [
+                    "The company makes a positive contribution to the community",
+                    false
+                ],
+                [
+                    "I have opportunities to take part in community activities through work",
+                    false
+                ],
+                ["The company takes its environmental impact seriously", false],
+                [
+                    "I understand how our community efforts link to our purpose",
+                    false
+                ],
+                [
+                    "The company behaves ethically even when it costs money",
+                    false
+                ],
+                [
+                    "Our community activities feel more like publicity than real effort",
+                    true
+                ],
+                [
+                    "Employees are encouraged to suggest community initiatives",
+                    false
+                ],
+                ["I am proud of what the company does beyond business", false]
+            ]
+        }
+    ],
+    "overall": [
+        ["Overall, I am satisfied working at this company", false],
+        ["I am motivated to give my best at work every day", false],
+        ["I rarely think about looking for a job elsewhere", false]
+    ],
+    "tiers": [
+        {
+            "level": 5,
+            "name": "Champion",
+            "min_score": 0.91,
+            "need": "Self-actualisation",
+            "profile": "Fully committed; inspires others and goes the extra mile.",
+            "action": "Empower them to engage others."
+        },
+        {
+            "level": 4,
+            "name": "Engaged",
+            "min_score": 0.81,
+            "need": "Esteem",
+            "profile": "Feels valued and important to the business; a consistent achiever.",
+            "action": "Sustain their engagement."
+        },
+        {
+            "level": 3,
+            "name": "Steady",
+            "min_score": 0.66,
+            "need": "Belonging",
+            "profile": "Contributes reliably and is proud of their work, but could be tempted away.",
+            "action": "Talk with them about what would raise their commitment."
+        },
+        {
+            "level": 2,
+            "name": "Wavering",
+            "min_score": 0.51,
+            "need": "Safety",
+            "profile": "Unsure about the work, the team or the manager; may be job hunting.",
+            "action": "Intervene: address the specific concerns."
+        },
+        {
+            "level": 1,
+            "name": "Disengaged",
+            "min_score": 0,
+            "need": "Basic needs",
+            "profile": "Here mainly for the pay; may be undermining morale.",
+            "action": "Act urgently."
+        }
+    ]
+}
