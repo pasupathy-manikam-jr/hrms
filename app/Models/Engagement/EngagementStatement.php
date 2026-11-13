@@ -3,6 +3,7 @@
 namespace App\Models\Engagement;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -19,6 +20,21 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 #[Fillable(['engagement_element_id', 'text', 'reverse_scored', 'is_active', 'sort_order'])]
 class EngagementStatement extends Model
 {
+    /**
+     * Grouped by element in bank order, then the overall statements (no element).
+     *
+     * @param  Builder<self>  $query
+     */
+    public function scopeInBankOrder(Builder $query): void
+    {
+        $query->select('engagement_statements.*')
+            ->leftJoin('engagement_elements', 'engagement_elements.id', '=', 'engagement_statements.engagement_element_id')
+            ->orderByRaw('engagement_elements.id is null')
+            ->orderBy('engagement_elements.sort_order')
+            ->orderBy('engagement_statements.sort_order')
+            ->orderBy('engagement_statements.id');
+    }
+
     /**
      * @return array<string, string>
      */

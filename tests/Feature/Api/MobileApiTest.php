@@ -162,7 +162,7 @@ class MobileApiTest extends TestCase
     public function test_employee_answers_an_open_survey_once()
     {
         $campaign = EngagementCampaign::create(['name' => 'Pulse', 'status' => 'open', 'min_group_size' => 5]);
-        $campaign->attachActiveStatements();
+        $campaign->syncStatements();
         $closed = EngagementCampaign::create(['name' => 'Old', 'status' => 'closed', 'min_group_size' => 5]);
         $statementIds = $campaign->statements()->pluck('engagement_statements.id');
         $answers = $statementIds->mapWithKeys(fn ($id) => [$id => 4])->all();

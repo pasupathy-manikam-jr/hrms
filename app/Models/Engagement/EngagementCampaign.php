@@ -109,17 +109,14 @@ class EngagementCampaign extends Model
     }
 
     /**
-     * Ask every active statement in the bank, grouped by element in bank order, then the overall ones.
+     * Ask the given statements (default: every active one), in bank order: grouped by element, then the overall ones.
+     *
+     * @param  list<int>|null  $statementIds
      */
-    public function attachActiveStatements(): void
+    public function syncStatements(?array $statementIds = null): void
     {
-        $statements = EngagementStatement::query()
-            ->where('is_active', true)
-            ->leftJoin('engagement_elements', 'engagement_elements.id', '=', 'engagement_statements.engagement_element_id')
-            ->orderByRaw('engagement_elements.id is null')
-            ->orderBy('engagement_elements.sort_order')
-            ->orderBy('engagement_statements.sort_order')
-            ->orderBy('engagement_statements.id')
+        $statements = EngagementStatement::query()->inBankOrder()
+            ->when($statementIds === null, fn ($q) => $q->where('is_active', true), fn ($q) => $q->whereIn('engagement_statements.id', $statementIds))
             ->pluck('engagement_statements.id');
 
         $this->statements()->sync($statements->values()->mapWithKeys(fn ($id, int $index) => [(int) $id => ['sort_order' => $index + 1]])->all());

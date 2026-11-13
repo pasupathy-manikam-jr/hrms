@@ -11,6 +11,7 @@ import { SelectField } from '@/components/select-field';
 import { StatusBadge } from '@/components/status-badge';
 import { FilterSelect } from '@/components/table-filters';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useCan } from '@/hooks/use-can';
@@ -29,7 +30,15 @@ type Campaign = {
     min_group_size: number;
     responses_count: number;
     statements_count: number;
+    statements: { id: number }[];
     created_at: string;
+};
+
+type Statement = {
+    id: number;
+    text: string;
+    element: string | null;
+    is_active: boolean;
 };
 
 const STATUSES = ['draft', 'open', 'closed'] as const;
@@ -40,6 +49,7 @@ const blank = {
     status: 'draft' as Campaign['status'],
     closes_on: '',
     min_group_size: 5,
+    statement_ids: [] as number[],
 };
 
 const textareaClass =
@@ -48,11 +58,11 @@ const textareaClass =
 export default function EngagementCampaigns({
     campaigns,
     filters,
-    activeStatements,
+    statements,
 }: {
     campaigns: Paginated<Campaign>;
     filters: TableFilters;
-    activeStatements: number;
+    statements: Statement[];
 }) {
     const { t } = useTranslation();
     const { date } = useFormat();
@@ -73,8 +83,14 @@ export default function EngagementCampaigns({
                       status: campaign.status,
                       closes_on: campaign.closes_on ?? '',
                       min_group_size: campaign.min_group_size,
+                      statement_ids: campaign.statements.map((s) => s.id),
                   }
-                : blank,
+                : {
+                      ...blank,
+                      statement_ids: statements
+                          .filter((s) => s.is_active)
+                          .map((s) => s.id),
+                  },
         );
         setFormOpen(true);
     };
@@ -304,14 +320,17 @@ export default function EngagementCampaigns({
                         </p>
                         <InputError message={form.errors.min_group_size} />
                     </div>
-                    {!editing && (
-                        <p className="text-sm text-muted-foreground sm:col-span-2">
-                            {t(
-                                'The campaign will ask the :count active statements in the question bank.',
-                                { count: String(activeStatements) },
-                            )}
-                        </p>
-                    )}
+                    <div className="sm:col-span-2">
+                        <QuestionPicker
+                            statements={statements}
+                            selected={form.data.statement_ids}
+                            onChange={(ids) =>
+                                form.setData('statement_ids', ids)
+                            }
+                            locked={(editing?.responses_count ?? 0) > 0}
+                        />
+                        <InputError message={form.errors.statement_ids} />
+                    </div>
                 </div>
             </FormDialog>
 
@@ -328,6 +347,138 @@ export default function EngagementCampaigns({
                 }
             />
         </>
+    );
+}
+
+/**
+ * Tick the statements to ask, grouped by element (bank order). Inactive statements appear only when already picked.
+ */
+function QuestionPicker({
+    statements,
+    selected,
+    onChange,
+    locked,
+}: {
+    statements: Statement[];
+    selected: number[];
+    onChange: (ids: number[]) => void;
+    locked: boolean;
+}) {
+    const { t } = useTranslation();
+    const picked = new Set(selected);
+    const shown = statements.filter((s) => s.is_active || picked.has(s.id));
+    const groups = [...new Set(shown.map((s) => s.element))].map((element) => ({
+        element,
+        items: shown.filter((s) => s.element === element),
+    }));
+    const setMany = (ids: number[], on: boolean) => {
+        const next = new Set(picked);
+        ids.forEach((id) => (on ? next.add(id) : next.delete(id)));
+        onChange(shown.filter((s) => next.has(s.id)).map((s) => s.id));
+    };
+
+    return (
+        <fieldset className="grid gap-2" disabled={locked}>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+                <legend className="text-sm font-medium">
+                    {t('Questions')}{' '}
+                    <span className="font-normal text-muted-foreground">
+                        {t(':selected of :total selected', {
+                            selected: String(selected.length),
+                            total: String(shown.length),
+                        })}
+                    </span>
+                </legend>
+                {!locked && (
+                    <div className="flex gap-1">
+                        <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() =>
+                                setMany(
+                                    shown.map((s) => s.id),
+                                    true,
+                                )
+                            }
+                        >
+                            {t('Select all')}
+                        </Button>
+                        <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => onChange([])}
+                        >
+                            {t('Clear')}
+                        </Button>
+                    </div>
+                )}
+            </div>
+            {locked && (
+                <p className="text-xs text-muted-foreground">
+                    {t(
+                        'Employees have already answered, so the questions can no longer change.',
+                    )}
+                </p>
+            )}
+            <div className="max-h-80 overflow-y-auto rounded-md border">
+                {groups.map(({ element, items }) => {
+                    const ids = items.map((s) => s.id);
+                    const count = ids.filter((id) => picked.has(id)).length;
+
+                    return (
+                        <div
+                            key={element ?? 'overall'}
+                            className="border-b last:border-b-0"
+                        >
+                            <label className="sticky top-0 flex items-center gap-2 bg-muted px-3 py-2 text-sm font-medium">
+                                <Checkbox
+                                    checked={
+                                        count === ids.length
+                                            ? true
+                                            : count > 0
+                                              ? 'indeterminate'
+                                              : false
+                                    }
+                                    onCheckedChange={(on) =>
+                                        setMany(ids, on === true)
+                                    }
+                                    disabled={locked}
+                                />
+                                {element ?? t('Overall')}
+                                <span className="ms-auto text-xs font-normal text-muted-foreground">
+                                    {count}/{ids.length}
+                                </span>
+                            </label>
+                            {items.map((statement) => (
+                                <label
+                                    key={statement.id}
+                                    className="flex items-start gap-2 px-3 py-1.5 text-sm"
+                                >
+                                    <Checkbox
+                                        className="mt-0.5"
+                                        checked={picked.has(statement.id)}
+                                        onCheckedChange={(on) =>
+                                            setMany([statement.id], on === true)
+                                        }
+                                        disabled={locked}
+                                    />
+                                    <span>
+                                        {statement.text}
+                                        {!statement.is_active && (
+                                            <span className="ms-1 text-xs text-muted-foreground">
+                                                ({t('inactive')})
+                                            </span>
+                                        )}
+                                    </span>
+                                </label>
+                            ))}
+                        </div>
+                    );
+                })}
+            </div>
+        </fieldset>
     );
 }
 

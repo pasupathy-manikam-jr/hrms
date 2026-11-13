@@ -29,7 +29,7 @@ class EngagementSurveySeeder extends Seeder
         }
 
         $campaign = EngagementCampaign::create(['name' => 'Engagement Survey 2026', 'status' => 'closed', 'closes_on' => now()->subMonth()->toDateString(), 'min_group_size' => 5]);
-        $campaign->attachActiveStatements();
+        $campaign->syncStatements();
         $statements = $campaign->statements()->get(['engagement_statements.id', 'engagement_element_id', 'reverse_scored']);
 
         mt_srand(2026);

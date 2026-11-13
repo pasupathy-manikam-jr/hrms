@@ -143,7 +143,7 @@ export default function EngagementStatements({
             <div className="flex flex-1 flex-col gap-6 p-4 md:p-6">
                 <PageHeader
                     title="Question Bank"
-                    description="Agree/disagree statements grouped by element. New campaigns ask every active statement."
+                    description="Agree/disagree statements grouped by element. New campaigns start with every active statement ticked; untick the ones you don’t want to ask."
                     action={
                         can('create-engagement-survey') && (
                             <Button onClick={() => openForm(null)}>

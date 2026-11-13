@@ -44,7 +44,7 @@ class EngagementSurveyTest extends TestCase
 
         // A statement a campaign asks can't be deleted.
         $used = EngagementStatement::where('is_active', true)->firstOrFail();
-        $this->post(route('engagement.campaigns.store'), ['name' => 'Q1', 'status' => 'draft', 'min_group_size' => 5]);
+        $this->post(route('engagement.campaigns.store'), ['name' => 'Q1', 'status' => 'draft', 'min_group_size' => 5, 'statement_ids' => [$used->id]]);
         $this->delete(route('engagement.statements.destroy', $used));
         $this->assertModelExists($used);
 
@@ -52,25 +52,44 @@ class EngagementSurveyTest extends TestCase
         $this->assertModelMissing($statement);
     }
 
-    public function test_a_campaign_asks_every_active_statement()
+    public function test_a_campaign_asks_the_picked_statements_in_bank_order_and_locks_them_once_answered()
     {
         $this->actingAs($this->userWithRole());
-        EngagementStatement::query()->limit(7)->update(['is_active' => false]);
-
-        $this->post(route('engagement.campaigns.store'), ['name' => '', 'status' => 'bogus', 'min_group_size' => 1])
-            ->assertSessionHasErrors(['name', 'status', 'min_group_size']);
-        $this->post(route('engagement.campaigns.store'), ['name' => '2026 survey', 'status' => 'open', 'min_group_size' => 5])
-            ->assertSessionHasNoErrors();
-
-        $campaign = EngagementCampaign::where('name', '2026 survey')->firstOrFail();
-        $this->assertSame(60, $campaign->statements()->count());
-
-        $this->put(route('engagement.campaigns.update', $campaign), ['name' => '2026 survey', 'status' => 'closed', 'min_group_size' => 6])
-            ->assertSessionHasNoErrors();
-        $this->assertSame('closed', $campaign->fresh()->status);
+        $inactive = EngagementStatement::query()->inBankOrder()->first();
+        $inactive->update(['is_active' => false]);
+        $active = EngagementStatement::query()->inBankOrder()->where('is_active', true)->limit(3)->pluck('engagement_statements.id');
+        [$first, $second, $third] = $active->all();
 
         $this->get(route('engagement.campaigns.index'))
-            ->assertInertia(fn ($page) => $page->component('engagement/campaigns/index')->where('campaigns.data.0.statements_count', 60));
+            ->assertInertia(fn ($page) => $page->component('engagement/campaigns/index')->has('statements', 67));
+
+        $this->post(route('engagement.campaigns.store'), ['name' => '', 'status' => 'bogus', 'min_group_size' => 1, 'statement_ids' => []])
+            ->assertSessionHasErrors(['name', 'status', 'min_group_size', 'statement_ids']);
+        $this->post(route('engagement.campaigns.store'), ['name' => 'Pulse', 'status' => 'draft', 'min_group_size' => 5, 'statement_ids' => [$inactive->id]])
+            ->assertSessionHasErrors('statement_ids.0');
+
+        // Picked out of order: asked in bank order.
+        $this->post(route('engagement.campaigns.store'), ['name' => 'Pulse', 'status' => 'draft', 'min_group_size' => 5, 'statement_ids' => [$third, $first]])
+            ->assertSessionHasNoErrors();
+        $campaign = EngagementCampaign::where('name', 'Pulse')->firstOrFail();
+        $this->assertSame([$first, $third], $campaign->statements()->orderByPivot('sort_order')->pluck('engagement_statements.id')->all());
+
+        $this->put(route('engagement.campaigns.update', $campaign), ['name' => 'Pulse', 'status' => 'open', 'min_group_size' => 6, 'statement_ids' => [$first, $second, $third]])
+            ->assertSessionHasNoErrors();
+        $this->assertSame(3, $campaign->statements()->count());
+        $this->assertSame('open', $campaign->fresh()->status);
+
+        $this->get(route('engagement.campaigns.index'))
+            ->assertInertia(fn ($page) => $page->where('campaigns.data.0.statements_count', 3)->where('campaigns.data.0.statements', fn ($statements) => collect($statements)->pluck('id')->sort()->values()->all() === $active->sort()->values()->all()));
+
+        // Once someone has answered, the questions are fixed but the rest can still change.
+        $this->respond($campaign, Employee::factory()->create(), 3);
+        $this->put(route('engagement.campaigns.update', $campaign), ['name' => 'Pulse', 'status' => 'open', 'min_group_size' => 6, 'statement_ids' => [$first]])
+            ->assertSessionHasErrors('statement_ids');
+        $this->put(route('engagement.campaigns.update', $campaign), ['name' => 'Pulse', 'status' => 'closed', 'min_group_size' => 6, 'statement_ids' => [$third, $second, $first]])
+            ->assertSessionHasNoErrors();
+        $this->assertSame('closed', $campaign->fresh()->status);
+        $this->assertSame(3, $campaign->statements()->count());
     }
 
     public function test_an_employee_answers_an_open_campaign_once()
@@ -170,7 +189,7 @@ class EngagementSurveyTest extends TestCase
     private function openCampaign(): EngagementCampaign
     {
         $campaign = EngagementCampaign::create(['name' => 'Pulse', 'status' => 'open', 'min_group_size' => 5]);
-        $campaign->attachActiveStatements();
+        $campaign->syncStatements();
 
         return $campaign;
     }
